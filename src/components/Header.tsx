@@ -77,10 +77,7 @@ export default function Header() {
         <div className="section-container flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 font-display font-bold text-xl tracking-tight">
-            <div className="w-8 h-8 rounded-md bg-accent flex items-center justify-center">
-              <span className="text-accent-foreground font-bold text-sm">S</span>
-            </div>
-            <span className={`${logoTextClass} transition-colors`}>Spirecrest</span>
+            <img src={seltLogo} alt="Spirecrest" className="h-9 w-auto" style={{ filter: isOverDark ? "invert(1)" : "none" }} />
           </Link>
 
           {/* Desktop Nav */}
