@@ -31,7 +31,7 @@ const cSuite = [
     role: "Director of Finance",
     domainIcon: DollarSign,
     domain: "Finance",
-    bio: "Steers Spirecrest's financial strategy, budgeting, and fiscal governance — driving sustainable growth while maintaining full regulatory compliance.",
+    bio: "Steers Spirecrest's financial strategy, budgeting, and fiscal governance, driving sustainable growth while maintaining full regulatory compliance.",
     initials: "CG",
   },
 ];
@@ -215,6 +215,13 @@ function ManagementCard({
       <p className="text-xs text-muted-foreground leading-relaxed">
         {member.bio}
       </p>
+
+      <div className="mt-4 pt-3 border-t border-border">
+        <button className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
+          <Linkedin className="w-3.5 h-3.5" />
+          Connect
+        </button>
+      </div>
     </motion.div>
   );
 }
@@ -302,15 +309,15 @@ export default function TeamDirectory() {
             Partner-Led. Expert-Driven.
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Every project is steered by a specialised industry leader — not a
+            Every project is steered by a specialised industry leader, not a
             generic project manager. Meet the minds behind Spirecrest.
           </p>
         </motion.div>
 
         {/* ── Tier 1: C-Suite / Leadership ── */}
         <div className="mb-16">
-          <p className="text-[10px] font-display uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">
-            C-Suite / Leadership
+          <p className="text-xs font-display uppercase tracking-[0.2em] text-foreground/70 font-bold mb-6 text-center">
+            Leadership
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {cSuite.map((m, i) => (
@@ -321,7 +328,7 @@ export default function TeamDirectory() {
 
         {/* ── Tier 2: Management & Operations ── */}
         <div className="mb-16">
-          <p className="text-[10px] font-display uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">
+          <p className="text-xs font-display uppercase tracking-[0.2em] text-foreground/70 font-bold mb-6 text-center">
             Management & Operations
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -333,7 +340,7 @@ export default function TeamDirectory() {
 
         {/* ── Tier 3: Development ── */}
         <div className="mb-16">
-          <p className="text-[10px] font-display uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">
+          <p className="text-xs font-display uppercase tracking-[0.2em] text-foreground/70 font-bold mb-6 text-center">
             Development
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -345,7 +352,7 @@ export default function TeamDirectory() {
 
         {/* ── Tier 4: Support ── */}
         <div>
-          <p className="text-[10px] font-display uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">
+          <p className="text-xs font-display uppercase tracking-[0.2em] text-foreground/70 font-bold mb-6 text-center">
             Support
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">

@@ -49,7 +49,7 @@ export default function HeroSection() {
             className="mt-6 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
             style={{ color: "hsl(var(--on-dark-muted))" }}
           >
-            From advanced surveillance systems to custom software and cloud infrastructure — 
+            From advanced surveillance systems to custom software and cloud infrastructure, 
             we architect solutions that protect, perform, and scale.
           </motion.p>
 

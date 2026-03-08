@@ -24,7 +24,7 @@ const milestones = [
     icon: Award,
     title: "Startup India Recognition",
     description:
-      "Awarded the prestigious DPIIT certification under the Government of India's Startup India initiative — recognizing our innovation-first approach and scalable business model.",
+      "Awarded the prestigious DPIIT certification under the Government of India's Startup India initiative, recognizing our innovation-first approach and scalable business model.",
     highlight: "DIPP228807",
   },
   {
@@ -32,7 +32,7 @@ const milestones = [
     icon: Rocket,
     title: "900+ Projects Executed",
     description:
-      "A combined legacy of 900+ successful project executions across surveillance, software development, cybersecurity, and infrastructure — delivered by our partner-led teams.",
+      "A combined legacy of 900+ successful project executions across surveillance, software development, cybersecurity, and infrastructure, delivered by our partner-led teams.",
     highlight: "And counting.",
   },
 ];
@@ -127,7 +127,7 @@ export default function CompanyTimeline() {
             Built on Compliance. Driven by Innovation.
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Every milestone represents a step toward our mission — delivering
+            Every milestone represents a step toward our mission: delivering
             trustworthy, enterprise-grade technology solutions.
           </p>
         </motion.div>

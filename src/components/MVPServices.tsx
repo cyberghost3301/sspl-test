@@ -14,7 +14,7 @@ const flagshipServices = [
   {
     icon: Code,
     title: "Digital Products That Scale",
-    description: "Custom web applications, mobile platforms, and software systems built with modern stacks — designed to grow with your ambitions.",
+    description: "Custom web applications, mobile platforms, and software systems built with modern stacks, designed to grow with your ambitions.",
     href: "/services/software",
     features: ["Web Applications", "Mobile Apps", "SaaS Platforms", "API Development"],
   },

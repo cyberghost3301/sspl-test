@@ -6,7 +6,7 @@ const pillars = [
   {
     icon: Users,
     title: "Partner-Led Teams",
-    desc: "Every project is owned and driven by a specialized domain partner — not a generic project manager.",
+    desc: "Every project is owned and driven by a specialized domain partner, not a generic project manager.",
   },
   {
     icon: Target,
@@ -16,7 +16,7 @@ const pillars = [
   {
     icon: Rocket,
     title: "Scalable Execution",
-    desc: "From a 5-camera setup to a 500-node cloud deployment — our model scales with your ambition.",
+    desc: "From a 5-camera setup to a 500-node cloud deployment, our model scales with your ambition.",
   },
 ];
 

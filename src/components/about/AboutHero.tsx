@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function AboutHero() {
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-hero-gradient">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-gradient">
       {/* Grid bg */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -45,7 +45,7 @@ export default function AboutHero() {
           >
             Spirecrest Solutions is a multi-disciplinary technology firm headquartered in India.
             We combine deep domain expertise with modern engineering to deliver surveillance,
-            software, cybersecurity, and infrastructure solutions that don't just work — they scale.
+            software, cybersecurity, and infrastructure solutions that don't just work, they scale.
           </motion.p>
 
           <motion.div
