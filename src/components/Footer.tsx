@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import sfiltLogo from "@/assets/sfilt.png";
 
 const footerLinks = {
   Solutions: [
