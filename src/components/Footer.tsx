@@ -35,7 +35,7 @@ export default function Footer() {
               </div>
               Spirecrest Solutions
             </div>
-            <p className="text-primary-foreground/70 text-sm leading-relaxed max-w-sm mb-6">
+            <p className="text-sm leading-relaxed max-w-sm mb-6" style={{ color: "hsl(var(--on-dark-muted))" }}>
               Smart Ideas. Solid Executions. Scalable Results. A multi-disciplinary technology firm delivering enterprise-grade solutions across security, software, and infrastructure.
             </p>
             <div className="flex items-center gap-3">
