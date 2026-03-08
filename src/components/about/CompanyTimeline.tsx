@@ -24,7 +24,7 @@ const milestones = [
     icon: Award,
     title: "Startup India Recognition",
     description:
-      "Awarded the prestigious DPIIT certification under the Government of India's Startup India initiative — recognizing our innovation-first approach and scalable business model.",
+      "Awarded the prestigious DPIIT certification under the Government of India's Startup India initiative, recognizing our innovation-first approach and scalable business model.",
     highlight: "DIPP228807",
   },
   {
