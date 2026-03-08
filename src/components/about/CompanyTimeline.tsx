@@ -32,7 +32,7 @@ const milestones = [
     icon: Rocket,
     title: "900+ Projects Executed",
     description:
-      "A combined legacy of 900+ successful project executions across surveillance, software development, cybersecurity, and infrastructure — delivered by our partner-led teams.",
+      "A combined legacy of 900+ successful project executions across surveillance, software development, cybersecurity, and infrastructure, delivered by our partner-led teams.",
     highlight: "And counting.",
   },
 ];
