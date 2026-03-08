@@ -7,6 +7,7 @@ import {
   Moon, SunMedium, ArrowRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import seltLogo from "@/assets/selt.png";
 
 const services = [
   { icon: Shield, title: "Advanced Surveillance", desc: "Enterprise-grade security infrastructure", href: "/services/surveillance" },
