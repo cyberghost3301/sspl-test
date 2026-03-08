@@ -40,6 +40,8 @@
     --brand-slate: 220 20% 18%;
     --brand-dark: 220 25% 8%;
     --brand-light: 220 20% 97%;
+    --on-dark: 0 0% 98%;
+    --on-dark-muted: 220 15% 70%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -87,6 +89,8 @@
     --brand-slate: 220 15% 75%;
     --brand-dark: 220 25% 4%;
     --brand-light: 220 20% 12%;
+    --on-dark: 0 0% 98%;
+    --on-dark-muted: 220 15% 70%;
 
     --sidebar-background: 220 25% 6%;
     --sidebar-foreground: 210 20% 92%;
