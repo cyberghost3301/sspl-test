@@ -309,8 +309,8 @@ export default function TeamDirectory() {
 
         {/* ── Tier 1: C-Suite / Leadership ── */}
         <div className="mb-16">
-          <p className="text-[10px] font-display uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">
-            C-Suite / Leadership
+          <p className="text-xs font-display uppercase tracking-[0.2em] text-foreground/70 font-bold mb-6 text-center">
+            Leadership
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {cSuite.map((m, i) => (
