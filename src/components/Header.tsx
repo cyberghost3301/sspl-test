@@ -50,6 +50,20 @@ export default function Header() {
     document.documentElement.classList.toggle("dark", dark);
   }, [dark]);
 
+  // Pages with dark hero backgrounds where nav text needs to be light when not scrolled
+  const hasDarkHero = ["/", "/about"].includes(location.pathname);
+  const isOverDark = hasDarkHero && !scrolled;
+
+  // Dynamic text classes based on whether we're over the dark hero
+  const navTextClass = isOverDark
+    ? "text-white/70 hover:text-white"
+    : "text-muted-foreground hover:text-foreground";
+  const navActiveClass = "text-accent";
+  const logoTextClass = isOverDark ? "text-white" : "text-foreground";
+  const iconBtnClass = isOverDark
+    ? "text-white/70 hover:text-white hover:bg-white/10"
+    : "text-muted-foreground hover:text-foreground hover:bg-secondary";
+
   return (
     <>
       <header
@@ -65,7 +79,7 @@ export default function Header() {
             <div className="w-8 h-8 rounded-md bg-accent flex items-center justify-center">
               <span className="text-accent-foreground font-bold text-sm">S</span>
             </div>
-            <span className="text-foreground">Spirecrest</span>
+            <span className={`${logoTextClass} transition-colors`}>Spirecrest</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -78,7 +92,7 @@ export default function Header() {
                 onMouseLeave={() => link.hasMega && setMegaOpen(false)}
               >
                 {link.hasMega ? (
-                  <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                  <button className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${navTextClass}`}>
                     {link.label}
                     <ChevronDown className={`w-3.5 h-3.5 transition-transform ${megaOpen ? "rotate-180" : ""}`} />
                   </button>
@@ -87,8 +101,8 @@ export default function Header() {
                     to={link.href}
                     className={`px-4 py-2 text-sm font-medium transition-colors ${
                       location.pathname === link.href
-                        ? "text-accent"
-                        : "text-muted-foreground hover:text-foreground"
+                        ? navActiveClass
+                        : navTextClass
                     }`}
                   >
                     {link.label}
@@ -102,7 +116,7 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setDark(!dark)}
-              className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              className={`p-2 rounded-md transition-colors ${iconBtnClass}`}
               aria-label="Toggle theme"
             >
               {dark ? <SunMedium className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -115,7 +129,7 @@ export default function Header() {
             </Link>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 text-foreground"
+              className={`lg:hidden p-2 transition-colors ${isOverDark ? "text-white" : "text-foreground"}`}
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
