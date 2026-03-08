@@ -16,7 +16,7 @@ const pillars = [
   {
     icon: Rocket,
     title: "Scalable Execution",
-    desc: "From a 5-camera setup to a 500-node cloud deployment — our model scales with your ambition.",
+    desc: "From a 5-camera setup to a 500-node cloud deployment, our model scales with your ambition.",
   },
 ];
 
