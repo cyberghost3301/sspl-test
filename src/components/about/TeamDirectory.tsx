@@ -215,6 +215,13 @@ function ManagementCard({
       <p className="text-xs text-muted-foreground leading-relaxed">
         {member.bio}
       </p>
+
+      <div className="mt-4 pt-3 border-t border-border">
+        <button className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
+          <Linkedin className="w-3.5 h-3.5" />
+          Connect
+        </button>
+      </div>
     </motion.div>
   );
 }
