@@ -35,6 +35,8 @@ const benefits: BentoItem[] = [
   { icon: Settings, title: "AMC & Maintenance", description: "Annual maintenance contracts with scheduled inspections, firmware updates, hardware replacement, and 24/7 priority support." },
   { icon: BarChart3, title: "Compliance Reporting", description: "Automated compliance reports for insurance, regulatory audits, and legal proceedings with tamper-proof evidence chain management." },
   { icon: Signal, title: "Wireless Surveillance", description: "Wire-free camera deployments using solar-powered, battery-backed, and mesh-networked systems for remote and hard-to-wire locations." },
+  { icon: Monitor, title: "Command Center Design", description: "Purpose-built monitoring rooms with video walls, ergonomic operator stations, and redundant display systems for 24/7 security operations." },
+  { icon: Layers, title: "Scalable Architecture", description: "Modular surveillance frameworks that grow with your organization, from a single site to nationwide deployments without infrastructure overhauls." },
 ];
 
 const techStack = [

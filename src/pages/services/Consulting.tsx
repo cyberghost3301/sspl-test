@@ -42,6 +42,7 @@ const benefits: BentoItem[] = [
   { icon: Gauge, title: "Vulnerability Management", description: "Continuous vulnerability scanning, risk prioritization, remediation tracking, and SLA-driven patching workflows." },
   { icon: Settings, title: "Security Operations Center", description: "SOC-as-a-Service with 24/7 monitoring, Tier 1-3 analyst coverage, playbook automation, and monthly threat briefings." },
   { icon: Zap, title: "Red Team Operations", description: "Full-scope adversary simulation, physical and digital attack scenarios, stealth persistence testing, and executive debrief reporting." },
+  { icon: Lock, title: "Supply Chain Security", description: "Third-party vendor risk assessments, software bill of materials analysis, and secure procurement frameworks to protect your supply chain." },
 ];
 
 const techStack = [

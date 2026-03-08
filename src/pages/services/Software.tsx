@@ -40,6 +40,8 @@ const benefits: BentoItem[] = [
   { icon: Gauge, title: "Performance Optimization", description: "Database query optimization, caching strategies, CDN configuration, and load balancing for sub-second response times." },
   { icon: FileCode, title: "Open Source Contributions", description: "We build and maintain open-source tools, contribute to community projects, and leverage proven open-source ecosystems." },
   { icon: Headphones, title: "Post-Launch Support", description: "Ongoing maintenance, bug fixes, feature updates, server monitoring, and 24/7 support with guaranteed SLA response times." },
+  { icon: Wifi, title: "IoT & Connected Devices", description: "Firmware development, device-cloud communication, MQTT/CoAP protocols, and dashboard interfaces for Internet of Things ecosystems." },
+  { icon: Layers, title: "Micro-Frontend Architecture", description: "Independently deployable UI modules, shared design systems, and federated builds for large-scale frontend applications across multiple teams." },
 ];
 
 const techStack = [
