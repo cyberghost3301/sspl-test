@@ -302,7 +302,7 @@ export default function TeamDirectory() {
             Partner-Led. Expert-Driven.
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Every project is steered by a specialised industry leader — not a
+            Every project is steered by a specialised industry leader, not a
             generic project manager. Meet the minds behind Spirecrest.
           </p>
         </motion.div>
