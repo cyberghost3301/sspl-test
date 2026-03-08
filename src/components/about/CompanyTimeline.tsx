@@ -127,7 +127,7 @@ export default function CompanyTimeline() {
             Built on Compliance. Driven by Innovation.
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Every milestone represents a step toward our mission — delivering
+            Every milestone represents a step toward our mission: delivering
             trustworthy, enterprise-grade technology solutions.
           </p>
         </motion.div>
