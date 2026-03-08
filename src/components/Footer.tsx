@@ -24,7 +24,7 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-hero-gradient" style={{ color: "hsl(var(--on-dark))" }}>
       <div className="section-container py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
