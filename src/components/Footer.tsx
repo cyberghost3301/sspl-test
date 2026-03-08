@@ -54,7 +54,7 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link to={link.href} className="text-sm text-primary-foreground/60 hover:text-accent transition-colors">
+                    <Link to={link.href} className="text-sm hover:text-accent transition-colors" style={{ color: "hsl(var(--on-dark-muted))" }}>
                       {link.label}
                     </Link>
                   </li>
