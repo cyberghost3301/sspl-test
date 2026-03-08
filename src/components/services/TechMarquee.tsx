@@ -1,5 +1,3 @@
-const techItems: string[];
-
 interface TechMarqueeProps {
   label: string;
   items: string[];
