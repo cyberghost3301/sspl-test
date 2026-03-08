@@ -31,7 +31,7 @@ const cSuite = [
     role: "Director of Finance",
     domainIcon: DollarSign,
     domain: "Finance",
-    bio: "Steers Spirecrest's financial strategy, budgeting, and fiscal governance — driving sustainable growth while maintaining full regulatory compliance.",
+    bio: "Steers Spirecrest's financial strategy, budgeting, and fiscal governance, driving sustainable growth while maintaining full regulatory compliance.",
     initials: "CG",
   },
 ];
