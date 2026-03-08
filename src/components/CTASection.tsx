@@ -36,9 +36,9 @@ export default function CTASection() {
               Let's discuss how Spirecrest can architect the perfect solution for your business.
             </p>
             <Link to="/contact">
-              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold gap-2 px-10 h-13 text-base">
+              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold gap-2 px-12 h-14 text-lg">
                 Start the Conversation
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
           </div>

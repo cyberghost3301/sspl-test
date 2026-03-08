@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import sfiltLogo from "@/assets/sfilt.png";
 
 const footerLinks = {
   Solutions: [
@@ -29,11 +30,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 font-display font-bold text-xl mb-4">
-              <div className="w-8 h-8 rounded-md bg-accent flex items-center justify-center">
-                <span className="text-accent-foreground font-bold text-sm">S</span>
-              </div>
-              Spirecrest Solutions
+            <div className="mb-4">
+              <img src={sfiltLogo} alt="Spirecrest Solutions Pvt. Ltd." className="h-10 w-auto invert" />
             </div>
             <p className="text-sm leading-relaxed max-w-sm mb-6" style={{ color: "hsl(var(--on-dark-muted))" }}>
               Smart Ideas. Solid Executions. Scalable Results. A multi-disciplinary technology firm delivering enterprise-grade solutions across security, software, and infrastructure.
