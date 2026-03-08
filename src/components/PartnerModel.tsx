@@ -6,7 +6,7 @@ const pillars = [
   {
     icon: Users,
     title: "Partner-Led Teams",
-    desc: "Every project is owned and driven by a specialized domain partner — not a generic project manager.",
+    desc: "Every project is owned and driven by a specialized domain partner, not a generic project manager.",
   },
   {
     icon: Target,
