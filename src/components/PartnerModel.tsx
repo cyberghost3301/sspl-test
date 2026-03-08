@@ -75,9 +75,9 @@ export default function PartnerModel() {
               <div className="absolute inset-6 rounded-2xl bg-accent/5 border border-accent/10" />
               <div className="absolute inset-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
                 <div className="text-center">
-                  <p className="font-display text-5xl font-bold text-accent">12+</p>
+                  <p className="font-display text-5xl font-bold text-accent">19+</p>
                   <p className="text-sm text-muted-foreground mt-2 font-medium">Specialized Partners</p>
-                  <p className="text-xs text-muted-foreground mt-1">Across 9 Verticals</p>
+                  <p className="text-xs text-muted-foreground mt-1">Across 12 Verticals</p>
                 </div>
               </div>
               {/* Corner dots */}

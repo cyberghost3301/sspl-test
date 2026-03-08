@@ -55,10 +55,10 @@ export default function AboutHero() {
             className="mt-12 flex flex-wrap justify-center gap-x-10 gap-y-4"
           >
             {[
-              { value: "2025", label: "Founded" },
-              { value: "9", label: "Service Verticals" },
+              { value: "2025", label: "PLC Formed" },
+              { value: "12", label: "Service Verticals" },
               { value: "9000+", label: "Projects Delivered" },
-              { value: "12+", label: "Expert Partners" },
+              { value: "19+", label: "Expert Partners" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <p className="font-display text-2xl font-bold text-accent">{stat.value}</p>
