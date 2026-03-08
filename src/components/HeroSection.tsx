@@ -69,8 +69,7 @@ export default function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="font-display font-semibold gap-2 px-8 h-12 text-base border-white/20 hover:bg-white/10"
-                style={{ color: "hsl(var(--on-dark))" }}
+                className="font-display font-semibold gap-2 px-8 h-12 text-base border-accent/30 text-accent hover:bg-accent/10"
               >
                 Our Story
               </Button>
