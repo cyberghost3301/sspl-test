@@ -1,74 +1,102 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
-  Shield,
   Code,
-  Globe,
+  Settings,
   TrendingUp,
-  Users,
+  DollarSign,
   Linkedin,
 } from "lucide-react";
 
-const coreTeam = [
+/* ───────── Tier 1 — C-Suite / Leadership ───────── */
+const cSuite = [
   {
     name: "Aum Chatterjee",
-    role: "Director",
-    domain: "Technology & Software",
+    role: "Director of Technology",
     domainIcon: Code,
-    bio: "Leads Spirecrest's software engineering and digital product verticals, architecting scalable web platforms and enterprise applications.",
-  },
-  {
-    name: "Deshesh Agnihotri",
-    role: "Director",
-    domain: "Infrastructure & Operations",
-    domainIcon: Shield,
-    bio: "Drives the surveillance, networking, and physical infrastructure verticals with deep expertise in enterprise security systems.",
+    domain: "Technology",
+    bio: "Leads Spirecrest's software engineering and digital product verticals, architecting scalable web platforms and enterprise-grade applications that power modern businesses.",
+    initials: "AC",
   },
   {
     name: "Shraddha Dwivedi",
-    role: "Director",
-    domain: "Strategy & Growth",
-    domainIcon: TrendingUp,
-    bio: "Oversees corporate strategy, partnerships, and business development — ensuring every vertical aligns with Spirecrest's long-term vision.",
+    role: "Director of Operations",
+    domainIcon: Settings,
+    domain: "Operations",
+    bio: "Orchestrates end-to-end project delivery and operational excellence across all verticals, ensuring every engagement meets Spirecrest's exacting quality standards.",
+    initials: "SD",
   },
   {
     name: "Chesta Gangwani",
-    role: "Director",
-    domain: "Design & Experience",
-    domainIcon: Users,
-    bio: "Champions user-centric design across all Spirecrest verticals, from interior design projects to digital product interfaces.",
+    role: "Director of Finance",
+    domainIcon: DollarSign,
+    domain: "Finance",
+    bio: "Steers Spirecrest's financial strategy, budgeting, and fiscal governance — driving sustainable growth while maintaining full regulatory compliance.",
+    initials: "CG",
   },
+];
+
+/* ───────── Tier 2 — Management & Operations ───────── */
+const managementTeam = [
   {
-    name: "Melody Cantillo",
-    role: "Strategic Outreach Partner",
-    domain: "Global Outreach",
-    domainIcon: Globe,
-    bio: "Bridges Spirecrest to international markets, driving global partnership development and cross-border business initiatives.",
+    name: "Deshesh Agnihotri",
+    role: "Director of Management",
+    domain: "Management",
+    domainIcon: TrendingUp,
+    bio: "Drives organisational strategy, resource planning, and cross-vertical coordination to keep Spirecrest operating at peak efficiency.",
   },
+  { name: "Er. Saurabh", role: "Strategic Advisor" },
+  { name: "Ar. Laraib", role: "Consulting Architect" },
+  { name: "Shristi", role: "Growth Facilitator" },
+  { name: "Er. Anshuman", role: "Sr. Project Catalyst" },
+  { name: "Prof. Rahul", role: "Business Advisor" },
+  { name: "Er. Shashank", role: "Sr. Project Head" },
+  { name: "Antara", role: "PR & Outreach" },
+  { name: "Melody Cantillo", role: "Strategic Outreach Partner" },
 ];
 
-const engineTeam = [
-  { name: "Arjun Mehta", specialty: "Cloud Architect" },
-  { name: "Priya Sharma", specialty: "Cybersecurity Lead" },
-  { name: "Rohan Kapoor", specialty: "Full-Stack Engineer" },
-  { name: "Sneha Patel", specialty: "UI/UX Designer" },
-  { name: "Vikram Singh", specialty: "Network Engineer" },
-  { name: "Ananya Reddy", specialty: "Data Analyst" },
-  { name: "Karan Joshi", specialty: "IoT Specialist" },
-  { name: "Meera Nair", specialty: "Project Manager" },
-  { name: "Rahul Verma", specialty: "DevOps Engineer" },
-  { name: "Divya Gupta", specialty: "QA Engineer" },
-  { name: "Amit Tiwari", specialty: "Solar Systems Lead" },
-  { name: "Neha Agarwal", specialty: "AV Solutions Expert" },
+/* ───────── Tier 3 — Development ───────── */
+const developmentTeam = [
+  { name: "Vaibhavi", role: "Jr. Developer" },
+  { name: "Isha", role: "Market Advisor" },
+  { name: "Er. Aakash", role: "External Consultant" },
+  { name: "Sanchita", role: "Dev. Coordinator" },
+  { name: "Astha", role: "BDE" },
+  { name: "Krish", role: "Jr. Developer" },
+  { name: "Neeraj", role: "Jr. Developer" },
+  { name: "Anand", role: "Jr. Developer" },
+  { name: "Saloni", role: "Backend Intern" },
+  { name: "Kavya", role: "DS / AI-ML" },
 ];
 
-function CoreCard({
-  member,
-  index,
-}: {
-  member: (typeof coreTeam)[0];
-  index: number;
-}) {
+/* ───────── Tier 4 — Support ───────── */
+const supportTeam = [
+  { name: "Arjun Mehta", role: "Cloud Architect" },
+  { name: "Priya Sharma", role: "Cybersecurity Lead" },
+  { name: "Rohan Kapoor", role: "Full-Stack Engineer" },
+  { name: "Sneha Patel", role: "UI/UX Designer" },
+  { name: "Vikram Singh", role: "Network Engineer" },
+  { name: "Ananya Reddy", role: "Data Analyst" },
+  { name: "Karan Joshi", role: "IoT Specialist" },
+  { name: "Meera Nair", role: "Project Manager" },
+  { name: "Rahul Verma", role: "DevOps Engineer" },
+  { name: "Divya Gupta", role: "QA Engineer" },
+  { name: "Amit Tiwari", role: "Solar Systems Lead" },
+  { name: "Neha Agarwal", role: "AV Solutions Expert" },
+];
+
+function getInitials(name: string) {
+  return name
+    .replace(/^(Er\.|Ar\.|Prof\.) ?/, "")
+    .split(" ")
+    .filter(Boolean)
+    .map((n) => n[0])
+    .join("")
+    .slice(0, 2);
+}
+
+/* ═══════════ C-Suite Card (Tier 1 — large, with avatar placeholder) ═══════════ */
+function CSuiteCard({ member, index }: { member: (typeof cSuite)[0]; index: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
@@ -77,8 +105,8 @@ function CoreCard({
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative p-8 rounded-2xl border border-border bg-card hover:border-accent/40 hover:shadow-xl hover:shadow-accent/5 transition-all duration-300"
+      transition={{ duration: 0.5, delay: index * 0.12 }}
+      className="group relative p-8 lg:p-10 rounded-2xl border border-border bg-card hover:border-accent/40 hover:shadow-xl hover:shadow-accent/5 transition-all duration-300"
     >
       {/* Domain badge */}
       <div className="absolute top-6 right-6">
@@ -88,27 +116,21 @@ function CoreCard({
         </span>
       </div>
 
-      {/* Avatar placeholder */}
-      <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-accent/10 transition-colors">
-        <span className="font-display text-xl font-bold text-foreground/60 group-hover:text-accent transition-colors">
-          {member.name
-            .split(" ")
-            .map((n) => n[0])
-            .join("")}
+      {/* Large avatar */}
+      <div className="w-24 h-24 rounded-2xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors">
+        <span className="font-display text-2xl font-bold text-foreground/60 group-hover:text-accent transition-colors">
+          {member.initials}
         </span>
       </div>
 
-      <h3 className="font-display text-xl font-bold text-foreground mb-0.5">
+      <h3 className="font-display text-2xl font-bold text-foreground mb-0.5">
         {member.name}
       </h3>
       <p className="text-xs font-display font-semibold text-accent uppercase tracking-wider mb-3">
         {member.role}
       </p>
-      <p className="text-sm text-muted-foreground leading-relaxed">
-        {member.bio}
-      </p>
+      <p className="text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
 
-      {/* Social hint */}
       <div className="mt-5 pt-4 border-t border-border">
         <button className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
           <Linkedin className="w-3.5 h-3.5" />
@@ -119,6 +141,91 @@ function CoreCard({
   );
 }
 
+/* ═══════════ Management Card (Tier 2 — medium) ═══════════ */
+function ManagementCard({
+  member,
+  index,
+  inView,
+}: {
+  member: (typeof managementTeam)[0];
+  index: number;
+  inView: boolean;
+}) {
+  const hasBio = "bio" in member && (member as any).bio;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.4, delay: index * 0.07 }}
+      className="group relative p-6 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300"
+    >
+      {"domainIcon" in member && (member as any).domainIcon && (
+        <div className="absolute top-4 right-4">
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent/10 text-accent text-[9px] font-display font-semibold uppercase tracking-wider">
+            {(() => {
+              const Icon = (member as any).domainIcon;
+              return <Icon className="w-2.5 h-2.5" />;
+            })()}
+            {(member as any).domain}
+          </span>
+        </div>
+      )}
+
+      <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-4 group-hover:bg-accent/10 transition-colors">
+        <span className="font-display text-base font-bold text-foreground/55 group-hover:text-accent transition-colors">
+          {getInitials(member.name)}
+        </span>
+      </div>
+
+      <h4 className="font-display text-lg font-bold text-foreground mb-0.5">
+        {member.name}
+      </h4>
+      <p className="text-[11px] font-display font-semibold text-accent uppercase tracking-wider mb-2">
+        {member.role}
+      </p>
+      {hasBio && (
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          {(member as any).bio}
+        </p>
+      )}
+    </motion.div>
+  );
+}
+
+/* ═══════════ Small Tile (Tier 3 & 4) ═══════════ */
+function SmallTile({
+  name,
+  role,
+  index,
+  inView,
+}: {
+  name: string;
+  role: string;
+  index: number;
+  inView: boolean;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={inView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.3, delay: 0.1 + index * 0.04 }}
+      className="group text-center p-4 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-md transition-all duration-200"
+    >
+      <div className="w-10 h-10 mx-auto rounded-lg bg-secondary flex items-center justify-center mb-3 group-hover:bg-accent/10 transition-colors">
+        <span className="font-display text-xs font-bold text-foreground/50 group-hover:text-accent transition-colors">
+          {getInitials(name)}
+        </span>
+      </div>
+      <p className="font-display text-xs font-semibold text-foreground leading-tight">
+        {name}
+      </p>
+      <p className="text-[10px] text-muted-foreground mt-1">{role}</p>
+    </motion.div>
+  );
+}
+
+/* ═══════════ Main Export ═══════════ */
 export default function TeamDirectory() {
   const sectionRef = useRef(null);
   const inView = useInView(sectionRef, { once: true, margin: "-100px" });
@@ -126,7 +233,7 @@ export default function TeamDirectory() {
   return (
     <section className="py-24 lg:py-32 bg-secondary/50" ref={sectionRef}>
       <div className="section-container">
-        {/* Section header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -140,64 +247,57 @@ export default function TeamDirectory() {
             Partner-Led. Expert-Driven.
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Every project is steered by a specialized industry leader — not a
+            Every project is steered by a specialised industry leader — not a
             generic project manager. Meet the minds behind Spirecrest.
           </p>
         </motion.div>
 
-        {/* Tier 1 — The Core */}
-        <div className="mb-8">
+        {/* ── Tier 1: C-Suite / Leadership ── */}
+        <div className="mb-16">
           <p className="text-[10px] font-display uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">
-            Tier 1 — The Core
+            C-Suite / Leadership
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {coreTeam.slice(0, 3).map((member, i) => (
-              <CoreCard key={member.name} member={member} index={i} />
-            ))}
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 max-w-3xl mx-auto">
-            {coreTeam.slice(3).map((member, i) => (
-              <CoreCard key={member.name} member={member} index={i + 3} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {cSuite.map((m, i) => (
+              <CSuiteCard key={m.name} member={m} index={i} />
             ))}
           </div>
         </div>
 
-        {/* Tier 2 — The Engine */}
-        <div className="mt-20">
+        {/* ── Tier 2: Management & Operations ── */}
+        <div className="mb-16">
           <p className="text-[10px] font-display uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">
-            Tier 2 — The Engine
+            Management & Operations
           </p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
-          >
-            {engineTeam.map((member, i) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.3, delay: 0.4 + i * 0.04 }}
-                className="group text-center p-4 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-md transition-all duration-200"
-              >
-                <div className="w-10 h-10 mx-auto rounded-lg bg-secondary flex items-center justify-center mb-3 group-hover:bg-accent/10 transition-colors">
-                  <span className="font-display text-xs font-bold text-foreground/50 group-hover:text-accent transition-colors">
-                    {member.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </span>
-                </div>
-                <p className="font-display text-xs font-semibold text-foreground leading-tight">
-                  {member.name}
-                </p>
-                <p className="text-[10px] text-muted-foreground mt-1">
-                  {member.specialty}
-                </p>
-              </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {managementTeam.map((m, i) => (
+              <ManagementCard key={m.name} member={m} index={i} inView={inView} />
             ))}
-          </motion.div>
+          </div>
+        </div>
+
+        {/* ── Tier 3: Development ── */}
+        <div className="mb-16">
+          <p className="text-[10px] font-display uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">
+            Development
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {developmentTeam.map((m, i) => (
+              <SmallTile key={m.name} name={m.name} role={m.role} index={i} inView={inView} />
+            ))}
+          </div>
+        </div>
+
+        {/* ── Tier 4: Support ── */}
+        <div>
+          <p className="text-[10px] font-display uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">
+            Support
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {supportTeam.map((m, i) => (
+              <SmallTile key={m.name} name={m.name} role={m.role} index={i} inView={inView} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
