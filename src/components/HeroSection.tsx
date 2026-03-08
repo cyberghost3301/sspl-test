@@ -32,7 +32,8 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] text-primary-foreground"
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]"
+            style={{ color: "hsl(var(--on-dark))" }}
           >
             Smart Ideas.
             <br />
@@ -45,7 +46,8 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="mt-6 text-lg md:text-xl text-primary-foreground/60 max-w-2xl mx-auto leading-relaxed"
+            className="mt-6 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+            style={{ color: "hsl(var(--on-dark-muted))" }}
           >
             From advanced surveillance systems to custom software and cloud infrastructure — 
             we architect solutions that protect, perform, and scale.
@@ -64,7 +66,12 @@ export default function HeroSection() {
               </Button>
             </Link>
             <Link to="/about">
-              <Button size="lg" variant="outline" className="font-display font-semibold border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 gap-2 px-8 h-12 text-base">
+              <Button
+                size="lg"
+                variant="outline"
+                className="font-display font-semibold gap-2 px-8 h-12 text-base border-white/20 hover:bg-white/10"
+                style={{ color: "hsl(var(--on-dark))" }}
+              >
                 Our Story
               </Button>
             </Link>
@@ -84,7 +91,7 @@ export default function HeroSection() {
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <p className="font-display text-2xl md:text-3xl font-bold text-accent">{stat.value}</p>
-                <p className="text-xs text-primary-foreground/50 mt-1">{stat.label}</p>
+                <p className="text-xs mt-1" style={{ color: "hsl(var(--on-dark-muted))" }}>{stat.label}</p>
               </div>
             ))}
           </motion.div>

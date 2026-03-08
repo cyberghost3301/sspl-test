@@ -23,10 +23,16 @@ export default function CTASection() {
           }} />
           <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-accent/5 blur-[100px]" />
           <div className="relative z-10">
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
+            <h2
+              className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+              style={{ color: "hsl(var(--on-dark))" }}
+            >
               Ready to Build Something Extraordinary?
             </h2>
-            <p className="text-primary-foreground/60 max-w-xl mx-auto mb-8 text-lg">
+            <p
+              className="max-w-xl mx-auto mb-8 text-lg"
+              style={{ color: "hsl(var(--on-dark-muted))" }}
+            >
               Let's discuss how Spirecrest can architect the perfect solution for your business.
             </p>
             <Link to="/contact">
