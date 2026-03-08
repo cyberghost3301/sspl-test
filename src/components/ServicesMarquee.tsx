@@ -10,7 +10,8 @@ const secondaryServices = [
 ];
 
 // Duplicate for seamless loop
-const items = [...secondaryServices, ...secondaryServices];
+// Duplicate enough for seamless infinite loop
+const items = [...secondaryServices, ...secondaryServices, ...secondaryServices, ...secondaryServices];
 
 export default function ServicesMarquee() {
   return (
