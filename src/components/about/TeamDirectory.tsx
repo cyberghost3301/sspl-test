@@ -333,7 +333,7 @@ export default function TeamDirectory() {
 
         {/* ── Tier 3: Development ── */}
         <div className="mb-16">
-          <p className="text-[10px] font-display uppercase tracking-[0.2em] text-muted-foreground mb-6 text-center">
+          <p className="text-xs font-display uppercase tracking-[0.2em] text-foreground/70 font-bold mb-6 text-center">
             Development
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
