@@ -1,8 +1,70 @@
 import { motion, useScroll, useSpring, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Building2, FileCheck, Award, Rocket } from "lucide-react";
+import {
+  Lightbulb,
+  Flag,
+  Megaphone,
+  TrendingUp,
+  Heart,
+  MapPin,
+  Handshake,
+  Building2,
+  Globe,
+  FileCheck,
+  Award,
+  Rocket,
+} from "lucide-react";
 
 const milestones = [
+  {
+    date: "2013",
+    icon: Lightbulb,
+    title: "Hello World!",
+    description:
+      "An idea was worked upon with a vision to revolutionize tech solutions for all.",
+  },
+  {
+    date: "2018",
+    icon: Flag,
+    title: "Founded",
+    description:
+      "A start of something new, something fresh, with an aim at making a better tomorrow.",
+  },
+  {
+    date: "2019",
+    icon: Megaphone,
+    title: "Went Mainstream",
+    description:
+      "We kickstarted SPIRECREST in Lucknow, establishing a name for itself.",
+  },
+  {
+    date: "2021",
+    icon: TrendingUp,
+    title: "Expansion 1.0",
+    description:
+      "Extended few services nationwide with 4000+ successful projects completed.",
+  },
+  {
+    date: "2022",
+    icon: Heart,
+    title: "Thought for a Cause",
+    description:
+      "Spread outreach and marketing campaigns in rural areas with no tech provider.",
+  },
+  {
+    date: "2023",
+    icon: MapPin,
+    title: "Extended Market Reach",
+    description:
+      "Successfully established our name among certain rural underrated areas with high demand.",
+  },
+  {
+    date: "2024",
+    icon: Handshake,
+    title: "New Offerings",
+    description:
+      "Partnered with various distinguished industry experts to diversify our variety.",
+  },
   {
     date: "June 6, 2025",
     icon: Building2,
@@ -28,12 +90,26 @@ const milestones = [
     highlight: "DIPP228807",
   },
   {
+    date: "2025",
+    icon: Building2,
+    title: "Expansion 2.0",
+    description:
+      "Extended our departments with a separate operation head for various verticals.",
+  },
+  {
     date: "Ongoing",
     icon: Rocket,
     title: "900+ Projects Executed",
     description:
       "A combined legacy of 900+ successful project executions across surveillance, software development, cybersecurity, and infrastructure, delivered by our partner-led teams.",
     highlight: "And counting.",
+  },
+  {
+    date: "2026",
+    icon: Globe,
+    title: "Overseas Connections",
+    description:
+      "As the year started so did our initiatives to step a strong foot in abroad markets as well.",
   },
 ];
 
@@ -80,13 +156,15 @@ function MilestoneCard({
           <p className="text-sm text-muted-foreground leading-relaxed mb-3">
             {milestone.description}
           </p>
-          <p className="text-xs font-mono text-accent/80 bg-accent/5 inline-block px-2.5 py-1 rounded-md">
-            {milestone.highlight}
-          </p>
+          {milestone.highlight && (
+            <p className="text-xs font-mono text-accent/80 bg-accent/5 inline-block px-2.5 py-1 rounded-md">
+              {milestone.highlight}
+            </p>
+          )}
         </div>
       </motion.div>
 
-      {/* Center dot — hidden on mobile */}
+      {/* Center dot */}
       <motion.div
         initial={{ scale: 0 }}
         animate={inView ? { scale: 1 } : {}}
@@ -134,7 +212,7 @@ export default function CompanyTimeline() {
 
         {/* Timeline wrapper */}
         <div className="relative max-w-5xl mx-auto">
-          {/* Vertical line — static bg */}
+          {/* Vertical line */}
           <div className="absolute left-[15px] md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-border" />
           {/* Animated fill */}
           <motion.div
@@ -144,7 +222,7 @@ export default function CompanyTimeline() {
 
           <div className="space-y-12 md:space-y-16">
             {milestones.map((m, i) => (
-              <MilestoneCard key={m.title} milestone={m} index={i} />
+              <MilestoneCard key={`${m.date}-${m.title}`} milestone={m} index={i} />
             ))}
           </div>
         </div>
