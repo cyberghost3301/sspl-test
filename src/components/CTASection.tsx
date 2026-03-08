@@ -1,0 +1,43 @@
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+export default function CTASection() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section className="py-24 lg:py-32 bg-background" ref={ref}>
+      <div className="section-container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="relative overflow-hidden rounded-3xl bg-hero-gradient p-12 md:p-16 lg:p-20 text-center"
+        >
+          <div className="absolute inset-0 opacity-[0.03]" style={{
+            backgroundImage: "linear-gradient(hsl(var(--accent)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--accent)) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }} />
+          <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-accent/5 blur-[100px]" />
+          <div className="relative z-10">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
+              Ready to Build Something Extraordinary?
+            </h2>
+            <p className="text-primary-foreground/60 max-w-xl mx-auto mb-8 text-lg">
+              Let's discuss how Spirecrest can architect the perfect solution for your business.
+            </p>
+            <Link to="/contact">
+              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold gap-2 px-10 h-13 text-base">
+                Start the Conversation
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
