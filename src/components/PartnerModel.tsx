@@ -40,7 +40,7 @@ export default function PartnerModel() {
             <p className="text-muted-foreground leading-relaxed mb-8">
               At Spirecrest, there are no middlemen. Our partner-led execution model means your project is 
               steered by the same industry leader who built their career solving exactly your type of problem. 
-              This is how 900+ projects have been delivered on time, on budget, and beyond expectation.
+              This is how 9000+ projects have been delivered on time, on budget, and beyond expectation.
             </p>
             <div className="space-y-6">
               {pillars.map((p, i) => (

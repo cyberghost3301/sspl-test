@@ -57,7 +57,7 @@ export default function AboutHero() {
             {[
               { value: "2025", label: "Founded" },
               { value: "9", label: "Service Verticals" },
-              { value: "900+", label: "Projects Delivered" },
+              { value: "9000+", label: "Projects Delivered" },
               { value: "12+", label: "Expert Partners" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">

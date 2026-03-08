@@ -85,7 +85,7 @@ export default function HeroSection() {
             className="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto"
           >
             {[
-              { value: "900+", label: "Projects Delivered" },
+              { value: "9000+", label: "Projects Delivered" },
               { value: "12+", label: "Expert Partners" },
               { value: "9", label: "Service Verticals" },
             ].map((stat) => (
