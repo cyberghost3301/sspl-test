@@ -20,7 +20,7 @@ const services = [
   { icon: SunIcon, title: "Solar Power Systems", desc: "Clean energy solutions", href: "/services/solar" },
   { icon: Headphones, title: "AV Studio", desc: "Professional audiovisual services", href: "/services/av-studio" },
   { icon: Palette, title: "Interior Design", desc: "Modern workspace design", href: "/services/interior" },
-  { icon: TrendingUp, title: "Lifecycle & Venture Consulting", desc: "Strategic growth and funding advisory", href: "/services/venture-consulting" },
+  { icon: TrendingUp, title: "Lifecycle & Venture Consulting", desc: "Strategic growth and funding advisory", href: "/services/lifecycle-consulting" },
 ];
 
 const navLinks = [
@@ -57,7 +57,7 @@ export default function Header() {
   }, [dark]);
 
   // Pages with dark hero backgrounds where nav text needs to be light when not scrolled
-  const hasDarkHero = ["/", "/about", "/services/surveillance", "/services/software", "/services/consulting", "/portfolio", "/testimonials", "/collective", "/contact"].includes(location.pathname);
+  const hasDarkHero = ["/", "/about", "/services/surveillance", "/services/software", "/services/consulting", "/services/lifecycle-consulting", "/portfolio", "/testimonials", "/collective", "/contact"].includes(location.pathname);
   const isOverDark = hasDarkHero && !scrolled;
 
   // Dynamic text classes based on whether we're over the dark hero
