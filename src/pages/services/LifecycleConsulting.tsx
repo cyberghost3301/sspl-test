@@ -15,7 +15,7 @@ const ventureItems: BentoItem[] = [
     icon: Presentation,
     title: "Investor-Ready Pitchdeck Creation",
     description:
-      "We craft compelling, data-backed pitch decks that tell your story with conviction — designed to convert boardroom skeptics into committed backers.",
+      "We craft compelling, data-backed pitch decks that tell your story with conviction, designed to convert boardroom skeptics into committed backers.",
     span: "wide",
   },
   {
