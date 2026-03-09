@@ -28,6 +28,7 @@ const navLinks = [
   { label: "Services", href: "#", hasMega: true },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Testimonials", href: "/testimonials" },
+  { label: "The Collective", href: "/the-collective" },
   { label: "Contact", href: "/contact" },
 ];
 
