@@ -25,11 +25,11 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium mb-1">Registered Address</h4>
-                  <p className="text-muted-foreground text-sm">
+                  <a href="https://maps.app.goo.gl/AXeJGDw9scy7koxUA" target="_blank" rel="noreferrer" className="text-muted-foreground text-sm hover:text-primary transition-colors">
                     537/121, A/B, Sector-K,<br />
                     Aliganj, Lucknow,<br />
                     Uttar Pradesh, India, 226024
-                  </p>
+                  </a>
                 </div>
               </div>
 
@@ -53,7 +53,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium mb-1">Phone</h4>
-                  <p className="text-muted-foreground">+91 9250974145</p>
+                  <a href="tel:+919250974145" className="text-muted-foreground hover:text-primary transition-colors">+91 9250974145</a>
                 </div>
               </div>
 
