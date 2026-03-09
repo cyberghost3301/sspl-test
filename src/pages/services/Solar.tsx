@@ -134,8 +134,8 @@ function SolarROIShowcase() {
                   </div>
                 </div>
                 <div className="absolute bottom-6 left-6">
-                  <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/20 backdrop-blur-md border border-green-500/30">
-                    <Sparkles className="w-4 h-4 text-green-400" />
+                  <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 backdrop-blur-md border border-accent/30">
+                    <Sparkles className="w-4 h-4 text-accent" />
                     <span className="text-xs font-display font-semibold text-white">Active Generation</span>
                   </div>
                 </div>
