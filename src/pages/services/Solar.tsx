@@ -114,7 +114,7 @@ function SolarROIShowcase() {
           >
             {/* Left: Image */}
             <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/20 to-green-500/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -inset-4 bg-gradient-to-r from-accent/20 to-accent/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl">
                 <motion.img
                   key={active.image}
