@@ -11,7 +11,7 @@ import TechMarquee from "@/components/services/TechMarquee";
 import CTASection from "@/components/CTASection";
 
 const benefits: BentoItem[] = [
-  { icon: Sun, title: "Solar Energy Solutions", description: "Design and setup of solar panel arrays for rooftops, ground-mounted systems, or fully off-grid power — reducing reliance on the traditional power grid.", span: "wide" },
+  { icon: Sun, title: "Solar Energy Solutions", description: "Design and setup of solar panel arrays for rooftops, ground-mounted systems, or fully off-grid power, reducing reliance on the traditional power grid.", span: "wide" },
   { icon: BatteryCharging, title: "UPS & Backup Power", description: "Battery and conditioning systems that provide instant, clean power during outages to protect sensitive equipment with automatic switchover." },
   { icon: Gauge, title: "Energy Monitoring Dashboards", description: "Software that shows real-time energy use per circuit, per floor, or per building — helping you identify where you can cut costs and waste." },
   { icon: Leaf, title: "Green Building Automation", description: "Technology designed specifically to help buildings earn environmental certifications like LEED and IGBC — automated compliance tracking.", span: "wide" },
