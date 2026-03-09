@@ -89,16 +89,16 @@ const managementTeam = [
 
 /* ───────── Tier 3 — Development ───────── */
 const developmentTeam = [
-  { name: "Vaibhavi", role: "Jr. Developer" },
-  { name: "Isha", role: "Market Advisor" },
-  { name: "Er. Aakash", role: "External Consultant" },
-  { name: "Sanchita", role: "Dev. Coordinator" },
-  { name: "Astha", role: "BDE" },
-  { name: "Krish", role: "Jr. Developer" },
-  { name: "Neeraj", role: "Jr. Developer" },
-  { name: "Anand", role: "Jr. Developer" },
-  { name: "Saloni", role: "Backend Intern" },
-  { name: "Kavya", role: "DS / AI-ML" },
+  { name: "Vaibhavi Mishra", role: "Jr. Developer" },
+  { name: "Isha Verma", role: "Market Advisor" },
+  { name: "Er. Aakash Pandey", role: "External Consultant" },
+  { name: "Sanchita Roy", role: "Dev. Coordinator" },
+  { name: "Astha Gupta", role: "BDE" },
+  { name: "Krish Agarwal", role: "Jr. Developer" },
+  { name: "Neeraj Yadav", role: "Jr. Developer" },
+  { name: "Anand Sharma", role: "Jr. Developer" },
+  { name: "Saloni Jain", role: "Backend Intern" },
+  { name: "Kavya Singh", role: "DS / AI-ML" },
 ];
 
 /* ───────── Tier 4 — Support ───────── */
