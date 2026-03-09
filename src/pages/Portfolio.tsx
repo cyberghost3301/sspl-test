@@ -166,23 +166,28 @@ export default function Portfolio() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { title: "Smart City Surveillance", category: "Security", desc: "Integrated AI-powered surveillance system for a major metropolitan area, improving incident response times by 40%." },
-            { title: "E-Commerce Platform", category: "Software Development", desc: "Custom-built, scalable e-commerce solution with integrated payment gateways and real-time inventory tracking." },
-            { title: "Corporate HQ Automation", category: "Smart Automation", desc: "Full-scale building automation for a 10-story corporate headquarters, optimizing energy consumption." },
-            { title: "Cloud Migration Strategy", category: "Networking", desc: "Successful migration of legacy infrastructure to a hybrid cloud environment for a financial services firm." },
-            { title: "Hospitality Tech Overhaul", category: "IT Consulting", desc: "Comprehensive IT strategy and implementation for a luxury hotel chain, enhancing guest digital experience." },
-            { title: "Solar Power Integration", category: "Solar Power", desc: "Off-grid solar power solution for a remote research facility, providing 100% sustainable energy." },
-            { title: "Cybersecurity Audit", category: "Security", desc: "Comprehensive vulnerability assessment and penetration testing for a regional banking institution." },
-            { title: "Retail Inventory AI", category: "Software Development", desc: "AI-driven inventory forecasting tool for a large retail chain, reducing waste by 25%." },
-            { title: "Smart Home Ecosystem", category: "Smart Automation", desc: "Complete IoT integration for a luxury residential complex with 50+ smart devices per unit." }
+            { title: "Smart City Surveillance", category: "Security", desc: "Integrated AI-powered surveillance system for a major metropolitan area, improving incident response times by 40%.", image: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=600&auto=format&fit=crop" },
+            { title: "E-Commerce Platform", category: "Software Development", desc: "Custom-built, scalable e-commerce solution with integrated payment gateways and real-time inventory tracking.", image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=600&auto=format&fit=crop" },
+            { title: "Corporate HQ Automation", category: "Smart Automation", desc: "Full-scale building automation for a 10-story corporate headquarters, optimizing energy consumption.", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" },
+            { title: "Cloud Migration Strategy", category: "Networking", desc: "Successful migration of legacy infrastructure to a hybrid cloud environment for a financial services firm.", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" },
+            { title: "Hospitality Tech Overhaul", category: "IT Consulting", desc: "Comprehensive IT strategy and implementation for a luxury hotel chain, enhancing guest digital experience.", image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=600&auto=format&fit=crop" },
+            { title: "Solar Power Integration", category: "Solar Power", desc: "Off-grid solar power solution for a remote research facility, providing 100% sustainable energy.", image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=600&auto=format&fit=crop" },
+            { title: "Cybersecurity Audit", category: "Security", desc: "Comprehensive vulnerability assessment and penetration testing for a regional banking institution.", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600&auto=format&fit=crop" },
+            { title: "Retail Inventory AI", category: "Software Development", desc: "AI-driven inventory forecasting tool for a large retail chain, reducing waste by 25%.", image: "https://images.unsplash.com/photo-1553413077-200de0c4b266?q=80&w=600&auto=format&fit=crop" },
+            { title: "Smart Home Ecosystem", category: "Smart Automation", desc: "Complete IoT integration for a luxury residential complex with 50+ smart devices per unit.", image: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=600&auto=format&fit=crop" }
           ].map((legacy, idx) => (
-            <div key={idx} className="bg-card border border-border rounded-xl p-6 flex flex-col gap-4 hover:shadow-md transition-all">
-              <div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded mb-3 inline-block">
-                  {legacy.category}
-                </span>
-                <h4 className="text-lg font-bold text-foreground mb-2">{legacy.title}</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">{legacy.desc}</p>
+            <div key={idx} className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-md transition-all flex flex-col sm:flex-row lg:flex-col group">
+              <div className="sm:w-2/5 lg:w-full h-48 sm:h-auto lg:h-48 overflow-hidden shrink-0">
+                <img src={legacy.image} alt={legacy.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="p-6 flex flex-col gap-3">
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded inline-block mb-2">
+                    {legacy.category}
+                  </span>
+                  <h4 className="text-lg font-bold text-foreground mb-1">{legacy.title}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{legacy.desc}</p>
+                </div>
               </div>
             </div>
           ))}
