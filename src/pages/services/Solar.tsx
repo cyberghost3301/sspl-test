@@ -192,7 +192,7 @@ function SolarROIShowcase() {
                   transition={{ duration: 0.4, delay: 0.4 }}
                   className="group p-6 rounded-2xl border-2 border-border bg-gradient-to-br from-card to-secondary/30 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5 transition-all duration-300"
                 >
-                  <Award className="w-8 h-8 text-amber-500 mb-3" />
+                  <Award className="w-8 h-8 text-accent mb-3" />
                   <p className="text-xs text-muted-foreground font-display uppercase tracking-wider mb-1">Warranty</p>
                   <p className="font-display text-2xl font-bold text-foreground">25 years</p>
                   <p className="text-xs text-muted-foreground mt-1">Performance guarantee</p>
