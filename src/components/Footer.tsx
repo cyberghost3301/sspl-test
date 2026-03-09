@@ -23,9 +23,9 @@ export default function Footer() {
   return (
     <footer className="bg-hero-gradient" style={{ color: "hsl(var(--on-dark))" }}>
       <div className="section-container py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
           {/* Brand */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-4">
             <div className="mb-4">
               <img src={sfiltLogo} alt="Spirecrest Solutions Pvt. Ltd." className="h-10 w-auto invert" />
             </div>
@@ -33,11 +33,18 @@ export default function Footer() {
               Smart Ideas. Solid Executions. Scalable Results. A multi-disciplinary technology firm delivering enterprise-grade solutions across security, software, and infrastructure.
             </p>
             <div className="flex items-center gap-3">
-              {[Linkedin, Twitter, Instagram].map((Icon, i) => (
-                <a key={i} href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors">
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
+              <a href="https://www.instagram.com/spirecrest/" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors">
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href="https://www.linkedin.com/company/spirecrest/" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors">
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a href="https://www.facebook.com/ssplbharat/" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors">
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a href="https://x.com/spirecrestindia/" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors">
+                <Twitter className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
