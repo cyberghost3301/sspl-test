@@ -243,18 +243,18 @@ function DevTile({
       initial={{ opacity: 0, scale: 0.95 }}
       animate={inView ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.3, delay: 0.1 + index * 0.04 }}
-      className="group flex items-center gap-4 p-4 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-md transition-all duration-200"
+      className="group flex items-center gap-4 p-5 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-md transition-all duration-200"
     >
-      <div className="w-11 h-11 shrink-0 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-accent/10 transition-colors">
-        <span className="font-display text-xs font-bold text-foreground/50 group-hover:text-accent transition-colors">
+      <div className="w-12 h-12 shrink-0 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-accent/10 transition-colors">
+        <span className="font-display text-sm font-bold text-foreground/50 group-hover:text-accent transition-colors">
           {getInitials(name)}
         </span>
       </div>
       <div className="min-w-0">
-        <p className="font-display text-sm font-semibold text-foreground leading-tight truncate">
+        <p className="font-display text-[15px] font-semibold text-foreground leading-tight truncate">
           {name}
         </p>
-        <p className="text-[11px] text-muted-foreground mt-0.5">{role}</p>
+        <p className="text-xs text-muted-foreground mt-0.5">{role}</p>
       </div>
     </motion.div>
   );
