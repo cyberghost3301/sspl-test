@@ -1,9 +1,12 @@
+import { useState, useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Camera, Eye, Cloud, Brain, ShieldCheck, Radio,
   Wifi, HardDrive, Bell, MapPin, Cctv, Lock,
   Monitor, Zap, Settings, BarChart3, Layers, Signal,
   Building2, Truck, Warehouse, ShieldAlert, ScanFace, Fingerprint,
   Network, Server, Video, Gauge, LayoutGrid, BatteryCharging,
+  ScanLine, Package, CarFront, FlaskConical, LucideIcon,
 } from "lucide-react";
 import ServiceHero from "@/components/services/ServiceHero";
 import BentoGrid, { BentoItem } from "@/components/services/BentoGrid";
@@ -53,6 +56,253 @@ const techStack = [
   "Commscope", "Panduit", "Leviton", "Belden Cabling",
 ];
 
+/* ───────── Defense Hardware Tabs ───────── */
+interface HardwareCategory {
+  id: string;
+  icon: LucideIcon;
+  label: string;
+  title: string;
+  description: string;
+  specs: { label: string; value: string }[];
+  features: string[];
+  image: string;
+}
+
+const hardwareCategories: HardwareCategory[] = [
+  {
+    id: "metal-detectors",
+    icon: ScanLine,
+    label: "Metal Detectors",
+    title: "Walk-Through & Handheld Metal Detectors",
+    description:
+      "High-sensitivity multi-zone detection systems for airports, government buildings, event venues, and high-security campuses. Configurable sensitivity zones with visual and audio pinpointing.",
+    specs: [
+      { label: "Detection Zones", value: "Up to 33 zones" },
+      { label: "Sensitivity", value: "Adjustable 0-999" },
+      { label: "Throughput", value: "60+ persons/min" },
+      { label: "Compliance", value: "CE / FCC / ROHS" },
+    ],
+    features: [
+      "Multi-zone pinpoint detection with LCD zone indication",
+      "Weatherproof options for outdoor deployment (IP65)",
+      "Handheld wands for secondary screening with vibration alert",
+      "Network-connected models with central logging & analytics",
+      "Battery backup for uninterrupted checkpoint operation",
+    ],
+    image: "https://images.unsplash.com/photo-1585432959361-e45878e45518?q=80&w=600&auto=format&fit=crop",
+  },
+  {
+    id: "xray-scanners",
+    icon: Package,
+    label: "X-Ray Baggage Scanners",
+    title: "X-Ray Baggage Inspection Systems",
+    description:
+      "Dual-energy X-ray scanners with organic/inorganic material differentiation for screening luggage, parcels, and cargo at entry points. Color-coded threat imaging with operator-assist AI.",
+    specs: [
+      { label: "Tunnel Size", value: "Up to 100×80 cm" },
+      { label: "Penetration", value: "34mm steel" },
+      { label: "Wire Resolution", value: "AWG 38 (0.1mm)" },
+      { label: "Detection", value: "Organic / Inorganic / Mixed" },
+    ],
+    features: [
+      "Dual-energy imaging with automatic color-coded material classification",
+      "Threat-image projection (TIP) for operator alertness testing",
+      "AI-assisted auto-detection of explosives, weapons, and contraband",
+      "Conveyor speeds configurable for high-throughput or detailed inspection",
+      "Network integration with centralized monitoring and image archival",
+    ],
+    image: "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?q=80&w=600&auto=format&fit=crop",
+  },
+  {
+    id: "uvis",
+    icon: CarFront,
+    label: "Under-Vehicle (UVIS)",
+    title: "Under-Vehicle Inspection Systems",
+    description:
+      "Automated under-vehicle surveillance systems capable of scanning vehicles moving at up to 75 km/h. High-resolution imaging with ANPR integration for comprehensive vehicular security.",
+    specs: [
+      { label: "Max Speed", value: "75 km/h" },
+      { label: "Resolution", value: "4K line-scan" },
+      { label: "ANPR", value: "Integrated" },
+      { label: "Operation", value: "24/7 all-weather" },
+    ],
+    features: [
+      "Real-time under-chassis scanning without stopping vehicles",
+      "Automatic comparison with baseline images — flags anomalies instantly",
+      "Integrated ANPR for license plate capture and database cross-referencing",
+      "All-weather operation with flush-mounted or portable deployment options",
+      "Centralized archive with searchable vehicle history and alert tagging",
+    ],
+    image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0220?q=80&w=600&auto=format&fit=crop",
+  },
+  {
+    id: "etd",
+    icon: FlaskConical,
+    label: "Explosive Trace (ETD)",
+    title: "Explosive Trace Detection Systems",
+    description:
+      "Ion Mobility Spectrometry (IMS) based trace detectors for identifying explosive residues and narcotics at security checkpoints, mail rooms, and VIP protection details.",
+    specs: [
+      { label: "Analysis Time", value: "< 8 seconds" },
+      { label: "Detection", value: "Military & commercial explosives" },
+      { label: "Substances", value: "40+ threat compounds" },
+      { label: "Sampling", value: "Swab & vapor" },
+    ],
+    features: [
+      "Detects trace amounts of TATP, RDX, TNT, PETN, and 40+ compounds",
+      "Dual-mode: swab sampling for surfaces and vapor mode for proximity detection",
+      "Portable and desktop variants for flexible deployment scenarios",
+      "Auto-calibrating with minimal maintenance and low consumable costs",
+      "Networked reporting with audit-ready chain-of-custody logging",
+    ],
+    image: "https://images.unsplash.com/photo-1582560475093-ba66accbc953?q=80&w=600&auto=format&fit=crop",
+  },
+];
+
+function DefenseHardwareTabs() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [activeTab, setActiveTab] = useState(hardwareCategories[0].id);
+  const active = hardwareCategories.find((c) => c.id === activeTab)!;
+
+  return (
+    <section className="py-24 lg:py-32 bg-secondary/50" ref={ref}>
+      <div className="section-container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-14"
+        >
+          <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">
+            ADVANCED DEFENSE HARDWARE
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+            Beyond Cameras. Full-Spectrum Security.
+          </h2>
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+            We deploy military-grade detection and inspection hardware for facilities that demand zero compromise.
+          </p>
+        </motion.div>
+
+        {/* Tab Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4, delay: 0.15 }}
+          className="flex flex-wrap justify-center gap-3 mb-12"
+        >
+          {hardwareCategories.map((cat) => {
+            const isActive = cat.id === activeTab;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveTab(cat.id)}
+                className={`group flex items-center gap-2.5 px-5 py-3 rounded-xl border-2 text-sm font-display font-semibold transition-all duration-300 ${
+                  isActive
+                    ? "border-accent bg-accent/10 text-accent shadow-md shadow-accent/10"
+                    : "border-border bg-card text-muted-foreground hover:border-accent/30 hover:text-foreground"
+                }`}
+              >
+                <cat.icon className={`w-4 h-4 transition-colors ${isActive ? "text-accent" : "text-muted-foreground group-hover:text-foreground"}`} />
+                {cat.label}
+              </button>
+            );
+          })}
+        </motion.div>
+
+        {/* Tab Content */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active.id}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.35 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"
+          >
+            {/* Left — Info */}
+            <div className="space-y-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-[11px] font-display font-semibold uppercase tracking-wider mb-4">
+                  <active.icon className="w-3.5 h-3.5" />
+                  {active.label}
+                </div>
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">
+                  {active.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {active.description}
+                </p>
+              </div>
+
+              {/* Spec Grid */}
+              <div className="grid grid-cols-2 gap-3">
+                {active.specs.map((spec) => (
+                  <div
+                    key={spec.label}
+                    className="p-4 rounded-xl border border-border bg-card"
+                  >
+                    <p className="text-xs text-muted-foreground font-display uppercase tracking-wider mb-1">
+                      {spec.label}
+                    </p>
+                    <p className="font-display text-lg font-bold text-foreground">
+                      {spec.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Feature List */}
+              <div className="space-y-3">
+                {active.features.map((feature, i) => (
+                  <motion.div
+                    key={feature}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: i * 0.06 }}
+                    className="flex items-start gap-3"
+                  >
+                    <div className="w-5 h-5 mt-0.5 shrink-0 rounded-full bg-accent/10 flex items-center justify-center">
+                      <ShieldCheck className="w-3 h-3 text-accent" />
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {feature}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right — Image */}
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-muted">
+              <motion.img
+                key={active.image}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                src={active.image}
+                alt={active.title}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/60 backdrop-blur-sm">
+                  <active.icon className="w-4 h-4 text-accent" />
+                  <span className="text-xs font-display font-semibold text-white">
+                    {active.label}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </section>
+  );
+}
+
 export default function Surveillance() {
   return (
     <>
@@ -73,6 +323,7 @@ export default function Surveillance() {
         subheading="Battle-tested security infrastructure that scales from small offices to enterprise campuses."
         items={benefits}
       />
+      <DefenseHardwareTabs />
       <TechMarquee label="HARDWARE & TECH PARTNERS" items={techStack} />
       <CTASection />
     </>
