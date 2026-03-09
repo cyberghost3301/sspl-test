@@ -355,7 +355,7 @@ export default function TeamDirectory() {
           <p className="text-xs font-display uppercase tracking-[0.2em] text-foreground/70 font-bold mb-6 text-center">
             Support
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {supportTeam.map((m, i) => (
               <SupportTile key={m.name} name={m.name} role={m.role} index={i} inView={inView} />
             ))}
