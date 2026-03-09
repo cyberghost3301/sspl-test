@@ -27,6 +27,7 @@ const navLinks = [
   { label: "About", href: "/about" },
   { label: "Services", href: "#", hasMega: true },
   { label: "Portfolio", href: "/portfolio" },
+  { label: "Testimonials", href: "/testimonials" },
   { label: "Contact", href: "/contact" },
 ];
 
