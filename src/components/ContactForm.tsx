@@ -39,6 +39,7 @@ const services = [
   "IT Consulting",
   "Solar Solutions",
   "AV Studio",
+  "Lifecycle & Venture Consulting",
 ];
 
 export function ContactForm() {
