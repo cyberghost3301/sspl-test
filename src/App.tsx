@@ -11,6 +11,7 @@ import Contact from "./pages/Contact";
 import Surveillance from "./pages/services/Surveillance";
 import Software from "./pages/services/Software";
 import Consulting from "./pages/services/Consulting";
+import LifecycleConsulting from "./pages/services/LifecycleConsulting";
 import Testimonials from "./pages/Testimonials";
 import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
