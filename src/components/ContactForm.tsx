@@ -79,6 +79,9 @@ export function ContactForm() {
       ) {
         formattedMessage += `[Property Square Footage: ${data.squareFootage} sq ft]\n\n`;
       }
+      if (selectedService === "Lifecycle & Venture Consulting" && data.seekingFunding) {
+        formattedMessage += `[Seeking Private Funding/VC Investment: ${data.seekingFunding}]\n\n`;
+      }
       formattedMessage += data.message;
 
       const payload = {
