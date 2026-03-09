@@ -11,12 +11,12 @@ import TechMarquee from "@/components/services/TechMarquee";
 import CTASection from "@/components/CTASection";
 
 const benefits: BentoItem[] = [
-  { icon: Ruler, title: "Space Planning & Layout", description: "Optimized floor plans that maximize functionality, flow, and aesthetics — from compact apartments to sprawling corporate headquarters.", span: "wide" },
+  { icon: Building2, title: "Commercial & Office Interiors", description: "Workplace design that boosts productivity — open plans, private offices, collaboration zones, breakout areas, and reception lobbies with brand integration.", span: "wide" },
+  { icon: Ruler, title: "Space Planning & Layout", description: "Optimized floor plans that maximize functionality, flow, and aesthetics — from compact apartments to sprawling corporate headquarters." },
   { icon: Sofa, title: "Furniture Design & Sourcing", description: "Custom furniture design, ergonomic office layouts, and curated sourcing from premium manufacturers with bulk procurement pricing." },
-  { icon: Lamp, title: "Lighting Design", description: "Layered lighting schemes — ambient, task, and accent — designed to enhance mood, productivity, and architectural features." },
+  { icon: Lamp, title: "Lighting Design", description: "Layered lighting schemes — ambient, task, and accent — designed to enhance mood, productivity, and architectural features.", span: "wide" },
   { icon: PaintBucket, title: "Material & Finish Selection", description: "Expert curation of paints, wallpapers, veneers, laminates, stones, and fabrics aligned with your brand identity and budget." },
-  { icon: Home, title: "Residential Interiors", description: "Complete home interiors — living rooms, bedrooms, kitchens, bathrooms, and outdoor spaces designed for comfort and elegance.", span: "wide" },
-  { icon: Building2, title: "Commercial & Office Interiors", description: "Workplace design that boosts productivity — open plans, private offices, collaboration zones, breakout areas, and reception lobbies." },
+  { icon: Home, title: "Residential Interiors", description: "Complete home interiors — living rooms, bedrooms, kitchens, bathrooms, and outdoor spaces designed for comfort and elegance." },
   { icon: Layers, title: "False Ceiling & Flooring", description: "Gypsum and POP false ceilings, wooden and vinyl flooring, epoxy coatings, and raised access flooring for commercial spaces." },
   { icon: TreePine, title: "Landscape & Outdoor Design", description: "Garden design, terrace landscaping, outdoor living areas, and vertical green walls that connect interior spaces with nature." },
   { icon: Hammer, title: "Civil & Construction Works", description: "Structural modifications, partition walls, plumbing, electrical, and civil works managed end-to-end with licensed contractors." },
@@ -39,6 +39,30 @@ interface DesignCategory {
 
 const designCategories: DesignCategory[] = [
   {
+    id: "commercial",
+    icon: Building2,
+    label: "Commercial Office",
+    title: "Modern Office & Commercial Workspaces",
+    description: "Workplaces designed for performance — ergonomic layouts, acoustic treatment, brand integration, and biophilic elements that attract talent and boost productivity. From startups to Fortune 500s.",
+    features: [
+      "Open-plan layouts with acoustic pods, phone booths, and focus zones for deep work",
+      "Branded reception areas, conference rooms, and executive suites that reflect company culture",
+      "Cafeteria and breakout space design with lifestyle amenities (gaming zones, nap pods, wellness areas)",
+      "IT infrastructure integration — cable trays, floor boxes, AV pre-wiring, and server room cooling",
+      "LEED and WELL certification-aligned sustainable material selection (low-VOC paints, recycled materials)",
+      "Activity-based working (ABW) zones — hot desks, collaboration spaces, quiet rooms",
+      "Ergonomic furniture specification — height-adjustable desks, task chairs (Herman Miller, Steelcase)",
+      "Environmental graphics — wall murals, wayfinding, brand storytelling",
+    ],
+    specs: [
+      { label: "Offices Designed", value: "80+" },
+      { label: "Sq. Ft. Delivered", value: "5L+" },
+      { label: "Certifications", value: "LEED / WELL / IGBC" },
+      { label: "Avg. Budget", value: "₹800-2500/sqft" },
+    ],
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop",
+  },
+  {
     id: "residential",
     icon: Home,
     label: "Residential",
@@ -58,27 +82,6 @@ const designCategories: DesignCategory[] = [
       { label: "Warranty", value: "10 years" },
     ],
     image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=600&auto=format&fit=crop",
-  },
-  {
-    id: "commercial",
-    icon: Building2,
-    label: "Commercial",
-    title: "Office & Commercial Spaces",
-    description: "Workplaces designed for performance — ergonomic layouts, acoustic treatment, brand integration, and biophilic elements that attract talent and boost productivity.",
-    features: [
-      "Open-plan layouts with acoustic pods, phone booths, and focus zones",
-      "Branded reception areas, conference rooms, and executive suites",
-      "Cafeteria and breakout space design with lifestyle amenities",
-      "IT infrastructure integration — cable trays, floor boxes, AV pre-wiring",
-      "LEED and WELL certification-aligned sustainable material selection",
-    ],
-    specs: [
-      { label: "Offices Designed", value: "80+" },
-      { label: "Sq. Ft. Delivered", value: "5L+" },
-      { label: "Certifications", value: "LEED / WELL / IGBC" },
-      { label: "Avg. Budget", value: "₹800-2500/sqft" },
-    ],
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop",
   },
   {
     id: "turnkey",
@@ -115,7 +118,7 @@ function InteriorTabs() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }} className="text-center mb-14">
           <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">DESIGN DEEP-DIVE</p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">Spaces That Inspire.</h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">From luxury homes to high-performance offices — design that merges beauty with function.</p>
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">From high-performance offices to luxury homes — design that merges beauty with function.</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 12 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.4, delay: 0.15 }} className="flex flex-wrap justify-center gap-3 mb-12">
@@ -179,17 +182,17 @@ export default function Interior() {
         badge="INTERIOR DESIGN & CONSTRUCTION"
         title="Spaces That"
         highlight="Inspire."
-        description="Modern workspace design, luxury residential interiors, and turnkey construction — from concept to handover, we create environments that elevate life and work."
+        description="Modern workplace design, luxury residential interiors, and turnkey construction — from concept to handover, we create environments that elevate life and work."
         stats={[
-          { value: "300+", label: "Homes Designed" },
-          { value: "5L+ sqft", label: "Commercial Delivered" },
-          { value: "94%", label: "On-Time Delivery" },
+          { value: "80+", label: "Offices Designed" },
+          { value: "300+", label: "Homes Delivered" },
+          { value: "5L+ sqft", label: "Commercial Space" },
         ]}
       />
       <BentoGrid
         label="CAPABILITIES"
         heading="Design. Build. Deliver."
-        subheading="From space planning and 3D visualization to civil works and final styling — complete interior solutions."
+        subheading="From commercial office spaces to luxury homes — complete interior solutions that prioritize functionality, brand identity, and employee wellbeing."
         items={benefits}
       />
       <InteriorTabs />
