@@ -24,11 +24,25 @@ export default function Contact() {
                   <MapPin className="h-6 w-6" />
                 </div>
                 <div>
-                  <h4 className="font-medium mb-1">Our Office</h4>
-                  <p className="text-muted-foreground">
-                    Aliganj<br />
-                    Lucknow, Uttar Pradesh<br />
-                    India
+                  <h4 className="font-medium mb-1">Registered Address</h4>
+                  <p className="text-muted-foreground text-sm">
+                    537/121, A/B, Sector-K,<br />
+                    Aliganj, Lucknow,<br />
+                    Uttar Pradesh, India, 226024
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-lg text-primary shrink-0">
+                  <MapPin className="h-6 w-6" />
+                </div>
+                <div>
+                  <h4 className="font-medium mb-1">Head Office</h4>
+                  <p className="text-muted-foreground text-sm">
+                    41/68, Kali Niwas, Narhi,<br />
+                    Hazratganj, Lucknow,<br />
+                    Uttar Pradesh, India, 226001
                   </p>
                 </div>
               </div>
@@ -39,7 +53,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium mb-1">Phone</h4>
-                  <p className="text-muted-foreground">+91 123 456 7890</p>
+                  <p className="text-muted-foreground">+91 9250974145</p>
                 </div>
               </div>
 
