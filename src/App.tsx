@@ -12,6 +12,7 @@ import Surveillance from "./pages/services/Surveillance";
 import Software from "./pages/services/Software";
 import Consulting from "./pages/services/Consulting";
 import Testimonials from "./pages/Testimonials";
+import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
