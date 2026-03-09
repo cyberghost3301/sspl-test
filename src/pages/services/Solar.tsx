@@ -280,7 +280,7 @@ export default function Solar() {
         badge="ENERGY & SUSTAINABILITY"
         title="Sustainable"
         highlight="Resilience."
-        description="Eco-friendly technology focused on reducing your carbon footprint and providing reliable green power — from rooftop solar to grid-scale energy solutions."
+        description="Eco-friendly technology focused on reducing your carbon footprint and providing reliable green power, from rooftop solar to grid-scale energy solutions."
         stats={[
           { value: "5MW+", label: "Capacity Installed" },
           { value: "30%", label: "Avg. Cost Reduction" },
