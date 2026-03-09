@@ -43,7 +43,7 @@ export default function AboutHero() {
             className="mt-6 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto"
             style={{ color: "hsl(var(--on-dark-muted))" }}
           >
-            Spirecrest Solutions is a multi-disciplinary technology firm headquartered in India.
+            Spirecrest Solutions is a multi-disciplinary technology company headquartered in India.
             We combine deep domain expertise with modern engineering to deliver surveillance,
             software, cybersecurity, and infrastructure solutions that don't just work, they scale.
           </motion.p>
