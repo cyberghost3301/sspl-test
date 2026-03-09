@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import ServiceHero from "@/components/services/ServiceHero";
 
 const projects = [
   {
@@ -103,105 +104,110 @@ export default function Portfolio() {
   );
 
   return (
-    <div className="pt-24 pb-24 section-container min-h-screen">
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-          Our <span className="text-primary">Portfolio</span>
-        </h1>
-        <p className="text-xl text-muted-foreground">
-          A showcase of our most impactful projects across various industries.
-        </p>
-      </div>
+    <>
+      <ServiceHero
+        badge="Our Work"
+        title="Projects That Speak"
+        highlight="For Themselves."
+        description="From enterprise-grade surveillance networks to bespoke software platforms — every project is a testament to our engineering DNA."
+        stats={[
+          { value: "9000+", label: "Projects Delivered" },
+          { value: "12", label: "Service Verticals" },
+          { value: "450+", label: "Specialists Network" },
+        ]}
+      />
 
-      {/* Filters */}
-      <div className="flex flex-wrap justify-center gap-3 mb-12">
-        {categories.map((category) => (
-          <button
-            key={category}
-            onClick={() => setActiveCategory(category)}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-              activeCategory === category
-                ? "bg-primary text-primary-foreground shadow-md"
-                : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"
-            }`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      {/* Masonry Gallery Grid */}
-      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <AnimatePresence>
-          {filteredProjects.map((project) => (
-            <motion.div
-              layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-              key={project.id}
-              className="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-muted cursor-pointer"
+      <div className="py-24 section-container">
+        {/* Filters */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeCategory === category
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"
+              }`}
             >
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/20 px-2 py-1 rounded">
-                      {project.category}
-                    </span>
-                    <ArrowRight className="text-white h-5 w-5 opacity-0 group-hover:opacity-100 transition-opacity delay-100" />
+              {category}
+            </button>
+          ))}
+        </div>
+
+        {/* Masonry Gallery Grid */}
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <AnimatePresence>
+            {filteredProjects.map((project) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                key={project.id}
+                className="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-muted cursor-pointer"
+              >
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/20 px-2 py-1 rounded">
+                        {project.category}
+                      </span>
+                      <ArrowRight className="text-white h-5 w-5 opacity-0 group-hover:opacity-100 transition-opacity delay-100" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                    <p className="text-white/80 text-sm line-clamp-2">{project.description}</p>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                  <p className="text-white/80 text-sm line-clamp-2">{project.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {filteredProjects.length === 0 && (
+          <div className="text-center py-20 text-muted-foreground">
+            No projects found in this category.
+          </div>
+        )}
+
+        {/* Legacy Projects Section */}
+        <div className="mt-32 pt-16 border-t border-border">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="font-display text-3xl font-bold text-foreground mb-4">
+              Delivering Excellence Through Innovation
+            </h2>
+            <p className="text-muted-foreground">
+              From large-scale infrastructure projects to bespoke software solutions, we take pride in every challenge we overcome and every solution we deliver.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {legacyProjects.map((legacy, idx) => (
+              <div key={idx} className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-md transition-all flex flex-col sm:flex-row lg:flex-col group">
+                <div className="sm:w-2/5 lg:w-full h-48 sm:h-auto lg:h-48 overflow-hidden shrink-0">
+                  <img src={legacy.image} alt={legacy.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                </div>
+                <div className="p-6 flex flex-col gap-3">
+                  <div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded inline-block mb-2">
+                      {legacy.category}
+                    </span>
+                    <h4 className="text-lg font-bold text-foreground mb-1">{legacy.title}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{legacy.desc}</p>
+                  </div>
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
-      
-      {filteredProjects.length === 0 && (
-        <div className="text-center py-20 text-muted-foreground">
-          No projects found in this category.
-        </div>
-      )}
-
-      {/* Legacy Projects Section */}
-      <div className="mt-32 pt-16 border-t border-border">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-            Delivering Excellence Through Innovation
-          </h2>
-          <p className="text-muted-foreground">
-            From large-scale infrastructure projects to bespoke software solutions, we take pride in every challenge we overcome and every solution we deliver.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {legacyProjects.map((legacy, idx) => (
-            <div key={idx} className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-md transition-all flex flex-col sm:flex-row lg:flex-col group">
-              <div className="sm:w-2/5 lg:w-full h-48 sm:h-auto lg:h-48 overflow-hidden shrink-0">
-                <img src={legacy.image} alt={legacy.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              </div>
-              <div className="p-6 flex flex-col gap-3">
-                <div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded inline-block mb-2">
-                    {legacy.category}
-                  </span>
-                  <h4 className="text-lg font-bold text-foreground mb-1">{legacy.title}</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{legacy.desc}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import ServiceHero from "@/components/services/ServiceHero";
 
 const testimonials = [
   {
@@ -79,58 +80,64 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <div className="pt-24 pb-24 section-container min-h-screen">
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-          Client <span className="text-primary">Testimonials</span>
-        </h1>
-        <p className="text-xl text-muted-foreground">
-          What our valued clients say about their experience with Spirecrest Solutions.
-        </p>
-      </div>
+    <>
+      <ServiceHero
+        badge="Client Voices"
+        title="Trusted by Leaders."
+        highlight="Loved by Teams."
+        description="Real stories from the businesses and individuals we've partnered with — hear what makes working with Spirecrest different."
+        stats={[
+          { value: "12+", label: "Industries Served" },
+          { value: "98%", label: "Client Satisfaction" },
+          { value: "9000+", label: "Projects Delivered" },
+        ]}
+      />
 
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-          Trust from Industry Leaders
-        </h2>
-        <p className="text-muted-foreground">
-          We pride ourselves on delivering excellence across all our service domains. Our success is measured by the satisfaction and growth of our clients.
-        </p>
-      </div>
+      <div className="py-24 section-container">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+            Trust from Industry Leaders
+          </h2>
+          <p className="text-muted-foreground">
+            We pride ourselves on delivering excellence across all our service domains. Our success is measured by the satisfaction and growth of our clients.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {testimonials.map((item, index) => (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.08 }}
-            key={index}
-            className="bg-card border border-border p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative mt-8"
-          >
-            <div className="absolute -top-8 left-8">
-              <Avatar className="h-16 w-16 border-4 border-background shadow-sm">
-                <AvatarImage src={`https://api.dicebear.com/7.x/initials/svg?seed=${item.name}`} />
-                <AvatarFallback>{item.name.charAt(0)}</AvatarFallback>
-              </Avatar>
-            </div>
-            
-            <div className="pt-4">
-              <div className="flex gap-1 mb-4 text-primary">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-current" />
-                ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {testimonials.map((item, index) => (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              key={index}
+              className="bg-card border border-border p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative mt-8"
+            >
+              <div className="absolute -top-8 left-8">
+                <Avatar className="h-16 w-16 border-4 border-background shadow-sm">
+                  <AvatarImage src={`https://api.dicebear.com/7.x/initials/svg?seed=${item.name}`} />
+                  <AvatarFallback>{item.name.charAt(0)}</AvatarFallback>
+                </Avatar>
               </div>
-              <p className="text-muted-foreground italic mb-6 leading-relaxed">
-                "{item.content}"
-              </p>
-              <div>
-                <h4 className="font-bold text-foreground font-display">{item.name}</h4>
-                <p className="text-sm text-primary font-medium">{item.position}, {item.business}</p>
+
+              <div className="pt-4">
+                <div className="flex gap-1 mb-4 text-primary">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-current" />
+                  ))}
+                </div>
+                <p className="text-muted-foreground italic mb-6 leading-relaxed">
+                  "{item.content}"
+                </p>
+                <div>
+                  <h4 className="font-bold text-foreground font-display">{item.name}</h4>
+                  <p className="text-sm text-primary font-medium">{item.position}, {item.business}</p>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
