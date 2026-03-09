@@ -7,6 +7,7 @@ import {
   Moon, SunMedium, ArrowRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ContactModal } from "@/components/ContactModal";
 import seltLogo from "@/assets/selt.png";
 
 const services = [
@@ -34,6 +35,7 @@ export default function Header() {
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dark, setDark] = useState(false);
+  const [contactModalOpen, setContactModalOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -119,12 +121,10 @@ export default function Header() {
             >
               {dark ? <SunMedium className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
-            <Link to="/contact" className="hidden sm:block">
-              <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold gap-1.5">
-                Partner With Us
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Button>
-            </Link>
+            <Button onClick={() => setContactModalOpen(true)} size="sm" className="hidden sm:flex bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold gap-1.5">
+              Partner With Us
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Button>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className={`lg:hidden p-2 transition-colors ${isOverDark ? "text-white" : "text-foreground"}`}
@@ -198,15 +198,15 @@ export default function Header() {
                   <span className="text-sm text-foreground">{s.title}</span>
                 </Link>
               ))}
-              <Link to="/contact" className="mt-6">
-                <Button className="w-full bg-accent text-accent-foreground font-display font-semibold">
-                  Partner With Us
-                </Button>
-              </Link>
+              <Button onClick={() => { setMobileOpen(false); setContactModalOpen(true); }} className="w-full mt-6 bg-accent text-accent-foreground font-display font-semibold">
+                Partner With Us
+              </Button>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <ContactModal isOpen={contactModalOpen} onOpenChange={setContactModalOpen} />
     </>
   );
 }
