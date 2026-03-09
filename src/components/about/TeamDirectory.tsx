@@ -89,16 +89,16 @@ const managementTeam = [
 
 /* ───────── Tier 3 — Development ───────── */
 const developmentTeam = [
-  { name: "Vaibhavi", role: "Jr. Developer" },
-  { name: "Isha", role: "Market Advisor" },
-  { name: "Er. Aakash", role: "External Consultant" },
-  { name: "Sanchita", role: "Dev. Coordinator" },
-  { name: "Astha", role: "BDE" },
-  { name: "Krish", role: "Jr. Developer" },
-  { name: "Neeraj", role: "Jr. Developer" },
-  { name: "Anand", role: "Jr. Developer" },
-  { name: "Saloni", role: "Backend Intern" },
-  { name: "Kavya", role: "DS / AI-ML" },
+  { name: "Vaibhavi Mishra", role: "Jr. Developer" },
+  { name: "Isha Verma", role: "Market Advisor" },
+  { name: "Er. Aakash Pandey", role: "External Consultant" },
+  { name: "Sanchita Roy", role: "Dev. Coordinator" },
+  { name: "Astha Gupta", role: "BDE" },
+  { name: "Krish Agarwal", role: "Jr. Developer" },
+  { name: "Neeraj Yadav", role: "Jr. Developer" },
+  { name: "Anand Sharma", role: "Jr. Developer" },
+  { name: "Saloni Jain", role: "Backend Intern" },
+  { name: "Kavya Singh", role: "DS / AI-ML" },
 ];
 
 /* ───────── Tier 4 — Support ───────── */
@@ -243,18 +243,18 @@ function DevTile({
       initial={{ opacity: 0, scale: 0.95 }}
       animate={inView ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.3, delay: 0.1 + index * 0.04 }}
-      className="group flex items-center gap-4 p-4 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-md transition-all duration-200"
+      className="group flex items-center gap-4 p-5 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-md transition-all duration-200"
     >
-      <div className="w-11 h-11 shrink-0 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-accent/10 transition-colors">
-        <span className="font-display text-xs font-bold text-foreground/50 group-hover:text-accent transition-colors">
+      <div className="w-12 h-12 shrink-0 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-accent/10 transition-colors">
+        <span className="font-display text-sm font-bold text-foreground/50 group-hover:text-accent transition-colors">
           {getInitials(name)}
         </span>
       </div>
       <div className="min-w-0">
-        <p className="font-display text-sm font-semibold text-foreground leading-tight truncate">
+        <p className="font-display text-[15px] font-semibold text-foreground leading-tight truncate">
           {name}
         </p>
-        <p className="text-[11px] text-muted-foreground mt-0.5">{role}</p>
+        <p className="text-xs text-muted-foreground mt-0.5">{role}</p>
       </div>
     </motion.div>
   );
@@ -277,12 +277,12 @@ function SupportTile({
       initial={{ opacity: 0, scale: 0.95 }}
       animate={inView ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.3, delay: 0.1 + index * 0.04 }}
-      className="group text-center py-3 px-3 rounded-lg border border-border bg-card hover:border-accent/30 hover:shadow-sm transition-all duration-200"
+      className="group text-center py-4 px-4 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-sm transition-all duration-200"
     >
-      <p className="font-display text-xs font-semibold text-foreground leading-tight">
-        {name}
+      <p className="font-display text-sm font-semibold text-foreground leading-tight">
+        {name.split(" ")[0]}
       </p>
-      <p className="text-[10px] text-muted-foreground mt-0.5">{role}</p>
+      <p className="text-[11px] text-muted-foreground mt-1">{role}</p>
     </motion.div>
   );
 }
@@ -355,7 +355,7 @@ export default function TeamDirectory() {
           <p className="text-xs font-display uppercase tracking-[0.2em] text-foreground/70 font-bold mb-6 text-center">
             Support
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {supportTeam.map((m, i) => (
               <SupportTile key={m.name} name={m.name} role={m.role} index={i} inView={inView} />
             ))}
