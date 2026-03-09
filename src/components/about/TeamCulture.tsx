@@ -6,7 +6,7 @@ const philosophyPillars = [
   {
     icon: Flame,
     title: "Ownership Mentality",
-    description: "Every member treats every project as their own — no hand-offs, no finger-pointing.",
+    description: "Every member treats every project as their own. No hand-offs, no finger-pointing.",
   },
   {
     icon: Eye,
@@ -16,7 +16,7 @@ const philosophyPillars = [
   {
     icon: Compass,
     title: "Domain-First Thinking",
-    description: "We don't just write code — we understand the industry context before the first line ships.",
+    description: "We don't just write code. We understand the industry context before the first line ships.",
   },
   {
     icon: Handshake,
@@ -89,7 +89,7 @@ export default function TeamCulture() {
             How We <span className="text-gradient">Think & Work.</span>
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Culture isn't a poster on the wall — it's how we make decisions when no one's watching. These six principles define everything we build.
+            Culture isn't a poster on the wall. It's how we make decisions when no one's watching. These six principles define everything we build.
           </p>
         </motion.div>
 

@@ -15,7 +15,7 @@ const ventureItems: BentoItem[] = [
     icon: Presentation,
     title: "Investor-Ready Pitchdeck Creation",
     description:
-      "We craft compelling, data-backed pitch decks that tell your story with conviction — designed to convert boardroom skeptics into committed backers.",
+      "We craft compelling, data-backed pitch decks that tell your story with conviction, designed to convert boardroom skeptics into committed backers.",
     span: "wide",
   },
   {
@@ -88,7 +88,7 @@ function LifecycleAccordion() {
             Full Lifecycle Support.
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            From day-zero deployment to year-ten maintenance — we stay with you at every stage of the technology lifecycle.
+            From day-zero deployment to year-ten maintenance, we stay with you at every stage of the technology lifecycle.
           </p>
         </motion.div>
 

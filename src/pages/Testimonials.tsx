@@ -85,7 +85,7 @@ export default function Testimonials() {
         badge="Client Voices"
         title="Trusted by Leaders."
         highlight="Loved by Teams."
-        description="Real stories from the businesses and individuals we've partnered with — hear what makes working with Spirecrest different."
+        description="Real stories from the businesses and individuals we've partnered with. Hear what makes working with Spirecrest different."
         stats={[
           { value: "12+", label: "Industries Served" },
           { value: "98%", label: "Client Satisfaction" },

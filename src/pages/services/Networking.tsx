@@ -11,18 +11,18 @@ import TechMarquee from "@/components/services/TechMarquee";
 import CTASection from "@/components/CTASection";
 
 const benefits: BentoItem[] = [
-  { icon: Cable, title: "Structured Cabling", description: "The physical wiring — fiber optics, Cat6/6a, and cable management systems — that connects all office hardware to each other and the internet.", span: "wide" },
+  { icon: Cable, title: "Structured Cabling", description: "The physical wiring (fiber optics, Cat6/6a, and cable management systems) that connects all office hardware to each other and the internet.", span: "wide" },
   { icon: Wifi, title: "Mesh & Enterprise Wi-Fi", description: "High-performance wireless networks designed to cover large buildings without dead zones, supporting thousands of simultaneous devices." },
   { icon: Network, title: "Switches, Routers & Firewalls", description: "Core hardware that directs internet traffic and acts as the first line of defense against online threats. Managed and unmanaged options." },
-  { icon: Server, title: "Servers & Storage Solutions", description: "Powerful compute and large-capacity drives — NAS, SAN, and hyper-converged infrastructure for running applications and storing data safely." },
-  { icon: Database, title: "Data Center Design", description: "The design and management of secure, cooled facilities to house critical IT equipment — from micro data centers to enterprise-scale builds.", span: "wide" },
+  { icon: Server, title: "Servers & Storage Solutions", description: "Powerful compute and large-capacity drives (NAS, SAN, and hyper-converged infrastructure) for running applications and storing data safely." },
+  { icon: Database, title: "Data Center Design", description: "The design and management of secure, cooled facilities to house critical IT equipment, from micro data centers to enterprise-scale builds.", span: "wide" },
   { icon: RefreshCw, title: "Backup & Disaster Recovery", description: "Automated systems that save copies of your data so it can be restored instantly if hardware fails or a disaster strikes." },
-  { icon: Shield, title: "Business Continuity Planning", description: "Strategies to keep essential business functions running even during a major technical or natural disaster — RTO/RPO planning and failover testing." },
+  { icon: Shield, title: "Business Continuity Planning", description: "Strategies to keep essential business functions running even during a major technical or natural disaster: RTO/RPO planning and failover testing." },
   { icon: Cloud, title: "Cloud & Virtualization", description: "Moving data and applications to remote cloud servers so you can scale resources up or down without buying more physical hardware. Virtualization lets one physical server act like many.", span: "wide" },
   { icon: Radio, title: "Edge & 5G Solutions", description: "Placing processing power closer to where data is created (Edge Computing) and setting up dedicated high-speed Private 5G cellular networks." },
   { icon: Gauge, title: "Network Monitoring & NOC", description: "24/7 network operations center with real-time health monitoring, alerting, capacity planning, and proactive incident management." },
   { icon: Globe, title: "SD-WAN & MPLS", description: "Software-defined wide area networking for multi-site connectivity with intelligent traffic routing and centralized policy management." },
-  { icon: Layers, title: "Hybrid Cloud Architecture", description: "Best-of-both-worlds infrastructure combining on-premise control with cloud elasticity — seamless workload migration and unified management." },
+  { icon: Layers, title: "Hybrid Cloud Architecture", description: "Best-of-both-worlds infrastructure combining on-premise control with cloud elasticity: seamless workload migration and unified management." },
 ];
 
 /* ───────── Infrastructure Tabs ───────── */
@@ -43,11 +43,11 @@ const infraCategories: InfraCategory[] = [
     icon: Cable,
     label: "Structured Cabling",
     title: "Enterprise Structured Cabling & Fiber Optics",
-    description: "We design and install the physical backbone of your network — from Cat6a copper runs to single-mode fiber optic infrastructure that supports 10/25/100GbE.",
+    description: "We design and install the physical backbone of your network, from Cat6a copper runs to single-mode fiber optic infrastructure that supports 10/25/100GbE.",
     features: [
       "TIA-568 compliant installation with certification and documentation",
       "Fiber optic backbone with fusion splicing and OTDR testing",
-      "Cable management systems — trays, ladders, and containment",
+      "Cable management systems: trays, ladders, and containment",
       "Floor-box and ceiling-mounted access point provisioning",
       "Future-proof design supporting 25GbE and 100GbE upgrades",
     ],
@@ -64,7 +64,7 @@ const infraCategories: InfraCategory[] = [
     icon: Cloud,
     label: "Cloud & Virtualization",
     title: "Cloud Migration & Virtualization",
-    description: "Seamless migration to AWS, Azure, or GCP — or build hybrid architectures that combine the security of on-premise with the elasticity of cloud.",
+    description: "Seamless migration to AWS, Azure, or GCP, or build hybrid architectures that combine the security of on-premise with the elasticity of cloud.",
     features: [
       "Cloud readiness assessment and workload migration planning",
       "VMware, Hyper-V, and KVM virtualization deployment",
@@ -85,7 +85,7 @@ const infraCategories: InfraCategory[] = [
     icon: Server,
     label: "Data Centers",
     title: "Data Center Design & Management",
-    description: "From micro data centers to tier-3 facilities — we handle everything from rack layout and cooling to redundant power and physical security.",
+    description: "From micro data centers to tier-3 facilities, we handle everything from rack layout and cooling to redundant power and physical security.",
     features: [
       "Hot/cold aisle containment and precision cooling design",
       "Redundant power with N+1 UPS and generator backup",
@@ -115,7 +115,7 @@ function InfraTabs() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }} className="text-center mb-14">
           <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">INFRASTRUCTURE DEEP-DIVE</p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">The Digital Nervous System.</h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">The backbone of every modern business — high-speed connections, scalable storage, and rock-solid uptime.</p>
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">The backbone of every modern business: high-speed connections, scalable storage, and rock-solid uptime.</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 12 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.4, delay: 0.15 }} className="flex flex-wrap justify-center gap-3 mb-12">
@@ -180,7 +180,7 @@ export default function Networking() {
         badge="IT INFRASTRUCTURE & NETWORKING"
         title="The Digital"
         highlight="Nervous System."
-        description="The digital backbone of your business — high-speed connections, scalable storage, and rock-solid infrastructure that never sleeps."
+        description="The digital backbone of your business: high-speed connections, scalable storage, and rock-solid infrastructure that never sleeps."
         stats={[
           { value: "50,000+", label: "Cable Runs" },
           { value: "200+", label: "Cloud Migrations" },
@@ -190,7 +190,7 @@ export default function Networking() {
       <BentoGrid
         label="CAPABILITIES"
         heading="Build. Connect. Scale."
-        subheading="From structured cabling to hybrid cloud — the complete infrastructure stack under one roof."
+        subheading="From structured cabling to hybrid cloud, the complete infrastructure stack under one roof."
         items={benefits}
       />
       <InfraTabs />

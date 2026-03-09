@@ -11,12 +11,12 @@ import TechMarquee from "@/components/services/TechMarquee";
 import CTASection from "@/components/CTASection";
 
 const benefits: BentoItem[] = [
-  { icon: Building2, title: "Commercial & Office Interiors", description: "Workplace design that boosts productivity — open plans, private offices, collaboration zones, breakout areas, and reception lobbies with brand integration.", span: "wide" },
-  { icon: Ruler, title: "Space Planning & Layout", description: "Optimized floor plans that maximize functionality, flow, and aesthetics — from compact apartments to sprawling corporate headquarters." },
+  { icon: Building2, title: "Commercial & Office Interiors", description: "Workplace design that boosts productivity: open plans, private offices, collaboration zones, breakout areas, and reception lobbies with brand integration.", span: "wide" },
+  { icon: Ruler, title: "Space Planning & Layout", description: "Optimized floor plans that maximize functionality, flow, and aesthetics, from compact apartments to sprawling corporate headquarters." },
   { icon: Sofa, title: "Furniture Design & Sourcing", description: "Custom furniture design, ergonomic office layouts, and curated sourcing from premium manufacturers with bulk procurement pricing." },
-  { icon: Lamp, title: "Lighting Design", description: "Layered lighting schemes — ambient, task, and accent — designed to enhance mood, productivity, and architectural features.", span: "wide" },
+  { icon: Lamp, title: "Lighting Design", description: "Layered lighting schemes (ambient, task, and accent) designed to enhance mood, productivity, and architectural features.", span: "wide" },
   { icon: PaintBucket, title: "Material & Finish Selection", description: "Expert curation of paints, wallpapers, veneers, laminates, stones, and fabrics aligned with your brand identity and budget." },
-  { icon: Home, title: "Residential Interiors", description: "Complete home interiors — living rooms, bedrooms, kitchens, bathrooms, and outdoor spaces designed for comfort and elegance." },
+  { icon: Home, title: "Residential Interiors", description: "Complete home interiors: living rooms, bedrooms, kitchens, bathrooms, and outdoor spaces designed for comfort and elegance." },
   { icon: Layers, title: "False Ceiling & Flooring", description: "Gypsum and POP false ceilings, wooden and vinyl flooring, epoxy coatings, and raised access flooring for commercial spaces." },
   { icon: TreePine, title: "Landscape & Outdoor Design", description: "Garden design, terrace landscaping, outdoor living areas, and vertical green walls that connect interior spaces with nature." },
   { icon: Hammer, title: "Civil & Construction Works", description: "Structural modifications, partition walls, plumbing, electrical, and civil works managed end-to-end with licensed contractors." },

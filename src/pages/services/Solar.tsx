@@ -11,10 +11,10 @@ import TechMarquee from "@/components/services/TechMarquee";
 import CTASection from "@/components/CTASection";
 
 const benefits: BentoItem[] = [
-  { icon: Sun, title: "Solar Energy Solutions", description: "Design and setup of solar panel arrays for rooftops, ground-mounted systems, or fully off-grid power — reducing reliance on the traditional power grid.", span: "wide" },
+  { icon: Sun, title: "Solar Energy Solutions", description: "Design and setup of solar panel arrays for rooftops, ground-mounted systems, or fully off-grid power, reducing reliance on the traditional power grid.", span: "wide" },
   { icon: BatteryCharging, title: "UPS & Backup Power", description: "Battery and conditioning systems that provide instant, clean power during outages to protect sensitive equipment with automatic switchover." },
-  { icon: Gauge, title: "Energy Monitoring Dashboards", description: "Software that shows real-time energy use per circuit, per floor, or per building — helping you identify where you can cut costs and waste." },
-  { icon: Leaf, title: "Green Building Automation", description: "Technology designed specifically to help buildings earn environmental certifications like LEED and IGBC — automated compliance tracking.", span: "wide" },
+  { icon: Gauge, title: "Energy Monitoring Dashboards", description: "Software that shows real-time energy use per circuit, per floor, or per building, helping you identify where you can cut costs and waste." },
+  { icon: Leaf, title: "Green Building Automation", description: "Technology designed specifically to help buildings earn environmental certifications like LEED and IGBC with automated compliance tracking.", span: "wide" },
   { icon: BarChart3, title: "Carbon Footprint Tracking", description: "Tools that measure and report an organization's total environmental impact for regulatory compliance or CSR purposes with audit-ready reports." },
   { icon: Zap, title: "Smart Grid Integration", description: "Advanced monitoring systems for community-wide solar energy distribution, battery storage, and net-metering configuration." },
   { icon: Building2, title: "Commercial Solar Projects", description: "Large-scale commercial and industrial solar installations with ROI modeling, subsidy optimization, and grid-tie engineering." },
@@ -76,7 +76,7 @@ function SolarROIShowcase() {
           <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
             Your Power.<br />Your <span className="text-gradient">Savings</span>.
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">See how solar pays for itself — faster than you think.</p>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">See how solar pays for itself, faster than you think.</p>
         </motion.div>
 
         {/* System Type Selector */}
@@ -280,7 +280,7 @@ export default function Solar() {
         badge="ENERGY & SUSTAINABILITY"
         title="Sustainable"
         highlight="Resilience."
-        description="Eco-friendly technology focused on reducing your carbon footprint and providing reliable green power — from rooftop solar to grid-scale energy solutions."
+        description="Eco-friendly technology focused on reducing your carbon footprint and providing reliable green power, from rooftop solar to grid-scale energy solutions."
         stats={[
           { value: "5MW+", label: "Capacity Installed" },
           { value: "30%", label: "Avg. Cost Reduction" },
@@ -290,7 +290,7 @@ export default function Solar() {
       <BentoGrid
         label="CAPABILITIES"
         heading="Clean Energy. Smart Power."
-        subheading="From residential rooftop panels to industrial power conditioning — green energy solutions that pay for themselves."
+        subheading="From residential rooftop panels to industrial power conditioning, green energy solutions that pay for themselves."
         items={benefits}
       />
       <SolarROIShowcase />

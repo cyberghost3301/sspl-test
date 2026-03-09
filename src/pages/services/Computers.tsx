@@ -11,17 +11,17 @@ import TechMarquee from "@/components/services/TechMarquee";
 import CTASection from "@/components/CTASection";
 
 const benefits: BentoItem[] = [
-  { icon: Cpu, title: "Custom PC Builds", description: "Purpose-built workstations, gaming rigs, and enterprise desktops — hand-assembled with premium components, stress-tested, and benchmarked for peak performance.", span: "wide" },
+  { icon: Cpu, title: "Custom PC Builds", description: "Purpose-built workstations, gaming rigs, and enterprise desktops, hand-assembled with premium components, stress-tested, and benchmarked for peak performance.", span: "wide" },
   { icon: Laptop, title: "Laptop & Desktop Sales", description: "Curated selection of business laptops, ultrabooks, and desktop systems from Dell, HP, Lenovo, and Apple with enterprise licensing and warranty." },
-  { icon: HardDrive, title: "Storage & NAS Solutions", description: "High-capacity storage systems — NAS, SAN, and DAS configurations for small offices to enterprise data centers with RAID and hot-swap support." },
+  { icon: HardDrive, title: "Storage & NAS Solutions", description: "High-capacity storage systems including NAS, SAN, and DAS configurations for small offices to enterprise data centers with RAID and hot-swap support." },
   { icon: Printer, title: "Printers & Peripherals", description: "Enterprise-grade printers, scanners, UPS systems, and peripherals with managed print services and toner subscription programs." },
   { icon: Server, title: "Server & Rack Infrastructure", description: "Tower and rack-mount server deployments with hypervisor configuration, remote management (iDRAC/iLO), and hardware RAID setup.", span: "wide" },
   { icon: MemoryStick, title: "RAM & Component Upgrades", description: "Memory upgrades, SSD migrations, GPU installations, and component-level repairs to extend the life and performance of existing hardware." },
   { icon: Fan, title: "Cooling & Thermal Solutions", description: "Custom liquid cooling loops, thermal paste reapplication, and airflow optimization for high-performance and server environments." },
-  { icon: Wifi, title: "Networking Hardware", description: "Routers, switches, access points, and network interface cards — from small office setups to enterprise campus deployments." },
+  { icon: Wifi, title: "Networking Hardware", description: "Routers, switches, access points, and network interface cards, from small office setups to enterprise campus deployments." },
   { icon: Wrench, title: "Hardware Repair & AMC", description: "Component-level laptop and desktop repairs, annual maintenance contracts with guaranteed response times, and on-site support." },
   { icon: Gauge, title: "Performance Benchmarking", description: "Comprehensive system benchmarks, bottleneck analysis, and optimization recommendations for workstations and servers." },
-  { icon: Headphones, title: "AV & Conferencing Hardware", description: "Webcams, headsets, speakerphones, and conferencing equipment for hybrid work setups — Poly, Jabra, Logitech, and more." },
+  { icon: Headphones, title: "AV & Conferencing Hardware", description: "Webcams, headsets, speakerphones, and conferencing equipment for hybrid work setups: Poly, Jabra, Logitech, and more." },
   { icon: Gamepad2, title: "Gaming & Creator Builds", description: "High-end gaming PCs and content creation workstations with custom RGB, water cooling, and boutique case modifications." },
 ];
 
@@ -43,7 +43,7 @@ const compCategories: CompCategory[] = [
     icon: Cpu,
     label: "Custom Builds",
     title: "Bespoke PC & Workstation Builds",
-    description: "From silent productivity workstations to liquid-cooled gaming beasts — every build is hand-assembled, cable-managed, stress-tested, and delivered with a full benchmark report.",
+    description: "From silent productivity workstations to liquid-cooled gaming beasts, every build is hand-assembled, cable-managed, stress-tested, and delivered with a full benchmark report.",
     features: [
       "Component selection optimized for your exact workload (CAD, video editing, gaming, AI)",
       "Custom liquid cooling loops with hardline tubing and RGB integration",
@@ -64,10 +64,10 @@ const compCategories: CompCategory[] = [
     icon: Server,
     label: "Enterprise IT",
     title: "Enterprise Hardware & Server Infrastructure",
-    description: "Rack-mount servers, blade systems, and hyper-converged infrastructure — procurement, configuration, deployment, and ongoing management for businesses of all sizes.",
+    description: "Rack-mount servers, blade systems, and hyper-converged infrastructure: procurement, configuration, deployment, and ongoing management for businesses of all sizes.",
     features: [
       "Server procurement from Dell, HPE, Lenovo, and Supermicro",
-      "Hypervisor installation — VMware ESXi, Proxmox, Hyper-V",
+      "Hypervisor installation: VMware ESXi, Proxmox, Hyper-V",
       "RAID configuration with hot-spare and auto-rebuild policies",
       "Remote management setup (iDRAC, iLO, IPMI) for lights-out operations",
       "Rack layout design, PDU planning, and structured cabling within cabinets",
@@ -85,11 +85,11 @@ const compCategories: CompCategory[] = [
     icon: Wrench,
     label: "Repair & AMC",
     title: "Hardware Repair & Maintenance Contracts",
-    description: "Component-level diagnostics, board-level repairs, and annual maintenance contracts with guaranteed SLA response times — keeping your fleet running without surprises.",
+    description: "Component-level diagnostics, board-level repairs, and annual maintenance contracts with guaranteed SLA response times, keeping your fleet running without surprises.",
     features: [
       "Component-level motherboard and laptop repairs with micro-soldering",
       "SSD data recovery and secure data destruction services",
-      "Managed fleet lifecycle — procurement, deployment, refresh, and disposal",
+      "Managed fleet lifecycle: procurement, deployment, refresh, and disposal",
       "On-site and remote support with 4-hour / next-business-day SLA options",
       "Quarterly health reports with asset inventory and replacement forecasting",
     ],
@@ -115,7 +115,7 @@ function ComputerTabs() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }} className="text-center mb-14">
           <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">SOLUTION DEEP-DIVE</p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">Hardware, Engineered.</h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">From boutique PC builds to enterprise server rooms — precision hardware solutions at every scale.</p>
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">From boutique PC builds to enterprise server rooms: precision hardware solutions at every scale.</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 12 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.4, delay: 0.15 }} className="flex flex-wrap justify-center gap-3 mb-12">
@@ -180,7 +180,7 @@ export default function Computers() {
         badge="COMPUTER SOLUTIONS & HARDWARE"
         title="Hardware That"
         highlight="Performs."
-        description="Custom PC builds, enterprise IT procurement, server infrastructure, and hardware maintenance — precision-engineered solutions for every computing need."
+        description="Custom PC builds, enterprise IT procurement, server infrastructure, and hardware maintenance: precision-engineered solutions for every computing need."
         stats={[
           { value: "800+", label: "Custom Builds" },
           { value: "10,000+", label: "Devices Serviced" },
@@ -190,7 +190,7 @@ export default function Computers() {
       <BentoGrid
         label="CAPABILITIES"
         heading="Complete Computer Solutions."
-        subheading="From boutique gaming rigs to enterprise server rooms — we handle every layer of the hardware stack."
+        subheading="From boutique gaming rigs to enterprise server rooms, we handle every layer of the hardware stack."
         items={benefits}
       />
       <ComputerTabs />
