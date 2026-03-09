@@ -198,11 +198,9 @@ export default function Header() {
                   <span className="text-sm text-foreground">{s.title}</span>
                 </Link>
               ))}
-              <Link to="/contact" className="mt-6">
-                <Button className="w-full bg-accent text-accent-foreground font-display font-semibold">
-                  Partner With Us
-                </Button>
-              </Link>
+              <Button onClick={() => { setMobileOpen(false); setContactModalOpen(true); }} className="w-full mt-6 bg-accent text-accent-foreground font-display font-semibold">
+                Partner With Us
+              </Button>
             </nav>
           </motion.div>
         )}
