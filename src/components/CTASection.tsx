@@ -2,56 +2,12 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { toast } from "sonner";
-import { Loader2 } from "lucide-react";
+import { ContactModal } from "@/components/ContactModal";
 
 export default function CTASection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [isOpen, setIsOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    business: "",
-    subject: "",
-    message: ""
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      const response = await fetch("https://ssplbackend.vercel.app/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        toast.success(data.message || "Message sent successfully!");
-        setFormData({ name: "", email: "", phone: "", business: "", subject: "", message: "" });
-        setIsOpen(false);
-      } else {
-        toast.error(data.message || "Failed to send message. Please try again.");
-      }
-    } catch (error) {
-      toast.error("Connection failed. Please check your network and try again.");
-      console.error("Error:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <>
