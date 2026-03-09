@@ -50,7 +50,7 @@ export default function Footer() {
 
           {/* Link Columns */}
           {Object.entries(footerLinks).map(([heading, links]) => (
-            <div key={heading}>
+            <div key={heading} className="lg:col-span-2">
               <p className="font-display font-semibold text-sm mb-4">{heading}</p>
               <ul className="space-y-2.5">
                 {links.map((link) => (
