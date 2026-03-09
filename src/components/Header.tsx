@@ -57,7 +57,7 @@ export default function Header() {
   }, [dark]);
 
   // Pages with dark hero backgrounds where nav text needs to be light when not scrolled
-  const hasDarkHero = ["/", "/about", "/services/surveillance", "/services/software", "/services/consulting", "/services/lifecycle-consulting", "/portfolio", "/testimonials", "/collective", "/contact"].includes(location.pathname);
+  const hasDarkHero = location.pathname === "/" || location.pathname.startsWith("/services/") || ["/about", "/portfolio", "/testimonials", "/collective", "/contact"].includes(location.pathname);
   const isOverDark = hasDarkHero && !scrolled;
 
   // Dynamic text classes based on whether we're over the dark hero
