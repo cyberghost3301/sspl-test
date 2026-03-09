@@ -3,7 +3,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Headphones, Video, Phone, Monitor, Mic,
   Speaker, Radio, Tv, PhoneCall, LucideIcon, ShieldCheck,
-  Building2, Users,
+  Building2, Users, Camera, Lightbulb, Volume2, Film,
 } from "lucide-react";
 import ServiceHero from "@/components/services/ServiceHero";
 import BentoGrid, { BentoItem } from "@/components/services/BentoGrid";
@@ -39,21 +39,24 @@ const avCategories: AVCategory[] = [
   {
     id: "studio",
     icon: Mic,
-    label: "Studio Installations",
-    title: "Professional Recording & Broadcast Studios",
-    description: "From podcast rooms to full broadcast studios — we design, build, and commission acoustically treated, production-ready spaces.",
+    label: "Recording & Podcast Studios",
+    title: "Professional Recording, Broadcast & Podcast Studios",
+    description: "From intimate podcast setups to full-scale broadcast facilities — acoustically treated, production-ready spaces with chroma key green screens, multi-camera rigs, and broadcast-grade audio chains.",
     features: [
-      "Acoustic treatment with broadband absorbers, bass traps, and diffusers",
+      "Acoustic treatment with broadband absorbers, bass traps, and diffusers (STC 55+)",
       "Isolated control rooms with floating floor and double-wall construction",
-      "Professional monitor calibration and signal chain wiring",
-      "Video production setup with green screens and lighting rigs",
-      "Soundproofing to STC 55+ for noise-sensitive environments",
+      "Professional monitor calibration (REW / Sonarworks) and signal chain wiring",
+      "Chroma key green screen installations with professional 3-point LED lighting rigs",
+      "Multi-camera video production setups with ATEM switchers and live streaming integration",
+      "Podcast-specific setups — USB/XLR interfaces, boom arms, dynamic mics (Shure SM7B, Rode PodMic)",
+      "Broadcast automation software — OBS, vMix, and custom playout systems",
+      "Soundproofing to STC 55+ for noise-sensitive environments with ventilation planning",
     ],
     specs: [
       { label: "Studios Built", value: "40+" },
       { label: "Sound Isolation", value: "STC 55+" },
       { label: "Audio Formats", value: "Dolby Atmos / 7.1.4" },
-      { label: "Calibration", value: "REW / Sonarworks" },
+      { label: "Lighting", value: "3-Point LED Rigs" },
     ],
     image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=600&auto=format&fit=crop",
   },
@@ -64,11 +67,12 @@ const avCategories: AVCategory[] = [
     title: "Executive Boardroom & Conference Solutions",
     description: "Integrated AV systems for executive boardrooms — large-format displays, ceiling microphone arrays, wireless content sharing, and one-touch meeting launch.",
     features: [
-      "4K/8K large-format displays and LED video walls",
-      "Ceiling microphone arrays with auto-tracking speaker focus",
-      "Wireless BYOD content sharing — AirPlay, Miracast, and USB-C",
-      "Room booking panels with calendar integration (Outlook / Google)",
-      "Centralized AV management across multiple conference rooms",
+      "4K/8K large-format displays and LED video walls (up to 220\")",
+      "Ceiling microphone arrays with auto-tracking speaker focus (Shure MXA910, Sennheiser TeamConnect)",
+      "Wireless BYOD content sharing — AirPlay, Miracast, USB-C, and Barco ClickShare",
+      "Room booking panels with calendar integration (Outlook / Google Workspace)",
+      "Centralized AV management across multiple conference rooms (Crestron / Extron control)",
+      "Acoustic paneling and sound masking for speech privacy",
     ],
     specs: [
       { label: "Rooms Equipped", value: "200+" },
@@ -86,10 +90,11 @@ const avCategories: AVCategory[] = [
     description: "End-to-end contact centre setups — from cloud PBX and ACD routing to CRM integration, quality monitoring, and agent performance analytics.",
     features: [
       "Cloud-hosted PBX with auto-attendant and IVR menu design",
-      "ACD (Automatic Call Distribution) with skill-based routing",
-      "Call recording, quality scoring, and sentiment analysis",
+      "ACD (Automatic Call Distribution) with skill-based routing and queue management",
+      "Call recording, quality scoring, and sentiment analysis with speech analytics",
       "CRM integration — Salesforce, Zoho, Freshdesk, and custom APIs",
-      "Predictive dialer and outbound campaign management",
+      "Predictive dialer and outbound campaign management for sales teams",
+      "Omnichannel support — Voice, Chat, Email, WhatsApp, and social media",
     ],
     specs: [
       { label: "Seats Deployed", value: "5,000+" },
@@ -168,6 +173,10 @@ const techStack = [
   "Samsung Pro", "LG Commercial", "Sony Pro", "Epson",
   "Avaya", "Genesys", "Five9", "Asterisk PBX",
   "Dante Audio", "Biamp", "ClearOne", "Audac",
+  "Blackmagic ATEM", "vMix", "OBS Studio", "Elgato",
+  "Rode", "Audio-Technica", "Neumann", "Focusrite",
+  "Universal Audio", "Genelec", "KRK", "Sonarworks",
+  "Elation", "Chauvet", "Aputure", "Godox",
 ];
 
 export default function AVStudio() {
