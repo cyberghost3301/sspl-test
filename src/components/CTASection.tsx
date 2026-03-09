@@ -1,8 +1,13 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 export default function CTASection() {
   const ref = useRef(null);
