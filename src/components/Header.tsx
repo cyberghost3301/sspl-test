@@ -121,12 +121,10 @@ export default function Header() {
             >
               {dark ? <SunMedium className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
-            <Link to="/contact" className="hidden sm:block">
-              <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold gap-1.5">
-                Partner With Us
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Button>
-            </Link>
+            <Button onClick={() => setContactModalOpen(true)} size="sm" className="hidden sm:flex bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold gap-1.5">
+              Partner With Us
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Button>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className={`lg:hidden p-2 transition-colors ${isOverDark ? "text-white" : "text-foreground"}`}
