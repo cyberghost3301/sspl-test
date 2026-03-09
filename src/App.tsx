@@ -16,6 +16,8 @@ import Automation from "./pages/services/Automation";
 import Networking from "./pages/services/Networking";
 import Solar from "./pages/services/Solar";
 import AVStudio from "./pages/services/AVStudio";
+import Computers from "./pages/services/Computers";
+import Interior from "./pages/services/Interior";
 import Testimonials from "./pages/Testimonials";
 import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
