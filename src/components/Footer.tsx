@@ -1,25 +1,21 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Twitter, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { Linkedin, Twitter, Instagram, Mail, MapPin, Phone, Facebook } from "lucide-react";
 import sfiltLogo from "@/assets/sfilt.png";
 
 const footerLinks = {
-  Solutions: [
-    { label: "Surveillance", href: "/services/surveillance" },
-    { label: "Software Dev", href: "/services/software" },
-    { label: "IT Consulting", href: "/services/consulting" },
-    { label: "Smart Automation", href: "/services/automation" },
-    { label: "Cloud & Networking", href: "/services/networking" },
-  ],
-  Company: [
+  Navigation: [
+    { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
     { label: "Portfolio", href: "/portfolio" },
-    { label: "Careers", href: "/careers" },
-    { label: "Contact", href: "/contact" },
+    { label: "Testimonials", href: "/testimonials" },
+    { label: "Contact Us", href: "/contact" },
   ],
-  Legal: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms of Service", href: "/terms" },
-    { label: "Cookie Policy", href: "/cookies" },
+  Governance: [
+    { label: "FAQ", href: "/faq" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms of Service", href: "/terms-of-service" },
+    { label: "Cookie Policy", href: "/cookie-policy" },
+    { label: "Disclaimer", href: "/disclaimer" },
   ],
 };
 
