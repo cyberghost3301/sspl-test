@@ -15,15 +15,15 @@ import ScopingCalculator from "@/components/services/ScopingCalculator";
 import CTASection from "@/components/CTASection";
 
 const benefits: BentoItem[] = [
-  { icon: Code, title: "Custom Software Development", description: "Building unique web or mobile apps tailored exactly to a business's specific needs — from MVPs to full-scale enterprise platforms.", span: "wide" },
+  { icon: Code, title: "Custom Software Development", description: "Building unique web or mobile apps tailored exactly to a business's specific needs, from MVPs to full-scale enterprise platforms.", span: "wide" },
   { icon: Smartphone, title: "Mobile Development", description: "Cross-platform and native mobile apps for iOS and Android, from rapid prototypes to consumer-ready products." },
   { icon: Globe, title: "SaaS Platforms", description: "Multi-tenant SaaS architecture with subscription management, analytics dashboards, and scalable cloud deployment." },
   { icon: Cpu, title: "AI & ML Solutions", description: "Using Artificial Intelligence and Machine Learning to automate repetitive tasks, find trends in business data, and build predictive models." },
-  { icon: Bot, title: "Chatbots & Virtual Assistants", description: "AI-powered helpers that provide 24/7 customer support via text or voice — lead qualification, appointment booking, and FAQ automation." },
+  { icon: Bot, title: "Chatbots & Virtual Assistants", description: "AI-powered helpers that provide 24/7 customer support via text or voice: lead qualification, appointment booking, and FAQ automation." },
   { icon: Workflow, title: "API Development", description: "RESTful and GraphQL APIs designed for performance, security, and seamless third-party integrations." },
   { icon: Database, title: "ERP & CRM Implementation", description: "Setting up enterprise resource planning and customer relationship management systems to streamline operations and boost revenue.", span: "wide" },
   { icon: ShoppingCart, title: "E-Governance & E-Commerce", description: "Creating secure portals for government services or robust online stores with payment gateways, inventory management, and multi-vendor marketplace capabilities." },
-  { icon: Palette, title: "Branding & Identity Design", description: "Professional services to build a consistent and recognizable look — from logo systems and brand guidelines to full visual identities." },
+  { icon: Palette, title: "Branding & Identity Design", description: "Professional services to build a consistent and recognizable look, from logo systems and brand guidelines to full visual identities." },
   { icon: TestTube, title: "QA & Testing", description: "Comprehensive testing strategies including unit tests, E2E automation, performance benchmarking, and security scanning." },
   { icon: GitBranch, title: "DevOps & CI/CD", description: "Automated build pipelines, containerized deployments, infrastructure-as-code, and zero-downtime release strategies.", span: "wide" },
   { icon: BarChart3, title: "Analytics & Dashboards", description: "Custom analytics platforms with real-time data visualization, KPI tracking, report generation, and business intelligence integrations." },
@@ -76,7 +76,7 @@ const solutionCategories: SolutionCategory[] = [
     icon: BrainCircuit,
     label: "AI & Automation",
     title: "AI/ML Solutions & Intelligent Automation",
-    description: "From predictive analytics to conversational AI — we embed intelligence into your workflows to automate, optimize, and scale.",
+    description: "From predictive analytics to conversational AI, we embed intelligence into your workflows to automate, optimize, and scale.",
     capabilities: [
       "Recommendation engines and predictive analytics dashboards",
       "NLP-powered chatbots with multi-language support and context awareness",
@@ -96,12 +96,12 @@ const solutionCategories: SolutionCategory[] = [
     icon: Store,
     label: "E-Commerce & ERP",
     title: "E-Commerce Platforms & Enterprise Systems",
-    description: "End-to-end digital commerce and resource planning — from storefront to supply chain, payment to fulfillment.",
+    description: "End-to-end digital commerce and resource planning, from storefront to supply chain, payment to fulfillment.",
     capabilities: [
       "Custom storefronts with headless commerce architecture",
       "Multi-vendor marketplace platforms with seller dashboards",
       "ERP integration with inventory, HR, accounting, and procurement modules",
-      "Payment gateway orchestration — Stripe, Razorpay, PayPal, and UPI",
+      "Payment gateway orchestration: Stripe, Razorpay, PayPal, and UPI",
       "Real-time order tracking, warehouse management, and logistics APIs",
     ],
     metrics: [
@@ -148,18 +148,11 @@ function DigitalSolutionsTabs() {
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">
-            SOLUTION DEEP-DIVE
-          </p>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-            Explore Our Digital Arsenal.
-          </h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Click through to see exactly how we approach each domain — the tools, the metrics, and the methodology.
-          </p>
+          <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">SOLUTION DEEP-DIVE</p>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">Explore Our Digital Arsenal.</h2>
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">Click through to see exactly how we approach each domain: the tools, the metrics, and the methodology.</p>
         </motion.div>
 
-        {/* Tab Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -169,15 +162,7 @@ function DigitalSolutionsTabs() {
           {solutionCategories.map((cat) => {
             const isActive = cat.id === activeTab;
             return (
-              <button
-                key={cat.id}
-                onClick={() => setActiveTab(cat.id)}
-                className={`group flex items-center gap-2.5 px-5 py-3 rounded-xl border-2 text-sm font-display font-semibold transition-all duration-300 ${
-                  isActive
-                    ? "border-accent bg-accent/10 text-accent shadow-md shadow-accent/10"
-                    : "border-border bg-card text-muted-foreground hover:border-accent/30 hover:text-foreground"
-                }`}
-              >
+              <button key={cat.id} onClick={() => setActiveTab(cat.id)} className={`group flex items-center gap-2.5 px-5 py-3 rounded-xl border-2 text-sm font-display font-semibold transition-all duration-300 ${isActive ? "border-accent bg-accent/10 text-accent shadow-md shadow-accent/10" : "border-border bg-card text-muted-foreground hover:border-accent/30 hover:text-foreground"}`}>
                 <cat.icon className={`w-4 h-4 transition-colors ${isActive ? "text-accent" : "text-muted-foreground group-hover:text-foreground"}`} />
                 {cat.label}
               </button>
@@ -185,28 +170,16 @@ function DigitalSolutionsTabs() {
           })}
         </motion.div>
 
-        {/* Tab Content */}
         <AnimatePresence mode="wait">
-          <motion.div
-            key={active.id}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.35 }}
-          >
+          <motion.div key={active.id} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.35 }}>
             <div className="max-w-4xl mx-auto">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-[11px] font-display font-semibold uppercase tracking-wider mb-4">
                 <active.icon className="w-3.5 h-3.5" />
                 {active.label}
               </div>
-              <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">
-                {active.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed mb-8 max-w-3xl">
-                {active.description}
-              </p>
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">{active.title}</h3>
+              <p className="text-muted-foreground leading-relaxed mb-8 max-w-3xl">{active.description}</p>
 
-              {/* Metrics */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
                 {active.metrics.map((m) => (
                   <div key={m.label} className="p-4 rounded-xl border border-border bg-card text-center">
@@ -216,16 +189,9 @@ function DigitalSolutionsTabs() {
                 ))}
               </div>
 
-              {/* Capabilities */}
               <div className="space-y-3">
                 {active.capabilities.map((cap, i) => (
-                  <motion.div
-                    key={cap}
-                    initial={{ opacity: 0, x: -12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: i * 0.06 }}
-                    className="flex items-start gap-3"
-                  >
+                  <motion.div key={cap} initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: i * 0.06 }} className="flex items-start gap-3">
                     <div className="w-5 h-5 mt-0.5 shrink-0 rounded-full bg-accent/10 flex items-center justify-center">
                       <ShieldCheck className="w-3 h-3 text-accent" />
                     </div>
@@ -262,7 +228,7 @@ export default function Software() {
         badge="SOFTWARE DEVELOPMENT & DIGITAL SOLUTIONS"
         title="Digital Products That"
         highlight="Scale."
-        description="Custom web applications, mobile platforms, AI integrations, and enterprise systems — built with modern stacks, designed to grow with your ambitions."
+        description="Custom web applications, mobile platforms, AI integrations, and enterprise systems built with modern stacks, designed to grow with your ambitions."
         stats={[
           { value: "200+", label: "Apps Shipped" },
           { value: "15+", label: "Tech Stacks" },
@@ -272,7 +238,7 @@ export default function Software() {
       <BentoGrid
         label="CAPABILITIES"
         heading="Full-Spectrum Development"
-        subheading="From rapid MVPs to enterprise platforms — custom software, AI, e-commerce, and branding under one roof."
+        subheading="From rapid MVPs to enterprise platforms: custom software, AI, e-commerce, and branding under one roof."
         items={benefits}
       />
       <DigitalSolutionsTabs />

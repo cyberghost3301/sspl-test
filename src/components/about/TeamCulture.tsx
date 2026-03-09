@@ -89,7 +89,7 @@ export default function TeamCulture() {
             How We <span className="text-gradient">Think & Work.</span>
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Culture isn't a poster on the wall — it's how we make decisions when no one's watching. These six principles define everything we build.
+            Culture isn't a poster on the wall. It's how we make decisions when no one's watching. These six principles define everything we build.
           </p>
         </motion.div>
 

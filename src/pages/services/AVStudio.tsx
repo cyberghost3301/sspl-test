@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import { motion, useInView, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Headphones, Video, Phone, Monitor, Mic,
   Speaker, Radio, Tv, PhoneCall, LucideIcon, ShieldCheck,
@@ -11,61 +11,12 @@ import BentoGrid, { BentoItem } from "@/components/services/BentoGrid";
 import TechMarquee from "@/components/services/TechMarquee";
 import CTASection from "@/components/CTASection";
 
-/* ─────────────── Soundwave animation ─────────────── */
-function SoundwaveBar({ delay, height }: { delay: number; height: number }) {
-  return (
-    <motion.div
-      className="w-1 rounded-full bg-accent/60"
-      animate={{
-        scaleY: [0.2, 1, 0.4, 0.9, 0.2],
-        opacity: [0.4, 1, 0.6, 0.9, 0.4],
-      }}
-      transition={{
-        duration: 1.6,
-        delay,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-      style={{ height, transformOrigin: "center" }}
-    />
-  );
-}
-
-function SoundwaveEqualizer({ visible }: { visible: boolean }) {
-  const bars = [28, 44, 60, 80, 52, 72, 40, 64, 88, 48, 68, 36, 76, 56, 44, 84, 32, 60, 72, 48];
-  return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          className="fixed bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1 px-5 py-3 rounded-2xl bg-background/80 backdrop-blur-xl border border-border shadow-xl"
-        >
-          <span className="text-[10px] font-display font-semibold uppercase tracking-widest text-accent mr-3">LIVE</span>
-          {bars.map((h, i) => (
-            <SoundwaveBar key={i} delay={i * 0.08} height={h * 0.5} />
-          ))}
-          <span className="text-[10px] font-display text-muted-foreground ml-3">AV SYSTEMS ACTIVE</span>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-}
-
-/* ─────────────── Sticky side nav data ─────────────── */
-const sections = [
-  { id: "enterprise-telecom", label: "Enterprise Telecom", icon: Phone },
-  { id: "executive-environments", label: "Executive Environments", icon: Monitor },
-  { id: "broadcast-audio", label: "Broadcast Audio", icon: Mic },
-];
-
 /* ─────────────── Section 1: Enterprise Telecom ─────────────── */
 const pbxFeatures = [
-  { icon: Server, title: "Cloud PBX & VoIP", desc: "Hosted telephone systems with auto-attendant, IVR tree design, voicemail-to-email, and hunt groups — zero hardware on-premise.", specs: ["99.99% uptime SLA", "Unlimited extensions", "Softphone + desk phone support"] },
+  { icon: Server, title: "Cloud PBX & VoIP", desc: "Hosted telephone systems with auto-attendant, IVR tree design, voicemail-to-email, and hunt groups with zero hardware on-premise.", specs: ["99.99% uptime SLA", "Unlimited extensions", "Softphone + desk phone support"] },
   { icon: Globe, title: "Call Centre Infrastructure", desc: "ACD routing, predictive dialers, skill-based queuing, and sentiment-driven analytics for high-volume contact centre operations.", specs: ["5,000+ seats deployed", "Omnichannel: Voice / Chat / WhatsApp", "CRM integration: Salesforce, Zoho, Freshdesk"] },
   { icon: Wifi, title: "SIP Trunking & PSTN Bridging", desc: "Enterprise-grade SIP trunks with DID number pools, call failover, codec optimization (G.711/G.729), and fraud protection.", specs: ["1,000+ concurrent channels", "National & international DID pools", "End-to-end call encryption (SRTP/TLS)"] },
-  { icon: Cpu, title: "UCaaS Integration", desc: "Unified Communications as a Service tying together voice, video, messaging, and presence — Microsoft Teams Phone, Webex Calling, and custom deployments.", specs: ["Microsoft 365 / Teams direct routing", "Cisco Webex Calling", "Open-standard APIs (REST / Webhook)"] },
+  { icon: Cpu, title: "UCaaS Integration", desc: "Unified Communications as a Service tying together voice, video, messaging, and presence via Microsoft Teams Phone, Webex Calling, and custom deployments.", specs: ["Microsoft 365 / Teams direct routing", "Cisco Webex Calling", "Open-standard APIs (REST / Webhook)"] },
 ];
 
 function EnterpriseTelecom() {
@@ -121,7 +72,7 @@ function EnterpriseTelecom() {
 /* ─────────────── Section 2: Executive Environments ─────────────── */
 const boardroomFeatures = [
   { title: "4K / 8K Large-Format Displays & LED Video Walls", detail: "Up to 220\" seamless LED walls, 4K laser projectors, and ultra-wide curved displays for impact." },
-  { title: "Ceiling Microphone Arrays with Auto-Tracking", detail: "Shure MXA910, Sennheiser TeamConnect — adaptive beamforming focuses on the speaker, not the room." },
+  { title: "Ceiling Microphone Arrays with Auto-Tracking", detail: "Shure MXA910, Sennheiser TeamConnect with adaptive beamforming that focuses on the speaker, not the room." },
   { title: "Wireless BYOD Content Sharing", detail: "AirPlay, Miracast, USB-C, and Barco ClickShare for instant content sharing from any device." },
   { title: "Directional Acoustics & Sound Masking", detail: "Acoustic panel engineering plus white-noise masking for executive speech privacy and clarity." },
   { title: "Centralized AV Control (Crestron / Extron)", detail: "One-touch meeting launch, occupancy automation, and multi-room AV orchestration from a single pane." },
@@ -158,7 +109,7 @@ function ExecutiveEnvironments() {
         </div>
 
         {/* Visual card */}
-        <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={inView ? { opacity: 1, scale: 1 } : {}} transition={{ duration: 0.5, delay: 0.25 }} className="sticky top-28 space-y-5">
+        <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={inView ? { opacity: 1, scale: 1 } : {}} transition={{ duration: 0.5, delay: 0.25 }} className="space-y-5">
           <div className="relative rounded-2xl overflow-hidden aspect-video bg-muted">
             <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Executive Boardroom" className="w-full h-full object-cover" loading="lazy" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
@@ -175,7 +126,7 @@ function ExecutiveEnvironments() {
           </div>
           <div className="p-5 rounded-xl border border-accent/20 bg-accent/5">
             <p className="text-xs font-display uppercase tracking-widest text-accent mb-2">Acoustic Engineering</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">We design with RT60 targets and STNR metrics — ensuring speech intelligibility scores (STI ≥ 0.65) across every seat in the room, not just the front row.</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">We design with RT60 targets and STNR metrics, ensuring speech intelligibility scores (STI ≥ 0.65) across every seat in the room, not just the front row.</p>
           </div>
         </motion.div>
       </div>
@@ -201,7 +152,7 @@ const audioCategories: AudioCategory[] = [
     icon: Mic,
     label: "Recording & Podcast Studios",
     title: "Professional Recording, Broadcast & Podcast Studios",
-    description: "From intimate podcast setups to full-scale broadcast facilities — acoustically treated, production-ready spaces with chroma key green screens, multi-camera rigs, and broadcast-grade audio chains.",
+    description: "From intimate podcast setups to full-scale broadcast facilities: acoustically treated, production-ready spaces with chroma key green screens, multi-camera rigs, and broadcast-grade audio chains.",
     features: [
       "Acoustic treatment: broadband absorbers, bass traps & diffusers (STC 55+)",
       "Isolated control rooms with floating floor and double-wall construction",
@@ -227,7 +178,7 @@ const audioCategories: AudioCategory[] = [
     description: "Professional green-screen environments engineered for even spill-suppressed illumination, post-production efficiency, and broadcast-quality keying results.",
     features: [
       "Custom-built chroma key cyc walls with professional paint (Rosco Chroma Key Green)",
-      "3-point LED lighting design: key, fill & back — eliminating green spill on subjects",
+      "3-point LED lighting design: key, fill & back, eliminating green spill on subjects",
       "Motorized backdrop systems for rapid switching between chroma, muslin & infinity curves",
       "Color-accurate LED panels (CRI 98+) for natural skin tones under camera",
       "Follow-spot and tracking light rigs for multi-camera setups",
@@ -236,7 +187,7 @@ const audioCategories: AudioCategory[] = [
     ],
     specs: [
       { label: "CRI Rating", value: "98+" },
-      { label: "Color Temp", value: "2700K – 6500K" },
+      { label: "Color Temp", value: "2700K - 6500K" },
       { label: "Spill Suppression", value: "< 2 stops" },
       { label: "Backdrop Systems", value: "Motorized" },
     ],
@@ -249,7 +200,7 @@ const audioCategories: AudioCategory[] = [
     title: "Hi-Fi Retail & Commercial Sound Systems",
     description: "Immersive audio environments for retail flagship stores, F&B venues, luxury showrooms, and branded spaces that turn sound into a competitive advantage.",
     features: [
-      "Zone-based distributed audio — independent level and content control per area",
+      "Zone-based distributed audio with independent level and content control per area",
       "Line-array and point-source speaker selection (JBL, Bose, QSC, Sonos Commercial)",
       "Acoustic site surveys: SPL mapping, RT60 analysis, and ambient noise measurement",
       "Digital signal processors (DSP): Biamp Tesira, QSC Q-SYS, Crown amplifiers",
@@ -279,7 +230,7 @@ function BroadcastAudio() {
           <Mic className="w-3.5 h-3.5" /> Section 03
         </div>
         <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">Broadcast Audio.</h2>
-        <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed">Hi-Fi retail sound, professional recording studios, chroma key rigs — every format of broadcast-grade audio and visual production.</p>
+        <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed">Hi-Fi retail sound, professional recording studios, chroma key rigs: every format of broadcast-grade audio and visual production.</p>
       </motion.div>
 
       {/* Tabs */}
@@ -340,80 +291,6 @@ function BroadcastAudio() {
   );
 }
 
-/* ─────────────── Sticky Side Nav Layout ─────────────── */
-function StickyLayout() {
-  const [activeSection, setActiveSection] = useState(sections[0].id);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const sectionEls = sections.map((s) => document.getElementById(s.id));
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
-        });
-      },
-      { rootMargin: "-40% 0px -50% 0px" }
-    );
-    sectionEls.forEach((el) => { if (el) observer.observe(el); });
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-  return (
-    <div className="section-container py-12 lg:py-20">
-      <div className="flex gap-10 lg:gap-16 items-start">
-        {/* Sticky sidebar */}
-        <aside className="hidden lg:block sticky top-28 w-56 shrink-0">
-          <p className="text-[10px] font-display uppercase tracking-widest text-muted-foreground mb-5">CAPABILITIES</p>
-          <nav className="space-y-1">
-            {sections.map((s) => {
-              const isActive = activeSection === s.id;
-              return (
-                <button
-                  key={s.id}
-                  onClick={() => scrollTo(s.id)}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left text-sm font-display font-medium transition-all duration-200 ${isActive ? "bg-accent/10 text-accent border-l-2 border-accent" : "text-muted-foreground hover:text-foreground hover:bg-secondary"}`}
-                >
-                  <s.icon className={`w-4 h-4 shrink-0 ${isActive ? "text-accent" : ""}`} />
-                  {s.label}
-                </button>
-              );
-            })}
-          </nav>
-
-          {/* Mini equalizer in sidebar */}
-          <div className="mt-10 p-4 rounded-xl border border-border bg-card">
-            <p className="text-[10px] font-display uppercase tracking-widest text-muted-foreground mb-3">Signal Active</p>
-            <div className="flex items-end gap-0.5 h-8">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="flex-1 rounded-sm bg-accent/50"
-                  animate={{ scaleY: [0.2, 1, 0.3, 0.8, 0.2] }}
-                  transition={{ duration: 1.4, delay: i * 0.1, repeat: Infinity, ease: "easeInOut" }}
-                  style={{ transformOrigin: "bottom" }}
-                />
-              ))}
-            </div>
-          </div>
-        </aside>
-
-        {/* Main content */}
-        <div className="flex-1 min-w-0" ref={containerRef}>
-          <div id="enterprise-telecom"><EnterpriseTelecom /></div>
-          <div id="executive-environments"><ExecutiveEnvironments /></div>
-          <div id="broadcast-audio"><BroadcastAudio /></div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 /* ─────────────── Bento items ─────────────── */
 const benefits: BentoItem[] = [
   { icon: Video, title: "Video Conferencing", description: "High-definition meeting platforms with room-scale cameras, ceiling mics, and seamless wireless sharing.", span: "wide" },
@@ -422,9 +299,9 @@ const benefits: BentoItem[] = [
   { icon: Speaker, title: "Hi-Fi Audio & Studio Installations", description: "Professional sound systems for retail spaces, worship venues, and complete studio setups." },
   { icon: Monitor, title: "Boardroom AV", description: "Integrated screens, wireless presentation, and conference microphones for executive environments.", span: "wide" },
   { icon: Mic, title: "PA & Voice Evacuation", description: "High-clarity PA systems and voice evacuation for clear emergency instructions." },
-  { icon: Tv, title: "Digital Signage", description: "Dynamic display networks for lobbies, retail, and campuses — managed remotely." },
+  { icon: Tv, title: "Digital Signage", description: "Dynamic display networks for lobbies, retail, and campuses, managed remotely." },
   { icon: Radio, title: "Intercom & Communication", description: "IP-based intercom systems for residential complexes, hospitals, and large campuses." },
-  { icon: Building2, title: "Auditorium & Event AV", description: "End-to-end AV for auditoriums and event venues — lighting rigs, sound reinforcement, live streaming." },
+  { icon: Building2, title: "Auditorium & Event AV", description: "End-to-end AV for auditoriums and event venues: lighting rigs, sound reinforcement, live streaming." },
   { icon: Users, title: "Collaboration Rooms", description: "Huddle spaces with interactive whiteboards, room booking, and occupancy sensors." },
 ];
 
@@ -444,23 +321,13 @@ const techStack = [
 
 /* ─────────────── Page ─────────────── */
 export default function AVStudio() {
-  const { scrollY } = useScroll();
-  const [showEqualizer, setShowEqualizer] = useState(false);
-
-  useEffect(() => {
-    const unsub = scrollY.on("change", (v) => {
-      setShowEqualizer(v > 400);
-    });
-    return () => unsub();
-  }, [scrollY]);
-
   return (
     <>
       <ServiceHero
         badge="ENTERPRISE COMMUNICATIONS & AV SOLUTIONS"
         title="Flawless Transmission."
         highlight="Enterprise Communications & Studio AV."
-        description="PBX, cloud VoIP, executive boardroom AV, chroma key studios, and Hi-Fi broadcast audio — end-to-end communication infrastructure that never misses a beat."
+        description="PBX, cloud VoIP, executive boardroom AV, chroma key studios, and Hi-Fi broadcast audio: end-to-end communication infrastructure that never misses a beat."
         stats={[
           { value: "200+", label: "Rooms Equipped" },
           { value: "5,000+", label: "Call Centre Seats" },
@@ -471,20 +338,21 @@ export default function AVStudio() {
       <BentoGrid
         label="CAPABILITIES"
         heading="Voice. Video. Experience."
-        subheading="From executive boardrooms to broadcast studios — communication infrastructure that elevates every interaction."
+        subheading="From executive boardrooms to broadcast studios: communication infrastructure that elevates every interaction."
         items={benefits}
       />
 
-      {/* Sticky side-nav content sections */}
+      {/* Content sections */}
       <div className="bg-background">
-        <StickyLayout />
+        <div className="section-container">
+          <EnterpriseTelecom />
+          <ExecutiveEnvironments />
+          <BroadcastAudio />
+        </div>
       </div>
 
       <TechMarquee label="AV & COMMUNICATION PARTNERS" items={techStack} />
       <CTASection />
-
-      {/* Floating soundwave equalizer */}
-      <SoundwaveEqualizer visible={showEqualizer} />
     </>
   );
 }

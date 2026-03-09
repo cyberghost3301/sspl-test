@@ -128,7 +128,7 @@ const hardwareCategories: HardwareCategory[] = [
     ],
     features: [
       "Real-time under-chassis scanning without stopping vehicles",
-      "Automatic comparison with baseline images — flags anomalies instantly",
+      "Automatic comparison with baseline images, flagging anomalies instantly",
       "Integrated ANPR for license plate capture and database cross-referencing",
       "All-weather operation with flush-mounted or portable deployment options",
       "Centralized archive with searchable vehicle history and alert tagging",
@@ -221,7 +221,7 @@ function DefenseHardwareTabs() {
             transition={{ duration: 0.35 }}
             className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"
           >
-            {/* Left — Info */}
+            {/* Left */}
             <div className="space-y-6">
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-[11px] font-display font-semibold uppercase tracking-wider mb-4">
@@ -236,24 +236,15 @@ function DefenseHardwareTabs() {
                 </p>
               </div>
 
-              {/* Spec Grid */}
               <div className="grid grid-cols-2 gap-3">
                 {active.specs.map((spec) => (
-                  <div
-                    key={spec.label}
-                    className="p-4 rounded-xl border border-border bg-card"
-                  >
-                    <p className="text-xs text-muted-foreground font-display uppercase tracking-wider mb-1">
-                      {spec.label}
-                    </p>
-                    <p className="font-display text-lg font-bold text-foreground">
-                      {spec.value}
-                    </p>
+                  <div key={spec.label} className="p-4 rounded-xl border border-border bg-card">
+                    <p className="text-xs text-muted-foreground font-display uppercase tracking-wider mb-1">{spec.label}</p>
+                    <p className="font-display text-lg font-bold text-foreground">{spec.value}</p>
                   </div>
                 ))}
               </div>
 
-              {/* Feature List */}
               <div className="space-y-3">
                 {active.features.map((feature, i) => (
                   <motion.div
@@ -266,15 +257,13 @@ function DefenseHardwareTabs() {
                     <div className="w-5 h-5 mt-0.5 shrink-0 rounded-full bg-accent/10 flex items-center justify-center">
                       <ShieldCheck className="w-3 h-3 text-accent" />
                     </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {feature}
-                    </p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{feature}</p>
                   </motion.div>
                 ))}
               </div>
             </div>
 
-            {/* Right — Image */}
+            {/* Right */}
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-muted">
               <motion.img
                 key={active.image}
@@ -290,9 +279,7 @@ function DefenseHardwareTabs() {
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/60 backdrop-blur-sm">
                   <active.icon className="w-4 h-4 text-accent" />
-                  <span className="text-xs font-display font-semibold text-white">
-                    {active.label}
-                  </span>
+                  <span className="text-xs font-display font-semibold text-white">{active.label}</span>
                 </div>
               </div>
             </div>

@@ -88,7 +88,7 @@ function LifecycleAccordion() {
             Full Lifecycle Support.
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            From day-zero deployment to year-ten maintenance — we stay with you at every stage of the technology lifecycle.
+            From day-zero deployment to year-ten maintenance, we stay with you at every stage of the technology lifecycle.
           </p>
         </motion.div>
 

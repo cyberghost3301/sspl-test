@@ -76,7 +76,7 @@ function SolarROIShowcase() {
           <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4">
             Your Power.<br />Your <span className="text-gradient">Savings</span>.
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">See how solar pays for itself — faster than you think.</p>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">See how solar pays for itself, faster than you think.</p>
         </motion.div>
 
         {/* System Type Selector */}

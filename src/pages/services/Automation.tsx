@@ -11,14 +11,14 @@ import TechMarquee from "@/components/services/TechMarquee";
 import CTASection from "@/components/CTASection";
 
 const benefits: BentoItem[] = [
-  { icon: Building2, title: "Building Management Systems (BMS)", description: "A single digital platform to control all a building's electrical and mechanical systems — HVAC, lighting, fire safety, and access control from one dashboard.", span: "wide" },
+  { icon: Building2, title: "Building Management Systems (BMS)", description: "A single digital platform to control all a building's electrical and mechanical systems: HVAC, lighting, fire safety, and access control from one dashboard.", span: "wide" },
   { icon: Thermometer, title: "HVAC & Energy Management", description: "Automated systems that adjust heating, cooling, and ventilation based on occupancy and time-of-day, lowering utility bills by up to 40%." },
   { icon: Lightbulb, title: "Smart Lighting", description: "Intelligent lights that turn off or dim automatically based on daylight levels or occupancy. Tunable color temperature for circadian comfort." },
-  { icon: Blinds, title: "Motorized Curtains & Blinds", description: "Automated window coverings that adjust to the sun's position to keep rooms cool, reduce glare, and enhance privacy — controllable via app or voice." },
+  { icon: Blinds, title: "Motorized Curtains & Blinds", description: "Automated window coverings that adjust to the sun's position to keep rooms cool, reduce glare, and enhance privacy, controllable via app or voice." },
   { icon: Cpu, title: "IoT-Based Monitoring", description: "Small sensors tracking equipment health, environmental conditions, air quality, and energy consumption around the clock with real-time alerts." },
   { icon: Gauge, title: "PLC & SCADA Systems", description: "Specialized industrial computer systems to automate and monitor complex manufacturing, water treatment, or large-scale utility processes.", span: "wide" },
   { icon: Home, title: "Smart Home Automation", description: "One-touch control of music, temperature, lighting, curtains, and security via a single app, voice command, or wall-mounted panel." },
-  { icon: Smartphone, title: "Central App Control", description: "Unified mobile and tablet interface to manage every connected device — create scenes, set schedules, and monitor from anywhere in the world." },
+  { icon: Smartphone, title: "Central App Control", description: "Unified mobile and tablet interface to manage every connected device: create scenes, set schedules, and monitor from anywhere in the world." },
   { icon: Speaker, title: "Voice Integration", description: "Seamless integration with Alexa, Google Home, and Apple HomeKit for hands-free control of your entire smart environment." },
   { icon: Tv, title: "Home Theatre Automation", description: "Cinematic experiences with automated projection screens, ambient lighting scenes, motorized seating, and immersive Dolby Atmos sound." },
   { icon: Wind, title: "Climate Zoning", description: "Individual room-by-room temperature and humidity control for maximum comfort and energy efficiency across large properties." },
@@ -43,9 +43,9 @@ const automationCategories: AutomationCategory[] = [
     icon: Home,
     label: "Smart Home",
     title: "Residential Smart Home Ecosystems",
-    description: "Complete IoT integration turning your home into an intelligent environment — from lighting and climate to security and entertainment, all unified under one ecosystem.",
+    description: "Complete IoT integration turning your home into an intelligent environment, from lighting and climate to security and entertainment, all unified under one ecosystem.",
     features: [
-      "Scene-based automation — 'Good Morning', 'Movie Night', 'Away' modes",
+      "Scene-based automation: 'Good Morning', 'Movie Night', 'Away' modes",
       "Motorized curtains, blinds, and projection screens with sun-tracking",
       "Multi-room audio with zone-independent streaming and intercom",
       "Smart locks, video doorbells, and panic button integration",
@@ -64,7 +64,7 @@ const automationCategories: AutomationCategory[] = [
     icon: Building2,
     label: "Commercial BMS",
     title: "Commercial Building Management Systems",
-    description: "Enterprise-grade BMS solutions for offices, malls, hotels, and hospitals — centralizing control of HVAC, lighting, fire safety, lifts, and access control into a single pane of glass.",
+    description: "Enterprise-grade BMS solutions for offices, malls, hotels, and hospitals, centralizing control of HVAC, lighting, fire safety, lifts, and access control into a single pane of glass.",
     features: [
       "Occupancy-based HVAC and lighting optimization across floors",
       "Fire alarm and suppression system integration with auto-evacuation protocols",
@@ -85,7 +85,7 @@ const automationCategories: AutomationCategory[] = [
     icon: Gauge,
     label: "Industrial SCADA",
     title: "PLC, SCADA & Industrial Automation",
-    description: "Mission-critical automation for manufacturing plants, water treatment facilities, and power distribution — real-time monitoring, process control, and safety interlocking.",
+    description: "Mission-critical automation for manufacturing plants, water treatment facilities, and power distribution: real-time monitoring, process control, and safety interlocking.",
     features: [
       "PLC programming (Siemens, Allen-Bradley, Schneider) for process control",
       "SCADA dashboards with real-time process visualization and alarm management",
@@ -112,41 +112,17 @@ function AutomationShowcase() {
   return (
     <section className="py-24 lg:py-32 bg-secondary/50" ref={ref}>
       <div className="section-container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-14"
-        >
-          <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">
-            SOLUTION DEEP-DIVE
-          </p>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-            The Intelligent Environment.
-          </h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            From luxury homes to industrial plants — explore how we engineer automation at every scale.
-          </p>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }} className="text-center mb-14">
+          <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">SOLUTION DEEP-DIVE</p>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">The Intelligent Environment.</h2>
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">From luxury homes to industrial plants, explore how we engineer automation at every scale.</p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, delay: 0.15 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
-        >
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.4, delay: 0.15 }} className="flex flex-wrap justify-center gap-3 mb-12">
           {automationCategories.map((cat) => {
             const isActive = cat.id === activeTab;
             return (
-              <button
-                key={cat.id}
-                onClick={() => setActiveTab(cat.id)}
-                className={`group flex items-center gap-2.5 px-5 py-3 rounded-xl border-2 text-sm font-display font-semibold transition-all duration-300 ${
-                  isActive
-                    ? "border-accent bg-accent/10 text-accent shadow-md shadow-accent/10"
-                    : "border-border bg-card text-muted-foreground hover:border-accent/30 hover:text-foreground"
-                }`}
-              >
+              <button key={cat.id} onClick={() => setActiveTab(cat.id)} className={`group flex items-center gap-2.5 px-5 py-3 rounded-xl border-2 text-sm font-display font-semibold transition-all duration-300 ${isActive ? "border-accent bg-accent/10 text-accent shadow-md shadow-accent/10" : "border-border bg-card text-muted-foreground hover:border-accent/30 hover:text-foreground"}`}>
                 <cat.icon className={`w-4 h-4 transition-colors ${isActive ? "text-accent" : "text-muted-foreground group-hover:text-foreground"}`} />
                 {cat.label}
               </button>
@@ -155,14 +131,7 @@ function AutomationShowcase() {
         </motion.div>
 
         <AnimatePresence mode="wait">
-          <motion.div
-            key={active.id}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.35 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"
-          >
+          <motion.div key={active.id} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.35 }} className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             <div className="space-y-6">
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-[11px] font-display font-semibold uppercase tracking-wider mb-4">
@@ -218,7 +187,7 @@ export default function Automation() {
         badge="AUTOMATION & CONTROL SYSTEMS"
         title="The Intelligent"
         highlight="Environment."
-        description="Using smart technology to connect building systems into one dashboard — save energy, increase comfort, and improve efficiency at every scale."
+        description="Using smart technology to connect building systems into one dashboard: save energy, increase comfort, and improve efficiency at every scale."
         stats={[
           { value: "500+", label: "Homes Automated" },
           { value: "40%", label: "Avg. Energy Savings" },
@@ -228,7 +197,7 @@ export default function Automation() {
       <BentoGrid
         label="CAPABILITIES"
         heading="Control Everything. Intelligently."
-        subheading="From smart homes to industrial SCADA systems — seamless automation that adapts to your environment."
+        subheading="From smart homes to industrial SCADA systems: seamless automation that adapts to your environment."
         items={benefits}
       />
       <AutomationShowcase />

@@ -109,7 +109,7 @@ export default function Portfolio() {
         badge="Our Work"
         title="Projects That Speak"
         highlight="For Themselves."
-        description="From enterprise-grade surveillance networks to bespoke software platforms — every project is a testament to our engineering DNA."
+        description="From enterprise-grade surveillance networks to bespoke software platforms, every project is a testament to our engineering DNA."
         stats={[
           { value: "9000+", label: "Projects Delivered" },
           { value: "12", label: "Service Verticals" },
