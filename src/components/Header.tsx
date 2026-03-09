@@ -205,6 +205,8 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <ContactModal isOpen={contactModalOpen} onOpenChange={setContactModalOpen} />
     </>
   );
 }
