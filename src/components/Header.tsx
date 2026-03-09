@@ -3,8 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Shield, Code, ShieldCheck, Zap, Network, Monitor,
-  Sun as SunIcon, Palette, Headphones, Menu, X, ChevronDown,
-  Moon, SunMedium, ArrowRight
+  Sun as SunIcon, Palette, Headphones, TrendingUp,
+  Menu, X, ChevronDown, Moon, SunMedium, ArrowRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ContactModal } from "@/components/ContactModal";
