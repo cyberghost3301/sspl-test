@@ -168,9 +168,9 @@ function SolarROIShowcase() {
                   transition={{ duration: 0.4, delay: 0.2 }}
                   className="group p-6 rounded-2xl border-2 border-border bg-gradient-to-br from-card to-secondary/30 hover:border-accent/30 hover:shadow-xl hover:shadow-accent/5 transition-all duration-300"
                 >
-                  <TrendingDown className="w-8 h-8 text-green-500 mb-3" />
+                  <TrendingDown className="w-8 h-8 text-accent mb-3" />
                   <p className="text-xs text-muted-foreground font-display uppercase tracking-wider mb-1">Annual Savings</p>
-                  <p className="font-display text-2xl font-bold text-green-500">{active.savings}</p>
+                  <p className="font-display text-2xl font-bold text-accent">{active.savings}</p>
                   <p className="text-xs text-muted-foreground mt-1">Avg. electricity cost</p>
                 </motion.div>
 
