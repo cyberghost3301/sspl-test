@@ -57,6 +57,7 @@ export function ContactForm() {
       service: "",
       techStack: "",
       squareFootage: "",
+      seekingFunding: "",
       message: "",
     },
   });
