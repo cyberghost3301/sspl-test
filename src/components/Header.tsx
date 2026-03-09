@@ -20,7 +20,7 @@ const services = [
   { icon: SunIcon, title: "Solar Power Systems", desc: "Clean energy solutions", href: "/services/solar" },
   { icon: Headphones, title: "AV Studio", desc: "Professional audiovisual services", href: "/services/av-studio" },
   { icon: Palette, title: "Interior Design", desc: "Modern workspace design", href: "/services/interior" },
-  { icon: TrendingUp, title: "Lifecycle & Venture Consulting", desc: "Strategic growth and funding advisory", href: "/services/venture-consulting" },
+  { icon: TrendingUp, title: "Lifecycle & Venture Consulting", desc: "Strategic growth and funding advisory", href: "/services/lifecycle-consulting" },
 ];
 
 const navLinks = [
