@@ -8,6 +8,7 @@ const footerLinks = {
     { label: "About Us", href: "/about" },
     { label: "Portfolio", href: "/portfolio" },
     { label: "Testimonials", href: "/testimonials" },
+    { label: "The Collective", href: "/the-collective" },
     { label: "Contact Us", href: "/contact" },
   ],
   Governance: [
