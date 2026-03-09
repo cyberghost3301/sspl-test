@@ -35,6 +35,7 @@ export default function Header() {
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dark, setDark] = useState(false);
+  const [contactModalOpen, setContactModalOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
