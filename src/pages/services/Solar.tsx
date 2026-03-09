@@ -205,9 +205,9 @@ function SolarROIShowcase() {
                 transition={{ duration: 0.4, delay: 0.5 }}
                 className="pt-4"
               >
-                <div className="p-5 rounded-xl bg-gradient-to-r from-accent/10 to-green-500/10 border border-accent/20">
+                <div className="p-5 rounded-xl bg-gradient-to-r from-accent/10 to-accent/5 border border-accent/20">
                   <div className="flex items-start gap-3">
-                    <Leaf className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
+                    <Leaf className="w-5 h-5 text-accent mt-0.5 shrink-0" />
                     <div>
                       <p className="font-display font-semibold text-foreground mb-1">Environmental Impact</p>
                       <p className="text-sm text-muted-foreground">Equivalent to planting 200+ trees annually. Reduce your carbon footprint by 80%.</p>
