@@ -1,4 +1,5 @@
 import ServiceHero from "@/components/services/ServiceHero";
+import TeamCulture from "@/components/about/TeamCulture";
 import TeamDirectory from "@/components/about/TeamDirectory";
 import CTASection from "@/components/CTASection";
 
@@ -16,6 +17,7 @@ export default function Team() {
           { value: "4", label: "Core Verticals" },
         ]}
       />
+      <TeamCulture />
       <TeamDirectory />
       <CTASection />
     </>
