@@ -50,7 +50,31 @@ const testimonials = [
     position: "Principal Architect",
     business: "Reddy & Associates",
     content: "Integrating smart home features into our designs became effortless with SSPL. Their execution is flawless.",
-  }
+  },
+  {
+    name: "Arjun Das",
+    position: "Operations Manager",
+    business: "EcoPower Systems",
+    content: "Their solar power solutions are efficient and cost-effective. We saved significantly on our energy bills.",
+  },
+  {
+    name: "Kavita Singh",
+    position: "Marketing Head",
+    business: "Brand Junction",
+    content: "Digital marketing services from SSPL helped us double our online presence in just six months.",
+  },
+  {
+    name: "Rohan Joshi",
+    position: "Owner",
+    business: "Joshi Automotives",
+    content: "Prompt service and high-quality hardware. Their computer solutions are the best in the city.",
+  },
+  {
+    name: "Deepika Rao",
+    position: "Project Manager",
+    business: "Innova Soft",
+    content: "The team at SSPL is highly skilled and very responsive. They handled our complex software requirements with ease.",
+  },
 ];
 
 export default function Testimonials() {
@@ -65,12 +89,21 @@ export default function Testimonials() {
         </p>
       </div>
 
+      <div className="text-center max-w-3xl mx-auto mb-12">
+        <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+          Trust from Industry Leaders
+        </h2>
+        <p className="text-muted-foreground">
+          We pride ourselves on delivering excellence across all our service domains. Our success is measured by the satisfaction and growth of our clients.
+        </p>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {testimonials.map((item, index) => (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
+            transition={{ duration: 0.4, delay: index * 0.08 }}
             key={index}
             className="bg-card border border-border p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow relative mt-8"
           >
