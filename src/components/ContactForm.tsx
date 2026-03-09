@@ -26,6 +26,7 @@ const formSchema = z.object({
   service: z.string().min(1, "Please select a service"),
   techStack: z.string().optional(),
   squareFootage: z.string().optional(),
+  seekingFunding: z.string().optional(),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
@@ -38,6 +39,7 @@ const services = [
   "IT Consulting",
   "Solar Solutions",
   "AV Studio",
+  "Lifecycle & Venture Consulting",
 ];
 
 export function ContactForm() {
@@ -55,6 +57,7 @@ export function ContactForm() {
       service: "",
       techStack: "",
       squareFootage: "",
+      seekingFunding: "",
       message: "",
     },
   });
@@ -75,6 +78,9 @@ export function ContactForm() {
         data.squareFootage
       ) {
         formattedMessage += `[Property Square Footage: ${data.squareFootage} sq ft]\n\n`;
+      }
+      if (selectedService === "Lifecycle & Venture Consulting" && data.seekingFunding) {
+        formattedMessage += `[Seeking Private Funding/VC Investment: ${data.seekingFunding}]\n\n`;
       }
       formattedMessage += data.message;
 
@@ -318,6 +324,34 @@ export function ContactForm() {
                         <FormControl>
                           <Input type="number" placeholder="e.g. 2500" {...field} />
                         </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                )}
+
+                {selectedService === "Lifecycle & Venture Consulting" && (
+                  <FormField
+                    control={form.control}
+                    name="seekingFunding"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <FormLabel>Are you currently seeking private funding / VC investment?</FormLabel>
+                        <div className="flex gap-3">
+                          {["Yes", "No"].map((option) => (
+                            <div
+                              key={option}
+                              onClick={() => field.onChange(option)}
+                              className={`flex-1 text-center py-3 px-4 rounded-xl border-2 cursor-pointer transition-all font-medium ${
+                                field.value === option
+                                  ? "border-primary bg-primary/5 text-primary"
+                                  : "border-muted hover:border-primary/50 text-foreground"
+                              }`}
+                            >
+                              {option}
+                            </div>
+                          ))}
+                        </div>
                         <FormMessage />
                       </FormItem>
                     )}

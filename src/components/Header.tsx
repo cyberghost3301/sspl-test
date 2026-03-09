@@ -3,8 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Shield, Code, ShieldCheck, Zap, Network, Monitor,
-  Sun as SunIcon, Palette, Headphones, Menu, X, ChevronDown,
-  Moon, SunMedium, ArrowRight
+  Sun as SunIcon, Palette, Headphones, TrendingUp,
+  Menu, X, ChevronDown, Moon, SunMedium, ArrowRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ContactModal } from "@/components/ContactModal";
@@ -20,6 +20,7 @@ const services = [
   { icon: SunIcon, title: "Solar Power Systems", desc: "Clean energy solutions", href: "/services/solar" },
   { icon: Headphones, title: "AV Studio", desc: "Professional audiovisual services", href: "/services/av-studio" },
   { icon: Palette, title: "Interior Design", desc: "Modern workspace design", href: "/services/interior" },
+  { icon: TrendingUp, title: "Lifecycle & Venture Consulting", desc: "Strategic growth and funding advisory", href: "/services/venture-consulting" },
 ];
 
 const navLinks = [
@@ -56,7 +57,7 @@ export default function Header() {
   }, [dark]);
 
   // Pages with dark hero backgrounds where nav text needs to be light when not scrolled
-  const hasDarkHero = ["/", "/about", "/services/surveillance", "/services/software", "/services/consulting"].includes(location.pathname);
+  const hasDarkHero = ["/", "/about", "/services/surveillance", "/services/software", "/services/consulting", "/portfolio", "/testimonials", "/collective", "/contact"].includes(location.pathname);
   const isOverDark = hasDarkHero && !scrolled;
 
   // Dynamic text classes based on whether we're over the dark hero
