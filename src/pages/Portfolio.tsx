@@ -139,7 +139,7 @@ export default function Portfolio() {
                     <ArrowRight className="text-white h-5 w-5 opacity-0 group-hover:opacity-100 transition-opacity delay-100" />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                  <p className="text-gray-300 text-sm line-clamp-2">{project.description}</p>
+                  <p className="text-white/80 text-sm line-clamp-2">{project.description}</p>
                 </div>
               </div>
             </motion.div>
