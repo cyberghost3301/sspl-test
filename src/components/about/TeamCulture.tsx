@@ -16,7 +16,7 @@ const philosophyPillars = [
   {
     icon: Compass,
     title: "Domain-First Thinking",
-    description: "We don't just write code — we understand the industry context before the first line ships.",
+    description: "We don't just write code. We understand the industry context before the first line ships.",
   },
   {
     icon: Handshake,
