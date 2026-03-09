@@ -12,6 +12,10 @@ import Surveillance from "./pages/services/Surveillance";
 import Software from "./pages/services/Software";
 import Consulting from "./pages/services/Consulting";
 import LifecycleConsulting from "./pages/services/LifecycleConsulting";
+import Automation from "./pages/services/Automation";
+import Networking from "./pages/services/Networking";
+import Solar from "./pages/services/Solar";
+import AVStudio from "./pages/services/AVStudio";
 import Testimonials from "./pages/Testimonials";
 import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
@@ -36,6 +40,10 @@ const App = () => (
             <Route path="/services/software" element={<Software />} />
             <Route path="/services/consulting" element={<Consulting />} />
             <Route path="/services/lifecycle-consulting" element={<LifecycleConsulting />} />
+            <Route path="/services/automation" element={<Automation />} />
+            <Route path="/services/networking" element={<Networking />} />
+            <Route path="/services/solar" element={<Solar />} />
+            <Route path="/services/av-studio" element={<AVStudio />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
