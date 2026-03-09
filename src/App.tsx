@@ -46,6 +46,8 @@ const App = () => (
             <Route path="/services/networking" element={<Networking />} />
             <Route path="/services/solar" element={<Solar />} />
             <Route path="/services/av-studio" element={<AVStudio />} />
+            <Route path="/services/computers" element={<Computers />} />
+            <Route path="/services/interior" element={<Interior />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
