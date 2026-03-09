@@ -6,7 +6,7 @@ const philosophyPillars = [
   {
     icon: Flame,
     title: "Ownership Mentality",
-    description: "Every member treats every project as their own — no hand-offs, no finger-pointing.",
+    description: "Every member treats every project as their own. No hand-offs, no finger-pointing.",
   },
   {
     icon: Eye,
