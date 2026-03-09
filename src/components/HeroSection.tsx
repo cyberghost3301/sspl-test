@@ -25,7 +25,7 @@ export default function HeroSection() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 mb-8"
           >
             <Sparkles className="w-3.5 h-3.5 text-accent" />
-            <span className="text-xs font-medium text-accent tracking-wide">MULTI-DISCIPLINARY TECHNOLOGY FIRM</span>
+            <span className="text-xs font-medium text-accent tracking-wide">MULTI-DISCIPLINARY TECHNOLOGY COMPANY</span>
           </motion.div>
 
           <motion.h1
