@@ -290,7 +290,7 @@ export default function Solar() {
       <BentoGrid
         label="CAPABILITIES"
         heading="Clean Energy. Smart Power."
-        subheading="From residential rooftop panels to industrial power conditioning — green energy solutions that pay for themselves."
+        subheading="From residential rooftop panels to industrial power conditioning, green energy solutions that pay for themselves."
         items={benefits}
       />
       <SolarROIShowcase />
