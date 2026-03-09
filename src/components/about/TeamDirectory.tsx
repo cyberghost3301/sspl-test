@@ -277,12 +277,12 @@ function SupportTile({
       initial={{ opacity: 0, scale: 0.95 }}
       animate={inView ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.3, delay: 0.1 + index * 0.04 }}
-      className="group text-center py-3 px-3 rounded-lg border border-border bg-card hover:border-accent/30 hover:shadow-sm transition-all duration-200"
+      className="group text-center py-4 px-4 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-sm transition-all duration-200"
     >
-      <p className="font-display text-xs font-semibold text-foreground leading-tight">
-        {name}
+      <p className="font-display text-sm font-semibold text-foreground leading-tight">
+        {name.split(" ")[0]}
       </p>
-      <p className="text-[10px] text-muted-foreground mt-0.5">{role}</p>
+      <p className="text-[11px] text-muted-foreground mt-1">{role}</p>
     </motion.div>
   );
 }
