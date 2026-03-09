@@ -7,6 +7,7 @@ import {
   Moon, SunMedium, ArrowRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ContactModal } from "@/components/ContactModal";
 import seltLogo from "@/assets/selt.png";
 
 const services = [
