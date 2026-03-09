@@ -63,11 +63,11 @@ function SolarROIShowcase() {
   const Icon = active.icon;
 
   return (
-    <section className="relative py-32 lg:py-40 overflow-hidden bg-gradient-to-br from-amber-500/5 via-background to-green-500/5" ref={ref}>
+    <section className="relative py-32 lg:py-40 overflow-hidden bg-gradient-to-br from-accent/5 via-background to-accent/5" ref={ref}>
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-green-500 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
       </div>
 
       <div className="section-container relative z-10">
