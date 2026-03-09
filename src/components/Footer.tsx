@@ -63,6 +63,30 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+
+          {/* Contact Column */}
+          <div className="lg:col-span-4">
+            <p className="font-display font-semibold text-sm mb-4">Contact Us</p>
+            <div className="space-y-4 text-sm" style={{ color: "hsl(var(--on-dark-muted))" }}>
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+                <div>
+                  <p className="font-medium text-white mb-1">Head Office</p>
+                  <p>41/68, Kali Niwas, Narhi,<br />Hazratganj, Lucknow,<br />Uttar Pradesh, India, 226001</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="w-4 h-4 shrink-0" />
+                <p>+91 9250974145</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="w-4 h-4 shrink-0" />
+                <div className="flex flex-col">
+                  <a href="mailto:info@spirecrest.in" className="hover:text-accent transition-colors">info@spirecrest.in</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Contact strip */}
