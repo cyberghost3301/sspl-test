@@ -330,6 +330,34 @@ export function ContactForm() {
                   />
                 )}
 
+                {selectedService === "Lifecycle & Venture Consulting" && (
+                  <FormField
+                    control={form.control}
+                    name="seekingFunding"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <FormLabel>Are you currently seeking private funding / VC investment?</FormLabel>
+                        <div className="flex gap-3">
+                          {["Yes", "No"].map((option) => (
+                            <div
+                              key={option}
+                              onClick={() => field.onChange(option)}
+                              className={`flex-1 text-center py-3 px-4 rounded-xl border-2 cursor-pointer transition-all font-medium ${
+                                field.value === option
+                                  ? "border-primary bg-primary/5 text-primary"
+                                  : "border-muted hover:border-primary/50 text-foreground"
+                              }`}
+                            >
+                              {option}
+                            </div>
+                          ))}
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                )}
+
                 <FormField
                   control={form.control}
                   name="message"
