@@ -14,7 +14,7 @@ interface ServiceHeroProps {
 
 export default function ServiceHero({ badge, title, highlight, description, stats }: ServiceHeroProps) {
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-hero-gradient">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-gradient">
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
