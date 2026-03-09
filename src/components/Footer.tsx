@@ -90,12 +90,7 @@ export default function Footer() {
         </div>
 
         {/* Contact strip */}
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="flex flex-wrap gap-6 text-sm" style={{ color: "hsl(var(--on-dark-muted))" }}>
-            <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5" /> contact@spirecrest.in</span>
-            <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5" /> +91 XXXXX XXXXX</span>
-            <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" /> India</span>
-          </div>
+        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs" style={{ color: "hsl(var(--on-dark-muted) / 0.6)" }}>
             © {new Date().getFullYear()} Spirecrest Solutions Pvt. Ltd. All rights reserved.
           </p>

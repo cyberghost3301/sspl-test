@@ -63,7 +63,11 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium mb-1">Email</h4>
-                  <p className="text-muted-foreground">hello@spirecrest.com</p>
+                  <div className="text-muted-foreground flex flex-col gap-1 text-sm">
+                    <a href="mailto:info@spirecrest.in" className="hover:text-primary">info@spirecrest.in</a>
+                    <a href="mailto:sales@spirecrest.in" className="hover:text-primary">sales@spirecrest.in</a>
+                    <a href="mailto:people@spirecrest.in" className="hover:text-primary">people@spirecrest.in</a>
+                  </div>
                 </div>
               </div>
 

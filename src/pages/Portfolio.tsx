@@ -152,6 +152,42 @@ export default function Portfolio() {
           No projects found in this category.
         </div>
       )}
+
+      {/* Legacy Projects Section */}
+      <div className="mt-32 pt-16 border-t border-border">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <h2 className="font-display text-3xl font-bold text-foreground mb-4">
+            Delivering Excellence Through Innovation
+          </h2>
+          <p className="text-muted-foreground">
+            From large-scale infrastructure projects to bespoke software solutions, we take pride in every challenge we overcome.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { title: "Smart City Surveillance", category: "Security", desc: "Integrated AI-powered surveillance system for a major metropolitan area, improving incident response times by 40%." },
+            { title: "E-Commerce Platform", category: "Software Development", desc: "Custom-built, scalable e-commerce solution with integrated payment gateways and real-time inventory tracking." },
+            { title: "Corporate HQ Automation", category: "Smart Automation", desc: "Full-scale building automation for a 10-story corporate headquarters, optimizing energy consumption." },
+            { title: "Cloud Migration Strategy", category: "Networking", desc: "Successful migration of legacy infrastructure to a hybrid cloud environment for a financial services firm." },
+            { title: "Hospitality Tech Overhaul", category: "IT Consulting", desc: "Comprehensive IT strategy and implementation for a luxury hotel chain, enhancing guest digital experience." },
+            { title: "Solar Power Integration", category: "Solar Power", desc: "Off-grid solar power solution for a remote research facility, providing 100% sustainable energy." },
+            { title: "Cybersecurity Audit", category: "Security", desc: "Comprehensive vulnerability assessment and penetration testing for a regional banking institution." },
+            { title: "Retail Inventory AI", category: "Software Development", desc: "AI-driven inventory forecasting tool for a large retail chain, reducing waste by 25%." },
+            { title: "Smart Home Ecosystem", category: "Smart Automation", desc: "Complete IoT integration for a luxury residential complex with 50+ smart devices per unit." }
+          ].map((legacy, idx) => (
+            <div key={idx} className="bg-card border border-border rounded-xl p-6 flex flex-col gap-4 hover:shadow-md transition-all">
+              <div>
+                <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded mb-3 inline-block">
+                  {legacy.category}
+                </span>
+                <h4 className="text-lg font-bold text-foreground mb-2">{legacy.title}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{legacy.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
