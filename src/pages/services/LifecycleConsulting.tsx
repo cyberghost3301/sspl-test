@@ -5,6 +5,7 @@ import {
   Wrench, Package, CreditCard, CalendarCheck, GraduationCap,
   ChevronDown, Briefcase, Gem,
 } from "lucide-react";
+import SEO from "@/components/SEO";
 import ServiceHero from "@/components/services/ServiceHero";
 import BentoGrid, { BentoItem } from "@/components/services/BentoGrid";
 import CTASection from "@/components/CTASection";
