@@ -8,7 +8,7 @@ import {
   Linkedin,
 } from "lucide-react";
 
-/* ───────── Tier 1 — C-Suite / Leadership ───────── */
+/* ───────── Tier 1 - C-Suite / Leadership ───────── */
 const cSuite = [
   {
     name: "Aum Chatterjee",
@@ -36,7 +36,7 @@ const cSuite = [
   },
 ];
 
-/* ───────── Tier 2 — Management & Operations ───────── */
+/* ───────── Tier 2 - Management & Operations ───────── */
 const managementTeam = [
   {
     name: "Deshesh Agnihotri",
@@ -87,7 +87,7 @@ const managementTeam = [
   },
 ];
 
-/* ───────── Tier 3 — Development ───────── */
+/* ───────── Tier 3 - Development ───────── */
 const developmentTeam = [
   { name: "Vaibhavi Dhenge", role: "Jr. Developer" },
   { name: "Isha Gupta", role: "Market Advisor" },
@@ -101,7 +101,7 @@ const developmentTeam = [
   { name: "Kavya Saini", role: "DS / AI-ML" },
 ];
 
-/* ───────── Tier 4 — Support ───────── */
+/* ───────── Tier 4 - Support ───────── */
 const supportTeam = [
   { name: "Arjun Mehta", role: "Cloud Architect" },
   { name: "Priya Sharma", role: "Cybersecurity Lead" },
@@ -171,7 +171,7 @@ function CSuiteCard({ member, index }: { member: (typeof cSuite)[0]; index: numb
   );
 }
 
-/* ═══════════ Management Card (Tier 2 — with bios for all) ═══════════ */
+/* ═══════════ Management Card (Tier 2 - with bios for all) ═══════════ */
 function ManagementCard({
   member,
   index,
@@ -226,7 +226,7 @@ function ManagementCard({
   );
 }
 
-/* ═══════════ Dev Tile (Tier 3 — avatar left, name+role right) ═══════════ */
+/* ═══════════ Dev Tile (Tier 3 - avatar left, name+role right) ═══════════ */
 function DevTile({
   name,
   role,
@@ -260,7 +260,7 @@ function DevTile({
   );
 }
 
-/* ═══════════ Support Tile (Tier 4 — name + role only, no avatar) ═══════════ */
+/* ═══════════ Support Tile (Tier 4 - name + role only, no avatar) ═══════════ */
 function SupportTile({
   name,
   role,
