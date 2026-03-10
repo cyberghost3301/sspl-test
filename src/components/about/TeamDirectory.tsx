@@ -127,18 +127,18 @@ const developmentTeam = [
 
 /* ───────── Tier 4 - Support ───────── */
 const supportTeam = [
-  { name: "Arjun Mehta", role: "Cloud Architect" },
-  { name: "Priya Sharma", role: "Cybersecurity Lead" },
-  { name: "Rohan Kapoor", role: "Full-Stack Engineer" },
-  { name: "Sneha Patel", role: "UI/UX Designer" },
-  { name: "Vikram Singh", role: "Network Engineer" },
-  { name: "Ananya Reddy", role: "Data Analyst" },
-  { name: "Karan Joshi", role: "IoT Specialist" },
-  { name: "Meera Nair", role: "Project Manager" },
-  { name: "Rahul Verma", role: "DevOps Engineer" },
-  { name: "Divya Gupta", role: "QA Engineer" },
-  { name: "Amit Tiwari", role: "Solar Systems Lead" },
-  { name: "Neha Agarwal", role: "AV Solutions Expert" },
+  { name: "Arjun Mehta", role: "Cloud Architect", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Priya Sharma", role: "Cybersecurity Lead", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Rohan Kapoor", role: "Full-Stack Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Sneha Patel", role: "UI/UX Designer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Vikram Singh", role: "Network Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Ananya Reddy", role: "Data Analyst", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Karan Joshi", role: "IoT Specialist", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Meera Nair", role: "Project Manager", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Rahul Verma", role: "DevOps Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Divya Gupta", role: "QA Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Amit Tiwari", role: "Solar Systems Lead", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Neha Agarwal", role: "AV Solutions Expert", imageUrl: "/placeholder.svg", linkedin: "#" },
 ];
 
 function getInitials(name: string) {
