@@ -235,10 +235,14 @@ function ManagementCard({
         </div>
       )}
 
-      <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-4 group-hover:bg-accent/10 transition-colors">
-        <span className="font-display text-base font-bold text-foreground/55 group-hover:text-accent transition-colors">
-          {getInitials(member.name)}
-        </span>
+      <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-4 group-hover:bg-accent/10 transition-colors overflow-hidden">
+        {member.imageUrl && member.imageUrl !== "/placeholder.svg" ? (
+          <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover" />
+        ) : (
+          <span className="font-display text-base font-bold text-foreground/55 group-hover:text-accent transition-colors">
+            {getInitials(member.name)}
+          </span>
+        )}
       </div>
 
       <h4 className="font-display text-lg font-bold text-foreground mb-0.5">
@@ -252,10 +256,17 @@ function ManagementCard({
       </p>
 
       <div className="mt-4 pt-3 border-t border-border">
-        <button className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
-          <Linkedin className="w-3.5 h-3.5" />
-          Connect
-        </button>
+        {member.linkedin ? (
+          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
+            <Linkedin className="w-3.5 h-3.5" />
+            Connect
+          </a>
+        ) : (
+          <button className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
+            <Linkedin className="w-3.5 h-3.5" />
+            Connect
+          </button>
+        )}
       </div>
     </motion.div>
   );
