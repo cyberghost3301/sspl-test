@@ -171,10 +171,14 @@ function CSuiteCard({ member, index }: { member: (typeof cSuite)[0]; index: numb
         </span>
       </div>
 
-      <div className="w-24 h-24 rounded-2xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors">
-        <span className="font-display text-2xl font-bold text-foreground/60 group-hover:text-accent transition-colors">
-          {member.initials}
-        </span>
+      <div className="w-24 h-24 rounded-2xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors overflow-hidden">
+        {member.imageUrl && member.imageUrl !== "/placeholder.svg" ? (
+          <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover" />
+        ) : (
+          <span className="font-display text-2xl font-bold text-foreground/60 group-hover:text-accent transition-colors">
+            {member.initials}
+          </span>
+        )}
       </div>
 
       <h3 className="font-display text-2xl font-bold text-foreground mb-0.5">
@@ -186,10 +190,17 @@ function CSuiteCard({ member, index }: { member: (typeof cSuite)[0]; index: numb
       <p className="text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
 
       <div className="mt-5 pt-4 border-t border-border">
-        <button className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
-          <Linkedin className="w-3.5 h-3.5" />
-          Connect
-        </button>
+        {member.linkedin ? (
+          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
+            <Linkedin className="w-3.5 h-3.5" />
+            Connect
+          </a>
+        ) : (
+          <button className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
+            <Linkedin className="w-3.5 h-3.5" />
+            Connect
+          </button>
+        )}
       </div>
     </motion.div>
   );
