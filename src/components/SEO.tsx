@@ -7,7 +7,7 @@ interface SEOProps {
 }
 
 export default function SEO({ title, description, path }: SEOProps) {
-  const canonicalUrl = `https://spirecrestsolutions.com${path}`;
+  const canonicalUrl = `https://spirecrest.in${path}`;
 
   return (
     <Helmet>

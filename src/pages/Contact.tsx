@@ -13,7 +13,8 @@ export default function Contact() {
         stats={[
           { value: "24h", label: "Response Time" },
           { value: "2", label: "Office Locations" },
-          { value: "19+", label: "Expert Partners" },
+          { value: "10+", label: "Remote Locations" },
+          { value: "200+", label: "Channel Partners" },
         ]}
       />
 
