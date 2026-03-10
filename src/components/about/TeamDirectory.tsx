@@ -17,6 +17,8 @@ const cSuite = [
     domain: "Technology",
     bio: "Leads Spirecrest's software engineering and digital product verticals, architecting scalable web platforms and enterprise-grade applications that power modern businesses.",
     initials: "AC",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
   {
     name: "Shraddha Dwivedi",
@@ -25,6 +27,8 @@ const cSuite = [
     domain: "Operations",
     bio: "Orchestrates end-to-end project delivery and operational excellence across all verticals, ensuring every engagement meets Spirecrest's exacting quality standards.",
     initials: "SD",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
   {
     name: "Chesta Gangwani",
@@ -33,6 +37,8 @@ const cSuite = [
     domain: "Finance",
     bio: "Steers Spirecrest's financial strategy, budgeting, and fiscal governance, driving sustainable growth while maintaining full regulatory compliance.",
     initials: "CG",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
 ];
 
@@ -44,77 +50,95 @@ const managementTeam = [
     domain: "Management",
     domainIcon: TrendingUp,
     bio: "Drives organisational strategy, resource planning, and cross-vertical coordination to keep Spirecrest operating at peak efficiency.",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
   {
     name: "Er. Saurabh",
     role: "Strategic Advisor",
     bio: "Provides high-level technical counsel on infrastructure decisions, aligning engineering roadmaps with long-term business objectives.",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
   {
     name: "Ar. Laraib",
     role: "Consulting Architect",
     bio: "Bridges architectural design and spatial planning expertise, guiding interior and structural projects from concept through execution.",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
   {
     name: "Shristi",
     role: "Growth Facilitator",
     bio: "Identifies and accelerates new market opportunities, building strategic partnerships that fuel Spirecrest's expansion across verticals.",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
   {
     name: "Er. Anshuman",
     role: "Sr. Project Catalyst",
     bio: "Manages complex, multi-disciplinary projects end-to-end, ensuring timelines, budgets, and deliverables stay on track.",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
   {
     name: "Prof. Rahul",
     role: "Business Advisor",
     bio: "Brings academic rigour and industry insight to shape Spirecrest's go-to-market strategies and client engagement frameworks.",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
   {
     name: "Er. Shashank",
     role: "Sr. Project Head",
     bio: "Leads flagship infrastructure and technology rollouts, coordinating engineering teams to deliver enterprise-grade solutions on schedule.",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
   {
     name: "Antara",
     role: "PR & Outreach",
     bio: "Crafts Spirecrest's public narrative, managing media relations, brand communications, and stakeholder outreach campaigns.",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
   {
     name: "Melody Cantillo",
     role: "Strategic Outreach Partner",
     bio: "Bridges Spirecrest to international markets, driving global partnership development and cross-border business initiatives.",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
 ];
 
 /* ───────── Tier 3 - Development ───────── */
 const developmentTeam = [
-  { name: "Vaibhavi Dhenge", role: "Jr. Developer" },
-  { name: "Isha Gupta", role: "Market Advisor" },
-  { name: "Er. Aakash", role: "External Consultant" },
-  { name: "Sanchita Nath", role: "Dev. Coordinator" },
-  { name: "Astha Dwivedi", role: "BDE" },
-  { name: "Krish Sheta", role: "Jr. Developer" },
-  { name: "Neeraj Tetari", role: "Jr. Developer" },
-  { name: "Anand Verma", role: "Jr. Developer" },
-  { name: "Saloni Ojha", role: "Backend Intern" },
-  { name: "Kavya Saini", role: "DS / AI-ML" },
+  { name: "Vaibhavi Dhenge", role: "Jr. Developer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Isha Gupta", role: "Market Advisor", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Er. Aakash", role: "External Consultant", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Sanchita Nath", role: "Dev. Coordinator", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Astha Dwivedi", role: "BDE", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Krish Sheta", role: "Jr. Developer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Neeraj Tetari", role: "Jr. Developer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Anand Verma", role: "Jr. Developer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Saloni Ojha", role: "Backend Intern", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Kavya Saini", role: "DS / AI-ML", imageUrl: "/placeholder.svg", linkedin: "#" },
 ];
 
 /* ───────── Tier 4 - Support ───────── */
 const supportTeam = [
-  { name: "Arjun Mehta", role: "Cloud Architect" },
-  { name: "Priya Sharma", role: "Cybersecurity Lead" },
-  { name: "Rohan Kapoor", role: "Full-Stack Engineer" },
-  { name: "Sneha Patel", role: "UI/UX Designer" },
-  { name: "Vikram Singh", role: "Network Engineer" },
-  { name: "Ananya Reddy", role: "Data Analyst" },
-  { name: "Karan Joshi", role: "IoT Specialist" },
-  { name: "Meera Nair", role: "Project Manager" },
-  { name: "Rahul Verma", role: "DevOps Engineer" },
-  { name: "Divya Gupta", role: "QA Engineer" },
-  { name: "Amit Tiwari", role: "Solar Systems Lead" },
-  { name: "Neha Agarwal", role: "AV Solutions Expert" },
+  { name: "Arjun Mehta", role: "Cloud Architect", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Priya Sharma", role: "Cybersecurity Lead", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Rohan Kapoor", role: "Full-Stack Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Sneha Patel", role: "UI/UX Designer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Vikram Singh", role: "Network Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Ananya Reddy", role: "Data Analyst", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Karan Joshi", role: "IoT Specialist", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Meera Nair", role: "Project Manager", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Rahul Verma", role: "DevOps Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Divya Gupta", role: "QA Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Amit Tiwari", role: "Solar Systems Lead", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Neha Agarwal", role: "AV Solutions Expert", imageUrl: "/placeholder.svg", linkedin: "#" },
 ];
 
 function getInitials(name: string) {
@@ -147,10 +171,14 @@ function CSuiteCard({ member, index }: { member: (typeof cSuite)[0]; index: numb
         </span>
       </div>
 
-      <div className="w-24 h-24 rounded-2xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors">
-        <span className="font-display text-2xl font-bold text-foreground/60 group-hover:text-accent transition-colors">
-          {member.initials}
-        </span>
+      <div className="w-24 h-24 rounded-2xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors overflow-hidden">
+        {member.imageUrl && member.imageUrl !== "/placeholder.svg" ? (
+          <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover" />
+        ) : (
+          <span className="font-display text-2xl font-bold text-foreground/60 group-hover:text-accent transition-colors">
+            {member.initials}
+          </span>
+        )}
       </div>
 
       <h3 className="font-display text-2xl font-bold text-foreground mb-0.5">
@@ -162,10 +190,17 @@ function CSuiteCard({ member, index }: { member: (typeof cSuite)[0]; index: numb
       <p className="text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
 
       <div className="mt-5 pt-4 border-t border-border">
-        <button className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
-          <Linkedin className="w-3.5 h-3.5" />
-          Connect
-        </button>
+        {member.linkedin ? (
+          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
+            <Linkedin className="w-3.5 h-3.5" />
+            Connect
+          </a>
+        ) : (
+          <button className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
+            <Linkedin className="w-3.5 h-3.5" />
+            Connect
+          </button>
+        )}
       </div>
     </motion.div>
   );
@@ -200,10 +235,14 @@ function ManagementCard({
         </div>
       )}
 
-      <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-4 group-hover:bg-accent/10 transition-colors">
-        <span className="font-display text-base font-bold text-foreground/55 group-hover:text-accent transition-colors">
-          {getInitials(member.name)}
-        </span>
+      <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-4 group-hover:bg-accent/10 transition-colors overflow-hidden">
+        {member.imageUrl && member.imageUrl !== "/placeholder.svg" ? (
+          <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover" />
+        ) : (
+          <span className="font-display text-base font-bold text-foreground/55 group-hover:text-accent transition-colors">
+            {getInitials(member.name)}
+          </span>
+        )}
       </div>
 
       <h4 className="font-display text-lg font-bold text-foreground mb-0.5">
@@ -217,10 +256,17 @@ function ManagementCard({
       </p>
 
       <div className="mt-4 pt-3 border-t border-border">
-        <button className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
-          <Linkedin className="w-3.5 h-3.5" />
-          Connect
-        </button>
+        {member.linkedin ? (
+          <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
+            <Linkedin className="w-3.5 h-3.5" />
+            Connect
+          </a>
+        ) : (
+          <button className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors">
+            <Linkedin className="w-3.5 h-3.5" />
+            Connect
+          </button>
+        )}
       </div>
     </motion.div>
   );
@@ -230,11 +276,15 @@ function ManagementCard({
 function DevTile({
   name,
   role,
+  imageUrl,
+  linkedin,
   index,
   inView,
 }: {
   name: string;
   role: string;
+  imageUrl?: string;
+  linkedin?: string;
   index: number;
   inView: boolean;
 }) {
@@ -245,17 +295,26 @@ function DevTile({
       transition={{ duration: 0.3, delay: 0.1 + index * 0.04 }}
       className="group flex items-center gap-4 p-5 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-md transition-all duration-200"
     >
-      <div className="w-12 h-12 shrink-0 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-accent/10 transition-colors">
-        <span className="font-display text-sm font-bold text-foreground/50 group-hover:text-accent transition-colors">
-          {getInitials(name)}
-        </span>
+      <div className="w-12 h-12 shrink-0 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-accent/10 transition-colors overflow-hidden">
+        {imageUrl && imageUrl !== "/placeholder.svg" ? (
+          <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
+        ) : (
+          <span className="font-display text-sm font-bold text-foreground/50 group-hover:text-accent transition-colors">
+            {getInitials(name)}
+          </span>
+        )}
       </div>
-      <div className="min-w-0">
+      <div className="min-w-0 flex-1">
         <p className="font-display text-[15px] font-semibold text-foreground leading-tight truncate">
           {name}
         </p>
         <p className="text-xs text-muted-foreground mt-0.5">{role}</p>
       </div>
+      {linkedin && (
+        <a href={linkedin} target="_blank" rel="noopener noreferrer" className="shrink-0 text-muted-foreground hover:text-accent transition-colors">
+          <Linkedin className="w-4 h-4" />
+        </a>
+      )}
     </motion.div>
   );
 }
@@ -264,11 +323,13 @@ function DevTile({
 function SupportTile({
   name,
   role,
+  linkedin,
   index,
   inView,
 }: {
   name: string;
   role: string;
+  linkedin?: string;
   index: number;
   inView: boolean;
 }) {
@@ -283,6 +344,11 @@ function SupportTile({
         {name.split(" ")[0]}
       </p>
       <p className="text-[11px] text-muted-foreground mt-1">{role}</p>
+      {linkedin && (
+        <a href={linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center mt-2 text-muted-foreground hover:text-accent transition-colors">
+          <Linkedin className="w-3.5 h-3.5" />
+        </a>
+      )}
     </motion.div>
   );
 }
@@ -345,7 +411,7 @@ export default function TeamDirectory() {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {developmentTeam.map((m, i) => (
-              <DevTile key={m.name} name={m.name} role={m.role} index={i} inView={inView} />
+              <DevTile key={m.name} name={m.name} role={m.role} imageUrl={m.imageUrl} linkedin={m.linkedin} index={i} inView={inView} />
             ))}
           </div>
         </div>
@@ -357,7 +423,7 @@ export default function TeamDirectory() {
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {supportTeam.map((m, i) => (
-              <SupportTile key={m.name} name={m.name} role={m.role} index={i} inView={inView} />
+              <SupportTile key={m.name} name={m.name} role={m.role} linkedin={m.linkedin} index={i} inView={inView} />
             ))}
           </div>
         </div>
