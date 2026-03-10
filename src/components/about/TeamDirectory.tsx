@@ -323,11 +323,13 @@ function DevTile({
 function SupportTile({
   name,
   role,
+  linkedin,
   index,
   inView,
 }: {
   name: string;
   role: string;
+  linkedin?: string;
   index: number;
   inView: boolean;
 }) {
@@ -342,6 +344,11 @@ function SupportTile({
         {name.split(" ")[0]}
       </p>
       <p className="text-[11px] text-muted-foreground mt-1">{role}</p>
+      {linkedin && (
+        <a href={linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center mt-2 text-muted-foreground hover:text-accent transition-colors">
+          <Linkedin className="w-3.5 h-3.5" />
+        </a>
+      )}
     </motion.div>
   );
 }
