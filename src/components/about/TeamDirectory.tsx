@@ -113,16 +113,16 @@ const managementTeam = [
 
 /* ───────── Tier 3 - Development ───────── */
 const developmentTeam = [
-  { name: "Vaibhavi Dhenge", role: "Jr. Developer" },
-  { name: "Isha Gupta", role: "Market Advisor" },
-  { name: "Er. Aakash", role: "External Consultant" },
-  { name: "Sanchita Nath", role: "Dev. Coordinator" },
-  { name: "Astha Dwivedi", role: "BDE" },
-  { name: "Krish Sheta", role: "Jr. Developer" },
-  { name: "Neeraj Tetari", role: "Jr. Developer" },
-  { name: "Anand Verma", role: "Jr. Developer" },
-  { name: "Saloni Ojha", role: "Backend Intern" },
-  { name: "Kavya Saini", role: "DS / AI-ML" },
+  { name: "Vaibhavi Dhenge", role: "Jr. Developer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Isha Gupta", role: "Market Advisor", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Er. Aakash", role: "External Consultant", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Sanchita Nath", role: "Dev. Coordinator", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Astha Dwivedi", role: "BDE", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Krish Sheta", role: "Jr. Developer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Neeraj Tetari", role: "Jr. Developer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Anand Verma", role: "Jr. Developer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Saloni Ojha", role: "Backend Intern", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Kavya Saini", role: "DS / AI-ML", imageUrl: "/placeholder.svg", linkedin: "#" },
 ];
 
 /* ───────── Tier 4 - Support ───────── */
