@@ -294,6 +294,11 @@ function DefenseHardwareTabs() {
 export default function Surveillance() {
   return (
     <>
+      <SEO
+        title="X-Ray, UVIS & Metal Detector Systems | Enterprise Security"
+        description="Supplying X-ray baggage scanners, UVIS under-vehicle systems & walkthrough detectors for government buildings and corporate campuses across India. Request a procurement quote."
+        path="/services/enterprise-surveillance-physical-security"
+      />
       <ServiceHero
         badge="SURVEILLANCE & SECURITY"
         title="Uncompromising Security"

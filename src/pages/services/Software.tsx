@@ -225,6 +225,11 @@ const techStack = [
 export default function Software() {
   return (
     <>
+      <SEO
+        title="Custom Enterprise Software Development | Lucknow, India"
+        description="We build secure, scalable B2B web & mobile applications using React, Node.js, and AI integration for government and corporate clients across Uttar Pradesh. Start your build."
+        path="/services/enterprise-software-app-development"
+      />
       <ServiceHero
         badge="SOFTWARE DEVELOPMENT & DIGITAL SOLUTIONS"
         title="Digital Products That"
