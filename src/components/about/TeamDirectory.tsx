@@ -17,6 +17,8 @@ const cSuite = [
     domain: "Technology",
     bio: "Leads Spirecrest's software engineering and digital product verticals, architecting scalable web platforms and enterprise-grade applications that power modern businesses.",
     initials: "AC",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
   {
     name: "Shraddha Dwivedi",
@@ -25,6 +27,8 @@ const cSuite = [
     domain: "Operations",
     bio: "Orchestrates end-to-end project delivery and operational excellence across all verticals, ensuring every engagement meets Spirecrest's exacting quality standards.",
     initials: "SD",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
   {
     name: "Chesta Gangwani",
@@ -33,6 +37,8 @@ const cSuite = [
     domain: "Finance",
     bio: "Steers Spirecrest's financial strategy, budgeting, and fiscal governance, driving sustainable growth while maintaining full regulatory compliance.",
     initials: "CG",
+    imageUrl: "/placeholder.svg",
+    linkedin: "#",
   },
 ];
 
