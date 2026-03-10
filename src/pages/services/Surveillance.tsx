@@ -8,6 +8,7 @@ import {
   Network, Server, Video, Gauge, LayoutGrid, BatteryCharging,
   ScanLine, Package, CarFront, FlaskConical, LucideIcon,
 } from "lucide-react";
+import SEO from "@/components/SEO";
 import ServiceHero from "@/components/services/ServiceHero";
 import BentoGrid, { BentoItem } from "@/components/services/BentoGrid";
 import TechMarquee from "@/components/services/TechMarquee";
