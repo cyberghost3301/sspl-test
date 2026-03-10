@@ -411,7 +411,7 @@ export default function TeamDirectory() {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {developmentTeam.map((m, i) => (
-              <DevTile key={m.name} name={m.name} role={m.role} index={i} inView={inView} />
+              <DevTile key={m.name} name={m.name} role={m.role} imageUrl={m.imageUrl} linkedin={m.linkedin} index={i} inView={inView} />
             ))}
           </div>
         </div>
