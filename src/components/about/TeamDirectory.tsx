@@ -12,13 +12,13 @@ import {
 const cSuite = [
   {
     name: "Aum Chatterjee",
-    role: "Director of Technology",
+    role: "Managing Director",
     domainIcon: Code,
     domain: "Technology",
     bio: "Leads Spirecrest's software engineering and digital product verticals, architecting scalable web platforms and enterprise-grade applications that power modern businesses.",
     initials: "AC",
     imageUrl: "/placeholder.svg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/aum-chatterjee/",
   },
   {
     name: "Shraddha Dwivedi",
@@ -28,7 +28,7 @@ const cSuite = [
     bio: "Orchestrates end-to-end project delivery and operational excellence across all verticals, ensuring every engagement meets Spirecrest's exacting quality standards.",
     initials: "SD",
     imageUrl: "/placeholder.svg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/shraddha-dwivedi-1a1936272/",
   },
   {
     name: "Chesta Gangwani",
@@ -38,7 +38,7 @@ const cSuite = [
     bio: "Steers Spirecrest's financial strategy, budgeting, and fiscal governance, driving sustainable growth while maintaining full regulatory compliance.",
     initials: "CG",
     imageUrl: "/placeholder.svg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/chesta-gangwani/",
   },
 ];
 
@@ -51,21 +51,21 @@ const managementTeam = [
     domainIcon: TrendingUp,
     bio: "Drives organisational strategy, resource planning, and cross-vertical coordination to keep Spirecrest operating at peak efficiency.",
     imageUrl: "/placeholder.svg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/deshesh-agnihotri-906484226/",
   },
   {
     name: "Er. Saurabh",
     role: "Strategic Advisor",
     bio: "Provides high-level technical counsel on infrastructure decisions, aligning engineering roadmaps with long-term business objectives.",
     imageUrl: "/placeholder.svg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/saurabhkumarrao/",
   },
   {
     name: "Ar. Laraib",
     role: "Consulting Architect",
     bio: "Bridges architectural design and spatial planning expertise, guiding interior and structural projects from concept through execution.",
     imageUrl: "/placeholder.svg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/laraibahmad/",
   },
   {
     name: "Shristi",
@@ -79,7 +79,7 @@ const managementTeam = [
     role: "Sr. Project Catalyst",
     bio: "Manages complex, multi-disciplinary projects end-to-end, ensuring timelines, budgets, and deliverables stay on track.",
     imageUrl: "/placeholder.svg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/anshuman-singh-full-stack-developer/",
   },
   {
     name: "Prof. Rahul",
@@ -93,21 +93,21 @@ const managementTeam = [
     role: "Sr. Project Head",
     bio: "Leads flagship infrastructure and technology rollouts, coordinating engineering teams to deliver enterprise-grade solutions on schedule.",
     imageUrl: "/placeholder.svg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/shashank-kumar-rao-160216114/",
   },
   {
     name: "Antara",
     role: "PR & Outreach",
     bio: "Crafts Spirecrest's public narrative, managing media relations, brand communications, and stakeholder outreach campaigns.",
     imageUrl: "/placeholder.svg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/antaraprofile/",
   },
   {
     name: "Melody Cantillo",
     role: "Strategic Outreach Partner",
     bio: "Bridges Spirecrest to international markets, driving global partnership development and cross-border business initiatives.",
     imageUrl: "/placeholder.svg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/melody-cantillo-0378641b1/",
   },
 ];
 
