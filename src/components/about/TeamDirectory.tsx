@@ -276,11 +276,15 @@ function ManagementCard({
 function DevTile({
   name,
   role,
+  imageUrl,
+  linkedin,
   index,
   inView,
 }: {
   name: string;
   role: string;
+  imageUrl?: string;
+  linkedin?: string;
   index: number;
   inView: boolean;
 }) {
@@ -291,17 +295,26 @@ function DevTile({
       transition={{ duration: 0.3, delay: 0.1 + index * 0.04 }}
       className="group flex items-center gap-4 p-5 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-md transition-all duration-200"
     >
-      <div className="w-12 h-12 shrink-0 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-accent/10 transition-colors">
-        <span className="font-display text-sm font-bold text-foreground/50 group-hover:text-accent transition-colors">
-          {getInitials(name)}
-        </span>
+      <div className="w-12 h-12 shrink-0 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-accent/10 transition-colors overflow-hidden">
+        {imageUrl && imageUrl !== "/placeholder.svg" ? (
+          <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
+        ) : (
+          <span className="font-display text-sm font-bold text-foreground/50 group-hover:text-accent transition-colors">
+            {getInitials(name)}
+          </span>
+        )}
       </div>
-      <div className="min-w-0">
+      <div className="min-w-0 flex-1">
         <p className="font-display text-[15px] font-semibold text-foreground leading-tight truncate">
           {name}
         </p>
         <p className="text-xs text-muted-foreground mt-0.5">{role}</p>
       </div>
+      {linkedin && (
+        <a href={linkedin} target="_blank" rel="noopener noreferrer" className="shrink-0 text-muted-foreground hover:text-accent transition-colors">
+          <Linkedin className="w-4 h-4" />
+        </a>
+      )}
     </motion.div>
   );
 }
