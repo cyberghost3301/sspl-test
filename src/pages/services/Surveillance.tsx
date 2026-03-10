@@ -8,6 +8,7 @@ import {
   Network, Server, Video, Gauge, LayoutGrid, BatteryCharging,
   ScanLine, Package, CarFront, FlaskConical, LucideIcon,
 } from "lucide-react";
+import SEO from "@/components/SEO";
 import ServiceHero from "@/components/services/ServiceHero";
 import BentoGrid, { BentoItem } from "@/components/services/BentoGrid";
 import TechMarquee from "@/components/services/TechMarquee";
@@ -293,6 +294,11 @@ function DefenseHardwareTabs() {
 export default function Surveillance() {
   return (
     <>
+      <SEO
+        title="X-Ray, UVIS & Metal Detector Systems | Enterprise Security"
+        description="Supplying X-ray baggage scanners, UVIS under-vehicle systems & walkthrough detectors for government buildings and corporate campuses across India. Request a procurement quote."
+        path="/services/enterprise-surveillance-physical-security"
+      />
       <ServiceHero
         badge="SURVEILLANCE & SECURITY"
         title="Uncompromising Security"

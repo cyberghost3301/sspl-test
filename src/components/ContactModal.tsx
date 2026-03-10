@@ -55,8 +55,8 @@ export function ContactModal({ isOpen, onOpenChange }: ContactModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[600px] bg-background/95 backdrop-blur-xl border-border/50 shadow-2xl">
-        <DialogHeader>
+      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-xl border-border/50 shadow-2xl">
+        <DialogHeader className="sticky top-0 z-10 bg-background/95 backdrop-blur-xl pb-2">
           <DialogTitle className="text-2xl font-bold text-center">Send us a Message</DialogTitle>
           <p className="text-muted-foreground text-center">Have a project in mind? Let's bring your vision to life.</p>
         </DialogHeader>

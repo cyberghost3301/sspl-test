@@ -5,6 +5,7 @@ import {
   Wrench, Package, CreditCard, CalendarCheck, GraduationCap,
   ChevronDown, Briefcase, Gem,
 } from "lucide-react";
+import SEO from "@/components/SEO";
 import ServiceHero from "@/components/services/ServiceHero";
 import BentoGrid, { BentoItem } from "@/components/services/BentoGrid";
 import CTASection from "@/components/CTASection";
@@ -199,6 +200,11 @@ function ExecutiveStrip() {
 export default function LifecycleConsulting() {
   return (
     <>
+      <SEO
+        title="IT Lifecycle & VC Strategy Consulting | Spirecrest India"
+        description="From strategic IT procurement advisory and AMC management to investor-grade pitch decks and VC positioning: full-lifecycle consulting for India's growth-stage enterprises. Talk to a Principal."
+        path="/services/it-lifecycle-venture-consulting"
+      />
       <ServiceHero
         badge="STRATEGIC LIFECYCLE SUPPORT & VENTURE CONSULTING"
         title="Strategic Lifecycle Partnership &"
