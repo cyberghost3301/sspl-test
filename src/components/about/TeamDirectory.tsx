@@ -21,16 +21,6 @@ const cSuite = [
     linkedin: "https://www.linkedin.com/in/aum-chatterjee/",
   },
   {
-    name: "Shraddha Dwivedi",
-    role: "Director of Operations",
-    domainIcon: Settings,
-    domain: "Operations",
-    bio: "Orchestrates end-to-end project delivery and operational excellence across all verticals, ensuring every engagement meets Spirecrest's exacting quality standards.",
-    initials: "SD",
-    imageUrl: "/placeholder.svg",
-    linkedin: "https://www.linkedin.com/in/shraddha-dwivedi-1a1936272/",
-  },
-  {
     name: "Chesta Gangwani",
     role: "Director of Finance",
     domainIcon: DollarSign,
@@ -39,6 +29,16 @@ const cSuite = [
     initials: "CG",
     imageUrl: "/placeholder.svg",
     linkedin: "https://www.linkedin.com/in/chesta-gangwani/",
+  },
+  {
+    name: "Shraddha Dwivedi",
+    role: "Director of Operations",
+    domainIcon: Settings,
+    domain: "Operations",
+    bio: "Orchestrates end-to-end project delivery and operational excellence across all verticals, ensuring every engagement meets Spirecrest's exacting quality standards.",
+    initials: "SD",
+    imageUrl: "/placeholder.svg",
+    linkedin: "https://www.linkedin.com/in/shraddha-dwivedi-1a1936272/",
   },
 ];
 
