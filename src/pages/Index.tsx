@@ -1,5 +1,6 @@
 import SEO from "@/components/SEO";
 import HeroSection from "@/components/HeroSection";
+import TrustMetrics from "@/components/TrustMetrics";
 import MVPServices from "@/components/MVPServices";
 import PartnerModel from "@/components/PartnerModel";
 import ServicesMarquee from "@/components/ServicesMarquee";
@@ -14,6 +15,7 @@ const Index = () => {
         path="/"
       />
       <HeroSection />
+      <TrustMetrics />
       <MVPServices />
       <ServicesMarquee />
       <PartnerModel />
