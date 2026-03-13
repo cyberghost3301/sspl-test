@@ -17,7 +17,7 @@ const cSuite = [
     domain: "Technology",
     bio: "Leads Spirecrest's software engineering and digital product verticals, architecting scalable web platforms and enterprise-grade applications that power modern businesses.",
     initials: "AC",
-    imageSRC: "/src/assets/aum.jpg",
+    imageUrl: "/src/assets/pp/aum.jpg",
     linkedin: "https://www.linkedin.com/in/aum-chatterjee/",
   },
   {
@@ -27,7 +27,7 @@ const cSuite = [
     domain: "Finance",
     bio: "Steers Spirecrest's financial strategy, budgeting, and fiscal governance, driving sustainable growth while maintaining full regulatory compliance.",
     initials: "CG",
-    imageSRC: "/src/assets/chesta.jpg",
+    imageUrl: "/src/assets/pp/chesta.jpg",
     linkedin: "https://www.linkedin.com/in/chesta-gangwani/",
   },
   {
@@ -37,7 +37,7 @@ const cSuite = [
     domain: "Operations",
     bio: "Orchestrates end-to-end project delivery and operational excellence across all verticals, ensuring every engagement meets Spirecrest's exacting quality standards.",
     initials: "SD",
-    imageSRC: "/src/assets/shraddha.jpg",
+    imageUrl: "/src/assets/pp/shraddha.jpg",
     linkedin: "https://www.linkedin.com/in/shraddha-dwivedi-1a1936272/",
   },
 ];
@@ -50,99 +50,99 @@ const managementTeam = [
     domain: "Management",
     domainIcon: TrendingUp,
     bio: "Drives organisational strategy, resource planning, and cross-vertical coordination to keep Spirecrest operating at peak efficiency.",
-    imageSRC: "/src/assets/deshesh.jpg",
+    imageUrl: "/src/assets/pp/deshesh.jpg",
     linkedin: "https://www.linkedin.com/in/deshesh-agnihotri-906484226/",
   },
   {
     name: "Er. Saurabh",
     role: "Strategic Advisor",
     bio: "Provides high-level technical counsel on infrastructure decisions, aligning engineering roadmaps with long-term business objectives.",
-    imageSRC: "/placeholder.svg",
+    imageUrl: "/placeholder.svg",
     linkedin: "https://www.linkedin.com/in/saurabhkumarrao/",
   },
   {
     name: "Ar. Laraib",
     role: "Consulting Architect",
     bio: "Bridges architectural design and spatial planning expertise, guiding interior and structural projects from concept through execution.",
-    imageSRC: "/src/assets/laraib.jpg",
+    imageUrl: "/src/assets/pp/laraib.jpg",
     linkedin: "https://www.linkedin.com/in/laraibahmad/",
   },
   {
     name: "Shristi",
     role: "Growth Facilitator",
     bio: "Identifies and accelerates new market opportunities, building strategic partnerships that fuel Spirecrest's expansion across verticals.",
-    imageSRC: "/src/assets/shristi.jpg",
+    imageUrl: "/src/assets/pp/shristi.jpg",
     linkedin: "#",
   },
   {
     name: "Er. Anshuman",
     role: "Sr. Project Catalyst",
     bio: "Manages complex, multi-disciplinary projects end-to-end, ensuring timelines, budgets, and deliverables stay on track.",
-    imageSRC: "/src/assets/anshuman.jpg",
+    imageUrl: "/src/assets/pp/anshuman.jpg",
     linkedin: "https://www.linkedin.com/in/anshuman-singh-full-stack-developer/",
   },
   {
     name: "Prof. Rahul",
     role: "Business Advisor",
     bio: "Brings academic rigour and industry insight to shape Spirecrest's go-to-market strategies and client engagement frameworks.",
-    imageSRC: "/src/assets/rahul.jpg",
+    imageUrl: "/src/assets/pp/rahul.jpg",
     linkedin: "#",
   },
   {
     name: "Er. Shashank",
     role: "Sr. Project Head",
     bio: "Leads flagship infrastructure and technology rollouts, coordinating engineering teams to deliver enterprise-grade solutions on schedule.",
-    imageSRC: "/src/assets/shashank.jpg",
+    imageUrl: "/src/assets/pp/shashank.jpg",
     linkedin: "https://www.linkedin.com/in/shashank-kumar-rao-160216114/",
   },
   {
     name: "Antara",
     role: "PR & Outreach",
     bio: "Crafts Spirecrest's public narrative, managing media relations, brand communications, and stakeholder outreach campaigns.",
-    imageSRC: "/src/assets/antara.jpg",
+    imageUrl: "/src/assets/pp/antara.jpg",
     linkedin: "https://www.linkedin.com/in/antaraprofile/",
   },
   {
     name: "Melody Cantillo",
     role: "Strategic Outreach Partner",
     bio: "Bridges Spirecrest to international markets, driving global partnership development and cross-border business initiatives.",
-    imageSRC: "/src/assets/melody.jpg",
+    imageUrl: "/src/assets/pp/melody.jpg",
     linkedin: "https://www.linkedin.com/in/melody-cantillo-0378641b1/",
   },
 ];
 
 /* ───────── Tier 3 - Development ───────── */
 const developmentTeam = [
-  { name: "Vaibhavi Dhenge", role: "Development Associate", imageSRC: "/src/assets/vaibhavi.jpg", linkedin: "#" },
-  { name: "Isha Gupta", role: "Market Advisor", imageSRC: "/placeholder.svg", linkedin: "#" },
-  { name: "Er. Aakash", role: "External Consultant", imageSRC: "/src/assets/aakash.jpg", linkedin: "#" },
-  { name: "Sanchita Nath", role: "Dev. Coordinator", imageSRC: "/src/assets/sanchita.jpg", linkedin: "#" },
-  { name: "Astha Dwivedi", role: "BDE", imageSRC: "/src/assets/astha.jpg", linkedin: "#" },
-  { name: "Krish Sheta", role: "Jr. S/W Developer", imageSRC: "/src/assets/krish.jpg", linkedin: "#" },
-  { name: "Neeraj Tetari", role: "Jr. S/W Developer", imageSRC: "/src/assets/neeraj.jpg", linkedin: "#" },
-  { name: "Anand Verma", role: "Jr. S/W Developer", imageSRC: "/src/assets/anand.jpg", linkedin: "#" },
-  { name: "Saloni Ojha", role: "Backend Framework", imageSRC: "/src/assets/saloni.jpg", linkedin: "#" },
-  { name: "Kavya Saini", role: "DS/AI-ML Applications", imageSRC: "/src/assets/kavya.jpg", linkedin: "#" },
-  { name: "Anushka Singh", role: "Outreach Operations", imageSRC: "/src/assets/anushka.jpg", linkedin: "#" },
-  { name: "Srishti Saxena", role: "Strategic Growth", imageSRC: "/src/assets/srishti.jpg", linkedin: "#" },
-  { name: "Janvi Gautam", role: "Business Operations", imageSRC: "/src/assets/janvi.jpg", linkedin: "#" },
-  { name: "Ekta Singh", role: "Customer Support", imageSRC: "/src/assets/ekta.jpg", linkedin: "#" },
+  { name: "Vaibhavi Dhenge", role: "Development Associate", imageUrl: "/src/assets/pp/vaibhavi.jpg", linkedin: "#" },
+  { name: "Isha Gupta", role: "Market Advisor", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Er. Aakash", role: "External Consultant", imageUrl: "/src/assets/pp/aakash.jpg", linkedin: "#" },
+  { name: "Sanchita Nath", role: "Dev. Coordinator", imageUrl: "/src/assets/pp/sanchita.jpg", linkedin: "#" },
+  { name: "Astha Dwivedi", role: "BDE", imageUrl: "/src/assets/pp/astha.jpg", linkedin: "#" },
+  { name: "Krish Sheta", role: "Jr. S/W Developer", imageUrl: "/src/assets/pp/krish.jpg", linkedin: "#" },
+  { name: "Neeraj Tetari", role: "Jr. S/W Developer", imageUrl: "/src/assets/pp/neeraj.jpg", linkedin: "#" },
+  { name: "Anand Verma", role: "Jr. S/W Developer", imageUrl: "/src/assets/pp/anand.jpg", linkedin: "#" },
+  { name: "Saloni Ojha", role: "Backend Framework", imageUrl: "/src/assets/pp/saloni.jpg", linkedin: "#" },
+  { name: "Kavya Saini", role: "DS/AI-ML Applications", imageUrl: "/src/assets/pp/kavya.jpg", linkedin: "#" },
+  { name: "Anushka Singh", role: "Outreach Operations", imageUrl: "/src/assets/pp/anushka.jpg", linkedin: "#" },
+  { name: "Srishti Saxena", role: "Strategic Growth", imageUrl: "/src/assets/pp/srishti.jpg", linkedin: "#" },
+  { name: "Janvi Gautam", role: "Business Operations", imageUrl: "/src/assets/pp/janvi.jpg", linkedin: "#" },
+  { name: "Ekta Singh", role: "Customer Support", imageUrl: "/src/assets/pp/ekta.jpg", linkedin: "#" },
 ];
 
 /* ───────── Tier 4 - Support ───────── */
 const supportTeam = [
-  { name: "Arjun Mehta", role: "Cloud Architect", imageSRC: "/placeholder.svg", linkedin: "#" },
-  { name: "Priya Sharma", role: "Cybersecurity Lead", imageSRC: "/placeholder.svg", linkedin: "#" },
-  { name: "Rohan Kapoor", role: "Full-Stack Engineer", imageSRC: "/placeholder.svg", linkedin: "#" },
-  { name: "Sneha Patel", role: "UI/UX Designer", imageSRC: "/placeholder.svg", linkedin: "#" },
-  { name: "Vikram Singh", role: "Network Engineer", imageSRC: "/placeholder.svg", linkedin: "#" },
-  { name: "Ananya Reddy", role: "Data Analyst", imageSRC: "/placeholder.svg", linkedin: "#" },
-  { name: "Karan Joshi", role: "IoT Specialist", imageSRC: "/placeholder.svg", linkedin: "#" },
-  { name: "Meera Nair", role: "Project Manager", imageSRC: "/placeholder.svg", linkedin: "#" },
-  { name: "Rahul Verma", role: "DevOps Engineer", imageSRC: "/placeholder.svg", linkedin: "#" },
-  { name: "Divya Gupta", role: "QA Engineer", imageSRC: "/placeholder.svg", linkedin: "#" },
-  { name: "Amit Tiwari", role: "Solar Systems Lead", imageSRC: "/placeholder.svg", linkedin: "#" },
-  { name: "Neha Agarwal", role: "AV Solutions Expert", imageSRC: "/placeholder.svg", linkedin: "#" },
+  { name: "Arjun Mehta", role: "Cloud Architect", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Priya Sharma", role: "Cybersecurity Lead", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Rohan Kapoor", role: "Full-Stack Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Sneha Patel", role: "UI/UX Designer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Vikram Singh", role: "Network Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Ananya Reddy", role: "Data Analyst", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Karan Joshi", role: "IoT Specialist", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Meera Nair", role: "Project Manager", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Rahul Verma", role: "DevOps Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Divya Gupta", role: "QA Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Amit Tiwari", role: "Solar Systems Lead", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Neha Agarwal", role: "AV Solutions Expert", imageUrl: "/placeholder.svg", linkedin: "#" },
 ];
 
 function getInitials(name: string) {
@@ -176,8 +176,8 @@ function CSuiteCard({ member, index }: { member: (typeof cSuite)[0]; index: numb
       </div>
 
       <div className="w-24 h-24 rounded-2xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors overflow-hidden">
-        {member.imageSRC && member.imageSRC !== "/placeholder.svg" ? (
-          <img src={member.imageSRC} alt={member.name} className="w-full h-full object-cover" />
+        {member.imageUrl && member.imageUrl !== "/placeholder.svg" ? (
+          <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover" />
         ) : (
           <span className="font-display text-2xl font-bold text-foreground/60 group-hover:text-accent transition-colors">
             {member.initials}
@@ -240,8 +240,8 @@ function ManagementCard({
       )}
 
       <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-4 group-hover:bg-accent/10 transition-colors overflow-hidden">
-        {member.imageSRC && member.imageSRC !== "/placeholder.svg" ? (
-          <img src={member.imageSRC} alt={member.name} className="w-full h-full object-cover" />
+        {member.imageUrl && member.imageUrl !== "/placeholder.svg" ? (
+          <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover" />
         ) : (
           <span className="font-display text-base font-bold text-foreground/55 group-hover:text-accent transition-colors">
             {getInitials(member.name)}
@@ -280,14 +280,14 @@ function ManagementCard({
 function DevTile({
   name,
   role,
-  imageSRC,
+  imageUrl,
   linkedin,
   index,
   inView,
 }: {
   name: string;
   role: string;
-  imageSRC?: string;
+  imageUrl?: string;
   linkedin?: string;
   index: number;
   inView: boolean;
@@ -300,8 +300,8 @@ function DevTile({
       className="group flex items-center gap-4 p-5 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-md transition-all duration-200"
     >
       <div className="w-12 h-12 shrink-0 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-accent/10 transition-colors overflow-hidden">
-        {imageSRC && imageSRC !== "/placeholder.svg" ? (
-          <img src={imageSRC} alt={name} className="w-full h-full object-cover" />
+        {imageUrl && imageUrl !== "/placeholder.svg" ? (
+          <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
         ) : (
           <span className="font-display text-sm font-bold text-foreground/50 group-hover:text-accent transition-colors">
             {getInitials(name)}
@@ -415,7 +415,7 @@ export default function TeamDirectory() {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {developmentTeam.map((m, i) => (
-              <DevTile key={m.name} name={m.name} role={m.role} imageSRC={m.imageSRC} linkedin={m.linkedin} index={i} inView={inView} />
+              <DevTile key={m.name} name={m.name} role={m.role} imageUrl={m.imageUrl} linkedin={m.linkedin} index={i} inView={inView} />
             ))}
           </div>
         </div>
