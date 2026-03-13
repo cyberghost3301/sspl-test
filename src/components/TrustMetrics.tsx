@@ -10,10 +10,10 @@ interface Metric {
 }
 
 const metrics: Metric[] = [
-  { value: "900+", numericPart: 900, prefix: "", suffix: "+", label: "Mission-Critical Deployments" },
+  { value: "950+", numericPart: 950, prefix: "", suffix: "+", label: "Mission-Critical Deployments" },
   { value: "ISO Aligned", numericPart: 0, prefix: "", suffix: "", label: "Global Compliance Standards" },
-  { value: "99.9%", numericPart: 99.9, prefix: "", suffix: "%", label: "Uptime SLAs Available" },
-  { value: "DPIIT Recognized", numericPart: 0, prefix: "", suffix: "", label: "Startup India Certified" },
+  { value: "MSME", numericPart: 0, prefix: "", suffix: "", label: "Recognized by MSME" },
+  { value: "DPIIT", numericPart: 0, prefix: "", suffix: "", label: "Startup India Certified" },
 ];
 
 function CountUp({ target, suffix, decimals = 0, inView }: { target: number; suffix: string; decimals?: number; inView: boolean }) {
