@@ -17,7 +17,7 @@ const cSuite = [
     domain: "Technology",
     bio: "Leads Spirecrest's software engineering and digital product verticals, architecting scalable web platforms and enterprise-grade applications that power modern businesses.",
     initials: "AC",
-    imageUrl: "/placeholder.svg",
+    imageUrl: "/https://media.licdn.com/dms/image/v2/D5603AQFXAin9GRt1bw/profile-displayphoto-crop_800_800/B56Zx9AsmzI0AI-/0/1771623862814?e=1775088000&v=beta&t=DWypg98afy4nrUd8QL7vCcApElMxMvhSWyd9E_5tJAc",
     linkedin: "https://www.linkedin.com/in/aum-chatterjee/",
   },
   {
@@ -27,7 +27,7 @@ const cSuite = [
     domain: "Finance",
     bio: "Steers Spirecrest's financial strategy, budgeting, and fiscal governance, driving sustainable growth while maintaining full regulatory compliance.",
     initials: "CG",
-    imageUrl: "/placeholder.svg",
+    imageUrl: "/https://media.licdn.com/dms/image/v2/D4D03AQE8cIAHaJDuig/profile-displayphoto-crop_800_800/B4DZml6LP4IEAI-/0/1759425117207?e=1775088000&v=beta&t=bsy8jHm8g8pN-AR5RnlIcFvSsLFjBV6sV0fyvtlA_a4",
     linkedin: "https://www.linkedin.com/in/chesta-gangwani/",
   },
   {
@@ -37,7 +37,7 @@ const cSuite = [
     domain: "Operations",
     bio: "Orchestrates end-to-end project delivery and operational excellence across all verticals, ensuring every engagement meets Spirecrest's exacting quality standards.",
     initials: "SD",
-    imageUrl: "/placeholder.svg",
+    imageUrl: "/https://media.licdn.com/dms/image/v2/D5603AQFUU0SH4Mcs2A/profile-displayphoto-crop_800_800/B56ZldvyLeG4AI-/0/1758214432392?e=1775088000&v=beta&t=e2TRNN4MeBDgOUK7YRDYFjw7TsfX60j_Mbi_BSFtZA8",
     linkedin: "https://www.linkedin.com/in/shraddha-dwivedi-1a1936272/",
   },
 ];
