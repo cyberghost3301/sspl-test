@@ -1,14 +1,23 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
+# Spirecrest Solutions — robots.txt
 User-agent: *
 Allow: /
+
+# Allow all service pages explicitly
+Allow: /services/
+Allow: /about
+Allow: /portfolio
+Allow: /testimonials
+Allow: /collective
+Allow: /contact
+Allow: /faq
+Allow: /privacy-policy
+Allow: /terms-of-service
+Allow: /cookie-policy
+Allow: /disclaimer
+
+# Block dev/test artifacts
+Disallow: /src/
+Disallow: /*.test.*
+Disallow: /*.spec.*
+
+Sitemap: https://spirecrest.in/sitemap.xml

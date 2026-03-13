@@ -23,6 +23,13 @@ import Testimonials from "./pages/Testimonials";
 import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
 
+// Governance pages
+import FAQ from "./pages/governance/FAQ";
+import PrivacyPolicy from "./pages/governance/PrivacyPolicy";
+import TermsOfService from "./pages/governance/TermsOfService";
+import CookiePolicy from "./pages/governance/CookiePolicy";
+import Disclaimer from "./pages/governance/Disclaimer";
+
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -40,12 +47,15 @@ const App = () => {
         <BrowserRouter>
           <Layout>
             <Routes>
+              {/* Main pages */}
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/testimonials" element={<Testimonials />} />
               <Route path="/collective" element={<Team />} />
               <Route path="/contact" element={<Contact />} />
+
+              {/* Service pages */}
               <Route path="/services/surveillance" element={<Surveillance />} />
               <Route path="/services/software" element={<Software />} />
               <Route path="/services/consulting" element={<Consulting />} />
@@ -56,6 +66,15 @@ const App = () => {
               <Route path="/services/av-studio" element={<AVStudio />} />
               <Route path="/services/computers" element={<Computers />} />
               <Route path="/services/interior" element={<Interior />} />
+
+              {/* Governance pages */}
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="/cookie-policy" element={<CookiePolicy />} />
+              <Route path="/disclaimer" element={<Disclaimer />} />
+
+              {/* Catch-all */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
