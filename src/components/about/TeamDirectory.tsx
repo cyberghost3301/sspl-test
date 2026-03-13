@@ -12,7 +12,7 @@ import {
 const cSuite = [
   {
     name: "Aum Chatterjee",
-    role: "Managing Director",
+    role: "Director of Technology",
     domainIcon: Code,
     domain: "Technology",
     bio: "Leads Spirecrest's software engineering and digital product verticals, architecting scalable web platforms and enterprise-grade applications that power modern businesses.",
@@ -46,9 +46,7 @@ const cSuite = [
 const managementTeam = [
   {
     name: "Deshesh Agnihotri",
-    role: "Director of Management",
-    domain: "Management",
-    domainIcon: TrendingUp,
+    role: "Director",    
     bio: "Drives organisational strategy, resource planning, and cross-vertical coordination to keep Spirecrest operating at peak efficiency.",
     imageUrl: "/pp/deshesh.jpg",
     linkedin: "https://www.linkedin.com/in/deshesh-agnihotri-906484226/",
