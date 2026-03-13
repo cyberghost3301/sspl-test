@@ -2,9 +2,8 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   Code,
-  Settings,
   TrendingUp,
-  DollarSign,
+  Brain,
   Linkedin,
 } from "lucide-react";
 
@@ -23,7 +22,7 @@ const cSuite = [
   {
     name: "Chesta Gangwani",
     role: "Director of Finance",
-    domainIcon: DollarSign,
+    domainIcon: TrendingUp,
     domain: "Finance",
     bio: "Steers Spirecrest's financial strategy, budgeting, and fiscal governance, driving sustainable growth while maintaining full regulatory compliance.",
     initials: "CG",
@@ -33,7 +32,7 @@ const cSuite = [
   {
     name: "Shraddha Dwivedi",
     role: "Director of Operations",
-    domainIcon: Settings,
+    domainIcon: Brain,
     domain: "Operations",
     bio: "Orchestrates end-to-end project delivery and operational excellence across all verticals, ensuring every engagement meets Spirecrest's exacting quality standards.",
     initials: "SD",
@@ -70,7 +69,7 @@ const managementTeam = [
     role: "Growth Facilitator",
     bio: "Identifies and accelerates new market opportunities, building strategic partnerships that fuel Spirecrest's expansion across verticals.",
     imageUrl: "/pp/shristi.jpg",
-    linkedin: "#",
+    linkedin: "https://linkedin.com/in/",
   },
   {
     name: "Er. Anshuman",
@@ -84,7 +83,7 @@ const managementTeam = [
     role: "Business Advisor",
     bio: "Brings academic rigour and industry insight to shape Spirecrest's go-to-market strategies and client engagement frameworks.",
     imageUrl: "/pp/rahul.jpg",
-    linkedin: "#",
+    linkedin: "https://linkedin.com/in/",
   },
   {
     name: "Er. Shashank",
@@ -111,36 +110,36 @@ const managementTeam = [
 
 /* ───────── Tier 3 - Development ───────── */
 const developmentTeam = [
-  { name: "Vaibhavi Dhenge", role: "Development Associate", imageUrl: "/pp/vaibhavi.jpg", linkedin: "#" },
-  { name: "Isha Gupta", role: "Market Advisor", imageUrl: "/placeholder.svg", linkedin: "#" },
-  { name: "Er. Aakash", role: "External Consultant", imageUrl: "/pp/aakash.jpg", linkedin: "#" },
-  { name: "Sanchita Nath", role: "SMM Coordinator", imageUrl: "/pp/sanchita.jpg", linkedin: "#" },
-  { name: "Astha Dwivedi", role: "BDA", imageUrl: "/pp/astha.jpg", linkedin: "#" },
-  { name: "Krish Sheta", role: "Jr. S/W Developer", imageUrl: "/placeholder.svg", linkedin: "#" },
-  { name: "Neeraj Tetari", role: "Jr. S/W Developer", imageUrl: "/pp/neeraj.jpg", linkedin: "#" },
-  { name: "Anand Verma", role: "Jr. S/W Developer", imageUrl: "/pp/anand.jpg", linkedin: "#" },
-  { name: "Saloni Ojha", role: "Backend Framework", imageUrl: "/pp/saloni.jpg", linkedin: "#" },
-  { name: "Kavya Saini", role: "DS/AI-ML Applications", imageUrl: "/pp/kavya.jpg", linkedin: "#" },
-  { name: "Anushka Singh", role: "Outreach Operations", imageUrl: "/pp/anushka.jpg", linkedin: "#" },
-  { name: "Srishti Saxena", role: "Strategic Growth", imageUrl: "/pp/srishti.jpg", linkedin: "#" },
-  { name: "Janvi Gautam", role: "Business Operations", imageUrl: "/pp/janvi.jpg", linkedin: "#" },
-  { name: "Ekta Singh", role: "Customer Support", imageUrl: "/pp/ekta.jpg", linkedin: "#" },
+  { name: "Vaibhavi Dhenge", role: "Development Associate", imageUrl: "/pp/vaibhavi.jpg", linkedin: "https://linkedin.com/in/" },
+  { name: "Isha Gupta", role: "Market Advisor", imageUrl: "/placeholder.svg", linkedin: "https://linkedin.com/in/" },
+  { name: "Er. Aakash", role: "External Consultant", imageUrl: "/pp/aakash.jpg", linkedin: "https://linkedin.com/in/" },
+  { name: "Sanchita Nath", role: "SMM Coordinator", imageUrl: "/pp/sanchita.jpg", linkedin: "https://linkedin.com/in/" },
+  { name: "Astha Dwivedi", role: "BDA", imageUrl: "/pp/astha.jpg", linkedin: "https://linkedin.com/in/" },
+  { name: "Krish Sheta", role: "Jr. S/W Developer", imageUrl: "/placeholder.svg", linkedin: "https://linkedin.com/in/" },
+  { name: "Neeraj Tetari", role: "Jr. S/W Developer", imageUrl: "/pp/neeraj.jpg", linkedin: "https://linkedin.com/in/" },
+  { name: "Anand Verma", role: "Jr. S/W Developer", imageUrl: "/pp/anand.jpg", linkedin: "https://linkedin.com/in/" },
+  { name: "Saloni Ojha", role: "Backend Framework", imageUrl: "/pp/saloni.jpg", linkedin: "https://linkedin.com/in/" },
+  { name: "Kavya Saini", role: "DS/AI-ML Applications", imageUrl: "/pp/kavya.jpg", linkedin: "https://linkedin.com/in/" },
+  { name: "Anushka Singh", role: "Outreach Operations", imageUrl: "/pp/anushka.jpg", linkedin: "https://linkedin.com/in/" },
+  { name: "Srishti Saxena", role: "Strategic Growth", imageUrl: "/pp/srishti.jpg", linkedin: "https://linkedin.com/in/" },
+  { name: "Janvi Gautam", role: "Business Operations", imageUrl: "/pp/janvi.jpg", linkedin: "https://linkedin.com/in/" },
+  { name: "Ekta Singh", role: "Customer Support", imageUrl: "/pp/ekta.jpg", linkedin: "https://linkedin.com/in/" },
 ];
 
 /* ───────── Tier 4 - Support ───────── */
 const supportTeam = [
-  { name: "Arjun Mehta", role: "Cloud Architect", imageUrl: "/placeholder.svg", linkedin: "#" },
-  { name: "Priya Sharma", role: "Cybersecurity Lead", imageUrl: "/placeholder.svg", linkedin: "#" },
-  { name: "Rohan Kapoor", role: "Full-Stack Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
-  { name: "Sneha Patel", role: "UI/UX Designer", imageUrl: "/placeholder.svg", linkedin: "#" },
-  { name: "Vikram Singh", role: "Network Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
-  { name: "Ananya Reddy", role: "Data Analyst", imageUrl: "/placeholder.svg", linkedin: "#" },
-  { name: "Karan Joshi", role: "IoT Specialist", imageUrl: "/placeholder.svg", linkedin: "#" },
-  { name: "Meera Nair", role: "Project Manager", imageUrl: "/placeholder.svg", linkedin: "#" },
-  { name: "Rahul Verma", role: "DevOps Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
-  { name: "Divya Gupta", role: "QA Engineer", imageUrl: "/placeholder.svg", linkedin: "#" },
-  { name: "Amit Tiwari", role: "Solar Systems Lead", imageUrl: "/placeholder.svg", linkedin: "#" },
-  { name: "Neha Agarwal", role: "AV Solutions Expert", imageUrl: "/placeholder.svg", linkedin: "#" },
+  { name: "Arjun Mehta", role: "Cloud Architect", imageUrl: "/placeholder.svg"},
+  { name: "Priya Sharma", role: "Cybersecurity Lead", imageUrl: "/placeholder.svg"},
+  { name: "Rohan Kapoor", role: "Full-Stack Engineer", imageUrl: "/placeholder.svg"},
+  { name: "Sneha Patel", role: "UI/UX Designer", imageUrl: "/placeholder.svg"},
+  { name: "Vikram Singh", role: "Network Engineer", imageUrl: "/placeholder.svg"},
+  { name: "Ananya Reddy", role: "Data Analyst", imageUrl: "/placeholder.svg"},
+  { name: "Karan Joshi", role: "IoT Specialist", imageUrl: "/placeholder.svg"},
+  { name: "Meera Nair", role: "Project Manager", imageUrl: "/placeholder.svg"},
+  { name: "Rahul Verma", role: "DevOps Engineer", imageUrl: "/placeholder.svg"},
+  { name: "Divya Gupta", role: "QA Engineer", imageUrl: "/placeholder.svg"},
+  { name: "Amit Tiwari", role: "Solar Systems Lead", imageUrl: "/placeholder.svg"},
+  { name: "Neha Agarwal", role: "AV Solutions Expert", imageUrl: "/placeholder.svg"},
 ];
 
 function getInitials(name: string) {
