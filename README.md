@@ -1,19 +1,15 @@
-### Repository Metadata
-
-**GitHub Repository Description**
+Repository Metadata
+GitHub Repository Description
 The official corporate web portal for Spirecrest Solutions, showcasing enterprise IT infrastructure, surveillance, and scalable software services in India.
 
-**Elevator Pitch**
+Elevator Pitch
 Spirecrest Ascent is the comprehensive digital front-door for Spirecrest Solutions. Built on a modern, high-performance stack utilizing React, Vite, and TypeScript, the platform serves as a B2B portal to showcase a diverse array of enterprise-grade services. From network architecture and software development to full-scale automation, the repository is structured to perfectly support the firm's strategic "Ground Zero" restructuring, highly emphasizing its unique partner-led, profit-sharing business model to prospective clients and future directors alike.
 
-**GitHub Topics**
-`react`, `vite`, `typescript`, `tailwind-css`, `shadcn-ui`, `enterprise-it`, `corporate-website`, `b2b-portal`, `frontend-architecture`, `spirecrest-solutions`
+GitHub Topics
+react, vite, typescript, tailwind-css, shadcn-ui, enterprise-it, corporate-website, b2b-portal, frontend-architecture, spirecrest-solutions
 
----
-
-### Complete README.md
-
-```markdown
+Complete README.md
+Markdown
 # Spirecrest Ascent 🚀
 
 > The official digital portal and service catalog for Spirecrest Solutions.
@@ -79,12 +75,8 @@ graph TD;
     D --> G((Shared UI Components))
     E --> G
     F --> G
-
-```
-
-## 📂 Project Structure
-
-```text
+📂 Project Structure
+Plaintext
 spirecrest-ascent/
 ├── public/                 # Static assets, favicon, OG images
 ├── src/
@@ -103,14 +95,10 @@ spirecrest-ascent/
 ├── eslint.config.js        # Linter rules
 ├── tailwind.config.ts      # Tailwind design system configuration
 └── vite.config.ts          # Vite bundler configuration
+🚀 Installation
+Ensure you have Node.js (v18+) installed.
 
-```
-
-## 🚀 Installation
-
-Ensure you have [Node.js](https://nodejs.org/) (v18+) installed.
-
-```bash
+Bash
 # 1. Clone the repository
 git clone [https://github.com/cyberghost3301/spirecrest-ascent.git](https://github.com/cyberghost3301/spirecrest-ascent.git)
 
@@ -119,77 +107,59 @@ cd spirecrest-ascent
 
 # 3. Install dependencies
 npm install
-
-```
-
-## 💻 Usage
-
-### Development
-
+💻 Usage
+Development
 Start the development server with Hot Module Replacement (HMR):
 
-```bash
+Bash
 npm run dev
+The application will be available at http://localhost:8080 (or the next available port).
 
-```
-
-The application will be available at `http://localhost:8080` (or the next available port).
-
-### Building for Production
-
+Building for Production
 To create an optimized production build:
 
-```bash
+Bash
 npm run build
-
-```
-
 Preview the built artifacts locally:
 
-```bash
+Bash
 npm run preview
+⚙️ Configuration
+The project utilizes standard Vite environment variables. Create a .env file in the root directory for any local overrides.
 
-```
+Note: All environment variables exposed to the Vite frontend must be prefixed with VITE_.
 
-## ⚙️ Configuration
+🔌 API or Modules
+While primarily a frontend presentation layer, the application is pre-configured with @tanstack/react-query to seamlessly integrate with future backend services (e.g., centralized resource hubs, dynamic portfolio fetching, or CRM integrations for the Contact forms).
 
-The project utilizes standard Vite environment variables. Create a `.env` file in the root directory for any local overrides.
+Form validations are strictly enforced using react-hook-form coupled with zod schema parsing to ensure clean data entry before any external API submissions.
 
-*Note: All environment variables exposed to the Vite frontend must be prefixed with `VITE_`.*
+📸 Demo
+(Add screenshots of the dark-mode UI, service bento grids, and partner sections here)
 
-## 🔌 API or Modules
-
-While primarily a frontend presentation layer, the application is pre-configured with `@tanstack/react-query` to seamlessly integrate with future backend services (e.g., centralized resource hubs, dynamic portfolio fetching, or CRM integrations for the Contact forms).
-
-Form validations are strictly enforced using `react-hook-form` coupled with `zod` schema parsing to ensure clean data entry before any external API submissions.
-
-## 📸 Demo
-
-> *(Add screenshots of the dark-mode UI, service bento grids, and partner sections here)*
-
-## 🤝 Contributing
-
+🤝 Contributing
 We welcome contributions that align with Spirecrest's standard of excellence.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Fork the Project
 
-Please ensure all tests pass (`npm run test`) and the linter is satisfied (`npm run lint`) before submitting.
+Create your Feature Branch (git checkout -b feature/AmazingFeature)
 
-## 🗺️ Roadmap
+Commit your Changes (git commit -m 'Add some AmazingFeature')
 
-* [ ] Implement dynamic CMS integration for the Portfolio and Testimonials sections.
-* [ ] Add multilingual support (i18n) for broader enterprise reach.
-* [ ] Develop an authenticated portal area for existing directors and partners to access the centralized knowledge hub.
-* [ ] Integrate advanced analytics to track B2B conversion metrics on the Partner Model workflows.
+Push to the Branch (git push origin feature/AmazingFeature)
 
-## 📄 License
+Open a Pull Request
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Please ensure all tests pass (npm run test) and the linter is satisfied (npm run lint) before submitting.
 
-```
+🗺️ Roadmap
+[ ] Implement dynamic CMS integration for the Portfolio and Testimonials sections.
 
-```
+[ ] Add multilingual support (i18n) for broader enterprise reach.
+
+[ ] Develop an authenticated portal area for existing directors and partners to access the centralized knowledge hub.
+
+[ ] Integrate advanced analytics to track B2B conversion metrics on the Partner Model workflows.
+
+📄 License
+Distributed under the MIT License. See LICENSE for more information.
