@@ -15,7 +15,7 @@ const metrics = [
   {
     id: 2,
     icon: Server,
-    value: "12,00+",
+    value: "1,200+",
     label: "Nodes Deployed",
     description: "Enterprise hardware and surveillance nodes actively managed.",
     color: "from-blue-500/20 to-transparent",
