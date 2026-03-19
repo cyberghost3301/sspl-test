@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { m as motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Sun, BatteryCharging, Gauge, Leaf, BarChart3,
   Zap, Building2, ShieldCheck, Factory, Plug, LucideIcon,

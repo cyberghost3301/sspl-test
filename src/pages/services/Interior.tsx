@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { m as motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Palette, Sofa, Lamp, PaintBucket, Ruler, Home,
   Building2, Boxes, ShieldCheck, LucideIcon,

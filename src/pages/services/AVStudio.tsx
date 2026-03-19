@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { m as motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Headphones, Video, Phone, Monitor, Mic,
   Speaker, Radio, Tv, PhoneCall, LucideIcon, ShieldCheck,

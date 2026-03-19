@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from "framer-motion";
 import { Shield, Database, Eye, Lock, Mail, RefreshCw } from "lucide-react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";

@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { m as motion, useInView, AnimatePresence } from "framer-motion";
 import {
   ShieldCheck, Lock, Search, FileCheck, Server, AlertTriangle,
   Eye, Users, Wifi, Database, Globe, BarChart3,

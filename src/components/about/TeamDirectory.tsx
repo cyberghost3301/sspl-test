@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   Code,
@@ -6,6 +6,7 @@ import {
   Brain,
   Linkedin,
 } from "lucide-react";
+import WhatsAppCTA from "@/components/WhatsAppCTA";
 
 /* ───────── Tier 1 - C-Suite / Leadership ───────── */
 const cSuite = [
@@ -174,7 +175,7 @@ function CSuiteCard({ member, index }: { member: (typeof cSuite)[0]; index: numb
 
       <div className="w-24 h-24 rounded-2xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-accent/10 transition-colors overflow-hidden">
         {member.imageUrl && member.imageUrl !== "/placeholder.svg" ? (
-          <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover" />
+          <img src={member.imageUrl} alt={member.name} width="400" height="400" loading="lazy" className="w-full h-full object-cover" />
         ) : (
           <span className="font-display text-2xl font-bold text-foreground/60 group-hover:text-accent transition-colors">
             {member.initials}
@@ -238,7 +239,7 @@ function ManagementCard({
 
       <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-4 group-hover:bg-accent/10 transition-colors overflow-hidden">
         {member.imageUrl && member.imageUrl !== "/placeholder.svg" ? (
-          <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover" />
+          <img src={member.imageUrl} alt={member.name} width="400" height="400" loading="lazy" className="w-full h-full object-cover" />
         ) : (
           <span className="font-display text-base font-bold text-foreground/55 group-hover:text-accent transition-colors">
             {getInitials(member.name)}
@@ -298,7 +299,7 @@ function DevTile({
     >
       <div className="w-12 h-12 shrink-0 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-accent/10 transition-colors overflow-hidden">
         {imageUrl && imageUrl !== "/placeholder.svg" ? (
-          <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
+          <img src={imageUrl} alt={name} width="400" height="400" loading="lazy" className="w-full h-full object-cover" />
         ) : (
           <span className="font-display text-sm font-bold text-foreground/50 group-hover:text-accent transition-colors">
             {getInitials(name)}
@@ -375,10 +376,13 @@ export default function TeamDirectory() {
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
             Partner-Led. Expert-Driven.
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto mb-8">
             Every project is steered by a specialised industry leader, not a
             generic project manager. Meet the minds behind Spirecrest.
           </p>
+          <div className="flex justify-center">
+            <WhatsAppCTA context="team" buttonText="Partner With a Director" />
+          </div>
         </motion.div>
 
         {/* ── Tier 1: C-Suite / Leadership ── */}
@@ -424,7 +428,7 @@ export default function TeamDirectory() {
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {supportTeam.map((m, i) => (
-              <SupportTile key={m.name} name={m.name} role={m.role} linkedin={m.linkedin} index={i} inView={inView} />
+              <SupportTile key={m.name} name={m.name} role={m.role} linkedin={(m as any).linkedin} index={i} inView={inView} />
             ))}
           </div>
         </div>

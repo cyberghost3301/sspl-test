@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { m as motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Camera, Eye, Cloud, Brain, ShieldCheck, Radio,
   Wifi, HardDrive, Bell, MapPin, Cctv, Lock,

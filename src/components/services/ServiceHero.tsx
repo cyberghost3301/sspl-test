@@ -1,8 +1,8 @@
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import WhatsAppCTA from "@/components/WhatsAppCTA";
 
 interface ServiceHeroProps {
   badge: string;
@@ -13,6 +13,23 @@ interface ServiceHeroProps {
 }
 
 export default function ServiceHero({ badge, title, highlight, description, stats }: ServiceHeroProps) {
+  const location = useLocation();
+  const getContext = () => {
+    const p = location.pathname;
+    if (p.includes("surveillance")) return "surveillance";
+    if (p.includes("software")) return "software";
+    if (p.includes("consulting")) return "consulting";
+    if (p.includes("lifecycle")) return "lifecycle";
+    if (p.includes("automation")) return "automation";
+    if (p.includes("networking")) return "networking";
+    if (p.includes("solar")) return "solar";
+    if (p.includes("av-studio")) return "av-studio";
+    if (p.includes("computers")) return "computers";
+    if (p.includes("interior")) return "interior";
+    if (p.includes("portfolio")) return "portfolio";
+    return "general";
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-gradient">
       <div
@@ -63,12 +80,7 @@ export default function ServiceHero({ badge, title, highlight, description, stat
             transition={{ delay: 0.45, duration: 0.5 }}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Link to="/contact">
-              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold gap-2 px-8 h-12 text-base">
-                Get a Quote
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
+            <WhatsAppCTA context={getContext() as any} buttonText="Partner With Us" className="px-8 h-12 text-base w-full sm:w-auto" />
           </motion.div>
 
           <motion.div

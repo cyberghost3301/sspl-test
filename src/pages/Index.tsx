@@ -1,9 +1,11 @@
 import SEO from "@/components/SEO";
 import HeroSection from "@/components/HeroSection";
+import ImpactMetrics from "@/components/ImpactMetrics";
 import TrustMetrics from "@/components/TrustMetrics";
 import MVPServices from "@/components/MVPServices";
 import PartnerModel from "@/components/PartnerModel";
 import ServicesMarquee from "@/components/ServicesMarquee";
+import BentoGrid from "@/components/BentoGrid";
 import CTASection from "@/components/CTASection";
 
 const Index = () => {
@@ -17,7 +19,8 @@ const Index = () => {
       <HeroSection />
       <TrustMetrics />
       <MVPServices />
-      <ServicesMarquee />
+      <ImpactMetrics />
+      <BentoGrid />
       <PartnerModel />
       <CTASection />
     </>

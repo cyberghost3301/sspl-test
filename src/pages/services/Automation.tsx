@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { m as motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Zap, Thermometer, Lightbulb, Blinds, Cpu,
   Gauge, Home, Building2, Smartphone, Speaker,

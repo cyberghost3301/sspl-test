@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { m as motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Code, Smartphone, Globe, Cpu, Workflow, Database,
   Palette, TestTube, GitBranch, ShoppingCart, BarChart3, Headphones,

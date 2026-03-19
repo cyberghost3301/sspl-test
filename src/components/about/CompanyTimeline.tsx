@@ -1,4 +1,4 @@
-import { motion, useScroll, useSpring, useInView } from "framer-motion";
+import { m as motion, useScroll, useSpring, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   Lightbulb,
@@ -127,18 +127,16 @@ function MilestoneCard({
   return (
     <div
       ref={ref}
-      className={`relative flex items-start gap-0 md:gap-8 ${
-        isLeft ? "md:flex-row" : "md:flex-row-reverse"
-      }`}
+      className={`relative flex items-start gap-0 md:gap-8 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"
+        }`}
     >
       {/* Card */}
       <motion.div
         initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.55, delay: 0.1 }}
-        className={`w-full md:w-[calc(50%-2rem)] ${
-          isLeft ? "md:text-right" : "md:text-left"
-        }`}
+        className={`w-full md:w-[calc(50%-2rem)] ${isLeft ? "md:text-right" : "md:text-left"
+          }`}
       >
         <div className="ml-12 md:ml-0 p-6 rounded-2xl border border-border bg-card hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 group">
           <span className="inline-block text-[10px] font-display uppercase tracking-widest text-accent font-semibold mb-2">

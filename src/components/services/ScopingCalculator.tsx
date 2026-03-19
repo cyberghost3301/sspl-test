@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Calculator, Clock, Users, Layers } from "lucide-react";

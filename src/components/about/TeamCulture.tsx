@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Flame, Heart, Compass, Handshake, Eye, Rocket } from "lucide-react";
 

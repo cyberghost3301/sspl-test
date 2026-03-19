@@ -1,6 +1,7 @@
 import SEO from "@/components/SEO";
 import AboutHero from "@/components/about/AboutHero";
 import MissionValues from "@/components/about/MissionValues";
+import TechMarquee from "@/components/about/TechMarquee";
 import PartnersMarquee from "@/components/about/PartnersMarquee";
 import CompanyTimeline from "@/components/about/CompanyTimeline";
 import CTASection from "@/components/CTASection";
@@ -15,6 +16,7 @@ export default function About() {
       />
       <AboutHero />
       <MissionValues />
+      <TechMarquee />
       <PartnersMarquee />
       <CompanyTimeline />
       <CTASection />

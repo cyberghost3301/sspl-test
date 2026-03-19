@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { m as motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Monitor, Cpu, HardDrive, MemoryStick, Fan,
   Printer, Laptop, Server, Wifi, ShieldCheck,

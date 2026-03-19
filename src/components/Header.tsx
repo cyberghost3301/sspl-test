@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from "framer-motion";
 import {
   Shield, Code, ShieldCheck, Zap, Network, Monitor,
   Sun as SunIcon, Palette, Headphones, TrendingUp,
@@ -8,7 +8,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ContactModal } from "@/components/ContactModal";
-import seltLogo from "@/assets/selt.png";
+import seltLogoLight from "@/assets/selt.png";
+import seltLogoDark from "@/assets/seltw.png";
 
 const services = [
   { icon: Shield, title: "Advanced Surveillance", desc: "Enterprise-grade security infrastructure", href: "/services/surveillance" },
@@ -37,7 +38,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const location = useLocation();
 
@@ -73,16 +74,15 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
             ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
             : "bg-transparent"
-        }`}
+          }`}
       >
         <div className="section-container flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 font-display font-bold text-xl tracking-tight">
-            <img src={seltLogo} alt="Spirecrest" className="h-9 w-auto" style={{ filter: isOverDark ? "invert(1)" : "none" }} />
+            <img src={(dark || isOverDark) ? seltLogoDark : seltLogoLight} alt="Spirecrest" className="h-9 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
@@ -102,11 +102,10 @@ export default function Header() {
                 ) : (
                   <Link
                     to={link.href}
-                    className={`px-4 py-2 text-sm font-medium transition-colors ${
-                      location.pathname === link.href
+                    className={`px-4 py-2 text-sm font-medium transition-colors ${location.pathname === link.href
                         ? navActiveClass
                         : navTextClass
-                    }`}
+                      }`}
                   >
                     {link.label}
                   </Link>
@@ -124,6 +123,7 @@ export default function Header() {
             >
               {dark ? <SunMedium className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
+
             <Button onClick={() => setContactModalOpen(true)} size="sm" className="hidden sm:flex bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold gap-1.5">
               Partner With Us
               <ArrowRight className="w-3.5 h-3.5" />
