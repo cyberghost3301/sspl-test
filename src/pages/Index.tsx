@@ -10,7 +10,7 @@ import CTASection from "@/components/CTASection";
 
 const Index = () => {
   return (
-    <>
+    <main className="relative overflow-x-hidden w-full">
       <SEO
         title="Spirecrest Solutions | Enterprise IT, Security & Software"
         description="We architect IT infrastructure, deploy surveillance systems, and build scalable software for India's most critical enterprises. Engage our Partner-Led model today."
@@ -23,7 +23,7 @@ const Index = () => {
       <BentoGrid />
       <PartnerModel />
       <CTASection />
-    </>
+    </main>
   );
 };
 

@@ -7,10 +7,10 @@ const partnersRow1 = [
   { name: "CP Plus", slug: "cpplus", url: "https://www.cpplusworld.com/assets/images/logo.png" },
   { name: "Bosch", slug: "bosch" },
   { name: "Panasonic", slug: "panasonic" },
-  { name: "Honeywell", slug: "honeywell" },
+  { name: "Cloudflare", slug: "cloudflare" },
   { name: "Axis", slug: "axiscommunications" },
   { name: "Pelco", slug: "pelco", url: "https://upload.wikimedia.org/wikipedia/commons/d/de/Pelco_logo.svg" },
-  { name: "Vivotek", slug: "vivotek" },
+  { name: "Datadog", slug: "datadog" },
   { name: "Hanwha", slug: "hanwha" },
   { name: "Uniview", slug: "uniview" },
   { name: "Milwaukee", slug: "milwaukeetool" },
@@ -23,7 +23,7 @@ const partnersRow1 = [
 
 const partnersRow2 = [
   { name: "Ubiquiti", slug: "ubiquiti" },
-  { name: "Aruba", slug: "arubanetworks" },
+  { name: "Netgear", slug: "netgear" },
   { name: "Cisco", slug: "cisco" },
   { name: "Juniper", slug: "junipernetworks" },
   { name: "Fortinet", slug: "fortinet" },
@@ -36,9 +36,9 @@ const partnersRow2 = [
   { name: "Supermicro", slug: "supermicro" },
   { name: "TP-Link", slug: "tplink" },
   { name: "D-Link", slug: "dlink" },
-  { name: "Netgear", slug: "netgear" },
+  { name: "GitLab", slug: "gitlab" },
   { name: "MikroTik", slug: "mikrotik" },
-  { name: "Zyxel", slug: "zyxel" },
+  { name: "Elastic", slug: "elasticsearch" },
 ];
 
 export default function PartnersMarquee() {
@@ -62,7 +62,7 @@ export default function PartnersMarquee() {
               className="flex-shrink-0 flex items-center gap-3 px-6 py-4 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 group"
             >
               <img
-                src={partner.url || `https://cdn.simpleicons.org/${partner.slug}/f8f9fa`}
+                src={partner.url || `https://cdn.simpleicons.org/${partner.slug}`}
                 alt={partner.name}
                 className="w-7 h-7 object-contain opacity-70 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
                 loading="lazy"

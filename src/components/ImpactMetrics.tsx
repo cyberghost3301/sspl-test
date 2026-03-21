@@ -61,7 +61,7 @@ export default function ImpactMetrics() {
   return (
     <section
       ref={ref}
-      className="w-full py-24 bg-card border-y border-border"
+      className="relative w-full py-24 bg-card border-y border-border"
     >
       <div className="section-container relative z-10">
         <motion.div

@@ -14,17 +14,17 @@ export default function HeroSection() {
       }} />
 
       {/* Animated CSS Geometric Mesh / Orbs */}
-      <div 
-        className="absolute top-[10%] left-[10%] w-[90vw] h-[90vw] md:w-[60vw] md:h-[60vw] lg:w-[35vw] lg:h-[35vw] rounded-full mix-blend-screen pointer-events-none opacity-20 blur-[80px] md:blur-[100px] bg-gradient-to-tr from-cyan-500 to-blue-600 animate-float" 
-        style={{ animationDelay: '0s' }} 
+      <div
+        className="absolute top-[10%] left-[10%] w-[90vw] h-[90vw] md:w-[60vw] md:h-[60vw] lg:w-[35vw] lg:h-[35vw] rounded-full mix-blend-screen pointer-events-none opacity-20 blur-[80px] md:blur-[100px] bg-gradient-to-tr from-cyan-500 to-blue-600 animate-float"
+        style={{ animationDelay: '0s' }}
       />
-      <div 
-        className="absolute bottom-[10%] right-[5%] w-[100vw] h-[100vw] md:w-[65vw] md:h-[65vw] lg:w-[40vw] lg:h-[40vw] rounded-full mix-blend-screen pointer-events-none opacity-20 blur-[90px] md:blur-[120px] bg-gradient-to-tl from-yellow-500 to-amber-600 animate-float-reverse" 
-        style={{ animationDelay: '-5s' }} 
+      <div
+        className="absolute bottom-[10%] right-[5%] w-[100vw] h-[100vw] md:w-[65vw] md:h-[65vw] lg:w-[40vw] lg:h-[40vw] rounded-full mix-blend-screen pointer-events-none opacity-20 blur-[90px] md:blur-[120px] bg-gradient-to-tl from-yellow-500 to-amber-600 animate-float-reverse"
+        style={{ animationDelay: '-5s' }}
       />
-      <div 
-        className="absolute top-[40%] left-[30%] w-[80vw] h-[80vw] md:w-[50vw] md:h-[50vw] lg:w-[30vw] lg:h-[30vw] rounded-full mix-blend-screen pointer-events-none opacity-15 blur-[80px] md:blur-[120px] bg-gradient-to-r from-blue-600 to-indigo-600 animate-float" 
-        style={{ animationDelay: '-10s' }} 
+      <div
+        className="absolute top-[40%] left-[30%] w-[80vw] h-[80vw] md:w-[50vw] md:h-[50vw] lg:w-[30vw] lg:h-[30vw] rounded-full mix-blend-screen pointer-events-none opacity-15 blur-[80px] md:blur-[120px] bg-gradient-to-r from-blue-600 to-indigo-600 animate-float"
+        style={{ animationDelay: '-10s' }}
       />
 
       <div className="section-container relative z-10 py-32 lg:py-0">
@@ -60,8 +60,8 @@ export default function HeroSection() {
             className="mt-6 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
             style={{ color: "hsl(var(--on-dark-muted))" }}
           >
-            From advanced surveillance systems to custom software and cloud infrastructure, 
-            we architect solutions that protect, perform, and scale.
+            From advanced surveillance to custom software, cloud infrastructure,
+            and much more; we architect solutions that protect, perform, and progress!
           </motion.p>
 
           <motion.div

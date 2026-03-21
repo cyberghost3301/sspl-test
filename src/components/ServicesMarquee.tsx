@@ -1,23 +1,15 @@
 import { m as motion } from "framer-motion";
 
-// 30 Core Development & Cloud Infrastructure Logos
+// Safe robust tech stack slugs verified on simpleicons
 const row1Logos = [
-  "react", "nextdotjs", "vuedotjs", "angular", "nodedotjs",
-  "python", "typescript", "java", "csharp", "cplusplus",
-  "go", "rust", "amazonaws", "microsoftazure", "googlecloud",
-  "docker", "kubernetes", "cisco", "ubiquiti", "tailwindcss",
-  "vercel", "mysql", "postgresql", "mongodb", "redis",
-  "elasticsearch", "graphql", "prisma", "apache", "nginx"
+  'cisco', 'cloudflare', 'intel', 'github', 'gitlab', 
+  'docker', 'linux', 'ubuntu', 'nginx', 'vercel'
 ];
 
-// 30 DevOps, Security, OS, & Enterprise Management Logos
+// Reusing for the second row as per safe list
 const row2Logos = [
-  "linux", "ubuntu", "git", "github", "gitlab",
-  "bitbucket", "figma", "cloudflare", "openai", "android",
-  "apple", "jenkins", "terraform", "ansible", "prometheus",
-  "grafana", "datadog", "sentry", "sonarqube", "fortinet",
-  "paloaltonetworks", "junipernetworks", "f5", "wireshark", "slack",
-  "microsoftteams", "jira", "confluence", "notion", "salesforce"
+  'cisco', 'cloudflare', 'intel', 'github', 'gitlab', 
+  'docker', 'linux', 'ubuntu', 'nginx', 'vercel'
 ];
 
 export default function TechMarquee() {

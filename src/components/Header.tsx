@@ -28,9 +28,10 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "#", hasMega: true },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Testimonials", href: "/testimonials" },
+  { label: "Insights", href: "/insights" },
   { label: "Collective", href: "/collective" },
+  { label: "Testimonials", href: "/testimonials" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -61,28 +62,30 @@ export default function Header() {
   const hasDarkHero = location.pathname === "/" || location.pathname.startsWith("/services/") || ["/about", "/portfolio", "/testimonials", "/collective", "/contact"].includes(location.pathname);
   const isOverDark = hasDarkHero && !scrolled;
 
+  const currentLogo = (isOverDark || dark) ? seltLogoDark : seltLogoLight;
+
   // Dynamic text classes based on whether we're over the dark hero
   const navTextClass = isOverDark
-    ? "text-white/70 hover:text-white"
-    : "text-muted-foreground hover:text-foreground";
+    ? "text-white"
+    : "text-slate-900 dark:text-slate-100 hover:text-accent font-medium";
   const navActiveClass = "text-accent";
-  const logoTextClass = isOverDark ? "text-white" : "text-foreground";
+  const logoTextClass = isOverDark ? "text-white" : "text-slate-900 dark:text-slate-100";
   const iconBtnClass = isOverDark
-    ? "text-white/70 hover:text-white hover:bg-white/10"
-    : "text-muted-foreground hover:text-foreground hover:bg-secondary";
+    ? "text-white hover:text-white hover:bg-white/10"
+    : "text-slate-900 dark:text-slate-100 hover:bg-secondary";
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-            ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
-            : "bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-0 ${scrolled
+          ? "bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-border shadow-sm"
+          : "bg-transparent"
           }`}
       >
         <div className="section-container flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 font-display font-bold text-xl tracking-tight">
-            <img src={(dark || isOverDark) ? seltLogoDark : seltLogoLight} alt="Spirecrest" className="h-9 w-auto" />
+            <img src={currentLogo} alt="Spirecrest" className="h-9 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
@@ -103,8 +106,8 @@ export default function Header() {
                   <Link
                     to={link.href}
                     className={`px-4 py-2 text-sm font-medium transition-colors ${location.pathname === link.href
-                        ? navActiveClass
-                        : navTextClass
+                      ? navActiveClass
+                      : navTextClass
                       }`}
                   >
                     {link.label}
@@ -130,9 +133,18 @@ export default function Header() {
             </Button>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className={`lg:hidden p-2 transition-colors ${isOverDark ? "text-white" : "text-foreground"}`}
+              className={`lg:hidden p-2 relative flex items-center justify-center w-10 h-10 transition-colors group ${isOverDark ? "text-white" : "text-foreground"}`}
+              aria-label="Toggle menu"
             >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileOpen ? (
+                <X className="w-5 h-5 group-hover:text-cyan-500 transition-colors" />
+              ) : (
+                <div className="flex flex-col justify-between w-5 h-3.5">
+                  <span className="h-[1.5px] w-3/4 bg-current rounded-full self-end transition-colors group-hover:bg-cyan-500" />
+                  <span className="h-[1.5px] w-full bg-current rounded-full transition-colors group-hover:bg-cyan-500" />
+                  <span className="h-[1.5px] w-3/4 bg-current rounded-full self-start transition-colors group-hover:bg-cyan-500" />
+                </div>
+              )}
             </button>
           </div>
         </div>
@@ -156,6 +168,7 @@ export default function Header() {
                     <Link
                       key={s.title}
                       to={s.href}
+                      onClick={() => setMegaOpen(false)}
                       className="group flex items-start gap-4 p-4 rounded-lg hover:bg-secondary transition-colors"
                     >
                       <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
@@ -201,7 +214,7 @@ export default function Header() {
                   <span className="text-sm text-foreground">{s.title}</span>
                 </Link>
               ))}
-              <Button onClick={() => { setMobileOpen(false); setContactModalOpen(true); }} className="w-full mt-6 bg-accent text-accent-foreground font-display font-semibold">
+              <Button onClick={() => { setMobileOpen(false); setContactModalOpen(true); }} className="w-full mt-6 mb-12 bg-accent text-accent-foreground font-display font-semibold">
                 Partner With Us
               </Button>
             </nav>

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 export function CommandMenu() {
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,6 +16,9 @@ export function CommandMenu() {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setOpen((open) => !open);
+      }
+      if (e.key === "Escape") {
+        setOpen(false);
       }
     };
     document.addEventListener("keydown", down);
@@ -40,12 +44,28 @@ export function CommandMenu() {
             <Search className="h-5 w-5 text-white/40 mr-2" />
             <Command.Input 
               autoFocus 
+              value={search}
+              onValueChange={setSearch}
               placeholder="Type a command or search..." 
               className="w-full bg-transparent py-4 text-sm outline-none text-white placeholder:text-white/40 font-display"
             />
           </div>
           <Command.List className="max-h-[50vh] overflow-y-auto p-2">
             <Command.Empty className="py-8 text-center text-sm text-white/40">No results found.</Command.Empty>
+
+            {(search.toLowerCase() === 'vanguard' || search.toLowerCase() === 'override') && (
+              <Command.Group heading="SYSTEM OVERRIDE" className="text-[10px] font-medium text-cyan-400 py-2 px-2 uppercase tracking-wider">
+                <Command.Item 
+                  onSelect={() => { 
+                    setOpen(false); 
+                    navigate('/vanguard/overview'); 
+                  }} 
+                  className="flex items-center px-4 py-2.5 cursor-pointer text-sm font-bold text-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-300 rounded-md mb-0.5 aria-selected:bg-cyan-500/10 aria-selected:text-cyan-300 transition-colors"
+                >
+                  Initiate Vanguard Protocol...
+                </Command.Item>
+              </Command.Group>
+            )}
 
             <Command.Group heading="Main Pages" className="text-[10px] font-medium text-white/40 py-2 px-2 uppercase tracking-wider">
               <Command.Item onSelect={() => navigateTo("/")} className="flex items-center px-4 py-2.5 cursor-pointer text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-md mb-0.5 aria-selected:bg-white/10 aria-selected:text-white transition-colors">
@@ -54,14 +74,17 @@ export function CommandMenu() {
               <Command.Item onSelect={() => navigateTo("/about")} className="flex items-center px-4 py-2.5 cursor-pointer text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-md mb-0.5 aria-selected:bg-white/10 aria-selected:text-white transition-colors">
                 <Info className="h-4 w-4 mr-3 text-emerald-400" /> About Us
               </Command.Item>
-              <Command.Item onSelect={() => navigateTo("/portfolio")} className="flex items-center px-4 py-2.5 cursor-pointer text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-md mb-0.5 aria-selected:bg-white/10 aria-selected:text-white transition-colors">
-                <Image className="h-4 w-4 mr-3 text-blue-400" /> Portfolio
+              <Command.Item onSelect={() => navigateTo("/insights")} className="flex items-center px-4 py-2.5 cursor-pointer text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-md mb-0.5 aria-selected:bg-white/10 aria-selected:text-white transition-colors">
+                <FileText className="h-4 w-4 mr-3 text-amber-500" /> Insights
+              </Command.Item>
+              <Command.Item onSelect={() => navigateTo("/collective")} className="flex items-center px-4 py-2.5 cursor-pointer text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-md mb-0.5 aria-selected:bg-white/10 aria-selected:text-white transition-colors">
+                <Users className="h-4 w-4 mr-3 text-purple-400" /> Our Team / Collective
               </Command.Item>
               <Command.Item onSelect={() => navigateTo("/testimonials")} className="flex items-center px-4 py-2.5 cursor-pointer text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-md mb-0.5 aria-selected:bg-white/10 aria-selected:text-white transition-colors">
                 <MessageSquare className="h-4 w-4 mr-3 text-indigo-400" /> Testimonials
               </Command.Item>
-              <Command.Item onSelect={() => navigateTo("/collective")} className="flex items-center px-4 py-2.5 cursor-pointer text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-md mb-0.5 aria-selected:bg-white/10 aria-selected:text-white transition-colors">
-                <Users className="h-4 w-4 mr-3 text-purple-400" /> Our Team / Collective
+              <Command.Item onSelect={() => navigateTo("/portfolio")} className="flex items-center px-4 py-2.5 cursor-pointer text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-md mb-0.5 aria-selected:bg-white/10 aria-selected:text-white transition-colors">
+                <Image className="h-4 w-4 mr-3 text-blue-400" /> Portfolio
               </Command.Item>
               <Command.Item onSelect={() => navigateTo("/contact")} className="flex items-center px-4 py-2.5 cursor-pointer text-sm text-white/80 hover:bg-white/10 hover:text-white rounded-md mb-0.5 aria-selected:bg-white/10 aria-selected:text-white transition-colors">
                 <Mail className="h-4 w-4 mr-3 text-yellow-500" /> Contact Us

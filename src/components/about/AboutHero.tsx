@@ -2,17 +2,26 @@ import { m as motion } from "framer-motion";
 
 export default function AboutHero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-gradient">
-      {/* Grid bg */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
+      {/* Animated grid background */}
+      <div className="absolute inset-0 opacity-[0.04]" style={{
+        backgroundImage: "linear-gradient(hsl(var(--accent)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--accent)) 1px, transparent 1px)",
+        backgroundSize: "60px 60px",
+      }} />
+
+      {/* Animated CSS Geometric Mesh / Orbs */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "linear-gradient(hsl(var(--accent)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--accent)) 1px, transparent 1px)",
-          backgroundSize: "50px 50px",
-        }}
+        className="absolute top-[10%] left-[10%] w-[90vw] h-[90vw] md:w-[60vw] md:h-[60vw] lg:w-[35vw] lg:h-[35vw] rounded-full mix-blend-screen pointer-events-none opacity-20 blur-[80px] md:blur-[100px] bg-gradient-to-tr from-cyan-500 to-blue-600 animate-float"
+        style={{ animationDelay: '0s' }}
       />
-      <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-accent/5 blur-[140px]" />
+      <div
+        className="absolute bottom-[10%] right-[5%] w-[100vw] h-[100vw] md:w-[65vw] md:h-[65vw] lg:w-[40vw] lg:h-[40vw] rounded-full mix-blend-screen pointer-events-none opacity-20 blur-[90px] md:blur-[120px] bg-gradient-to-tl from-yellow-500 to-amber-600 animate-float-reverse"
+        style={{ animationDelay: '-5s' }}
+      />
+      <div
+        className="absolute top-[40%] left-[30%] w-[80vw] h-[80vw] md:w-[50vw] md:h-[50vw] lg:w-[30vw] lg:h-[30vw] rounded-full mix-blend-screen pointer-events-none opacity-15 blur-[80px] md:blur-[120px] bg-gradient-to-r from-blue-600 to-indigo-600 animate-float"
+        style={{ animationDelay: '-10s' }}
+      />
 
       <div className="section-container relative z-10 py-32 lg:py-40">
         <div className="max-w-3xl mx-auto text-center">

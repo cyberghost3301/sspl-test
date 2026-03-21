@@ -25,7 +25,7 @@ export default function PartnerModel() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 lg:py-32 bg-secondary/50" ref={ref}>
+    <section className="relative py-24 lg:py-32 bg-secondary/50" ref={ref}>
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div

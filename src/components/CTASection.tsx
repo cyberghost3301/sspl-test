@@ -9,7 +9,7 @@ export default function CTASection() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 lg:py-32 bg-background" ref={ref}>
+    <section className="relative py-24 lg:py-32 bg-background" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

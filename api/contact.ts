@@ -14,12 +14,12 @@ export default async function handler(req: any, res: any) {
         const { name, business, email, phone, subject, message } = req.body;
 
         const data = await resend.emails.send({
-            from: 'Spirecrest Portal <info@spirecrest.in>', // Change to info@spirecrest.in after domain verification
+            from: 'Spirecrest Contact Form <info@spirecrest.in>', // Change to info@spirecrest.in after domain verification
             to: ['dcwebsols@gmail.com'], // ⚠️ MUST be the email you used to sign up for Resend
-            subject: `Enterprise Inquiry: ${business || name} - ${subject}`,
+            subject: `Contact Form Inquiry: ${business || name} - ${subject}`,
             html: `
         <div style="font-family: sans-serif; color: #111827; max-width: 600px;">
-          <h2 style="color: #0284c7;">New Spirecrest Lead</h2>
+          <h2 style="color: #0284c7;">New Entry</h2>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
           <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>

@@ -23,10 +23,13 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="bg-hero-gradient" style={{ color: "hsl(var(--on-dark))" }}>
-      <div className="section-container py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
-          {/* Brand */}
-          <div className="lg:col-span-4">
+      <div className="section-container py-12 md:py-16 lg:py-20">
+
+        {/* Main Footer Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-6 md:gap-8 lg:gap-12">
+          
+          {/* Brand Column */}
+          <div className="col-span-2 md:col-span-12 lg:col-span-4 mb-4 lg:mb-0">
             <div className="mb-4">
               <img src={sfiltLogo} alt="Spirecrest Solutions Pvt. Ltd." className="h-10 w-auto invert" />
             </div>
@@ -49,11 +52,10 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Link Columns */}
           {Object.entries(footerLinks).map(([heading, links]) => (
-            <div key={heading} className="lg:col-span-2">
-              <p className="font-display font-semibold text-sm mb-4">{heading}</p>
-              <ul className="space-y-2.5">
+            <div key={heading} className="col-span-1 md:col-span-3 lg:col-span-2">
+              <p className="font-display font-semibold text-sm mb-3">{heading}</p>
+              <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.label}>
                     <Link to={link.href} className="text-sm hover:text-accent transition-colors" style={{ color: "hsl(var(--on-dark-muted))" }}>
@@ -66,9 +68,9 @@ export default function Footer() {
           ))}
 
           {/* Contact Column */}
-          <div className="lg:col-span-4">
-            <p className="font-display font-semibold text-sm mb-4">Contact Us</p>
-            <div className="space-y-4 text-sm" style={{ color: "hsl(var(--on-dark-muted))" }}>
+          <div className="col-span-2 md:col-span-6 lg:col-span-4">
+            <p className="font-display font-semibold text-sm mb-3">Contact Us</p>
+            <div className="space-y-3 text-sm" style={{ color: "hsl(var(--on-dark-muted))" }}>
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
                 <div>
@@ -82,20 +84,20 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 shrink-0" />
-                <div className="flex flex-col">
-                  <a href="mailto:info@spirecrest.in" className="hover:text-accent transition-colors">info@spirecrest.in</a>
-                </div>
+                <a href="mailto:info@spirecrest.in" className="hover:text-accent transition-colors">info@spirecrest.in</a>
               </div>
             </div>
           </div>
+
         </div>
 
-        {/* Contact strip */}
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+        {/* Bottom strip */}
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs" style={{ color: "hsl(var(--on-dark-muted) / 0.6)" }}>
             © {new Date().getFullYear()} Spirecrest Solutions Pvt. Ltd. All rights reserved.
           </p>
         </div>
+
       </div>
     </footer>
   );

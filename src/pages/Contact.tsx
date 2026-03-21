@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { InlineWidget } from "react-calendly";
 
 /* ─── Schema ─────────────────────────────────────────────────────────── */
 const contactSchema = z.object({
@@ -153,26 +154,25 @@ export default function Contact() {
       />
 
       {/* ── Hero ──────────────────────────────────────────────────────── */}
-      <section
-        className="relative pt-36 pb-16 md:pt-44 md:pb-20 overflow-hidden"
-        style={{
-          background: `
-            radial-gradient(ellipse 80% 50% at 50% -10%, rgba(6,182,212,0.12) 0%, transparent 70%),
-            radial-gradient(ellipse 60% 40% at 80% 60%, rgba(59,130,246,0.08) 0%, transparent 60%),
-            #080f1e
-          `,
-        }}
-      >
-        {/* decorative grid */}
+      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-slate-950 pt-20">
+        {/* Animated grid background */}
+        <div className="absolute inset-0 opacity-[0.04]" style={{
+          backgroundImage: "linear-gradient(hsl(var(--accent)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--accent)) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }} />
+
+        {/* Animated CSS Geometric Mesh / Orbs */}
         <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-            `,
-            backgroundSize: "60px 60px",
-          }}
+          className="absolute top-[10%] left-[10%] w-[90vw] h-[90vw] md:w-[60vw] md:h-[60vw] lg:w-[35vw] lg:h-[35vw] rounded-full mix-blend-screen pointer-events-none opacity-20 blur-[80px] md:blur-[100px] bg-gradient-to-tr from-cyan-500 to-blue-600 animate-float"
+          style={{ animationDelay: '0s' }}
+        />
+        <div
+          className="absolute bottom-[10%] right-[5%] w-[100vw] h-[100vw] md:w-[65vw] md:h-[65vw] lg:w-[40vw] lg:h-[40vw] rounded-full mix-blend-screen pointer-events-none opacity-20 blur-[90px] md:blur-[120px] bg-gradient-to-tl from-yellow-500 to-amber-600 animate-float-reverse"
+          style={{ animationDelay: '-5s' }}
+        />
+        <div
+          className="absolute top-[40%] left-[30%] w-[80vw] h-[80vw] md:w-[50vw] md:h-[50vw] lg:w-[30vw] lg:h-[30vw] rounded-full mix-blend-screen pointer-events-none opacity-15 blur-[80px] md:blur-[120px] bg-gradient-to-r from-blue-600 to-indigo-600 animate-float"
+          style={{ animationDelay: '-10s' }}
         />
 
         <div className="section-container text-center relative z-10">
@@ -452,21 +452,25 @@ export default function Contact() {
                 </p>
               </div>
 
-              {/* Cal.com embed */}
+              {/* Calendly embed */}
               <div
-                className="rounded-2xl border overflow-hidden"
+                className="rounded-2xl border overflow-hidden bg-[#080f1e]"
                 style={{
                   ...glassStyle,
                   borderColor: "rgba(255,255,255,0.08)",
-                  minHeight: "380px",
+                  minHeight: "420px",
                 }}
               >
-                <iframe
-                  src="https://cal.com/spirecrest/30min?embed=true&theme=dark"
-                  title="Book a meeting with a Spirecrest Principal"
-                  className="w-full border-0"
-                  style={{ height: "420px" }}
-                  loading="lazy"
+                <InlineWidget
+                  url="https://calendly.com/dcwebsols/30min?hide_event_type_details=1&hide_gdpr_banner=1"
+                  styles={{ height: '420px', width: '100%' }}
+                  pageSettings={{
+                    backgroundColor: '080f1e', // Matches your dark hero background
+                    hideEventTypeDetails: false,
+                    hideLandingPageDetails: false,
+                    primaryColor: '06b6d4', // Matches your Cyan-500 accents perfectly
+                    textColor: 'ffffff'
+                  }}
                 />
               </div>
 

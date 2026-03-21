@@ -68,7 +68,8 @@ export function ContactModal({ isOpen, onOpenChange }: ContactModalProps) {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch("https://ssplbackend.vercel.app/api/contact", {
+      // Changed to use the internal relative API route
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -99,8 +100,7 @@ export function ContactModal({ isOpen, onOpenChange }: ContactModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      {/* We use bg-transparent and border-none because our custom glassStyle will provide the container visuals */}
-      <DialogContent 
+      <DialogContent
         className="sm:max-w-[550px] p-0 bg-transparent border-none shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
         aria-describedby="contact-form-description"
       >
@@ -108,7 +108,7 @@ export function ContactModal({ isOpen, onOpenChange }: ContactModalProps) {
         <DialogDescription id="contact-form-description" className="sr-only">
           Fill out this form to send an inquiry to Spirecrest.
         </DialogDescription>
-        
+
         <div
           className="relative w-full overflow-y-auto p-7 sm:p-9 border"
           style={glassStyle}
