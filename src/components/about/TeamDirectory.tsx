@@ -5,6 +5,7 @@ import {
   TrendingUp,
   Brain,
   Linkedin,
+  Megaphone,
 } from "lucide-react";
 import WhatsAppCTA from "@/components/WhatsAppCTA";
 
@@ -25,7 +26,7 @@ const cSuite = [
     role: "Director of Finance",
     domainIcon: TrendingUp,
     domain: "Finance",
-    bio: "Steers Spirecrest's financial strategy, budgeting, and fiscal governance, driving sustainable growth while maintaining full regulatory compliance.",
+    bio: "Steers Spirecrest's financial strategy, budgeting, and fiscal governance, driving sustainable growth while maintaining our full & final regulatory compliance standards.",
     initials: "CG",
     imageUrl: "/pp/chesta.jpg",
     linkedin: "https://www.linkedin.com/in/chesta-gangwani/",
@@ -35,10 +36,20 @@ const cSuite = [
     role: "Director of Operations",
     domainIcon: Brain,
     domain: "Operations",
-    bio: "Orchestrates end-to-end project delivery and operational excellence across all verticals, ensuring every engagement meets Spirecrest's exacting quality standards.",
+    bio: "Orchestrates Spirecrest's end-to-end project delivery and operational excellence across all verticals, ensuring every engagement meets our exacting quality standards.",
     initials: "SD",
     imageUrl: "/pp/shraddha.jpg",
     linkedin: "https://www.linkedin.com/in/shraddha-dwivedi-1a1936272/",
+  },
+  {
+    name: "Search in Progress",
+    role: "Director of Marketing",
+    domainIcon: Megaphone,
+    domain: "Marketing",
+    bio: "Oversees Spirecrest's marketing, outreach, and advertising verticals as a dedicated department, driving strategic growth for both enterprise clients and our internal initiatives.",
+    initials: "??",
+    imageUrl: "/placeholder.svg",
+    linkedin: "",
   },
 ];
 
