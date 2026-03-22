@@ -90,7 +90,13 @@ export default function ServiceHero({ badge, title, highlight, description, stat
             transition={{ delay: 0.45, duration: 0.5 }}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <WhatsAppCTA context={getContext() as any} buttonText="Partner With Us" className="px-8 h-12 text-base w-full sm:w-auto" />
+            <motion.div
+              animate={{ boxShadow: ["0 0 0px rgba(6,182,212,0)", "0 0 20px rgba(6,182,212,0.6)", "0 0 0px rgba(6,182,212,0)"] }}
+              transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+              className="rounded-lg w-full sm:w-auto"
+            >
+              <WhatsAppCTA context={getContext() as any} buttonText="Partner With Us" className="px-8 h-12 text-base w-full sm:w-auto" />
+            </motion.div>
           </motion.div>
 
           <motion.div

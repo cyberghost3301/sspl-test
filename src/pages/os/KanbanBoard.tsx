@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { DragDropContext, Droppable, Draggable, DropResult } from "@hello-pangea/dnd";
-import { Plus, GripVertical, Loader2, Trash2, X, LayoutTemplate, Settings, Users, ExternalLink } from "lucide-react";
+import { Plus, GripVertical, Loader2, Trash2, X, LayoutTemplate, Settings, Users, ExternalLink, Lock } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { toast } from "sonner";
 
@@ -16,6 +16,10 @@ interface LeadCard {
   column_id: string;
   order_index: number;
   dynamic_data: Record<string, string>;
+  author_id?: string;
+  author_name?: string;
+  visibility?: 'global' | 'private';
+  linked_contact_id?: string;
 }
 
 interface ColumnRow {
@@ -72,6 +76,11 @@ export default function KanbanBoard() {
   const [data, setData] = useState<KanbanState | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // User & role state
+  const [currentUserId, setCurrentUserId] = useState<string | null>(null);
+  const [currentUserName, setCurrentUserName] = useState<string>("");
+  const [currentUserRole, setCurrentUserRole] = useState<string>("operator");
+
   // Directory contacts for linking
   const [contacts, setContacts] = useState<{ id: string; name: string; company: string }[]>([]);
 
@@ -105,9 +114,23 @@ export default function KanbanBoard() {
 
   // Fetch Boards on Mount
   useEffect(() => {
+    initUser();
     fetchBoards();
     fetchContacts();
   }, []);
+
+  const initUser = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+    setCurrentUserId(user.id);
+    const { data: profile } = await supabase
+      .from('team_profiles')
+      .select('full_name, role')
+      .eq('id', user.id)
+      .single();
+    if (profile?.full_name) setCurrentUserName(profile.full_name);
+    if (profile?.role) setCurrentUserRole(profile.role);
+  };
 
   const fetchContacts = async () => {
     const { data: cData } = await supabase
@@ -164,16 +187,16 @@ export default function KanbanBoard() {
     // Safely pluck col ids to fetch cards
     const colIds = columns?.map(c => c.id) || [];
     
-    let cardsData = [];
+    let cardsData: LeadCard[] = [];
     if (colIds.length > 0) {
         const { data: cards, error: cardErr } = await supabase
           .from("kanban_cards")
           .select("*")
           .in("column_id", colIds)
           .order("order_index");
-        
+
         if (cardErr) toast.error("Failed to load cards");
-        else cardsData = cards || [];
+        else cardsData = (cards || []) as LeadCard[];
     }
 
     setData(buildState(columns as ColumnRow[], cardsData as LeadCard[]));
@@ -205,6 +228,83 @@ export default function KanbanBoard() {
     setActiveBoardId(newBoard.id);
     fetchBoardData(newBoard.id);
     toast.success("Board created");
+  };
+
+  const deleteBoard = async () => {
+    if (!activeBoardId) return;
+    const activeBoard = boards.find(b => b.id === activeBoardId);
+    const confirmed = window.confirm(
+      `⚠️ IRREVERSIBLE ACTION
+
+You are about to permanently delete the board "${activeBoard?.title ?? activeBoardId}" along with ALL its columns and every card inside them.
+
+This cannot be undone. Are you absolutely sure?`
+    );
+    if (!confirmed) return;
+
+    const toastId = toast.loading('Purging board and all assets...');
+
+    // Step 1: fetch all columns for this board
+    const { data: cols, error: colFetchErr } = await supabase
+      .from('kanban_columns')
+      .select('id')
+      .eq('board_id', activeBoardId);
+
+    if (colFetchErr) {
+      toast.error(`Failed to read columns: ${colFetchErr.message}`, { id: toastId });
+      return;
+    }
+
+    const colIds = (cols ?? []).map(c => c.id);
+
+    // Step 2: delete all cards inside those columns
+    if (colIds.length > 0) {
+      const { error: cardDelErr } = await supabase
+        .from('kanban_cards')
+        .delete()
+        .in('column_id', colIds);
+
+      if (cardDelErr) {
+        toast.error(`Failed to delete cards: ${cardDelErr.message}`, { id: toastId });
+        return;
+      }
+    }
+
+    // Step 3: delete all columns
+    const { error: colDelErr } = await supabase
+      .from('kanban_columns')
+      .delete()
+      .eq('board_id', activeBoardId);
+
+    if (colDelErr) {
+      toast.error(`Failed to delete columns: ${colDelErr.message}`, { id: toastId });
+      return;
+    }
+
+    // Step 4: delete the board itself
+    const { error: boardDelErr } = await supabase
+      .from('kanban_boards')
+      .delete()
+      .eq('id', activeBoardId);
+
+    if (boardDelErr) {
+      toast.error(`Failed to delete board: ${boardDelErr.message}`, { id: toastId });
+      return;
+    }
+
+    toast.success('Board permanently destroyed.', { id: toastId });
+
+    // Reset UI state
+    const remaining = boards.filter(b => b.id !== activeBoardId);
+    setBoards(remaining);
+    setData(null);
+    if (remaining.length > 0) {
+      setActiveBoardId(remaining[0].id);
+      fetchBoardData(remaining[0].id);
+    } else {
+      setActiveBoardId(null);
+      setLoading(false);
+    }
   };
 
   const createColumn = async (e: React.FormEvent) => {
@@ -299,6 +399,8 @@ export default function KanbanBoard() {
         column_id: activeColForCard,
         order_index: orderIndex,
         dynamic_data: dynamicDataObj,
+        author_id: currentUserId,
+        author_name: currentUserName || null,
         ...(linkedContactId ? { linked_contact_id: linkedContactId } : {}),
       },
     ]);
@@ -336,7 +438,7 @@ export default function KanbanBoard() {
     if (activeBoardId) fetchBoardData(activeBoardId);
   };
 
-  const openEditCardModal = (card: LeadCard & { linked_contact_id?: string }) => {
+  const openEditCardModal = (card: LeadCard) => {
     setEditingCard(card);
     setCardTitle(card.title);
     setLinkedContactId(card.linked_contact_id || "");
@@ -495,6 +597,20 @@ export default function KanbanBoard() {
           >
             + New Board
           </button>
+
+          {activeBoardId && (
+            <>
+              <div className="h-6 w-px bg-white/10" />
+              <button
+                onClick={deleteBoard}
+                title="Delete this board and all its contents"
+                className="flex items-center gap-1.5 text-xs font-bold tracking-widest uppercase text-red-400/70 hover:text-red-400 hover:bg-red-500/10 transition-colors px-2 py-1 rounded-lg"
+              >
+                <Trash2 className="w-3.5 h-3.5" />
+                Delete Board
+              </button>
+            </>
+          )}
         </div>
       </header>
 
@@ -592,9 +708,18 @@ export default function KanbanBoard() {
                                     <GripVertical className="w-3.5 h-3.5" />
                                   </div>
                                 </div>
-                                <h3 className="text-sm font-semibold text-slate-100 mb-3 pr-10 leading-tight">
+                                <h3 className="text-sm font-semibold text-slate-100 mb-2 pr-10 leading-tight">
                                   {card.title}
                                </h3>
+                               {/* Author Tag */}
+                               {card.author_name && (
+                                 <div className="flex items-center gap-1 mb-2">
+                                   <Lock className="w-2.5 h-2.5 text-slate-600 shrink-0" />
+                                   <span className="text-[9px] font-mono text-slate-500 tracking-wider truncate">
+                                     {card.author_name}
+                                   </span>
+                                 </div>
+                               )}
                                 {card.dynamic_data && Object.keys(card.dynamic_data).length > 0 && (
                                   <div className="flex flex-wrap gap-1.5">
                                     {Object.entries(card.dynamic_data).map(([key, value]) => (

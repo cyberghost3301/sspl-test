@@ -23,7 +23,7 @@ export default function Login() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!email.trim().toLowerCase().endsWith("@spirecrest.in")) {
+    if (!email.trim().toLowerCase().endsWith("@spirecrest.in") && email.trim().toLowerCase() !== "spirecrestindia@gmail.com") {
       toast.error("Unauthorized Domain. Enterprise credentials required.");
       return;
     }
@@ -48,6 +48,11 @@ export default function Login() {
 
     if (!fullName.trim()) {
       toast.error("Full Name is required.");
+      return;
+    }
+
+    if (!signupEmail.trim().toLowerCase().endsWith("@spirecrest.in") && signupEmail.trim().toLowerCase() !== "spirecrestindia@gmail.com") {
+      toast.error("Unauthorized Domain. Enterprise credentials required.");
       return;
     }
 

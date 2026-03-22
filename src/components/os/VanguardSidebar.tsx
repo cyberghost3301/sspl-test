@@ -1,23 +1,66 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LayoutDashboard, Kanban, FolderLock, Users, Settings, BookOpen, LogOut, PanelLeftClose, PanelLeftOpen, Globe } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { toast } from "sonner";
 
-const navItems = [
-  { name: "Overview", path: "/vanguard/overview", icon: LayoutDashboard },
-  { name: "Kanban Boards", path: "/vanguard/boards", icon: Kanban },
-  { name: "The Vault", path: "/vanguard/vault", icon: FolderLock },
-  { name: "Vanguard Intel", path: "/vanguard/intel", icon: BookOpen },
-  { name: "Directory", path: "/vanguard/directory", icon: Users },
-  { name: "Web Content", path: "/vanguard/web-content", icon: Globe },
-  { name: "Settings", path: "/vanguard/settings", icon: Settings },
+// ── Types ──────────────────────────────────────────────────────────────────
+type Permissions = Record<string, Record<string, boolean>> | null;
+
+// ── Nav item definitions (no minRole — Matrix is the sole gatekeeper) ─────
+const BASE_NAV = [
+  { name: "Overview",        path: "/vanguard/overview",     icon: LayoutDashboard },
+  { name: "Kanban Boards",   path: "/vanguard/boards",       icon: Kanban          },
+  { name: "The Vault",       path: "/vanguard/vault",        icon: FolderLock      },
+  { name: "Vanguard Intel",  path: "/vanguard/intel",        icon: BookOpen        },
+  { name: "Directory",       path: "/vanguard/directory",    icon: Users           },
+  // Matrix-gated routes:
+  { name: "Web Content",     path: "/vanguard/web-content",  icon: Globe,   matrixKey: "web_content",  matrixPerm: "view"          },
+  { name: "Settings",        path: "/vanguard/settings",     icon: Settings, matrixKey: "settings",    matrixPerm: "manage_users"  },
 ];
 
+// Helper: returns true if a nav item should be shown for this user
+function canSeeItem(
+  item: typeof BASE_NAV[number],
+  role: string,
+  permissions: Permissions
+): boolean {
+  // super_admin sees everything — no Matrix check needed
+  if (role === "super_admin") return true;
+
+  // Items without a matrixKey are always visible (base modules)
+  if (!("matrixKey" in item) || !item.matrixKey) return true;
+
+  // Matrix-gated: check the explicit permission flag
+  const perm = (item as any).matrixPerm as string;
+  return permissions?.[item.matrixKey]?.[perm] === true;
+}
+
+// ── Component ──────────────────────────────────────────────────────────────
 export default function VanguardSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [userRole, setUserRole] = useState<string>("operator");
+  const [permissions, setPermissions] = useState<Permissions>(null);
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+      const { data } = await supabase
+        .from("team_profiles")
+        .select("role, permissions")
+        .eq("id", user.id)
+        .single();
+      if (data?.role) setUserRole(data.role);
+      if (data?.permissions) setPermissions(data.permissions as Permissions);
+    };
+    fetchProfile();
+  }, []);
+
+  // The Matrix is the single source of truth for which nav links appear
+  const navItems = BASE_NAV.filter((item) => canSeeItem(item, userRole, permissions));
 
   const handleLogout = async () => {
     await supabase.auth.signOut();

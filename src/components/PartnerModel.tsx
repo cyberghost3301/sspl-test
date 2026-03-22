@@ -71,9 +71,13 @@ export default function PartnerModel() {
           >
             {/* Abstract visual */}
             <div className="aspect-square max-w-md mx-auto relative">
-              <div className="absolute inset-0 rounded-3xl bg-accent/5 border border-accent/10" />
+              <motion.div
+                animate={{ scale: [1, 1.02, 1] }}
+                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                className="absolute inset-0 rounded-3xl bg-accent/5 border border-accent/10"
+              />
               <div className="absolute inset-6 rounded-2xl bg-accent/5 border border-accent/10" />
-              <div className="absolute inset-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
+              <div className="absolute inset-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center shadow-[0_0_30px_rgba(6,182,212,0.15)]">
                 <div className="text-center">
                   <p className="font-display text-5xl font-bold text-accent">19+</p>
                   <p className="text-sm text-muted-foreground mt-2 font-medium">Specialized Partners</p>

@@ -9,6 +9,7 @@ const flagshipServices = [
     title: "Uncompromising Security Infrastructure",
     description: "Enterprise-grade surveillance systems, access control, and 24/7 monitoring solutions engineered for maximum protection and peace of mind.",
     href: "/services/surveillance",
+    outcome: "99.99% SLA",
     features: ["CCTV & IP Cameras", "Access Control", "Remote Monitoring", "Threat Analytics"],
   },
   {
@@ -16,6 +17,7 @@ const flagshipServices = [
     title: "Digital Products That Scale",
     description: "Custom web applications, mobile platforms, and software systems built with modern stacks, designed to grow with your ambitions.",
     href: "/services/software",
+    outcome: "Sub-50ms Latency",
     features: ["Web Applications", "Mobile Apps", "SaaS Platforms", "API Development"],
   },
   {
@@ -23,6 +25,7 @@ const flagshipServices = [
     title: "Fortified IT & Cyber Strategy",
     description: "Comprehensive cybersecurity audits, IT consulting, and infrastructure optimization to keep your operations bullet-proof and future-ready.",
     href: "/services/consulting",
+    outcome: "ISO Aligned",
     features: ["Security Audits", "Cloud Strategy", "Compliance", "Incident Response"],
   },
 ];
@@ -59,8 +62,12 @@ export default function MVPServices() {
             >
               <Link
                 to={service.href}
-                className="group block h-full p-8 rounded-2xl border border-border bg-card hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300"
+                className="group relative block h-full p-8 rounded-2xl border border-border bg-card hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300"
               >
+                {/* Outcome badge */}
+                <span className="absolute top-5 right-5 bg-accent/10 text-accent text-[10px] px-2.5 py-1 rounded-full font-bold tracking-wider uppercase">
+                  {service.outcome}
+                </span>
                 <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
                   <service.icon className="w-6 h-6 text-accent" />
                 </div>

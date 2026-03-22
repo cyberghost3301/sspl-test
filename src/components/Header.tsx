@@ -45,7 +45,7 @@ export default function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -60,7 +60,8 @@ export default function Header() {
 
   // Pages with dark hero backgrounds where nav text needs to be light when not scrolled
   const hasDarkHero = location.pathname === "/" || location.pathname.startsWith("/services/") || ["/about", "/portfolio", "/testimonials", "/collective", "/contact"].includes(location.pathname);
-  const isOverDark = hasDarkHero && !scrolled;
+  const isSolid = scrolled || mobileOpen;
+  const isOverDark = hasDarkHero && !isSolid;
 
   const currentLogo = (isOverDark || dark) ? seltLogoDark : seltLogoLight;
 
@@ -77,7 +78,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-0 ${scrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isSolid
           ? "bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-border shadow-sm"
           : "bg-transparent"
           }`}
@@ -127,10 +128,16 @@ export default function Header() {
               {dark ? <SunMedium className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
 
-            <Button onClick={() => setContactModalOpen(true)} size="sm" className="hidden sm:flex bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold gap-1.5">
-              Partner With Us
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Button>
+            <motion.div
+              animate={{ boxShadow: ["0 0 0px rgba(6,182,212,0)", "0 0 20px rgba(6,182,212,0.6)", "0 0 0px rgba(6,182,212,0)"] }}
+              transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+              className="hidden sm:block rounded-md"
+            >
+              <Button onClick={() => setContactModalOpen(true)} size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold gap-1.5 w-full">
+                Partner With Us
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Button>
+            </motion.div>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className={`lg:hidden p-2 relative flex items-center justify-center w-10 h-10 transition-colors group ${isOverDark ? "text-white" : "text-foreground"}`}
@@ -214,9 +221,15 @@ export default function Header() {
                   <span className="text-sm text-foreground">{s.title}</span>
                 </Link>
               ))}
-              <Button onClick={() => { setMobileOpen(false); setContactModalOpen(true); }} className="w-full mt-6 mb-12 bg-accent text-accent-foreground font-display font-semibold">
-                Partner With Us
-              </Button>
+              <motion.div
+                animate={{ boxShadow: ["0 0 0px rgba(6,182,212,0)", "0 0 20px rgba(6,182,212,0.6)", "0 0 0px rgba(6,182,212,0)"] }}
+                transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+                className="w-full mt-6 mb-12 rounded-md"
+              >
+                <Button onClick={() => { setMobileOpen(false); setContactModalOpen(true); }} className="w-full bg-accent text-accent-foreground font-display font-semibold">
+                  Partner With Us
+                </Button>
+              </motion.div>
             </nav>
           </motion.div>
         )}

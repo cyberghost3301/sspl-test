@@ -18,7 +18,7 @@ const cSuite = [
     domain: "Technology",
     bio: "Leads Spirecrest's software engineering and digital product verticals, architecting scalable web platforms and enterprise-grade applications that power modern businesses.",
     initials: "AC",
-    imageUrl: "/pp/aum.jpg",
+    imageUrl: "/placeholder.svg", /*"/pp/aum.jpg",*/
     linkedin: "https://www.linkedin.com/in/aum-chatterjee/",
   },
   {
@@ -28,7 +28,7 @@ const cSuite = [
     domain: "Finance",
     bio: "Steers Spirecrest's financial strategy, budgeting, and fiscal governance, driving sustainable growth while maintaining our full & final regulatory compliance standards.",
     initials: "CG",
-    imageUrl: "/pp/chesta.jpg",
+    imageUrl: "/placeholder.svg",/*"/pp/chesta.jpg",*/
     linkedin: "https://www.linkedin.com/in/chesta-gangwani/",
   },
   {
@@ -38,7 +38,7 @@ const cSuite = [
     domain: "Operations",
     bio: "Orchestrates Spirecrest's end-to-end project delivery and operational excellence across all verticals, ensuring every engagement meets our exacting quality standards.",
     initials: "SD",
-    imageUrl: "/pp/shraddha.jpg",
+    imageUrl: "/placeholder.svg", /*"/pp/shraddha.jpg",*/
     linkedin: "https://www.linkedin.com/in/shraddha-dwivedi-1a1936272/",
   },
   {
@@ -126,12 +126,12 @@ const developmentTeam = [
   { name: "Isha Gupta", role: "Market Advisor", imageUrl: "/placeholder.svg", linkedin: "https://linkedin.com/in/" },
   { name: "Er. Aakash", role: "External Consultant", imageUrl: "/pp/aakash.jpg", linkedin: "https://linkedin.com/in/" },
   { name: "Sanchita Nath", role: "SMM Coordinator", imageUrl: "/pp/sanchita.jpg", linkedin: "https://linkedin.com/in/" },
-  { name: "Astha Dwivedi", role: "BDA", imageUrl: "/pp/astha.jpg", linkedin: "https://linkedin.com/in/" },
   { name: "Krish Sheta", role: "Jr. S/W Developer", imageUrl: "/placeholder.svg", linkedin: "https://linkedin.com/in/" },
   { name: "Neeraj Tetari", role: "Jr. S/W Developer", imageUrl: "/pp/neeraj.jpg", linkedin: "https://linkedin.com/in/" },
   { name: "Anand Verma", role: "Jr. S/W Developer", imageUrl: "/pp/anand.jpg", linkedin: "https://linkedin.com/in/" },
   { name: "Saloni Ojha", role: "Backend Framework", imageUrl: "/pp/saloni.jpg", linkedin: "https://linkedin.com/in/" },
   { name: "Kavya Saini", role: "DS/AI-ML Applications", imageUrl: "/pp/kavya.jpg", linkedin: "https://linkedin.com/in/" },
+  { name: "Astha Dwivedi", role: "BDA", imageUrl: "/pp/astha.jpg", linkedin: "https://linkedin.com/in/" },
   { name: "Anushka Singh", role: "Outreach Operations", imageUrl: "/pp/anushka.jpg", linkedin: "https://linkedin.com/in/" },
   { name: "Srishti Saxena", role: "Strategic Growth", imageUrl: "/pp/srishti.jpg", linkedin: "https://linkedin.com/in/" },
   { name: "Janvi Gautam", role: "Business Operations", imageUrl: "/pp/janvi.jpg", linkedin: "https://linkedin.com/in/" },

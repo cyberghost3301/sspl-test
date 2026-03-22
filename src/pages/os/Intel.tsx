@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { Plus, Globe, Lock, ShieldAlert, Search, Loader2, ArrowLeft, Trash2 } from "lucide-react";
+import { Plus, Globe, Lock, ShieldAlert, Search, Loader2, ArrowLeft, Trash2, History, X, RotateCcw } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { toast } from "sonner";
 import { format } from "date-fns";
+import { logActivity } from "@/lib/logger";
 
 // BlockNote Imports
 import { useCreateBlockNote } from "@blocknote/react";
@@ -17,11 +18,13 @@ interface VanguardNote {
   content_markdown: string;
   visibility: Visibility;
   author_id: string;
+  author_name: string | null;
   updated_at: string;
 }
 
 export default function Intel() {
   const [currentUser, setCurrentUser] = useState<any>(null);
+  const [userFullName, setUserFullName] = useState<string | null>(null);
   const [notes, setNotes] = useState<VanguardNote[]>([]);
   const [activeNote, setActiveNote] = useState<VanguardNote | null>(null);
   const [loading, setLoading] = useState(true);
@@ -29,6 +32,13 @@ export default function Intel() {
   // Filters
   const [activeTab, setActiveTab] = useState<"private" | "global">("private");
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Version History state
+  const [historyModalOpen, setHistoryModalOpen] = useState(false);
+  const [historyNoteId, setHistoryNoteId] = useState<string | null>(null);
+  const [historyNoteTitle, setHistoryNoteTitle] = useState("");
+  const [activeHistory, setActiveHistory] = useState<any[]>([]);
+  const [historyLoading, setHistoryLoading] = useState(false);
 
   // Debouncing ref
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -76,6 +86,14 @@ export default function Intel() {
     
     setCurrentUser(user);
     
+    // Fetch full name from team_profiles for author attribution
+    const { data: profileRow } = await supabase
+      .from('team_profiles')
+      .select('full_name')
+      .eq('id', user.id)
+      .single();
+    if (profileRow?.full_name) setUserFullName(profileRow.full_name);
+    
     // Fetch all notes the user has access to (owned or global)
     const { data: fetchedNotes, error } = await supabase
       .from("vanguard_notes")
@@ -108,6 +126,7 @@ export default function Intel() {
       content_markdown: "## Execute the objective\n\nBegin typing...",
       visibility: activeTab === "global" ? "global" : "private",
       author_id: user.id,
+      author_name: userFullName,
     };
 
     const { data, error } = await supabase
@@ -124,6 +143,7 @@ export default function Intel() {
     setNotes([data, ...notes]);
     setActiveNote(data);
     toast.success("Intel record initialized.");
+    logActivity('CREATED', 'INTEL', `Created Intel Note: ${data.title} (${data.id.substring(0, 8)})`);
   };
 
   const handleDeleteNote = async (id: string) => {
@@ -135,6 +155,7 @@ export default function Intel() {
        return;
     }
     toast.success("Intel removed.", { id: toastId });
+    logActivity('DELETED', 'INTEL', `Deleted Intel Note ID: ${id.substring(0, 8)}`);
     setNotes(notes.filter(n => n.id !== id));
     setActiveNote(null);
   };
@@ -155,6 +176,22 @@ export default function Intel() {
     if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
 
     saveTimeoutRef.current = setTimeout(async () => {
+      // VERSION SNAPSHOT: capture the state before overwriting
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          await supabase.from("vanguard_notes_versions").insert([{
+            note_id: updatedNote.id,
+            editor_id: user.id,
+            editor_name: userFullName ?? user.email,
+            previous_content: activeNote.content_markdown,
+            new_content: updatedNote.content_markdown,
+          }]);
+        }
+      } catch {
+        // Silent fail — versioning must never break the main save
+      }
+
       const { error } = await supabase
         .from("vanguard_notes")
         .update({
@@ -175,6 +212,42 @@ export default function Intel() {
     if (!activeNote) return;
     const markdown = await editor.blocksToMarkdownLossy(editor.document);
     updateActiveNoteField({ content_markdown: markdown });
+  };
+
+  const openHistoryModal = async (e: React.MouseEvent, note: VanguardNote) => {
+    e.stopPropagation();
+    setHistoryNoteId(note.id);
+    setHistoryNoteTitle(note.title);
+    setHistoryLoading(true);
+    setHistoryModalOpen(true);
+    setActiveHistory([]);
+
+    const { data, error } = await supabase
+      .from("vanguard_notes_versions")
+      .select("*")
+      .eq("note_id", note.id)
+      .order("edited_at", { ascending: false });
+
+    if (!error && data) setActiveHistory(data);
+    setHistoryLoading(false);
+  };
+
+  const handleRestoreVersion = async (version: any) => {
+    if (!activeNote && !historyNoteId) return;
+    const targetNoteId = historyNoteId!;
+    const toastId = toast.loading("Restoring version...");
+    const { error } = await supabase
+      .from("vanguard_notes")
+      .update({ content_markdown: version.previous_content, updated_at: new Date().toISOString() })
+      .eq("id", targetNoteId);
+    if (error) {
+      toast.error(`Restore failed: ${error.message}`, { id: toastId });
+      return;
+    }
+    // Refresh local state
+    setNotes(prev => prev.map(n => n.id === targetNoteId ? { ...n, content_markdown: version.previous_content } : n));
+    toast.success("Version restored successfully.", { id: toastId });
+    setHistoryModalOpen(false);
   };
 
   // Client-side extremely fast filtering mechanism
@@ -250,32 +323,48 @@ export default function Intel() {
                   <p className="text-sm font-mono text-slate-500 max-w-sm">No intel metrics match your current tactical filters.</p>
                 </div>
               ) : (
-                filteredNotes.map((note) => (
-                  <div
-                    key={note.id}
-                    onClick={() => setActiveNote(note)}
-                    className="bg-white/[0.02] border border-white/10 hover:border-cyan-500/40 rounded-2xl p-6 transition-all cursor-pointer group hover:bg-white/[0.04] shadow-lg hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] flex flex-col min-h-[160px]"
-                  >
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-slate-900 border border-white/5 flex items-center justify-center flex-none">
-                        {note.visibility === "private" ? (
-                          <Lock className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
-                        ) : note.visibility === "global" ? (
-                          <Globe className="w-5 h-5 text-cyan-500 drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]" />
-                        ) : (
-                          <ShieldAlert className="w-5 h-5 text-amber-500" />
+                  filteredNotes.map((note) => (
+                    <div
+                      key={note.id}
+                      onClick={() => setActiveNote(note)}
+                      className="bg-white/[0.02] border border-white/10 hover:border-cyan-500/40 rounded-2xl p-6 transition-all cursor-pointer group hover:bg-white/[0.04] shadow-lg hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] flex flex-col min-h-[160px]"
+                    >
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="w-10 h-10 rounded-xl bg-slate-900 border border-white/5 flex items-center justify-center flex-none">
+                          {note.visibility === "private" ? (
+                            <Lock className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
+                          ) : note.visibility === "global" ? (
+                            <Globe className="w-5 h-5 text-cyan-500 drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]" />
+                          ) : (
+                            <ShieldAlert className="w-5 h-5 text-amber-500" />
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={(e) => openHistoryModal(e, note)}
+                            title="Version History"
+                            className="p-1.5 rounded-lg text-slate-600 hover:text-amber-400 hover:bg-amber-400/10 transition-colors border border-transparent hover:border-amber-400/20"
+                          >
+                            <History className="w-3.5 h-3.5" />
+                          </button>
+                          <span className="text-[10px] text-slate-500 font-mono tracking-widest uppercase px-2 py-1 bg-white/5 rounded-md border border-white/10">
+                            {format(new Date(note.updated_at), "MMM do")}
+                          </span>
+                        </div>
+                      </div>
+                      <h3 className="font-bold text-lg text-slate-200 group-hover:text-cyan-400 transition-colors mb-2 line-clamp-1">{note.title}</h3>
+                      <div className="mt-auto flex items-center justify-between">
+                        <p className="text-xs font-mono text-slate-500 tracking-wider uppercase">
+                          ID: {note.id.substring(0, 8)}
+                        </p>
+                        {note.author_name && (
+                          <p className="text-[10px] font-mono text-slate-600 tracking-wider">
+                            By: {note.author_name}
+                          </p>
                         )}
                       </div>
-                      <span className="text-[10px] text-slate-500 font-mono tracking-widest uppercase px-2 py-1 bg-white/5 rounded-md border border-white/10">
-                        {format(new Date(note.updated_at), "MMM do")}
-                      </span>
                     </div>
-                    <h3 className="font-bold text-lg text-slate-200 group-hover:text-cyan-400 transition-colors mb-2 line-clamp-1">{note.title}</h3>
-                    <p className="text-xs font-mono text-slate-500 tracking-wider uppercase mt-auto">
-                      ID: {note.id.substring(0, 8)}
-                    </p>
-                  </div>
-                ))
+                  ))
               )}
             </div>
           </div>
@@ -341,6 +430,65 @@ export default function Intel() {
                 theme="dark"
                 className="min-h-[500px]"
               />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── VERSION HISTORY MODAL ── */}
+      {historyModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={() => setHistoryModalOpen(false)} />
+          <div className="relative w-full max-w-xl bg-slate-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-10 animate-in fade-in slide-in-from-bottom-4 duration-200">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-5 border-b border-white/10">
+              <div>
+                <h2 className="font-bold text-sm tracking-widest uppercase text-amber-400 flex items-center gap-2">
+                  <History className="w-4 h-4" /> Version Timeline
+                </h2>
+                <p className="text-xs text-slate-500 font-mono mt-0.5 truncate max-w-xs">{historyNoteTitle}</p>
+              </div>
+              <button onClick={() => setHistoryModalOpen(false)} className="p-1.5 rounded-lg text-slate-500 hover:text-white hover:bg-white/10 transition-colors">
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-5 max-h-[460px] overflow-y-auto custom-scrollbar space-y-3">
+              {historyLoading ? (
+                <div className="flex items-center justify-center py-12">
+                  <Loader2 className="w-6 h-6 text-amber-400 animate-spin" />
+                </div>
+              ) : activeHistory.length === 0 ? (
+                <div className="text-center py-12 border border-dashed border-white/5 rounded-xl">
+                  <p className="text-slate-600 text-xs font-mono uppercase tracking-widest">No version snapshots recorded yet.</p>
+                  <p className="text-slate-700 text-[10px] font-mono mt-1">Snapshots are captured on every auto-save.</p>
+                </div>
+              ) : (
+                activeHistory.map((v, i) => (
+                  <div key={i} className="flex items-start gap-4 bg-white/[0.02] border border-white/5 rounded-xl p-4 hover:border-amber-500/20 transition-colors group">
+                    {/* Timeline dot */}
+                    <div className="flex flex-col items-center gap-1 mt-1">
+                      <div className="w-2.5 h-2.5 rounded-full bg-amber-400/60 group-hover:bg-amber-400 transition-colors shrink-0" />
+                      {i < activeHistory.length - 1 && <div className="w-px flex-1 bg-white/5" />}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-bold text-slate-300">{v.editor_name ?? 'Unknown'}</p>
+                      <p className="text-[10px] text-slate-600 font-mono mt-0.5">
+                        {v.edited_at ? new Date(v.edited_at).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }) : '—'}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => handleRestoreVersion(v)}
+                      title="Restore this version"
+                      className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-400/70 hover:text-amber-400 border border-amber-400/20 hover:border-amber-400/50 hover:bg-amber-400/10 px-2.5 py-1.5 rounded-lg transition-all shrink-0"
+                    >
+                      <RotateCcw className="w-3 h-3" /> Restore
+                    </button>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>

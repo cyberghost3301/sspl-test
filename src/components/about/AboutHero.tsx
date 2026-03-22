@@ -1,4 +1,7 @@
 import { m as motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import WhatsAppCTA from "@/components/WhatsAppCTA";
 
 export default function AboutHero() {
   return (
@@ -56,6 +59,30 @@ export default function AboutHero() {
             We combine deep domain expertise with modern engineering to deliver surveillance,
             software, cybersecurity, and infrastructure solutions that don't just work, they scale.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <motion.div
+              animate={{ boxShadow: ["0 0 0px rgba(6,182,212,0)", "0 0 20px rgba(6,182,212,0.6)", "0 0 0px rgba(6,182,212,0)"] }}
+              transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+              className="rounded-lg w-full sm:w-auto"
+            >
+              <WhatsAppCTA context="team" buttonText="Partner With Us" className="px-8 h-12 text-base w-full sm:w-auto" />
+            </motion.div>
+            <Link to="/contact" className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full font-display font-semibold gap-2 px-8 h-12 text-base border-accent/30 text-accent hover:bg-accent/10"
+              >
+                Send an Inquiry
+              </Button>
+            </Link>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}

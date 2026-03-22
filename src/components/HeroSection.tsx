@@ -60,8 +60,7 @@ export default function HeroSection() {
             className="mt-6 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
             style={{ color: "hsl(var(--on-dark-muted))" }}
           >
-            From advanced surveillance to custom software, cloud infrastructure,
-            and much more; we architect solutions that protect, perform, and progress!
+            We architect resilient IT infrastructure, deploy zero-trust surveillance, and build scalable software. Executing heavy network overhauls with zero daytime operational downtime for Indian enterprises.
           </motion.p>
 
           <motion.div
@@ -70,7 +69,13 @@ export default function HeroSection() {
             transition={{ delay: 0.6, duration: 0.5 }}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <WhatsAppCTA context="general" buttonText="Partner With Us" className="px-8 h-12 text-base w-full sm:w-auto" />
+            <motion.div
+              animate={{ boxShadow: ["0 0 0px rgba(6,182,212,0)", "0 0 20px rgba(6,182,212,0.6)", "0 0 0px rgba(6,182,212,0)"] }}
+              transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+              className="rounded-lg w-full sm:w-auto"
+            >
+              <WhatsAppCTA context="general" buttonText="Partner With Us" className="px-8 h-12 text-base w-full sm:w-auto" />
+            </motion.div>
             <Link to="/portfolio" className="w-full sm:w-auto">
               <Button
                 size="lg"

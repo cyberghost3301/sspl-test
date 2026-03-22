@@ -15,6 +15,30 @@ export default function AuthGuard({ children }: AuthGuardProps) {
   const [session, setSession] = useState<Session | null>(null);
   const [isApproved, setIsApproved] = useState<boolean | null>(null);
 
+  // ── Micro-RBAC Matrix helpers ─────────────────────────────────────────
+  // Returns true if the user should be BLOCKED from the given path.
+  const isMatrixBlocked = (
+    path: string,
+    role: string,
+    permissions: Record<string, Record<string, boolean>> | null
+  ): boolean => {
+    // Overlord (super_admin) is never blocked
+    if (role === 'super_admin') return false;
+
+    // /vanguard/web-content → requires permissions.web_content.view
+    if (path.startsWith('/vanguard/web-content')) {
+      return !(permissions?.web_content?.view === true);
+    }
+
+    // /vanguard/settings → requires permissions.settings.manage_users OR view_audit_logs
+    if (path.startsWith('/vanguard/settings')) {
+      const s = permissions?.settings;
+      return !(s?.manage_users === true || s?.view_audit_logs === true);
+    }
+
+    return false;
+  };
+
   useEffect(() => {
     checkClearance();
 
@@ -48,13 +72,10 @@ export default function AuthGuard({ children }: AuthGuardProps) {
      // Phase 17: Fetch the team_profiles exact match for this user
      const { data: profile, error } = await supabase
         .from('team_profiles')
-        .select('is_approved')
+        .select('is_approved, role, permissions')
         .eq('id', currentSession.user.id)
         .single();
 
-     // If table missing or profile missing, we assume false clearance unless it's the very first user... 
-     // For this dev sandbox, we will simulate a rejection lock if we are strict. 
-     // Let's degrade gracefully if table does not exist yet just so the app doesn't brick.
      if (error) {
         if (error.code === '42P01') {
            // team_profiles uninitialized. Allow pass for schema initialization phase.
@@ -65,6 +86,18 @@ export default function AuthGuard({ children }: AuthGuardProps) {
         }
      } else {
         setIsApproved(!!profile?.is_approved);
+
+        // ROUTE BOUNCER — strict Micro-RBAC Matrix enforcement
+        const path = window.location.pathname;
+        const role = profile?.role ?? 'operator';
+        const permissions = profile?.permissions ?? null;
+
+        if (isMatrixBlocked(path, role, permissions)) {
+           navigate('/vanguard/overview', { replace: true });
+           setTimeout(() => {
+             import('sonner').then(({ toast }) => toast.error('Matrix Clearance Insufficient — Access Denied'));
+           }, 100);
+        }
      }
      setLoading(false);
   };

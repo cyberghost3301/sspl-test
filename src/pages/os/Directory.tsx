@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Users, Search, Loader2, Building, Mail, Phone, Plus, MessageSquare, Clock, Trash2, X, FolderOpen, FileText, ExternalLink } from "lucide-react";
+import { Users, Search, Loader2, Building, Mail, Phone, Plus, MessageSquare, Clock, Trash2, X, FolderOpen, FileText, ExternalLink, Lock } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { toast } from "sonner";
 import { format } from "date-fns";
@@ -21,6 +21,8 @@ interface Contact {
   timeline_events: TimelineEvent[];
   custom_fields?: Record<string, string>;
   created_at: string;
+  author_id?: string;
+  author_name?: string;
 }
 
 export default function Directory() {
@@ -28,6 +30,8 @@ export default function Directory() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeContact, setActiveContact] = useState<Contact | null>(null);
+  const [currentUserId, setCurrentUserId] = useState<string | null>(null);
+  const [currentUserName, setCurrentUserName] = useState<string>("");
 
   // Linked Assets State
   const [linkedVaultFiles, setLinkedVaultFiles] = useState<any[]>([]);
@@ -58,7 +62,20 @@ export default function Directory() {
 
   useEffect(() => {
     fetchContacts();
+    initUser();
   }, []);
+
+  const initUser = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+    setCurrentUserId(user.id);
+    const { data: profile } = await supabase
+      .from('team_profiles')
+      .select('full_name')
+      .eq('id', user.id)
+      .single();
+    if (profile?.full_name) setCurrentUserName(profile.full_name);
+  };
 
   const fetchContacts = async () => {
     setLoading(true);
@@ -121,6 +138,8 @@ export default function Directory() {
 
     const payload = {
       ...newContact,
+      author_id: currentUserId,
+      author_name: currentUserName || null,
       custom_fields: customFieldsObj,
       timeline_events: [{
         id: Date.now().toString(),
@@ -300,6 +319,11 @@ export default function Directory() {
                   {contact.email && (
                     <p className="text-[10px] text-slate-500 font-mono mt-2 truncate flex items-center gap-1.5">
                       <Mail className="w-3 h-3 flex-none" /> {contact.email}
+                    </p>
+                  )}
+                  {contact.author_name && (
+                    <p className="text-[9px] text-slate-600 font-mono mt-1.5 flex items-center gap-1">
+                      <Lock className="w-2.5 h-2.5 text-slate-700" /> By: {contact.author_name}
                     </p>
                   )}
                 </button>

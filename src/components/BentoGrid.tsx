@@ -47,7 +47,7 @@ export default function BentoGrid() {
           {/* Card 1: Spans 2 cols */}
           <motion.div variants={item} className="md:col-span-2 relative rounded-3xl overflow-hidden bg-card border border-border group hover:border-accent/40 transition-colors duration-500">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="p-8 h-full flex flex-col z-10 relative">
+            <div className="p-6 md:p-8 h-full flex flex-col z-10 relative">
               <ShieldCheck className="w-10 h-10 text-cyan-500 mb-auto" />
               <div>
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">Zero-Trust Security</h3>
@@ -60,7 +60,7 @@ export default function BentoGrid() {
 
           {/* Card 2 */}
           <motion.div variants={item} className="relative rounded-3xl overflow-hidden bg-card border border-border group hover:border-emerald-500/40 transition-colors duration-500">
-            <div className="p-8 h-full flex flex-col z-10 relative">
+            <div className="p-6 md:p-8 h-full flex flex-col z-10 relative">
               <Activity className="w-10 h-10 text-emerald-500 mb-auto" />
               <div>
                 <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">99.99% Uptime</h3>
@@ -77,7 +77,7 @@ export default function BentoGrid() {
 
           {/* Card 3 */}
           <motion.div variants={item} className="relative rounded-3xl overflow-hidden bg-card border border-border group hover:border-blue-500/40 transition-colors duration-500">
-            <div className="p-8 h-full flex flex-col z-10 relative">
+            <div className="p-6 md:p-8 h-full flex flex-col z-10 relative">
               <Globe className="w-10 h-10 text-blue-500 mb-auto" />
               <div>
                 <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">Global Scale</h3>
@@ -94,7 +94,7 @@ export default function BentoGrid() {
           {/* Card 4: Spans 2 cols */}
           <motion.div variants={item} className="md:col-span-2 relative rounded-3xl overflow-hidden bg-card border border-border group hover:border-purple-500/40 transition-colors duration-500">
             <div className="absolute inset-0 bg-gradient-to-tl from-purple-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="p-8 h-full flex flex-col z-10 relative">
+            <div className="p-6 md:p-8 h-full flex flex-col z-10 relative">
               <Cpu className="w-10 h-10 text-purple-500 mb-auto" />
               <div>
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">AI-Driven Monitoring</h3>
@@ -103,7 +103,7 @@ export default function BentoGrid() {
             </div>
             {/* Scanner aesthetic */}
             <div className="absolute right-0 bottom-0 top-0 w-1/3 overflow-hidden pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
-               <div className="absolute left-0 right-0 h-[2px] bg-purple-500/80 shadow-[0_0_15px_rgba(168,85,247,0.8)] top-0 group-hover:top-full transition-all duration-[3000ms] ease-in-out" />
+               <div className="absolute left-0 right-0 h-[2px] bg-purple-500/80 shadow-[0_0_15px_rgba(168,85,247,0.8)] top-0 group-hover:top-full transition-all duration-[3000ms] ease-in-out will-change-transform" />
             </div>
           </motion.div>
         </motion.div>

@@ -11,7 +11,9 @@ interface VaultFile {
   metadata: {
     size: number;
     mimetype: string;
+    cacheControl?: string;
   } | null;
+  author_name?: string;
 }
 
 export default function Vault() {
@@ -19,6 +21,10 @@ export default function Vault() {
   const [files, setFiles] = useState<VaultFile[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
+
+  const [currentUserId, setCurrentUserId] = useState<string | null>(null);
+  const [currentUserName, setCurrentUserName] = useState<string>("");
+  const [currentUserRole, setCurrentUserRole] = useState<string>("operator");
   
   const [editingFile, setEditingFile] = useState<VaultFile | null>(null);
   const [editName, setEditName] = useState("");
@@ -35,8 +41,25 @@ export default function Vault() {
   }, []);
 
   useEffect(() => {
+    initUser();
+  }, []);
+
+  useEffect(() => {
     fetchFiles();
-  }, [currentPath]);
+  }, [currentPath, currentUserId]);
+
+  const initUser = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+    setCurrentUserId(user.id);
+    const { data: profile } = await supabase
+      .from('team_profiles')
+      .select('full_name, role')
+      .eq('id', user.id)
+      .single();
+    if (profile?.full_name) setCurrentUserName(profile.full_name);
+    if (profile?.role) setCurrentUserRole(profile.role);
+  };
 
   const fetchFiles = async () => {
     setLoading(true);
@@ -62,7 +85,37 @@ export default function Vault() {
       return 0;
     });
 
-    setFiles(sorted as unknown as VaultFile[]);
+    // Fetch ownership metadata from vanguard_vault_metadata (graceful fallback)
+    let metaMap: Record<string, { author_name: string; visibility: string; author_id: string }> = {};
+    try {
+      const paths = sorted.filter(f => f.id).map(f => currentPath ? `${currentPath}/${f.name}` : f.name);
+      if (paths.length > 0) {
+        const { data: metaRows } = await supabase
+          .from('vanguard_vault_metadata')
+          .select('file_path, author_name, visibility, author_id')
+          .in('file_path', paths);
+        if (metaRows) {
+          metaRows.forEach(r => { metaMap[r.file_path] = r; });
+        }
+      }
+    } catch { /* table may not exist yet */ }
+
+    // Enrich with ownership metadata; DB RLS is the sole authority on access.
+    const merged = sorted.reduce<VaultFile[]>((acc, f) => {
+      const isFolder = !f.id;
+      if (isFolder) {
+        acc.push(f as VaultFile);
+        return acc;
+      }
+      const filePath = currentPath ? `${currentPath}/${f.name}` : f.name;
+      const meta = metaMap[filePath];
+      // If no metadata row exists, the file is either legacy or inaccessible via RLS — hide it.
+      if (!meta) return acc;
+      acc.push({ ...f, author_name: meta.author_name } as VaultFile);
+      return acc;
+    }, []);
+
+    setFiles(merged);
     setLoading(false);
   };
 
@@ -84,6 +137,17 @@ export default function Vault() {
     const { error } = await supabase.storage
       .from("vanguard-vault")
       .upload(fullPath, file, { contentType: file.type });
+
+    if (!error) {
+      try {
+        await supabase.from('vanguard_vault_metadata').insert([{
+          file_path: fullPath,
+          author_id: currentUserId,
+          author_name: currentUserName || null,
+          visibility: 'private',
+        }]);
+      } catch { /* graceful fallback if table missing */ }
+    }
 
     setUploading(false);
     
@@ -290,7 +354,7 @@ export default function Vault() {
 
       <div 
         onClick={() => fileInputRef.current?.click()}
-        className={`mb-10 w-full border-2 border-dashed rounded-2xl p-10 flex flex-col items-center justify-center cursor-pointer transition-all flex-none ${
+        className={`mb-6 w-full border-2 border-dashed rounded-2xl p-8 flex flex-col items-center justify-center cursor-pointer transition-all flex-none ${
           uploading 
             ? "border-cyan-500/50 bg-cyan-500/5" 
             : "border-white/10 hover:border-cyan-500/50 bg-white/[0.02] hover:bg-white/[0.04]"
@@ -313,14 +377,14 @@ export default function Vault() {
           </>
         ) : (
           <>
-            <div className="w-16 h-16 rounded-full bg-cyan-500/10 flex items-center justify-center mb-4 group-hover:bg-cyan-500/20 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+            <div className="w-16 h-16 rounded-full bg-cyan-500/10 flex items-center justify-center mb-4 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.2)]">
               <UploadCloud className="w-8 h-8 text-cyan-400" />
             </div>
             <h3 className="text-lg font-bold tracking-widest uppercase text-slate-200 mb-2">
               Upload to {currentPath ? currentPath.split("/").pop() : "Root"} Directory
             </h3>
             <p className="text-xs font-mono text-slate-500 uppercase tracking-widest">
-              Documents, Images & Archives supported
+              Documents, Images &amp; Archives supported
             </p>
           </>
         )}
@@ -402,6 +466,12 @@ export default function Vault() {
                       <p className="text-xs text-slate-500 font-mono mt-1">
                         {isFolder ? "DIRECTORY" : formatFileSize(file.metadata?.size || 0)}
                       </p>
+                      {/* Author tag */}
+                      {!isFolder && file.author_name && (
+                        <p className="text-[9px] font-mono text-slate-600 tracking-wider mt-1 truncate">
+                          {file.author_name}
+                        </p>
+                      )}
                     </div>
                   </div>
 

@@ -36,13 +36,19 @@ export default function CTASection() {
               Let's discuss how Spirecrest can architect the perfect solution for your business.
             </p>
             <Link to="/contact">
-              <Button 
-                size="lg" 
-                className="bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold gap-2 px-12 h-14 text-lg"
+              <motion.div
+                animate={{ boxShadow: ["0 0 0px rgba(6,182,212,0)", "0 0 20px rgba(6,182,212,0.6)", "0 0 0px rgba(6,182,212,0)"] }}
+                transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+                className="inline-block rounded-md"
               >
-                Partner With Us
-                <ArrowRight className="w-5 h-5" />
-              </Button>
+                <Button 
+                  size="lg" 
+                  className="bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold gap-2 px-12 h-14 text-lg"
+                >
+                  Partner With Us
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+              </motion.div>
             </Link>
           </div>
         </motion.div>
