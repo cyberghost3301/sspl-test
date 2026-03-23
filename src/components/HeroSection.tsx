@@ -1,6 +1,5 @@
 import { m as motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Phone, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WhatsAppCTA from "@/components/WhatsAppCTA";
 
@@ -36,7 +35,7 @@ export default function HeroSection() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 mb-8"
           >
             <Sparkles className="w-3.5 h-3.5 text-accent" />
-            <span className="text-xs font-medium text-accent tracking-wide">MULTI-DISCIPLINARY TECH COMPANY</span>
+            <span className="text-xs font-medium text-accent tracking-wide">Lucknow's Trusted Technology Partner</span>
           </motion.div>
 
           <motion.h1
@@ -46,11 +45,8 @@ export default function HeroSection() {
             className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]"
             style={{ color: "hsl(var(--on-dark))" }}
           >
-            Smart Ideas.
-            <br />
-            <span className="text-gradient">Solid Executions.</span>
-            <br />
-            Scalable Results.
+            Infrastructure that doesn't{" "}
+            <span className="text-gradient">fail when it matters.</span>
           </motion.h1>
 
           <motion.p
@@ -60,7 +56,7 @@ export default function HeroSection() {
             className="mt-6 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
             style={{ color: "hsl(var(--on-dark-muted))" }}
           >
-            We architect resilient IT infrastructure, deploy zero-trust surveillance, and build scalable software. Executing heavy network overhauls with zero daytime operational downtime for Indian enterprises.
+            From security systems to enterprise networks and smart automation, we design and deploy solutions tailored to your exact needs.
           </motion.p>
 
           <motion.div
@@ -69,22 +65,35 @@ export default function HeroSection() {
             transition={{ delay: 0.6, duration: 0.5 }}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <motion.div
-              animate={{ boxShadow: ["0 0 0px rgba(6,182,212,0)", "0 0 20px rgba(6,182,212,0.6)", "0 0 0px rgba(6,182,212,0)"] }}
-              transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-              className="rounded-lg w-full sm:w-auto"
-            >
-              <WhatsAppCTA context="general" buttonText="Partner With Us" className="px-8 h-12 text-base w-full sm:w-auto" />
-            </motion.div>
-            <Link to="/portfolio" className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full font-display font-semibold gap-2 px-8 h-12 text-base border-accent/30 text-accent hover:bg-accent/10"
+            {/* Primary CTA: Call Now */}
+            <a href="tel:+919250974145" className="w-full sm:w-auto">
+              <motion.div
+                animate={{ boxShadow: ["0 0 0px rgba(6,182,212,0)", "0 0 20px rgba(6,182,212,0.6)", "0 0 0px rgba(6,182,212,0)"] }}
+                transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+                className="rounded-xl w-full sm:w-auto"
               >
-                Explore Solutions
-              </Button>
-            </Link>
+                <Button
+                  size="lg"
+                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-display font-semibold gap-2 px-8 h-12 text-base shadow-xl shadow-accent/20"
+                >
+                  <Phone className="w-4 h-4" />
+                  Call Now
+                </Button>
+              </motion.div>
+            </a>
+
+            {/* Secondary CTA: WhatsApp Now */}
+            <motion.div
+              animate={{ boxShadow: ["0 0 0px rgba(6,182,212,0)", "0 0 14px rgba(6,182,212,0.35)", "0 0 0px rgba(6,182,212,0)"] }}
+              transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut", delay: 1.25 }}
+              className="rounded-xl w-full sm:w-auto"
+            >
+              <WhatsAppCTA
+                context="general"
+                buttonText="WhatsApp Now"
+                className="px-8 h-12 text-base w-full sm:w-auto border border-accent/30 bg-transparent hover:bg-accent/10 text-white shadow-none"
+              />
+            </motion.div>
           </motion.div>
 
           {/* Stats strip */}

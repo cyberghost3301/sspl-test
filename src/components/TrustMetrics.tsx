@@ -1,85 +1,49 @@
-import { useEffect, useRef, useState } from "react";
 import { m as motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { MapPin, Clock, Settings, CheckCircle } from "lucide-react";
 
-interface Metric {
-  value: string;
-  numericPart: number;
-  prefix: string;
-  suffix: string;
-  label: string;
-}
-
-const metrics: Metric[] = [
-  { value: "100+", numericPart: 100, prefix: "", suffix: "+", label: "Mission-Critical Deployments" },
-  { value: "ISO Aligned", numericPart: 0, prefix: "", suffix: "", label: "Global Compliance Standards" },
-  { value: "MSME", numericPart: 0, prefix: "", suffix: "", label: "Recognized by MSME" },
-  { value: "DPIIT", numericPart: 0, prefix: "", suffix: "", label: "Startup India Certified" },
+const trustMarkers = [
+  {
+    icon: MapPin,
+    label: "Serving Lucknow & U.P.",
+  },
+  {
+    icon: Clock,
+    label: "24/7 Zero Downtime Support",
+  },
+  {
+    icon: Settings,
+    label: "100% Custom-Built Solutions",
+  },
+  {
+    icon: CheckCircle,
+    label: "Trusted Infrastructure Partner",
+  },
 ];
-
-function CountUp({ target, suffix, decimals = 0, inView }: { target: number; suffix: string; decimals?: number; inView: boolean }) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!inView || target === 0) return;
-    let start = 0;
-    const duration = 2000;
-    const increment = target / (duration / 16);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(start);
-      }
-    }, 16);
-    return () => clearInterval(timer);
-  }, [inView, target]);
-
-  if (target === 0) return null;
-
-  return (
-    <span>
-      {decimals > 0 ? count.toFixed(decimals) : Math.floor(count)}
-      {suffix}
-    </span>
-  );
-}
 
 export default function TrustMetrics() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
     <section
       ref={ref}
-      className="relative w-full py-16 md:py-20 border-y border-border bg-card"
+      className="relative w-full py-5 border-y border-border/50 bg-card/80 backdrop-blur-sm"
     >
       <div className="section-container">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
-          {metrics.map((metric, i) => (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 lg:divide-x lg:divide-border/40">
+          {trustMarkers.map((marker, i) => (
             <motion.div
-              key={metric.label}
-              initial={{ opacity: 0, y: 30 }}
+              key={marker.label}
+              initial={{ opacity: 0, y: 10 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="text-center space-y-2"
+              transition={{ duration: 0.4, delay: i * 0.08 }}
+              className="flex items-center justify-center gap-2.5 py-3 px-4 text-center lg:text-left"
             >
-              <p className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-card-foreground font-display">
-                {metric.numericPart > 0 ? (
-                  <CountUp
-                    target={metric.numericPart}
-                    suffix={metric.suffix}
-                    decimals={metric.value.includes(".") ? 1 : 0}
-                    inView={inView}
-                  />
-                ) : (
-                  <span>{metric.value}</span>
-                )}
-              </p>
-              <p className="text-sm sm:text-base text-muted-foreground font-medium tracking-wide uppercase">
-                {metric.label}
-              </p>
+              <marker.icon className="w-4 h-4 text-accent/70 flex-shrink-0" />
+              <span className="text-xs sm:text-sm font-medium text-muted-foreground leading-tight">
+                {marker.label}
+              </span>
             </motion.div>
           ))}
         </div>

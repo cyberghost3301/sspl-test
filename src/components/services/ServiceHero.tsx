@@ -1,7 +1,7 @@
-import { m as motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { m as motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import WhatsAppCTA from "@/components/WhatsAppCTA";
 
 interface ServiceHeroProps {
@@ -10,9 +10,23 @@ interface ServiceHeroProps {
   highlight: string;
   description: string;
   stats: { value: string; label: string }[];
+  primaryCTA?: string;
+  secondaryCTA?: string;
+  trustLine?: string;
+  showCallCTA?: boolean;
 }
 
-export default function ServiceHero({ badge, title, highlight, description, stats }: ServiceHeroProps) {
+export default function ServiceHero({
+  badge,
+  title,
+  highlight,
+  description,
+  stats,
+  primaryCTA = "WhatsApp Us",
+  secondaryCTA = "Call Now",
+  trustLine,
+  showCallCTA = false,
+}: ServiceHeroProps) {
   const location = useLocation();
   const getContext = () => {
     const p = location.pathname;
@@ -84,19 +98,56 @@ export default function ServiceHero({ badge, title, highlight, description, stat
             {description}
           </motion.p>
 
+          {trustLine && (
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              className="mt-3 text-sm italic"
+              style={{ color: "hsl(var(--on-dark-muted))" }}
+            >
+              {trustLine}
+            </motion.p>
+          )}
+
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.5 }}
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
+            {/* Primary: WhatsApp CTA */}
             <motion.div
               animate={{ boxShadow: ["0 0 0px rgba(6,182,212,0)", "0 0 20px rgba(6,182,212,0.6)", "0 0 0px rgba(6,182,212,0)"] }}
               transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-              className="rounded-lg w-full sm:w-auto"
+              className="rounded-xl w-full sm:w-auto"
             >
-              <WhatsAppCTA context={getContext() as any} buttonText="Partner With Us" className="px-8 h-12 text-base w-full sm:w-auto" />
+              <WhatsAppCTA
+                context={getContext() as any}
+                buttonText={primaryCTA}
+                className="px-8 h-12 text-base w-full sm:w-auto shadow-xl shadow-accent/20 rounded-xl"
+              />
             </motion.div>
+
+            {/* Secondary: Call Now */}
+            {showCallCTA && (
+              <a href="tel:+919250974145" className="w-full sm:w-auto">
+                <motion.div
+                  animate={{ boxShadow: ["0 0 0px rgba(6,182,212,0)", "0 0 14px rgba(6,182,212,0.35)", "0 0 0px rgba(6,182,212,0)"] }}
+                  transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut", delay: 1.25 }}
+                  className="rounded-xl w-full"
+                >
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="w-full font-display font-semibold gap-2 px-8 h-12 text-base border-accent/30 text-white hover:bg-accent/10"
+                  >
+                    <Phone className="w-4 h-4" />
+                    {secondaryCTA}
+                  </Button>
+                </motion.div>
+              </a>
+            )}
           </motion.div>
 
           <motion.div
