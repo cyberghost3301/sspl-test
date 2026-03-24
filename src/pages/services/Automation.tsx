@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { m as motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Zap, Thermometer, Lightbulb, Blinds, Cpu,
@@ -187,22 +188,29 @@ export default function Automation() {
         badge="AUTOMATION & CONTROL SYSTEMS"
         title="The Intelligent"
         highlight="Environment."
-        description="Using smart technology to connect building systems into one dashboard: save energy, increase comfort, and improve efficiency at every scale."
+        description="Using smart technology to connect building systems into one dashboard: save energy, increase comfort, and improve efficiency at every scale. Inefficient systems increase operational costs and reduce long-term scalability."
         stats={[
           { value: "500+", label: "Homes Automated" },
           { value: "40%", label: "Avg. Energy Savings" },
           { value: "100+", label: "Buildings Managed" },
         ]}
+        primaryCTA="Get Expert Advice"
+        secondaryCTA="Talk to an Expert"
+        showCallCTA={true}
       />
       <BentoGrid
         label="CAPABILITIES"
         heading="Control Everything. Intelligently."
-        subheading="From smart homes to industrial SCADA systems: seamless automation that adapts to your environment."
+        subheading="From smart homes to industrial SCADA systems: seamless automation that adapts to your environment. Every solution is engineered for performance, scalability, and long-term reliability."
         items={benefits}
       />
       <AutomationShowcase />
       <TechMarquee label="AUTOMATION PLATFORMS & PROTOCOLS" items={techStack} />
-      <CTASection />
+      <div className="section-container pb-2 text-sm text-muted-foreground">
+        Need secure access and monitoring?{" "}
+        <Link to="/services/surveillance" className="text-cyan-400 hover:underline">Explore our security systems.</Link>
+      </div>
+      <CTASection heading="Tell us what you're trying to achieve. We'll tell you exactly what you need — no upselling, no guesswork." />
     </>
   );
 }

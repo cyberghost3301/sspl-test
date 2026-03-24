@@ -7,11 +7,13 @@ import WhatsAppCTA from "@/components/WhatsAppCTA";
 interface CTASectionProps {
   heading?: string;
   subtext?: string;
+  context?: string;
 }
 
 export default function CTASection({
   heading = "Tell us what you're trying to achieve.",
-  subtext = "We'll tell you exactly what you need. No upselling, just engineering.",
+  subtext = "Get clarity before you invest. Know what to build, before you build it.",
+  context = "general",
 }: CTASectionProps) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
@@ -33,6 +35,9 @@ export default function CTASection({
           <div className="absolute bottom-0 left-0 w-60 h-60 rounded-full bg-amber-500/5 blur-[80px]" />
 
           <div className="relative z-10">
+            <p className="text-xs font-semibold tracking-widest text-gray-500 uppercase mb-4">
+              Designed for scale from day one
+            </p>
             <h2
               className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
               style={{ color: "hsl(var(--on-dark))" }}
@@ -54,8 +59,10 @@ export default function CTASection({
                 className="rounded-xl w-full sm:w-auto"
               >
                 <WhatsAppCTA
-                  context="general"
-                  buttonText="WhatsApp Us"
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  context={context as any}
+                  section="footer"
+                  buttonText="Talk to an Expert"
                   className="px-10 h-[52px] text-base w-full sm:w-auto shadow-xl shadow-accent/20 rounded-xl"
                 />
               </motion.div>

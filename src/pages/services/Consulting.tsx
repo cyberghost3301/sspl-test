@@ -224,6 +224,9 @@ export default function Consulting() {
           { value: "0", label: "Breaches Post-Audit" },
           { value: "100%", label: "Compliance Rate" },
         ]}
+        primaryCTA="Get Expert Advice"
+        secondaryCTA="Talk to an Expert"
+        showCallCTA={true}
       />
       <BentoGrid
         label="CAPABILITIES"

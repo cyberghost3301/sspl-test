@@ -43,7 +43,7 @@ export default function BentoGrid({ label, heading, subheading, items }: BentoGr
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className={`group p-7 rounded-2xl border border-border bg-card hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 ${
+              className={`group p-7 rounded-2xl border border-border bg-card hover:border-accent/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-cyan-900/20 hover:border-white/10 transition-all duration-300 ease-out ${
                 item.span === "wide" ? "md:col-span-2" : item.span === "tall" ? "md:row-span-2" : ""
               }`}
             >

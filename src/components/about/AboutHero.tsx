@@ -71,7 +71,7 @@ export default function AboutHero() {
               transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
               className="rounded-lg w-full sm:w-auto"
             >
-              <WhatsAppCTA context="team" buttonText="Partner With Us" className="px-8 h-12 text-base w-full sm:w-auto" />
+              <WhatsAppCTA context="team" section="hero" buttonText="Partner With Us" className="px-8 h-12 text-base w-full sm:w-auto" />
             </motion.div>
             <Link to="/contact" className="w-full sm:w-auto">
               <Button

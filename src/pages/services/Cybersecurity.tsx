@@ -1,11 +1,12 @@
 import { useRef } from "react";
 import { m as motion, useInView } from "framer-motion";
 import {
-  MapPin, ShieldCheck, Settings, FileText,
-  ClipboardList, SearchCheck, LayoutGrid, Wrench,
-  Home, Building2, Warehouse,
-  Smartphone, KeySquare, Bell, Monitor,
-  Phone, AlertTriangle, CheckCircle2,
+  ShieldCheck, Eye, Lock, Database,
+  AlertTriangle, CheckCircle2,
+  ScanSearch, Network, Monitor, HardDrive,
+  ClipboardList, Compass, Rocket, HeadphonesIcon,
+  Building2, Store, GraduationCap,
+  Phone,
 } from "lucide-react";
 import SEO from "@/components/SEO";
 import ServiceHero from "@/components/services/ServiceHero";
@@ -19,10 +20,10 @@ import { Button } from "@/components/ui/button";
    SECTION 2 — Trust Strip
 ════════════════════════════════════ */
 const trustMarkers = [
-  { icon: MapPin,      label: "Trusted across Lucknow & UP" },
-  { icon: ShieldCheck, label: "24/7 Zero-Downtime Support" },
-  { icon: Settings,    label: "100% Custom-Designed Setups" },
-  { icon: FileText,    label: "Transparent Pricing & Audits" },
+  { icon: ShieldCheck, label: "Proactive Threat Protection" },
+  { icon: Eye, label: "24/7 Monitoring Capability" },
+  { icon: Lock, label: "Business-Focused Security" },
+  { icon: Database, label: "Confidential & Secure Handling" },
 ];
 
 function TrustStrip() {
@@ -72,8 +73,8 @@ function ProblemSolution() {
             The Real Problem
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-            Security isn't about cameras. It's about{" "}
-            <span className="text-gradient">coverage, clarity, and control.</span>
+            Most businesses think they're secure…{" "}
+            <span className="text-gradient">until something goes wrong</span>
           </h2>
         </motion.div>
 
@@ -92,10 +93,10 @@ function ProblemSolution() {
               </div>
               <p className="text-xs font-display uppercase tracking-widest text-red-400/80 mb-3">The Problem</p>
               <p className="text-foreground font-display font-semibold text-lg mb-3 leading-snug">
-                Most CCTV setups fail the moment you actually need them.
+                Weak passwords, outdated systems, unsecured networks.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Blind spots, poor night footage, unstable recording, and zero real monitoring when something actually happens.
+                Lack of monitoring leaves silent vulnerabilities that build up over time — invisible until they aren't.
               </p>
             </div>
           </motion.div>
@@ -112,12 +113,12 @@ function ProblemSolution() {
               <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
                 <CheckCircle2 className="w-5 h-5 text-accent" />
               </div>
-              <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">The Spirecrest Way</p>
+              <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">The Reality</p>
               <p className="text-foreground font-display font-semibold text-lg mb-3 leading-snug">
-                We design. Not just install.
+                These issues don't show up daily.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                We don't install cameras randomly. We design your entire system around your layout, risk areas, and real-world usage so nothing important is ever missed.
+                These issues stay invisible… until they result in data loss, unauthorized access, or complete system disruption.
               </p>
             </div>
           </motion.div>
@@ -128,60 +129,95 @@ function ProblemSolution() {
 }
 
 /* ════════════════════════════════════
-   SECTION 4 — Capabilities (4 cards)
+   SECTION 4 — Authority Block
+════════════════════════════════════ */
+function AuthorityBlock() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section className="py-16 lg:py-20 bg-secondary/30" ref={ref}>
+      <div className="section-container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <p className="text-xs font-display uppercase tracking-widest text-accent mb-4">
+            Our Approach
+          </p>
+          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+            Security isn't a product.{" "}
+            <span className="text-gradient">It's an ongoing system.</span>
+          </h2>
+          <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+            Installing antivirus or firewalls is not enough. Real security requires{" "}
+            <span className="text-foreground font-semibold">continuous monitoring</span>,{" "}
+            <span className="text-foreground font-semibold">structured access control</span>, and{" "}
+            <span className="text-foreground font-semibold">proactive risk management</span> — not a one-time setup that gets forgotten.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ════════════════════════════════════
+   SECTION 5 — Capabilities (4 cards)
 ════════════════════════════════════ */
 const capabilities: BentoItem[] = [
   {
-    icon: Smartphone,
-    title: "Remote Monitoring",
-    description: "Access live and recorded footage anytime, anywhere from your phone or system.",
+    icon: ScanSearch,
+    title: "Vulnerability Assessment",
+    description: "Identify weaknesses before they are exploited — across your network, systems, and access points.",
     span: "wide",
   },
   {
-    icon: KeySquare,
-    title: "Smart Access Control",
-    description: "Secure entry with biometric, RFID, and controlled access systems for homes and offices.",
-  },
-  {
-    icon: Bell,
-    title: "Instant Active Alerts",
-    description: "Get notified instantly when something unusual happens, not hours later.",
+    icon: Network,
+    title: "Network & Access Security",
+    description: "Control and secure access across systems with firewalls, segmentation, and access policies.",
   },
   {
     icon: Monitor,
-    title: "Centralized Command",
-    description: "Monitor multiple cameras, locations, and systems from a single interface.",
+    title: "Monitoring & Threat Detection",
+    description: "Detect suspicious activity early before it turns into a serious incident.",
+  },
+  {
+    icon: HardDrive,
+    title: "Data Protection & Backup",
+    description: "Ensure data safety and recovery with encryption, controlled access, and reliable backups.",
     span: "wide",
   },
 ];
 
 /* ════════════════════════════════════
-   SECTION 5 — Process
+   SECTION 6 — Process
 ════════════════════════════════════ */
 const processSteps = [
   {
     step: "01",
     icon: ClipboardList,
-    title: "Site Assessment",
-    body: "We evaluate your space, layout, and risk points in detail.",
+    title: "Assessment",
+    body: "We review your current systems, access controls, and vulnerabilities to understand your actual security posture.",
   },
   {
     step: "02",
-    icon: SearchCheck,
-    title: "Risk Analysis",
-    body: "We identify where security actually matters, not just where cameras can be placed.",
+    icon: Compass,
+    title: "Planning",
+    body: "We map the right security approach based on your business size, data sensitivity, and operational risk.",
   },
   {
     step: "03",
-    icon: LayoutGrid,
-    title: "Custom System Design",
-    body: "Every camera angle, wiring route, and backup system is planned before installation.",
+    icon: Rocket,
+    title: "Implementation",
+    body: "Clean, structured deployment of security measures with minimal disruption to your daily operations.",
   },
   {
     step: "04",
-    icon: Wrench,
-    title: "Installation & AMC",
-    body: "Clean execution with ongoing support so your system keeps working long after setup.",
+    icon: HeadphonesIcon,
+    title: "Ongoing Monitoring",
+    body: "Continuous oversight so threats are caught early — before they become costly incidents.",
   },
 ];
 
@@ -190,7 +226,7 @@ function ProcessSection() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative py-20 lg:py-24 bg-secondary/30" ref={ref}>
+    <section className="relative py-20 lg:py-24 bg-background" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -200,14 +236,15 @@ function ProcessSection() {
         >
           <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">Our Process</p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-            How we design your{" "}
-            <span className="text-gradient">security system</span>
+            How we{" "}
+            <span className="text-gradient">secure your business</span>
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-xl mx-auto">Every setup is planned before it's installed. No guesswork. No generic packages.</p>
+          <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
+            Every engagement is tailored to your risk profile, infrastructure, and operational priorities.
+          </p>
         </motion.div>
 
         <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Connecting line — desktop only */}
           <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
 
           {processSteps.map((s, i) => (
@@ -235,14 +272,14 @@ function ProcessSection() {
 }
 
 /* ════════════════════════════════════
-   SECTION 6 — Mid-Page CTA
+   SECTION 7 — Mid-Page CTA
 ════════════════════════════════════ */
 function MidPageCTA() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-12 lg:py-14 bg-background" ref={ref}>
+    <section className="py-12 lg:py-14 bg-secondary/30" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -253,10 +290,10 @@ function MidPageCTA() {
           <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-transparent to-transparent pointer-events-none" />
           <div className="relative z-10">
             <p className="font-display text-lg md:text-xl font-bold text-foreground mb-1">
-              Not sure what you need? Send us photos or a video of your space.
+              Not sure if your business is actually secure… or just assuming it is?
             </p>
             <p className="text-sm text-muted-foreground">
-              We'll guide you on exactly what setup makes sense.
+              Tell us what you're running — we'll tell you where the real risks are.
             </p>
           </div>
           <div className="relative z-10 flex-shrink-0">
@@ -266,7 +303,7 @@ function MidPageCTA() {
               className="rounded-xl"
             >
               <WhatsAppCTA
-                context="surveillance"
+                context="consulting"
                 section="pricing"
                 buttonText="Get My Project Estimate"
                 className="px-7 h-11 text-sm font-semibold rounded-xl shadow-lg shadow-accent/20"
@@ -280,36 +317,36 @@ function MidPageCTA() {
 }
 
 /* ════════════════════════════════════
-   SECTION 7 — Use Cases
+   SECTION 8 — Reality Block (Use Cases)
 ════════════════════════════════════ */
-const useCases = [
+const realityCases = [
   {
-    icon: Home,
-    title: "For Homes",
-    body: "Keep your family, entry points, and surroundings secure with simple, reliable monitoring.",
+    icon: Building2,
+    title: "For Offices",
+    body: "Employee access, network security, and data protection for everyday business operations.",
     color: "text-cyan-400",
     bg: "bg-cyan-500/10",
     border: "hover:border-cyan-500/30",
   },
   {
-    icon: Building2,
-    title: "For Offices",
-    body: "Track operations, monitor access, and maintain visibility across your workspace.",
-    color: "text-blue-400",
-    bg: "bg-blue-500/10",
-    border: "hover:border-blue-500/30",
-  },
-  {
-    icon: Warehouse,
-    title: "For Factories & Warehouses",
-    body: "Monitor large areas, prevent theft, and maintain control over inventory and movement.",
+    icon: Store,
+    title: "For Small Businesses",
+    body: "Foundational security that protects customer data, payments, and operational continuity.",
     color: "text-amber-400",
     bg: "bg-amber-500/10",
     border: "hover:border-amber-500/30",
   },
+  {
+    icon: GraduationCap,
+    title: "For Institutions",
+    body: "Secure data management, network segmentation, and access control for campuses and departments.",
+    color: "text-blue-400",
+    bg: "bg-blue-500/10",
+    border: "hover:border-blue-500/30",
+  },
 ];
 
-function UseCaseSection() {
+function RealitySection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -320,17 +357,20 @@ function UseCaseSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-10"
         >
-          <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">Who We Build For</p>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-            Engineered for your{" "}
-            <span className="text-gradient">exact environment</span>
+          <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">Who This Is For</p>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-5">
+            Security issues{" "}
+            <span className="text-gradient">don't start big</span>
           </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+            Most problems begin with small gaps — weak passwords, outdated systems, or unmonitored networks. Over time, these gaps turn into serious risks. By the time they’re visible, the damage is already done.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {useCases.map((uc, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+          {realityCases.map((uc, i) => (
             <motion.div
               key={uc.title}
               initial={{ opacity: 0, y: 30 }}
@@ -352,144 +392,79 @@ function UseCaseSection() {
 }
 
 /* ════════════════════════════════════
-   SECTION 8 — Pricing Guidance
-════════════════════════════════════ */
-function PricingGuidance() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <section className="py-20 lg:py-24 bg-secondary/30" ref={ref}>
-      <div className="section-container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto"
-        >
-          <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-10 md:p-14">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-[80px] pointer-events-none" />
-
-            <div className="relative z-10">
-              <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">No Surprises, Ever</p>
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-5">
-                Honest Pricing Guidance
-              </h2>
-              <p className="text-muted-foreground leading-relaxed mb-3 text-base md:text-lg">
-                Most basic home CCTV setups typically start between{" "}
-                <span className="text-foreground font-semibold">₹15,000 to ₹40,000</span>{" "}
-                depending on coverage and requirements. Larger commercial and industrial setups are custom-designed based on your space and needs.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-8 text-base md:text-lg">
-                We explain everything clearly before installation.{" "}
-                <span className="text-foreground font-semibold">No hidden costs. No unnecessary upgrades.</span>{" "}
-                You'll know exactly what you're paying for before we begin.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <motion.div
-                  animate={{ boxShadow: ["0 0 0px rgba(6,182,212,0)", "0 0 20px rgba(6,182,212,0.55)", "0 0 0px rgba(6,182,212,0)"] }}
-                  transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-                  className="rounded-xl"
-                >
-                  <WhatsAppCTA
-                    context="surveillance"
-                    section="footer"
-                    buttonText="Talk to an Expert"
-                    className="px-7 h-11 text-sm font-semibold rounded-xl shadow-lg shadow-accent/20 w-full sm:w-auto"
-                  />
-                </motion.div>
-                <a href="tel:+919250974145">
-                  <Button
-                    variant="outline"
-                    className="h-11 px-7 text-sm font-semibold border-accent/30 text-white hover:bg-accent/10 w-full sm:w-auto rounded-xl gap-2"
-                  >
-                    <Phone className="w-4 h-4" />
-                    Speak to an Engineer
-                  </Button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-/* ════════════════════════════════════
    Tech Marquee data
 ════════════════════════════════════ */
 const techStack = [
-  "Hikvision", "Dahua", "Axis Communications", "Ubiquiti UniFi",
-  "IP Cameras", "PTZ Systems", "NVR/DVR", "PoE Switches",
-  "Biometric Scanners", "RFID Access", "Cloud NVR", "ZKTeco",
-  "Suprema", "Honeywell", "Bosch Security", "Genetec",
-  "FLIR Systems", "Samsung Hanwha", "TP-Link VIGI", "Reolink",
+  "Nessus", "Burp Suite", "Metasploit", "Wireshark",
+  "CrowdStrike", "Splunk", "Fortinet", "Palo Alto",
+  "Cloudflare", "HashiCorp Vault", "OWASP ZAP", "Qualys",
+  "SentinelOne", "Tenable.io", "Rapid7", "Kali Linux",
+  "Microsoft Defender", "Sophos", "Darktrace", "Okta",
+  "Proofpoint", "KnowBe4", "Varonis", "SonarQube",
 ];
 
 /* ════════════════════════════════════
    PAGE EXPORT
 ════════════════════════════════════ */
-export default function Surveillance() {
+export default function Cybersecurity() {
   return (
     <>
       <SEO
-        title="CCTV & Security Systems in Lucknow | Spirecrest Solutions"
-        description="Custom-engineered CCTV, surveillance, and access control systems for homes, offices, and factories across Lucknow and U.P. Zero-blind-spot coverage, 24/7 support, transparent pricing."
-        path="/services/surveillance"
+        title="Cybersecurity Services in Lucknow | Spirecrest Solutions"
+        description="Proactive cybersecurity — vulnerability assessments, network security, threat monitoring, and data protection for businesses across Lucknow. Protect your operations before problems happen."
+        path="/services/cybersecurity"
       />
 
       {/* ── 1. Hero ── */}
       <ServiceHero
-        badge="Security & Surveillance"
-        title="CCTV & Security Systems That Actually"
-        highlight="Protect What Matters"
-        description="Custom-designed surveillance and access control systems built for your exact space, ensuring complete coverage, reliable recording, and peace of mind when it matters most."
+        badge="Cybersecurity"
+        title="Cybersecurity That Protects Your Business"
+        highlight="Before Problems Happen"
+        description="A single breach, data loss, or system compromise can disrupt operations instantly. We identify vulnerabilities, secure your systems, and prevent threats before they impact your business."
+        trustLine="Supporting businesses across Lucknow with proactive security and long-term protection."
         stats={[
-          { value: "3000+", label: "Cameras Deployed" },
-          { value: "24/7", label: "Live Monitoring" },
-          { value: "100%", label: "Custom Designed" },
+          { value: "500+", label: "Audits Completed" },
+          { value: "24/7", label: "Monitoring Capability" },
+          { value: "0", label: "Breaches Post-Audit" },
         ]}
         primaryCTA="Get Expert Advice"
         secondaryCTA="Talk to an Expert"
-        trustLine="Installed across homes, offices, and commercial spaces in Lucknow with reliable, long-term support. Reliable even during power and network fluctuations. Serving Lucknow & surrounding areas."
         showCallCTA={true}
       />
 
       {/* ── 2. Trust Strip ── */}
       <TrustStrip />
 
-      {/* ── 3. Problem → Solution ── */}
+      {/* ── 3. Problem → Reality ── */}
       <ProblemSolution />
 
-      {/* ── 4. Capabilities ── */}
+      {/* ── 4. Authority Block ── */}
+      <AuthorityBlock />
+
+      {/* ── 5. Capabilities ── */}
       <BentoGrid
-        label="What You Get"
-        heading="Built around outcomes, not spec sheets"
-        subheading="Everything we deploy is designed to work seamlessly in your environment, not just look good on paper."
+        label="What We Do"
+        heading="Built around your actual risk"
+        subheading="Every measure we implement is chosen based on your business environment, not a generic security checklist. Every layer is designed to reduce risk, not just tick security checkboxes."
         items={capabilities}
       />
 
-      {/* ── 5. Process ── */}
+      {/* ── 6. Process ── */}
       <ProcessSection />
 
-      {/* ── 6. Mid-Page CTA ── */}
+      {/* ── 7. Mid-Page CTA ── */}
       <MidPageCTA />
 
-      {/* ── 7. Use Cases ── */}
-      <UseCaseSection />
-
-      {/* ── 8. Pricing Guidance ── */}
-      <PricingGuidance />
+      {/* ── 8. Reality / Use Cases ── */}
+      <RealitySection />
 
       {/* Tech Marquee */}
-      <TechMarquee label="Certified Hardware Partners" items={techStack} />
+      <TechMarquee label="Security Tools & Platforms" items={techStack} />
 
       {/* ── 9. Final CTA ── */}
       <CTASection
-        heading="Tell us what you're trying to protect"
-        subtext="We'll tell you exactly what you need. No upselling. Just what actually works."
+        heading="Tell us what you want to protect"
+        subtext="We'll assess your setup and guide you on what actually needs to be secured."
       />
     </>
   );

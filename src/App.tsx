@@ -23,6 +23,7 @@ const Solar = lazy(() => import("./pages/services/Solar"));
 const AVStudio = lazy(() => import("./pages/services/AVStudio"));
 const Computers = lazy(() => import("./pages/services/Computers"));
 const Interior = lazy(() => import("./pages/services/Interior"));
+const Cybersecurity = lazy(() => import("./pages/services/Cybersecurity"));
 const Testimonials = lazy(() => import("./pages/Testimonials"));
 const Team = lazy(() => import("./pages/Team"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -121,6 +122,7 @@ const App = () => {
                   <Route path="services/av-studio" element={<AVStudio />} />
                   <Route path="services/computers" element={<Computers />} />
                   <Route path="services/interior" element={<Interior />} />
+                  <Route path="services/cybersecurity" element={<Cybersecurity />} />
 
                   <Route path="faq" element={<FAQ />} />
                   <Route path="privacy-policy" element={<PrivacyPolicy />} />

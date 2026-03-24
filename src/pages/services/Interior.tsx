@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { m as motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Palette, Sofa, Lamp, PaintBucket, Ruler, Home,
@@ -182,22 +183,29 @@ export default function Interior() {
         badge="INTERIOR DESIGN & CONSTRUCTION"
         title="Spaces That"
         highlight="Inspire."
-        description="Modern workplace design, luxury residential interiors, and turnkey construction — from concept to handover, we create environments that elevate life and work."
+        description="Modern workplace design, luxury residential interiors, and turnkey construction — from concept to handover, we create environments that elevate life and work. Workspaces directly influence productivity, employee experience, and brand perception."
         stats={[
           { value: "80+", label: "Offices Designed" },
           { value: "300+", label: "Homes Delivered" },
           { value: "5L+ sqft", label: "Commercial Space" },
         ]}
+        primaryCTA="Get Expert Advice"
+        secondaryCTA="Talk to an Expert"
+        showCallCTA={true}
       />
       <BentoGrid
         label="CAPABILITIES"
         heading="Design. Build. Deliver."
-        subheading="From commercial office spaces to luxury homes — complete interior solutions that prioritize functionality, brand identity, and employee wellbeing."
+        subheading="From commercial office spaces to luxury homes — complete interior solutions that prioritize functionality, brand identity, and employee wellbeing. Every solution is engineered for performance, scalability, and long-term reliability."
         items={benefits}
       />
       <InteriorTabs />
       <TechMarquee label="DESIGN TOOLS & MATERIAL PARTNERS" items={techStack} />
-      <CTASection />
+      <div className="section-container pb-2 text-sm text-muted-foreground">
+        Need integrated automation and smart controls?{" "}
+        <Link to="/services/automation" className="text-cyan-400 hover:underline">Explore our automation solutions.</Link>
+      </div>
+      <CTASection heading="Tell us what you're trying to achieve. We'll tell you exactly what you need — no upselling, no guesswork." />
     </>
   );
 }

@@ -90,7 +90,8 @@ export default function HeroSection() {
             >
               <WhatsAppCTA
                 context="general"
-                buttonText="WhatsApp Now"
+                section="hero"
+                buttonText="Get Expert Advice"
                 className="px-8 h-12 text-base w-full sm:w-auto border border-accent/30 bg-transparent hover:bg-accent/10 text-white shadow-none"
               />
             </motion.div>

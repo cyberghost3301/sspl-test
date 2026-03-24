@@ -1,9 +1,12 @@
+import { trackWhatsAppClick } from "@/lib/analytics";
+
 export function FloatingWhatsApp() {
   return (
     <a
       href="https://wa.me/919250974145"
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackWhatsAppClick("Chat with a Principal", "floating_whatsapp")}
       className="fixed bottom-6 right-6 z-50 group flex items-center justify-center w-14 h-14 rounded-full bg-emerald-500/20 border border-emerald-500/30 backdrop-blur-md hover:bg-emerald-500/30 hover:scale-110 shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all duration-300"
     >
       {/* Pulse effect */}

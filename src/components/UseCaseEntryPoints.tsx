@@ -88,7 +88,8 @@ export default function UseCaseEntryPoints() {
                 </p>
                 <WhatsAppCTA
                   context={uc.context}
-                  buttonText="Get Started"
+                  section="hero"
+                  buttonText="Get Expert Advice"
                   className={`w-full h-9 text-xs px-4 rounded-lg border border-border bg-transparent text-foreground hover:bg-accent/10 hover:border-accent/30 hover:text-accent transition-all shadow-none font-semibold`}
                 />
               </div>

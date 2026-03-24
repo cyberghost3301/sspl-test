@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { m as motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Monitor, Cpu, HardDrive, MemoryStick, Fan,
@@ -180,22 +181,29 @@ export default function Computers() {
         badge="COMPUTER SOLUTIONS & HARDWARE"
         title="Hardware That"
         highlight="Performs."
-        description="Custom PC builds, enterprise IT procurement, server infrastructure, and hardware maintenance: precision-engineered solutions for every computing need."
+        description="Custom PC builds, enterprise IT procurement, server infrastructure, and hardware maintenance: precision-engineered solutions for every computing need. System failures, downtime, or poor infrastructure directly impact productivity and revenue."
         stats={[
           { value: "800+", label: "Custom Builds" },
           { value: "10,000+", label: "Devices Serviced" },
           { value: "150+", label: "AMC Clients" },
         ]}
+        primaryCTA="Get Expert Advice"
+        secondaryCTA="Talk to an Expert"
+        showCallCTA={true}
       />
       <BentoGrid
         label="CAPABILITIES"
         heading="Complete Computer Solutions."
-        subheading="From boutique gaming rigs to enterprise server rooms, we handle every layer of the hardware stack."
+        subheading="From boutique gaming rigs to enterprise server rooms, we handle every layer of the hardware stack. Every solution is engineered for performance, scalability, and long-term reliability."
         items={benefits}
       />
       <ComputerTabs />
       <TechMarquee label="HARDWARE PARTNERS & BRANDS" items={techStack} />
-      <CTASection />
+      <div className="section-container pb-2 text-sm text-muted-foreground">
+        Need networking and infrastructure?{" "}
+        <Link to="/services/networking" className="text-cyan-400 hover:underline">Explore our IT infrastructure solutions.</Link>
+      </div>
+      <CTASection heading="Tell us what you're trying to achieve. We'll tell you exactly what you need — no upselling, no guesswork." />
     </>
   );
 }

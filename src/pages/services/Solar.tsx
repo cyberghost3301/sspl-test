@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { m as motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Sun, BatteryCharging, Gauge, Leaf, BarChart3,
@@ -280,23 +281,30 @@ export default function Solar() {
         badge="ENERGY & SUSTAINABILITY"
         title="Sustainable"
         highlight="Resilience."
-        description="Eco-friendly technology focused on reducing your carbon footprint and providing reliable green power, from rooftop solar to grid-scale energy solutions."
+        description="Eco-friendly technology focused on reducing your carbon footprint and providing reliable green power, from rooftop solar to grid-scale energy solutions. Rising energy costs and unreliable power directly affect operational efficiency."
         stats={[
           { value: "5MW+", label: "Capacity Installed" },
           { value: "30%", label: "Avg. Cost Reduction" },
           { value: "Pan-India", label: "Service Coverage" },
         ]}
+        primaryCTA="Get Expert Advice"
+        secondaryCTA="Talk to an Expert"
+        showCallCTA={true}
       />
       <BentoGrid
         label="CAPABILITIES"
         heading="Clean Energy. Smart Power."
-        subheading="From residential rooftop panels to industrial power conditioning, green energy solutions that pay for themselves."
+        subheading="From residential rooftop panels to industrial power conditioning, green energy solutions that pay for themselves. Every solution is engineered for performance, scalability, and long-term reliability."
         items={benefits}
       />
       <SolarROIShowcase />
       <SolarImpact />
       <TechMarquee label="ENERGY PARTNERS & HARDWARE" items={techStack} />
-      <CTASection />
+      <div className="section-container pb-2 text-sm text-muted-foreground">
+        Need power backup integration?{" "}
+        <Link to="/services/networking" className="text-cyan-400 hover:underline">Explore our infrastructure solutions.</Link>
+      </div>
+      <CTASection heading="Tell us what you're trying to achieve. We'll tell you exactly what you need — no upselling, no guesswork." />
     </>
   );
 }

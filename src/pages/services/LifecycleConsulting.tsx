@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { m as motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import {
@@ -16,20 +17,20 @@ const ventureItems: BentoItem[] = [
     icon: Presentation,
     title: "Investor-Ready Pitchdeck Creation",
     description:
-      "We craft compelling, data-backed pitch decks that tell your story with conviction, designed to convert boardroom skeptics into committed backers.",
+      "Structure your business narrative with clarity, backed by data, financial logic, and a compelling investment story.",
     span: "wide",
   },
   {
     icon: TrendingUp,
     title: "VC & Angel Investor Strategy",
     description:
-      "End-to-end fundraising strategy: target investor profiling, warm introductions, term-sheet negotiation support, and due-diligence preparation.",
+      "Approach the right investors with a clear strategy, improving positioning, negotiation strength, and funding outcomes.",
   },
   {
     icon: PieChart,
     title: "Financial & Tech Capability Modeling",
     description:
-      "Robust financial projections, unit economics, and technology capability roadmaps that demonstrate scalability and de-risk your venture for investors.",
+      "Gain a clear understanding of scalability, cost structures, and operational readiness before committing to growth decisions.",
   },
 ];
 
@@ -39,31 +40,31 @@ const lifecycleItems = [
     icon: Wrench,
     title: "Turnkey Technology Solutions",
     description:
-      "Ready-to-operate, custom-built infrastructure delivered end-to-end — from procurement and configuration to deployment and handover. Zero gaps, zero guesswork.",
+      "Design, implement, and manage complete systems that support daily operations, scalability, and long-term efficiency.",
   },
   {
     icon: Package,
     title: "Procurement & Vendor Onboarding",
     description:
-      "Expert curation and vetting of hardware and software vendors, contract negotiation, SLA structuring, and seamless onboarding into your existing ecosystem.",
+      "Select and integrate reliable partners that align with your operational and growth requirements.",
   },
   {
     icon: CreditCard,
     title: "Financing Models",
     description:
-      "Strategic guidance on CAPEX vs. OPEX technology subscriptions, leasing structures, and financing options that align with your cash-flow and growth stage.",
+      "Align capital allocation and funding structures with long-term business objectives.",
   },
   {
     icon: CalendarCheck,
     title: "AMC (Annual Maintenance Contracts)",
     description:
-      "Scheduled, preventative systems care with guaranteed response times, proactive health checks, firmware updates, and priority escalation paths.",
+      "Maintain system reliability, reduce operational risks, and ensure continuity across all critical infrastructure.",
   },
   {
     icon: GraduationCap,
     title: "Training & Certification Workshops",
     description:
-      "Structured upskilling programs for your staff on new technology platforms, cybersecurity best practices, compliance protocols, and operational workflows.",
+      "Enable your team to operate efficiently, adapt quickly, and support long-term business scaling.",
   },
 ];
 
@@ -89,7 +90,7 @@ function LifecycleAccordion() {
             Full Lifecycle Support.
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            From day-zero deployment to year-ten maintenance, we stay with you at every stage of the technology lifecycle.
+            Strategic support combined with execution capability — ensuring your business can scale, adapt, and operate efficiently at every stage.
           </p>
         </motion.div>
 
@@ -207,24 +208,37 @@ export default function LifecycleConsulting() {
       />
       <ServiceHero
         badge="STRATEGIC LIFECYCLE SUPPORT & VENTURE CONSULTING"
-        title="Strategic Lifecycle Partnership &"
-        highlight="Venture Consulting."
-        description="Beyond technology. We architect growth, secure funding, and guarantee operational continuity."
+        title="Strategic Guidance for Businesses at"
+        highlight="Critical Growth Stages"
+        description="When your business is scaling, restructuring, or making high-stakes decisions, the right strategy matters. We help you navigate growth, optimize operations, secure the right opportunities, and build systems that sustain long-term success."
         stats={[
           { value: "₹50Cr+", label: "Funding Facilitated" },
           { value: "100%", label: "Client Retention" },
           { value: "End-to-End", label: "Lifecycle Coverage" },
         ]}
+        primaryCTA="Get Expert Advice"
+        secondaryCTA="Talk to an Expert"
+        showCallCTA={true}
       />
       <ExecutiveStrip />
       <BentoGrid
         label="THE VENTURE & PITCH STUDIO"
         heading="Your Boardroom Arsenal."
-        subheading="High-ticket business consulting that turns ambitious ideas into fundable, scalable ventures."
+        subheading="Strategic capabilities designed to support critical business decisions across growth, funding, operations, and long-term planning."
         items={ventureItems}
       />
       <LifecycleAccordion />
-      <CTASection />
+      <div className="section-container pb-2 text-sm text-muted-foreground">
+        Need execution support?{" "}
+        <Link to="/services/networking" className="text-cyan-400 hover:underline">Explore our infrastructure and technology solutions.</Link>
+      </div>
+      <p className="text-center text-sm text-muted-foreground max-w-xl mx-auto px-4 pb-2">
+        Strategy without execution creates plans. Execution without strategy creates inefficiencies. We ensure both work together.
+      </p>
+      <CTASection
+        heading="Planning your next move, scaling operations, or preparing for growth?"
+        subtext="We'll help you make the right decisions with clarity, structure, and execution support."
+      />
     </>
   );
 }

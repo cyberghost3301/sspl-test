@@ -22,8 +22,8 @@ export default function ServiceHero({
   highlight,
   description,
   stats,
-  primaryCTA = "WhatsApp Us",
-  secondaryCTA = "Call Now",
+  primaryCTA = "Get Expert Advice",
+  secondaryCTA = "Talk to an Expert",
   trustLine,
   showCallCTA = false,
 }: ServiceHeroProps) {
@@ -123,7 +123,9 @@ export default function ServiceHero({
               className="rounded-xl w-full sm:w-auto"
             >
               <WhatsAppCTA
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 context={getContext() as any}
+                section="hero"
                 buttonText={primaryCTA}
                 className="px-8 h-12 text-base w-full sm:w-auto shadow-xl shadow-accent/20 rounded-xl"
               />
@@ -164,6 +166,18 @@ export default function ServiceHero({
                 </p>
               </div>
             ))}
+          </motion.div>
+
+          {/* Micro-Proof Trust Marker */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="w-full flex justify-center mt-12"
+          >
+            <p className="text-xs font-semibold tracking-widest text-gray-500 uppercase">
+              Trusted by 50+ growing businesses
+            </p>
           </motion.div>
         </div>
       </div>

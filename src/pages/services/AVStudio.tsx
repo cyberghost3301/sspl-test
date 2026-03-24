@@ -327,18 +327,21 @@ export default function AVStudio() {
         badge="ENTERPRISE COMMUNICATIONS & AV SOLUTIONS"
         title="Flawless Transmission."
         highlight="Enterprise Communications & Studio AV."
-        description="PBX, cloud VoIP, executive boardroom AV, chroma key studios, and Hi-Fi broadcast audio: end-to-end communication infrastructure that never misses a beat."
+        description="PBX, cloud VoIP, executive boardroom AV, chroma key studios, and Hi-Fi broadcast audio: end-to-end communication infrastructure that never misses a beat. Poor communication infrastructure affects collaboration, clarity, and client experience."
         stats={[
           { value: "200+", label: "Rooms Equipped" },
           { value: "5,000+", label: "Call Centre Seats" },
           { value: "40+", label: "Studios Built" },
         ]}
+        primaryCTA="Get Expert Advice"
+        secondaryCTA="Talk to an Expert"
+        showCallCTA={true}
       />
 
       <BentoGrid
         label="CAPABILITIES"
         heading="Voice. Video. Experience."
-        subheading="From executive boardrooms to broadcast studios: communication infrastructure that elevates every interaction."
+        subheading="From executive boardrooms to broadcast studios: communication infrastructure that elevates every interaction. Every solution is engineered for performance, scalability, and long-term reliability."
         items={benefits}
       />
 
@@ -352,7 +355,7 @@ export default function AVStudio() {
       </div>
 
       <TechMarquee label="AV & COMMUNICATION PARTNERS" items={techStack} />
-      <CTASection />
+      <CTASection heading="Tell us what you're trying to achieve. We'll tell you exactly what you need — no upselling, no guesswork." />
     </>
   );
 }
