@@ -28,10 +28,10 @@ export default function TrustMetrics() {
   return (
     <section
       ref={ref}
-      className="relative w-full py-5 border-y border-border/50 bg-card/80 backdrop-blur-sm"
+      className="relative w-full py-5 bg-transparent"
     >
       <div className="section-container">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 lg:divide-x lg:divide-border/40">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {trustMarkers.map((marker, i) => (
             <motion.div
               key={marker.label}
@@ -40,8 +40,8 @@ export default function TrustMetrics() {
               transition={{ duration: 0.4, delay: i * 0.08 }}
               className="flex items-center justify-center gap-2.5 py-3 px-4 text-center lg:text-left"
             >
-              <marker.icon className="w-4 h-4 text-accent/70 flex-shrink-0" />
-              <span className="text-xs sm:text-sm font-medium text-muted-foreground leading-tight">
+              <marker.icon className="w-4 h-4 text-cyan-400/90 flex-shrink-0" />
+              <span className="text-xs sm:text-sm font-medium text-white/50 leading-tight">
                 {marker.label}
               </span>
             </motion.div>

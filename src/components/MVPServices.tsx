@@ -2,47 +2,45 @@ import { m as motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Shield, Network, Zap, Globe, ArrowUpRight } from "lucide-react";
+import SystemBlueprintTooltip from "@/components/SystemBlueprintTooltip";
 
+/** Tooltip blueprint data: Cybersecurity, Software, IT Infra, Automation */
 const servicePillars = [
   {
     icon: Shield,
-    title: "Security & Surveillance Systems",
-    description:
-      "IP cameras, access control, perimeter detection, and 24/7 remote monitoring engineered for maximum protection.",
-    href: "/services/surveillance",
+    label: "Secure my business",
+    description: "Audit, harden, and monitor your IT environment - from CCTV and access control to cyber threat management",
+    href: "/services/cybersecurity",
     color: "text-cyan-400",
-    bg: "bg-cyan-500/10",
-    hoverBorder: "hover:border-cyan-500/30",
-  },
-  {
-    icon: Network,
-    title: "IT Infrastructure & Networking",
-    description:
-      "Structured cabling, enterprise Wi-Fi, server rooms, cloud migration, and managed IT services.",
-    href: "/services/networking",
-    color: "text-blue-400",
-    bg: "bg-blue-500/10",
-    hoverBorder: "hover:border-blue-500/30",
-  },
-  {
-    icon: Zap,
-    title: "Smart Automation & Intelligent Spaces",
-    description:
-      "Home and office automation, IoT integration, AV systems, and intelligent control environments.",
-    href: "/services/automation",
-    color: "text-amber-400",
-    bg: "bg-amber-500/10",
-    hoverBorder: "hover:border-amber-500/30",
+    title: "Security Architecture",
+    specs: ["Zero-Trust Framework", "AES-256 Encryption", "Real-time Threat Monitoring", "DDoS Mitigation"],
   },
   {
     icon: Globe,
-    title: "Digital & Business Solutions",
-    description:
-      "Custom web applications, mobile platforms, SaaS products, and end-to-end software delivery.",
+    label: "Build or scale systems",
+    description: "CRMs, ERPs, SaaS products, and custom business software built to run real operations reliably",
     href: "/services/software",
     color: "text-violet-400",
-    bg: "bg-violet-500/10",
-    hoverBorder: "hover:border-violet-500/30",
+    title: "Software Stack",
+    specs: ["React / Next.js", "Node.js / Python", "Microservices Arch", "PostgreSQL / Redis"],
+  },
+  {
+    icon: Network,
+    label: "Set up infrastructure",
+    description: "Enterprise networking, structured cabling, server rooms, cloud migration, and long-term IT support",
+    href: "/services/networking",
+    color: "text-blue-400",
+    title: "Infra Topology",
+    specs: ["Ubiquiti / Cisco routing", "Multi-WAN Failover", "VLAN Segmentation", "Cloud Hybrid Active Directory"],
+  },
+  {
+    icon: Zap,
+    label: "Automate operations",
+    description: "Smart home and office automation, IoT integration, AV systems, and energy-efficient intelligent spaces",
+    href: "/services/automation",
+    color: "text-amber-400",
+    title: "Workflow Engine",
+    specs: ["API-First Integration", "Zapier / Make.com", "Custom Webhooks", "Automated Error Handling"],
   },
 ];
 
@@ -51,7 +49,7 @@ export default function MVPServices() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative py-20 lg:py-24 bg-secondary/30" ref={ref}>
+    <section className="relative py-20 lg:py-24" ref={ref}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -59,44 +57,58 @@ export default function MVPServices() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">
-            Core Service Pillars
+          <p className="text-xs font-display uppercase tracking-widest text-white/90 mb-3">
+            Service Paths
           </p>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-            What we deliver,{" "}
-            <span className="text-gradient">end to end.</span>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-white font-bold">
+            Where are things starting to break?
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-            Four focused verticals. Each purpose-built for a different dimension of your business.
+          <p className="mt-4 max-w-xl mx-auto !text-gray-300 !opacity-100 text-base leading-relaxed">
+            Select the path that matches your goal - we'll map the exact solution
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {servicePillars.map((service, i) => (
             <motion.div
-              key={service.title}
+              key={service.label}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="min-w-0"
             >
-              <Link
-                to={service.href}
-                className={`group flex flex-col h-full p-6 rounded-2xl border border-border bg-card transition-all duration-300 ${service.hoverBorder} hover:shadow-lg`}
-              >
-                <div className={`w-11 h-11 rounded-xl ${service.bg} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
-                  <service.icon className={`w-5 h-5 ${service.color}`} />
-                </div>
-                <h3 className="font-display text-base font-bold text-foreground mb-2 leading-snug">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                  {service.description}
-                </p>
-                <div className={`mt-5 inline-flex items-center gap-1 text-xs font-semibold ${service.color} opacity-0 group-hover:opacity-100 transition-opacity`}>
-                  Learn More
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </div>
-              </Link>
+              <SystemBlueprintTooltip title={service.title} specs={service.specs}>
+                <motion.div 
+                  className="liquid-glass p-6 md:p-8 flex flex-col gap-4 cursor-crosshair h-full"
+                  whileHover={{ scale: 1.02, boxShadow: '0 0 60px var(--sc-teal-glow)' }}
+                  transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.4 }}
+                >
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 0.8 }}
+                    className="absolute top-0 left-[20%] w-[60%] h-[1px]"
+                    style={{ background: 'linear-gradient(90deg, transparent, var(--sc-teal), transparent)' }}
+                  />
+                  <Link
+                    to={service.href}
+                    className="group flex flex-col h-full min-w-0 transition-opacity duration-300 hover:opacity-95"
+                  >
+                    <div className="mb-5 flex items-center text-cyan-400 drop-shadow-[0_0_12px_rgba(6,182,212,0.6)]">
+                      <service.icon className="h-5 w-5 shrink-0" />
+                    </div>
+                    <h3 className="!text-white !font-semibold text-lg mb-2 leading-snug">
+                      {service.label}
+                    </h3>
+                    <p className="!text-gray-300 !opacity-100 text-sm leading-relaxed flex-1">
+                      {service.description}
+                    </p>
+                    <div className={`mt-5 inline-flex items-center gap-1 text-xs font-semibold ${service.color}`}>
+                      Explore
+                      <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
+                    </div>
+                  </Link>
+                </motion.div>
+              </SystemBlueprintTooltip>
             </motion.div>
           ))}
         </div>

@@ -1,28 +1,57 @@
+import React from 'react';
 import { trackWhatsAppClick } from "@/lib/analytics";
+import { AnimatePresence, m as motion } from "framer-motion";
 
 export function FloatingWhatsApp() {
+  const [isNearBottom, setIsNearBottom] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      // Check if user has scrolled within 800px of the bottom of the page
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const documentHeight = document.documentElement.offsetHeight;
+      setIsNearBottom(scrollPosition >= documentHeight - 800);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // trigger once on mount
+    handleScroll(); 
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <a
-      href="https://wa.me/919250974145"
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={() => trackWhatsAppClick("Chat with a Principal", "floating_whatsapp")}
-      className="fixed bottom-6 right-6 z-50 group flex items-center justify-center w-14 h-14 rounded-full bg-emerald-500/20 border border-emerald-500/30 backdrop-blur-md hover:bg-emerald-500/30 hover:scale-110 shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all duration-300"
-    >
-      {/* Pulse effect */}
-      <div className="absolute inset-0 rounded-full animate-ping opacity-20 bg-emerald-400" />
+    <AnimatePresence>
+      {isNearBottom && (
+        <motion.div
+          initial={{ opacity: 0, y: 50, scale: 0.8 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 50, scale: 0.8 }}
+          className="fixed bottom-6 right-6 z-50"
+        >
+          <a
+            href="https://wa.me/919250974145"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick("Chat with a Principal", "floating_whatsapp")}
+            className="group flex items-center justify-center w-14 h-14 rounded-full bg-emerald-500/20 border border-emerald-500/30 backdrop-blur-md hover:bg-emerald-500/30 hover:scale-110 shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all duration-300"
+          >
+            {/* Pulse effect */}
+            <div className="absolute inset-0 rounded-full animate-ping opacity-20 bg-emerald-400" />
 
-      {/* WhatsApp Colored SVG Logo */}
-      <img
-        src="https://cdn.simpleicons.org/whatsapp/25D366"
-        alt="WhatsApp"
-        className="w-7 h-7 object-contain drop-shadow-md relative z-10"
-      />
+            {/* WhatsApp Colored SVG Logo */}
+            <img
+              src="https://cdn.simpleicons.org/whatsapp/25D366"
+              alt="WhatsApp"
+              className="w-7 h-7 object-contain drop-shadow-md relative z-10"
+            />
 
-      {/* Tooltip */}
-      <div className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-xs font-medium text-white opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all pointer-events-none whitespace-nowrap shadow-xl">
-        Chat with a Principal
-      </div>
-    </a>
+            {/* Tooltip */}
+            <div className="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-xs font-medium text-white opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all pointer-events-none whitespace-nowrap shadow-xl">
+              Chat with a Principal
+            </div>
+          </a>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

@@ -8,10 +8,10 @@ const partnersRow1 = [
   { name: "Bosch", slug: "bosch" },
   { name: "Panasonic", slug: "panasonic" },
   { name: "Cloudflare", slug: "cloudflare" },
-  { name: "Axis", slug: "axiscommunications" },
+  { name: "Axis", slug: "axis" },
   { name: "Pelco", slug: "pelco", url: "https://upload.wikimedia.org/wikipedia/commons/d/de/Pelco_logo.svg" },
   { name: "Datadog", slug: "datadog" },
-  { name: "Hanwha", slug: "hanwha" },
+  { name: "Hanwha", slug: "hanwhavision" },
   { name: "Uniview", slug: "uniview" },
   { name: "Milwaukee", slug: "milwaukeetool" },
   { name: "Makita", slug: "makita" },
@@ -32,7 +32,7 @@ const partnersRow2 = [
   { name: "Lenovo", slug: "lenovo" },
   { name: "IBM", slug: "ibm" },
   { name: "Dell", slug: "dell" },
-  { name: "HPE", slug: "hewlettpackardenterprise" },
+  { name: "HPE", slug: "hpe" },
   { name: "Supermicro", slug: "supermicro" },
   { name: "TP-Link", slug: "tplink" },
   { name: "D-Link", slug: "dlink" },
@@ -56,26 +56,37 @@ export default function PartnersMarquee() {
           transition={{ repeat: Infinity, ease: "linear", duration: speed }}
           className="flex whitespace-nowrap items-center w-max gap-12 md:gap-24 px-6 md:px-12"
         >
-          {duplicatedLogos.map((partner, idx) => (
-            <div
-              key={`${partner.slug}-${idx}`}
-              className="flex-shrink-0 flex items-center gap-3 px-6 py-4 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 group"
-            >
-              <img
-                src={partner.url || `https://cdn.simpleicons.org/${partner.slug}`}
-                alt={partner.name}
-                className="w-7 h-7 object-contain opacity-70 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
-                loading="lazy"
-                onError={(e) => {
-                  // Fallback for missing brand icons
-                  (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(partner.name)}&background=020617&color=ffffff&bold=true`;
-                }}
-              />
-              <span className="text-sm font-display font-medium text-muted-foreground group-hover:text-foreground transition-colors whitespace-nowrap">
-                {partner.name}
-              </span>
-            </div>
-          ))}
+          {duplicatedLogos.map((partner, idx) => {
+            let imgFailed = false;
+            return (
+              <div
+                key={`${partner.slug}-${idx}`}
+                className="flex-shrink-0 flex items-center gap-3 px-6 py-4 rounded-xl border border-border bg-card hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 group"
+              >
+                <img
+                  src={partner.url || `https://cdn.simpleicons.org/${partner.slug}`}
+                  alt={partner.name}
+                  className="w-7 h-7 object-contain opacity-70 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
+                  loading="lazy"
+                  onError={(e) => {
+                    const img = e.target as HTMLImageElement;
+                    img.style.display = "none";
+                    const sibling = img.nextElementSibling as HTMLElement | null;
+                    if (sibling) sibling.style.display = "inline";
+                  }}
+                />
+                <span
+                  className="text-white/50 font-mono text-sm hidden"
+                  aria-hidden="true"
+                >
+                  {partner.name}
+                </span>
+                <span className="text-sm font-display font-medium text-muted-foreground group-hover:text-foreground transition-colors whitespace-nowrap">
+                  {partner.name}
+                </span>
+              </div>
+            );
+          })}
         </motion.div>
       </div>
     );
@@ -100,7 +111,7 @@ export default function PartnersMarquee() {
         </motion.div>
       </div>
 
-      <div className="flex flex-col gap-6 md:gap-8 relative z-10">
+      <div className="flex flex-col gap-6 md:gap-8 relative z-10 overflow-hidden">
         {/* Fading Edges */}
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />

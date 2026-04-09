@@ -65,6 +65,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        'sc-teal': 'var(--sc-teal)',
+        'sc-teal-glow': 'var(--sc-teal-glow)',
+        'sc-amber': 'var(--sc-amber)',
+        'sc-amber-glow': 'var(--sc-amber-glow)',
+        'sc-text-muted': 'var(--sc-text-muted)',
+      },
+      transitionTimingFunction: {
+        'cinematic': 'var(--ease-cinematic)',
       },
       borderRadius: {
         lg: "var(--radius)",

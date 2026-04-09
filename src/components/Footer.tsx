@@ -22,7 +22,7 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-hero-gradient" style={{ color: "hsl(var(--on-dark))" }}>
+    <footer className="bg-hero-gradient text-white">
       <div className="section-container py-12 md:py-16 lg:py-20">
 
         {/* Main Footer Grid */}
@@ -33,7 +33,7 @@ export default function Footer() {
             <div className="mb-4">
               <img src={sfiltLogo} alt="Spirecrest Solutions Pvt. Ltd." className="h-10 w-auto invert" />
             </div>
-            <p className="text-sm leading-relaxed max-w-sm mb-6" style={{ color: "hsl(var(--on-dark-muted))" }}>
+            <p className="text-sm leading-relaxed max-w-sm mb-6 text-white/80">
               Smart Ideas. Solid Executions. Scalable Results. A multi-disciplinary technology firm delivering enterprise-grade solutions across security, software, and infrastructure.
             </p>
             <div className="flex items-center gap-3">
@@ -58,7 +58,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link to={link.href} className="text-sm hover:text-accent transition-colors" style={{ color: "hsl(var(--on-dark-muted))" }}>
+                    <Link to={link.href} className="text-sm text-white/80 hover:text-accent transition-colors">
                       {link.label}
                     </Link>
                   </li>
@@ -70,7 +70,7 @@ export default function Footer() {
           {/* Contact Column */}
           <div className="col-span-2 md:col-span-6 lg:col-span-4">
             <p className="font-display font-semibold text-sm mb-3">Contact Us</p>
-            <div className="space-y-3 text-sm" style={{ color: "hsl(var(--on-dark-muted))" }}>
+            <div className="space-y-3 text-sm text-white/80">
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
                 <div>
@@ -93,7 +93,7 @@ export default function Footer() {
 
         {/* Bottom strip */}
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs" style={{ color: "hsl(var(--on-dark-muted) / 0.6)" }}>
+          <p className="text-xs text-white/70">
             © {new Date().getFullYear()} Spirecrest Solutions Pvt. Ltd. All rights reserved.
           </p>
         </div>

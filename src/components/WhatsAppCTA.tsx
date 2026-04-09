@@ -23,6 +23,8 @@ interface WhatsAppCTAProps {
   /** Logical placement used for GA4 tracking: 'hero' | 'pricing' | 'case_study' | 'footer' | any string */
   section?: string;
   className?: string;
+  /** When provided, replaces the default WhatsApp redirect. Useful for gating clicks behind a scoping flow. */
+  onClickOverride?: () => void;
 }
 
 export default function WhatsAppCTA({
@@ -30,6 +32,7 @@ export default function WhatsAppCTA({
   buttonText = "Chat on WhatsApp",
   section = context,
   className = "",
+  onClickOverride,
 }: WhatsAppCTAProps) {
   const phoneNumber = "919250974145";
 
@@ -67,6 +70,10 @@ export default function WhatsAppCTA({
   };
 
   const handleWhatsAppClick = () => {
+    if (onClickOverride) {
+      onClickOverride();
+      return;
+    }
     trackWhatsAppClick(buttonText, section);
     // Section-level override takes priority, then page-specific message, then general fallback
     const message = sectionMessages[section] ?? messages[context] ?? messages.general;

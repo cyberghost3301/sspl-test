@@ -36,7 +36,7 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dark, setDark] = useState(true);
@@ -44,7 +44,7 @@ export default function Header() {
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setIsScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -60,7 +60,7 @@ export default function Header() {
 
   // Pages with dark hero backgrounds where nav text needs to be light when not scrolled
   const hasDarkHero = location.pathname === "/" || location.pathname.startsWith("/services/") || ["/about", "/portfolio", "/testimonials", "/collective", "/contact"].includes(location.pathname);
-  const isSolid = scrolled || mobileOpen;
+  const isSolid = isScrolled || mobileOpen;
   const isOverDark = hasDarkHero && !isSolid;
 
   const currentLogo = (isOverDark || dark) ? seltLogoDark : seltLogoLight;
@@ -77,11 +77,13 @@ export default function Header() {
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-0 ${isSolid
-          ? "bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-border shadow-sm"
-          : "bg-transparent"
-          }`}
+      <motion.header
+        className="fixed top-0 left-0 right-0 z-[100] transition-all duration-300"
+        animate={{
+          background: isScrolled ? 'rgba(5,7,10,0.85)' : 'transparent',
+          backdropFilter: isScrolled ? 'blur(20px)' : 'blur(0px)',
+          borderBottom: isScrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent'
+        }}
       >
         <div className="section-container flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -94,15 +96,64 @@ export default function Header() {
             {navLinks.map((link) => (
               <div
                 key={link.label}
-                className="relative"
+                className={link.hasMega ? "relative inline-block" : "relative"}
                 onMouseEnter={() => link.hasMega && setMegaOpen(true)}
                 onMouseLeave={() => link.hasMega && setMegaOpen(false)}
               >
                 {link.hasMega ? (
-                  <button className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${navTextClass}`}>
-                    {link.label}
-                    <ChevronDown className={`w-3.5 h-3.5 transition-transform ${megaOpen ? "rotate-180" : ""}`} />
-                  </button>
+                  <>
+                    <button className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${navTextClass}`}>
+                      {link.label}
+                      <svg className={`w-4 h-4 opacity-50 transition-transform ${megaOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    <AnimatePresence>
+                      {megaOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                          transition={{ ease: "circOut", duration: 0.2 }}
+                          className="absolute top-full left-1/2 -translate-x-1/2 pt-6 w-[850px] z-[9999]"
+                        >
+                          {/* SOLID STATE PANEL - No liquid-glass transparency */}
+                          <div className="bg-[#05070A] border border-white/10 rounded-2xl p-6 grid grid-cols-2 gap-2 shadow-[0_40px_100px_rgba(0,0,0,0.8)] relative overflow-hidden">
+                            
+                            {/* Subtle top edge highlight */}
+                            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-sc-teal/30 to-transparent" />
+
+                            {[
+                              { title: "Zero-Trust Cybersecurity", desc: "Military-grade threat defense & active SOC.", route: "/services/cybersecurity" },
+                              { title: "Managed IT Infrastructure", desc: "Proactive maintenance & 99.9% uptime SLA.", route: "/services/infrastructure" },
+                              { title: "Cloud Architecture", desc: "AWS/Azure migration & multi-cloud scaling.", route: "/services/cloud" },
+                              { title: "Custom System Engineering", desc: "Workflow automation & proprietary software.", route: "/services/software" },
+                              { title: "Network Topology", desc: "High-throughput SD-WAN & branch routing.", route: "/services/networking" },
+                              { title: "Smart Office Deployments", desc: "Surveillance, access control & IoT integration.", route: "/services/smart-office" },
+                              { title: "Commercial Solar Systems", desc: "Clean energy infrastructure & power plant ops.", route: "/services/solar" },
+                              { title: "Professional AV Integration", desc: "Corporate studio & audiovisual setups.", route: "/services/av-studio" },
+                              { title: "Modern Workspace Design", desc: "Functional, tech-enabled interior architecture.", route: "/services/interior-design" },
+                              { title: "IT Lifecycle & Venture Consulting", desc: "Strategic growth, funding & tech advisory.", route: "/services/consulting" }
+                            ].map((service, idx) => (
+                              <a 
+                                key={idx} 
+                                href={service.route} 
+                                className="group flex flex-col p-4 rounded-xl hover:bg-[#0D1117] transition-all duration-300 border border-transparent hover:border-white/5"
+                              >
+                                <span className="text-white font-semibold text-[15px] group-hover:text-sc-teal transition-colors flex items-center gap-3">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-sc-teal transition-colors shadow-[0_0_10px_rgba(0,212,200,0)] group-hover:shadow-[0_0_10px_rgba(0,212,200,0.5)]" />
+                                  {service.title}
+                                </span>
+                                <span className="text-sc-text-muted text-xs mt-1.5 ml-4 group-hover:text-white/70 transition-colors leading-relaxed">
+                                  {service.desc}
+                                </span>
+                              </a>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </>
                 ) : (
                   <Link
                     to={link.href}
@@ -120,6 +171,28 @@ export default function Header() {
 
           {/* Right */}
           <div className="flex items-center gap-3">
+            <AnimatePresence>
+              {isScrolled && (
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ ease: "circOut", duration: 0.3 }}
+                  className="rounded-md"
+                >
+                  <motion.button
+                    animate={{ boxShadow: ["0 0 0px rgba(0,212,200,0)", "0 0 15px rgba(0,212,200,0.4)", "0 0 0px rgba(0,212,200,0)"] }}
+                    transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+                    onClick={() => document.getElementById('scoping-engine')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="bg-sc-teal text-[#05070A] border-none px-5 py-2 rounded-md font-bold tracking-wide text-sm hover:scale-105 transition-transform"
+                  >
+                    Book Discovery Call →
+                  </motion.button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/*
             <button
               onClick={() => setDark(!dark)}
               className={`p-2 rounded-md transition-colors ${iconBtnClass}`}
@@ -127,7 +200,9 @@ export default function Header() {
             >
               {dark ? <SunMedium className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
+            */}
 
+            {/*
             <motion.div
               animate={{ boxShadow: ["0 0 0px rgba(6,182,212,0)", "0 0 20px rgba(6,182,212,0.6)", "0 0 0px rgba(6,182,212,0)"] }}
               transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
@@ -138,6 +213,7 @@ export default function Header() {
                 <ArrowRight className="w-3.5 h-3.5" />
               </Button>
             </motion.div>
+            */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className={`lg:hidden p-2 relative flex items-center justify-center w-10 h-10 transition-colors group ${isOverDark ? "text-white" : "text-foreground"}`}
@@ -157,6 +233,7 @@ export default function Header() {
         </div>
 
         {/* Mega Menu */}
+        {/*
         <AnimatePresence>
           {megaOpen && (
             <motion.div
@@ -192,7 +269,8 @@ export default function Header() {
             </motion.div>
           )}
         </AnimatePresence>
-      </header>
+        */}
+      </motion.header>
 
       {/* Mobile Menu */}
       <AnimatePresence>

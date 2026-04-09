@@ -71,7 +71,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         <LazyMotion features={domAnimation}>
-          <BrowserRouter>
+          <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <ScrollToTop />
             <CommandMenu />
             <Suspense fallback={<GlobalLoader />}>

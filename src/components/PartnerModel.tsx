@@ -25,19 +25,20 @@ export default function PartnerModel() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative py-24 lg:py-32 bg-secondary/50" ref={ref}>
+    <section className="relative py-24 lg:py-32" ref={ref}>
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
+            data-aos="fade-right"
           >
-            <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">OUR MODEL</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
+            <p className="text-xs font-display uppercase tracking-widest text-cyan-400/90 mb-3">OUR MODEL</p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
               You Work Directly With the Experts
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-8">
+            <p className="!text-gray-300 !opacity-100 text-sm md:text-base leading-relaxed mb-8">
               At Spirecrest, there are no middlemen. Our partner-led execution model means your project is 
               steered by the same industry leader who built their career solving exactly your type of problem. 
               This is how 9000+ projects have been delivered on time, on budget, and beyond expectation.
@@ -51,12 +52,12 @@ export default function PartnerModel() {
                   transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
                   className="flex items-start gap-4"
                 >
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                    <p.icon className="w-5 h-5 text-accent" />
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg border border-white/[0.04] bg-white/[0.02] backdrop-blur-md flex items-center justify-center">
+                    <p.icon className="w-5 h-5 text-cyan-400" />
                   </div>
                   <div>
-                    <p className="font-display font-semibold text-foreground">{p.title}</p>
-                    <p className="text-sm text-muted-foreground mt-1">{p.desc}</p>
+                    <p className="font-display font-semibold text-white">{p.title}</p>
+                    <p className="!text-gray-300 !opacity-100 text-sm md:text-base mt-1">{p.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -67,6 +68,7 @@ export default function PartnerModel() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
+            data-aos="fade-left"
             className="relative"
           >
             {/* Abstract visual */}
@@ -74,21 +76,21 @@ export default function PartnerModel() {
               <motion.div
                 animate={{ scale: [1, 1.02, 1] }}
                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="absolute inset-0 rounded-3xl bg-accent/5 border border-accent/10"
+                className="absolute inset-0 rounded-3xl border border-white/[0.04] bg-white/[0.02] backdrop-blur-md"
               />
-              <div className="absolute inset-6 rounded-2xl bg-accent/5 border border-accent/10" />
-              <div className="absolute inset-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center shadow-[0_0_30px_rgba(6,182,212,0.15)]">
+              <div className="absolute inset-6 rounded-2xl border border-white/[0.04] bg-white/[0.02] backdrop-blur-sm" />
+              <div className="absolute inset-12 rounded-xl border border-white/[0.04] bg-white/[0.03] backdrop-blur-md flex items-center justify-center">
                 <div className="text-center">
-                  <p className="font-display text-5xl font-bold text-accent">19+</p>
-                  <p className="text-sm text-muted-foreground mt-2 font-medium">Specialized Partners</p>
-                  <p className="text-xs text-muted-foreground mt-1">Across 12 Verticals</p>
+                  <p className="font-display text-5xl font-bold text-cyan-400">19+</p>
+                  <p className="text-sm text-white/50 mt-2 font-medium">Specialized Partners</p>
+                  <p className="text-xs text-white/40 mt-1">Across 12 Verticals</p>
                 </div>
               </div>
               {/* Corner dots */}
               {[
                 "top-0 left-0", "top-0 right-0", "bottom-0 left-0", "bottom-0 right-0"
               ].map((pos, i) => (
-                <div key={i} className={`absolute ${pos} w-3 h-3 rounded-full bg-accent/30`} />
+                <div key={i} className={`absolute ${pos} w-3 h-3 rounded-full bg-cyan-400/25`} />
               ))}
             </div>
           </motion.div>
