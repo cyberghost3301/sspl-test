@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { m as motion, AnimatePresence } from "framer-motion";
 import {
-  Shield, Code, ShieldCheck, Zap, Network, Monitor,
-  Sun as SunIcon, Palette, Headphones, TrendingUp,
-  Menu, X, ChevronDown, Moon, SunMedium, ArrowRight
+  Shield, Code, Lock, Network, Cpu, SunMedium, 
+  Monitor, Target, RefreshCcw, MonitorPlay, LayoutTemplate,
+  Menu, X, ChevronDown, Moon, ArrowRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ContactModal } from "@/components/ContactModal";
@@ -12,16 +12,17 @@ import seltLogoLight from "@/assets/selt.png";
 import seltLogoDark from "@/assets/seltw.png";
 
 const services = [
-  { icon: Shield, title: "Advanced Surveillance", desc: "Enterprise-grade security infrastructure", href: "/services/surveillance" },
-  { icon: Code, title: "Web-App & Software Dev", desc: "Custom digital products at scale", href: "/services/software" },
-  { icon: ShieldCheck, title: "IT Consulting & Cybersecurity", desc: "Protect, optimize, and future-proof", href: "/services/consulting" },
-  { icon: Zap, title: "Smart Automation", desc: "IoT and intelligent systems", href: "/services/automation" },
-  { icon: Network, title: "Networking & Cloud", desc: "Scalable cloud infrastructure", href: "/services/networking" },
-  { icon: Monitor, title: "Computer Solutions", desc: "Hardware and enterprise IT", href: "/services/computers" },
-  { icon: SunIcon, title: "Solar Power Systems", desc: "Clean energy solutions", href: "/services/solar" },
-  { icon: Headphones, title: "AV Studio", desc: "Professional audiovisual services", href: "/services/av-studio" },
-  { icon: Palette, title: "Interior Design", desc: "Modern workspace design", href: "/services/interior" },
-  { icon: TrendingUp, title: "Lifecycle & Venture Consulting", desc: "Strategic growth and funding advisory", href: "/services/lifecycle-consulting" },
+  { icon: Shield, title: "Advanced Surveillance", desc: "Zero-blind-spot monitoring & access control", href: "/services/surveillance" },
+  { icon: Code, title: "Software & Cloud Systems", desc: "Custom workflow engines & proprietary ecosystems", href: "/services/software" },
+  { icon: Lock, title: "Zero-Trust Security", desc: "Military-grade threat mitigation & compliance", href: "/services/cybersecurity" },
+  { icon: Network, title: "Enterprise Networking", desc: "High-throughput SD-WAN & resilient architecture", href: "/services/networking" },
+  { icon: Cpu, title: "Smart Space Automation", desc: "Facility orchestration & luxury home integrations", href: "/services/automation" },
+  { icon: SunMedium, title: "Solar Power Grids", desc: "Commercial arrays & independent battery backups", href: "/services/solar" },
+  { icon: Monitor, title: "Workstation Hardware", desc: "High-performance enterprise computing & IT", href: "/services/computers" },
+  { icon: Target, title: "Strategic Tech Advisory", desc: "Fractional CTO leadership & scaling roadmaps", href: "/services/consulting" },
+  { icon: RefreshCcw, title: "Lifecycle Operations", desc: "Infrastructure audits & MSME grant utilization", href: "/services/lifecycle-consulting" },
+  { icon: MonitorPlay, title: "AV & Studio Engineering", desc: "Boardroom orchestration & high-fidelity acoustics", href: "/services/av-studio" },
+  { icon: LayoutTemplate, title: "Tech-Driven Interiors", desc: "Aesthetic spaces built around hidden infrastructure", href: "/services/interior" },
 ];
 
 const navLinks = [
@@ -115,36 +116,25 @@ export default function Header() {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.98 }}
                           transition={{ ease: "circOut", duration: 0.2 }}
-                          className="absolute top-full left-1/2 -translate-x-1/2 pt-6 w-[850px] z-[9999]"
+                          className="absolute top-full left-1/2 -translate-x-1/3 pt-6 w-[950px] z-[9999]"
                         >
                           {/* SOLID STATE PANEL - No liquid-glass transparency */}
-                          <div className="bg-[#05070A] border border-white/10 rounded-2xl p-6 grid grid-cols-2 gap-2 shadow-[0_40px_100px_rgba(0,0,0,0.8)] relative overflow-hidden">
-                            
+                          <div className="bg-[#05070A] border border-white/10 rounded-2xl p-6 grid grid-cols-3 gap-x-8 gap-y-6 shadow-[0_40px_100px_rgba(0,0,0,0.8)] relative overflow-hidden">
+
                             {/* Subtle top edge highlight */}
                             <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-sc-teal/30 to-transparent" />
 
-                            {[
-                              { title: "Zero-Trust Cybersecurity", desc: "Military-grade threat defense & active SOC.", route: "/services/cybersecurity" },
-                              { title: "Managed IT Infrastructure", desc: "Proactive maintenance & 99.9% uptime SLA.", route: "/services/infrastructure" },
-                              { title: "Cloud Architecture", desc: "AWS/Azure migration & multi-cloud scaling.", route: "/services/cloud" },
-                              { title: "Custom System Engineering", desc: "Workflow automation & proprietary software.", route: "/services/software" },
-                              { title: "Network Topology", desc: "High-throughput SD-WAN & branch routing.", route: "/services/networking" },
-                              { title: "Smart Office Deployments", desc: "Surveillance, access control & IoT integration.", route: "/services/smart-office" },
-                              { title: "Commercial Solar Systems", desc: "Clean energy infrastructure & power plant ops.", route: "/services/solar" },
-                              { title: "Professional AV Integration", desc: "Corporate studio & audiovisual setups.", route: "/services/av-studio" },
-                              { title: "Modern Workspace Design", desc: "Functional, tech-enabled interior architecture.", route: "/services/interior-design" },
-                              { title: "IT Lifecycle & Venture Consulting", desc: "Strategic growth, funding & tech advisory.", route: "/services/consulting" }
-                            ].map((service, idx) => (
-                              <a 
-                                key={idx} 
-                                href={service.route} 
+                            {services.map((service, idx) => (
+                              <a
+                                key={idx}
+                                href={service.href}
                                 className="group flex flex-col p-4 rounded-xl hover:bg-[#0D1117] transition-all duration-300 border border-transparent hover:border-white/5"
                               >
                                 <span className="text-white font-semibold text-[15px] group-hover:text-sc-teal transition-colors flex items-center gap-3">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-sc-teal transition-colors shadow-[0_0_10px_rgba(0,212,200,0)] group-hover:shadow-[0_0_10px_rgba(0,212,200,0.5)]" />
+                                  <service.icon className="w-4 h-4 text-white/50 group-hover:text-sc-teal transition-colors" />
                                   {service.title}
                                 </span>
-                                <span className="text-sc-text-muted text-xs mt-1.5 ml-4 group-hover:text-white/70 transition-colors leading-relaxed">
+                                <span className="text-sc-text-muted text-xs mt-1.5 ml-7 group-hover:text-white/70 transition-colors leading-relaxed">
                                   {service.desc}
                                 </span>
                               </a>

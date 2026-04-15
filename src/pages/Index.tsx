@@ -15,9 +15,9 @@ import MVPServices from "@/components/MVPServices";
 import PartnerModel from "@/components/PartnerModel";
 import BentoGrid from "@/components/BentoGrid";
 import WhatsAppCTA from "@/components/WhatsAppCTA";
-import SystemDiagnosticScan from "@/components/SystemDiagnosticScan";
 import InteractiveROITracker from "@/components/InteractiveROITracker";
 import SectionDivider from "@/components/SectionDivider";
+import StickyShowcase from "@/components/StickyShowcase";
 
 /* ───────────────────────────────────────────────
    TIER 2 — Authority Spike
@@ -531,8 +531,8 @@ const Index = () => {
       {/* Metric Bento Grid (Replaces Secondary Proof) */}
       <MetricBentoSection />
 
-      {/* TIER 2 — Problem (Where are things starting to break?) */}
-      <SystemDiagnosticScan />
+      {/* TIER 2 — Sticky Showcase (Three Pillars) */}
+      <StickyShowcase />
 
       {/* TIER 2 — Service Paths (Services) */}
       <MVPServices />

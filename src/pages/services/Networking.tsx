@@ -1,12 +1,13 @@
-import { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { m as motion, useInView } from "framer-motion";
 import {
   MapPin, ShieldCheck, Settings, Wrench,
   AlertTriangle, CheckCircle2,
-  Network, Server, Cloud, Shield,
+  Network, Server, Shield,
   ClipboardList, Compass, Rocket, HeadphonesIcon,
   Building2, Factory, GraduationCap,
   Phone,
+  Activity, Globe, Wifi, EyeOff, MonitorPlay, HardDrive, Zap,
 } from "lucide-react";
 import SEO from "@/components/SEO";
 import ServiceHero from "@/components/services/ServiceHero";
@@ -15,38 +16,37 @@ import TechMarquee from "@/components/services/TechMarquee";
 import CTASection from "@/components/CTASection";
 import WhatsAppCTA from "@/components/WhatsAppCTA";
 import { Button } from "@/components/ui/button";
+import ContextToggle, { ContextMode } from "@/components/ContextToggle";
 
 /* ════════════════════════════════════
-   SECTION 2 — Trust Strip
+   SECTION 2 — Trust Strip (prop-driven)
 ════════════════════════════════════ */
-const trustMarkers = [
-  { icon: MapPin, label: "Serving Lucknow & UP" },
-  { icon: ShieldCheck, label: "24/7 Support Capability" },
-  { icon: Settings, label: "Custom Infrastructure Design" },
-  { icon: Wrench, label: "Long-Term AMC Support" },
-];
+type TrustMarker = { icon: React.ElementType; label: string };
 
-function TrustStrip() {
+function TrustStrip({ markers }: { markers: TrustMarker[] }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   return (
     <section ref={ref} className="relative w-full py-5 border-y border-border/50 bg-card/80 backdrop-blur-sm">
       <div className="section-container">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 lg:divide-x lg:divide-border/40">
-          {trustMarkers.map((m, i) => (
-            <motion.div
-              key={m.label}
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="flex items-center justify-center gap-2.5 py-3 px-4"
-            >
-              <m.icon className="w-4 h-4 text-accent/70 flex-shrink-0" />
-              <span className="text-xs sm:text-sm font-medium text-muted-foreground leading-tight">
-                {m.label}
-              </span>
-            </motion.div>
-          ))}
+          {markers.map((m, i) => {
+            const Icon = m.icon;
+            return (
+              <motion.div
+                key={m.label}
+                initial={{ opacity: 0, y: 10 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="flex items-center justify-center gap-2.5 py-3 px-4"
+              >
+                <Icon className="w-4 h-4 text-accent/70 flex-shrink-0" />
+                <span className="text-xs sm:text-sm font-medium text-muted-foreground leading-tight">
+                  {m.label}
+                </span>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -79,7 +79,6 @@ function ProblemSolution() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {/* Problem column */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -101,7 +100,6 @@ function ProblemSolution() {
             </div>
           </motion.div>
 
-          {/* Solution column */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -129,61 +127,18 @@ function ProblemSolution() {
 }
 
 /* ════════════════════════════════════
-   SECTION 4 — Capabilities (4 cards)
+   SECTION 4 — Capabilities
+   (dynamic — defined inside component)
 ════════════════════════════════════ */
-const capabilities: BentoItem[] = [
-  {
-    icon: Network,
-    title: "Network Design & Setup",
-    description: "Stable LAN, WiFi, and structured cabling designed for your workspace and usage.",
-    span: "wide",
-  },
-  {
-    icon: Server,
-    title: "Servers & Storage",
-    description: "Secure, centralized systems for data access, storage, and control.",
-  },
-  {
-    icon: Cloud,
-    title: "Cloud & Backup",
-    description: "Reliable backup systems so your data is always protected and recoverable.",
-  },
-  {
-    icon: Shield,
-    title: "Security & Firewalls",
-    description: "Protection against external threats and internal vulnerabilities.",
-    span: "wide",
-  },
-];
 
 /* ════════════════════════════════════
    SECTION 5 — Process
 ════════════════════════════════════ */
 const processSteps = [
-  {
-    step: "01",
-    icon: ClipboardList,
-    title: "Assessment",
-    body: "We understand how your business operates and what it actually needs.",
-  },
-  {
-    step: "02",
-    icon: Compass,
-    title: "Design",
-    body: "We map the right infrastructure based on your scale and usage.",
-  },
-  {
-    step: "03",
-    icon: Rocket,
-    title: "Deployment",
-    body: "Clean, structured setup with minimal disruption to your work.",
-  },
-  {
-    step: "04",
-    icon: HeadphonesIcon,
-    title: "Support & AMC",
-    body: "Ongoing monitoring and maintenance so everything keeps running smoothly.",
-  },
+  { step: "01", icon: ClipboardList, title: "Assessment",    body: "We understand how your business operates and what it actually needs." },
+  { step: "02", icon: Compass,       title: "Design",        body: "We map the right infrastructure based on your scale and usage." },
+  { step: "03", icon: Rocket,        title: "Deployment",    body: "Clean, structured setup with minimal disruption to your work." },
+  { step: "04", icon: HeadphonesIcon,title: "Support & AMC", body: "Ongoing monitoring and maintenance so everything keeps running smoothly." },
 ];
 
 function ProcessSection() {
@@ -210,9 +165,7 @@ function ProcessSection() {
         </motion.div>
 
         <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Connecting line — desktop only */}
           <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
-
           {processSteps.map((s, i) => (
             <motion.div
               key={s.step}
@@ -258,9 +211,7 @@ function MidPageCTA() {
             <p className="font-display text-lg md:text-xl font-bold text-foreground mb-1">
               Not sure what setup your business needs?
             </p>
-            <p className="text-sm text-muted-foreground">
-              Tell us your office size, team, and usage — we'll guide you.
-            </p>
+            <p className="text-sm text-muted-foreground">Tell us your office size, team, and usage — we'll guide you.</p>
           </div>
           <div className="relative z-10 flex-shrink-0">
             <motion.div
@@ -286,30 +237,9 @@ function MidPageCTA() {
    SECTION 7 — Use Cases
 ════════════════════════════════════ */
 const useCases = [
-  {
-    icon: Building2,
-    title: "For Offices",
-    body: "Seamless connectivity, stable systems, and uninterrupted workflows.",
-    color: "text-cyan-400",
-    bg: "bg-cyan-500/10",
-    border: "hover:border-cyan-500/30",
-  },
-  {
-    icon: Factory,
-    title: "For Factories",
-    body: "Reliable infrastructure for operations, monitoring, and coordination.",
-    color: "text-amber-400",
-    bg: "bg-amber-500/10",
-    border: "hover:border-amber-500/30",
-  },
-  {
-    icon: GraduationCap,
-    title: "For Institutions",
-    body: "Consistent connectivity across departments, staff, and systems.",
-    color: "text-blue-400",
-    bg: "bg-blue-500/10",
-    border: "hover:border-blue-500/30",
-  },
+  { icon: Building2,     title: "For Offices",      body: "Seamless connectivity, stable systems, and uninterrupted workflows.",                    color: "text-cyan-400",  bg: "bg-cyan-500/10",  border: "hover:border-cyan-500/30" },
+  { icon: Factory,       title: "For Factories",     body: "Reliable infrastructure for operations, monitoring, and coordination.",                  color: "text-amber-400", bg: "bg-amber-500/10", border: "hover:border-amber-500/30" },
+  { icon: GraduationCap, title: "For Institutions",  body: "Consistent connectivity across departments, staff, and systems.",                        color: "text-blue-400",  bg: "bg-blue-500/10",  border: "hover:border-blue-500/30" },
 ];
 
 function UseCaseSection() {
@@ -331,7 +261,6 @@ function UseCaseSection() {
             <span className="text-gradient">exact environment</span>
           </h2>
         </motion.div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {useCases.map((uc, i) => (
             <motion.div
@@ -372,7 +301,6 @@ function AMCSupport() {
         >
           <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-10 md:p-14">
             <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-[80px] pointer-events-none" />
-
             <div className="relative z-10">
               <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">After Installation</p>
               <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-5">
@@ -387,9 +315,8 @@ function AMCSupport() {
                 so your systems stay stable, updated, and reliable over time. So your business doesn't stop because of avoidable issues.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-8 text-base md:text-lg">
-                Most issues we fix are preventable. That’s exactly what our support is designed for.
+                Most issues we fix are preventable. That's exactly what our support is designed for.
               </p>
-
               <div className="flex flex-col sm:flex-row gap-4">
                 <motion.div
                   animate={{ boxShadow: ["0 0 0px rgba(6,182,212,0)", "0 0 20px rgba(6,182,212,0.55)", "0 0 0px rgba(6,182,212,0)"] }}
@@ -438,43 +365,90 @@ const techStack = [
    PAGE EXPORT
 ════════════════════════════════════ */
 export default function Networking() {
+  const [contextMode, setContextMode] = useState<ContextMode>("enterprise");
+
+  // ── DYNAMIC CONTENT DICTIONARIES ──
+  const heroContent = {
+    enterprise: {
+      description: "High-throughput SD-WAN, multi-site branch routing, and zero-trust isolated VLANs. We engineer networks that don't bottleneck under enterprise loads.",
+      trustLine:   "Deployed in corporate headquarters and high-density industrial facilities.",
+    },
+    residential: {
+      description: "Wall-to-wall Wi-Fi 7 coverage, hardwired access points, and seamless roaming. Say goodbye to dead zones and buffering in your high-end property.",
+      trustLine:   "Discreet, wire-free aesthetics engineered for large residential estates.",
+    },
+  };
+
+  const dynamicCapabilities: Record<ContextMode, BentoItem[]> = {
+    enterprise: [
+      { icon: Network,     title: "Multi-Site SD-WAN",   description: "Secure, encrypted tunnels connecting your branch offices seamlessly.",                       span: "wide" },
+      { icon: Shield,      title: "Zero-Trust VLANs",    description: "Isolate IoT devices, guest networks, and core servers.",                                    span: "normal" },
+      { icon: Activity,    title: "Load Balancing",       description: "Failover protocols ensuring 99.99% uptime during ISP outages.",                             span: "normal" },
+      { icon: Server,      title: "Enterprise Routing",   description: "Ubiquiti & Cisco core routing capable of handling 10Gbps+ throughput.",                      span: "wide" },
+    ],
+    residential: [
+      { icon: Wifi,        title: "Whole-Home Wi-Fi 7",  description: "Seamless roaming access points strategically hidden in ceilings and walls.",                 span: "wide" },
+      { icon: MonitorPlay, title: "AV & Gaming Priority", description: "QoS bandwidth allocation for zero-latency streaming and gaming.",                            span: "normal" },
+      { icon: ShieldCheck, title: "Family Protection",    description: "Network-level ad-blocking and content filtering.",                                           span: "normal" },
+      { icon: HardDrive,   title: "Hardwired Backbones", description: "Cat6a/Fiber runs to all stationary devices (TVs, Consoles, PCs).",                          span: "wide" },
+    ],
+  };
+
+  const dynamicTrustMarkers: Record<ContextMode, TrustMarker[]> = {
+    enterprise: [
+      { icon: Activity,    label: "99.99% Uptime SLA"   },
+      { icon: Shield,      label: "Advanced Firewalling" },
+      { icon: Server,      label: "10Gbps+ Core"         },
+      { icon: Globe,       label: "Multi-Site Sync"      },
+    ],
+    residential: [
+      { icon: Wifi,        label: "Zero Dead Zones"      },
+      { icon: EyeOff,      label: "Hidden Access Points" },
+      { icon: MapPin,      label: "App-Managed"          },
+      { icon: Zap,         label: "Fiber-Ready"          },
+    ],
+  };
+
   return (
     <>
       <SEO
-        title="IT Infrastructure & Networking in Lucknow | Spirecrest Solutions"
-        description="Custom IT infrastructure, network design, servers, cloud backup, and firewall setup for offices, factories, and institutions across Lucknow and U.P. 24/7 AMC support, transparent pricing."
+        title={`Networking & IT Infrastructure | Spirecrest ${contextMode === "enterprise" ? "Commercial" : "Home"}`}
+        description={heroContent[contextMode].description}
         path="/services/networking"
       />
 
       {/* ── 1. Hero ── */}
       <ServiceHero
         badge="IT Infrastructure & Networking"
-        title="IT Infrastructure That Keeps Your"
-        highlight="Business Running"
-        description="From networks and servers to backups and security, we design and manage reliable systems that keep your operations stable, secure, and interruption-free. Because when your systems stop, your business stops. That’s why we design systems that don’t fail when you need them most."
-        trustLine="Supporting offices and commercial setups across Lucknow with dependable infrastructure and long-term support."
+        title={contextMode === "enterprise" ? "Enterprise Networks Built for" : "Home Networks Built for"}
+        highlight={contextMode === "enterprise" ? "Zero Bottlenecks" : "Total Coverage"}
+        description={heroContent[contextMode].description}
+        trustLine={heroContent[contextMode].trustLine}
         stats={[
           { value: "500+", label: "Systems Deployed" },
-          { value: "24/7", label: "AMC Support" },
-          { value: "100%", label: "Custom Designed" },
+          { value: "24/7", label: "AMC Support"      },
+          { value: "100%", label: "Custom Designed"  },
         ]}
         primaryCTA="Get Expert Advice"
         secondaryCTA="Talk to an Expert"
         showCallCTA={true}
       />
 
-      {/* ── 2. Trust Strip ── */}
-      <TrustStrip />
+      {/* ── Context Toggle ── */}
+      <ContextToggle mode={contextMode} onChange={setContextMode} />
+
+      {/* ── 2. Dynamic Trust Strip ── */}
+      <TrustStrip markers={dynamicTrustMarkers[contextMode]} />
 
       {/* ── 3. Problem → Solution ── */}
       <ProblemSolution />
 
-      {/* ── 4. Capabilities ── */}
+      {/* ── 4. Dynamic Capabilities Bento ── */}
       <BentoGrid
-        label="What You Get"
-        heading="Built around outcomes, not spec sheets"
-        subheading="Everything is planned based on your business usage, not guesswork. Every component is selected to reduce downtime and eliminate failure points."
-        items={capabilities}
+        label={contextMode === "enterprise" ? "Enterprise Architecture" : "Residential Deployment"}
+        heading={contextMode === "enterprise" ? "Built for throughput and threat isolation" : "Built for coverage and seamless living"}
+        subheading="Everything is planned based on your usage, not guesswork. Every component is selected to reduce downtime and eliminate failure points."
+        items={dynamicCapabilities[contextMode]}
       />
 
       {/* ── 5. Process ── */}
@@ -494,7 +468,7 @@ export default function Networking() {
 
       {/* ── 9. Final CTA ── */}
       <CTASection
-        heading="Tell us what your business needs to run smoothly"
+        heading={contextMode === "enterprise" ? "Secure your enterprise network" : "Eliminate dead zones forever"}
         subtext="We'll design the right setup for you. No overcomplication. No unnecessary costs."
       />
     </>

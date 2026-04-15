@@ -1,29 +1,72 @@
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { m as motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Zap, Thermometer, Lightbulb, Blinds, Cpu,
   Gauge, Home, Building2, Smartphone, Speaker,
   LucideIcon, ShieldCheck, Tv, Wind, PlugZap,
+  Presentation, BatteryCharging, LayoutDashboard,
+  Sun, Music, Users, Link as LinkIcon, Mic, Heart, Settings, Shield,
 } from "lucide-react";
+import SEO from "@/components/SEO";
 import ServiceHero from "@/components/services/ServiceHero";
 import BentoGrid, { BentoItem } from "@/components/services/BentoGrid";
 import TechMarquee from "@/components/services/TechMarquee";
 import CTASection from "@/components/CTASection";
+import ContextToggle, { ContextMode } from "@/components/ContextToggle";
 
+/* ════════════════════════════════════
+   Trust Strip (prop-driven)
+════════════════════════════════════ */
+type TrustMarker = { icon: React.ElementType; label: string };
+
+function TrustStrip({ markers }: { markers: TrustMarker[] }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  return (
+    <section ref={ref} className="relative w-full py-5 border-y border-border/50 bg-card/80 backdrop-blur-sm">
+      <div className="section-container">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 lg:divide-x lg:divide-border/40">
+          {markers.map((m, i) => {
+            const Icon = m.icon;
+            return (
+              <motion.div
+                key={m.label}
+                initial={{ opacity: 0, y: 10 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="flex items-center justify-center gap-2.5 py-3 px-4"
+              >
+                <Icon className="w-4 h-4 text-accent/70 flex-shrink-0" />
+                <span className="text-xs sm:text-sm font-medium text-muted-foreground leading-tight">
+                  {m.label}
+                </span>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ════════════════════════════════════
+   Original capability bento items
+   (kept for AutomationShowcase context)
+════════════════════════════════════ */
 const benefits: BentoItem[] = [
-  { icon: Building2, title: "Building Management Systems (BMS)", description: "A single digital platform to control all a building's electrical and mechanical systems: HVAC, lighting, fire safety, and access control from one dashboard.", span: "wide" },
-  { icon: Thermometer, title: "HVAC & Energy Management", description: "Automated systems that adjust heating, cooling, and ventilation based on occupancy and time-of-day, lowering utility bills by up to 40%." },
-  { icon: Lightbulb, title: "Smart Lighting", description: "Intelligent lights that turn off or dim automatically based on daylight levels or occupancy. Tunable color temperature for circadian comfort." },
-  { icon: Blinds, title: "Motorized Curtains & Blinds", description: "Automated window coverings that adjust to the sun's position to keep rooms cool, reduce glare, and enhance privacy, controllable via app or voice." },
-  { icon: Cpu, title: "IoT-Based Monitoring", description: "Small sensors tracking equipment health, environmental conditions, air quality, and energy consumption around the clock with real-time alerts." },
-  { icon: Gauge, title: "PLC & SCADA Systems", description: "Specialized industrial computer systems to automate and monitor complex manufacturing, water treatment, or large-scale utility processes.", span: "wide" },
-  { icon: Home, title: "Smart Home Automation", description: "One-touch control of music, temperature, lighting, curtains, and security via a single app, voice command, or wall-mounted panel." },
-  { icon: Smartphone, title: "Central App Control", description: "Unified mobile and tablet interface to manage every connected device: create scenes, set schedules, and monitor from anywhere in the world." },
-  { icon: Speaker, title: "Voice Integration", description: "Seamless integration with Alexa, Google Home, and Apple HomeKit for hands-free control of your entire smart environment." },
-  { icon: Tv, title: "Home Theatre Automation", description: "Cinematic experiences with automated projection screens, ambient lighting scenes, motorized seating, and immersive Dolby Atmos sound." },
-  { icon: Wind, title: "Climate Zoning", description: "Individual room-by-room temperature and humidity control for maximum comfort and energy efficiency across large properties." },
-  { icon: PlugZap, title: "Energy Metering & Analytics", description: "Real-time dashboards showing per-device energy consumption, enabling informed decisions to reduce carbon footprint and costs." },
+  { icon: Building2,     title: "Building Management Systems (BMS)",  description: "A single digital platform to control all a building's electrical and mechanical systems: HVAC, lighting, fire safety, and access control from one dashboard.", span: "wide" },
+  { icon: Thermometer,   title: "HVAC & Energy Management",           description: "Automated systems that adjust heating, cooling, and ventilation based on occupancy and time-of-day, lowering utility bills by up to 40%." },
+  { icon: Lightbulb,     title: "Smart Lighting",                     description: "Intelligent lights that turn off or dim automatically based on daylight levels or occupancy. Tunable color temperature for circadian comfort." },
+  { icon: Blinds,        title: "Motorized Curtains & Blinds",        description: "Automated window coverings that adjust to the sun's position to keep rooms cool, reduce glare, and enhance privacy, controllable via app or voice." },
+  { icon: Cpu,           title: "IoT-Based Monitoring",               description: "Small sensors tracking equipment health, environmental conditions, air quality, and energy consumption around the clock with real-time alerts." },
+  { icon: Gauge,         title: "PLC & SCADA Systems",                description: "Specialized industrial computer systems to automate and monitor complex manufacturing, water treatment, or large-scale utility processes.", span: "wide" },
+  { icon: Home,          title: "Smart Home Automation",              description: "One-touch control of music, temperature, lighting, curtains, and security via a single app, voice command, or wall-mounted panel." },
+  { icon: Smartphone,    title: "Central App Control",                description: "Unified mobile and tablet interface to manage every connected device: create scenes, set schedules, and monitor from anywhere in the world." },
+  { icon: Speaker,       title: "Voice Integration",                  description: "Seamless integration with Alexa, Google Home, and Apple HomeKit for hands-free control of your entire smart environment." },
+  { icon: Tv,            title: "Home Theatre Automation",            description: "Cinematic experiences with automated projection screens, ambient lighting scenes, motorized seating, and immersive Dolby Atmos sound." },
+  { icon: Wind,          title: "Climate Zoning",                     description: "Individual room-by-room temperature and humidity control for maximum comfort and energy efficiency across large properties." },
+  { icon: PlugZap,       title: "Energy Metering & Analytics",        description: "Real-time dashboards showing per-device energy consumption, enabling informed decisions to reduce carbon footprint and costs." },
 ];
 
 /* ───────── Automation Showcase Tabs ───────── */
@@ -54,9 +97,9 @@ const automationCategories: AutomationCategory[] = [
     ],
     specs: [
       { label: "Devices Supported", value: "500+ per home" },
-      { label: "Protocols", value: "Zigbee / Z-Wave / WiFi" },
-      { label: "Voice Assistants", value: "Alexa / Google / Siri" },
-      { label: "Response Time", value: "<200ms" },
+      { label: "Protocols",         value: "Zigbee / Z-Wave / WiFi" },
+      { label: "Voice Assistants",  value: "Alexa / Google / Siri" },
+      { label: "Response Time",     value: "<200ms" },
     ],
     image: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=600&auto=format&fit=crop",
   },
@@ -74,10 +117,10 @@ const automationCategories: AutomationCategory[] = [
       "Energy dashboards with green building certification (LEED/IGBC) tracking",
     ],
     specs: [
-      { label: "Energy Savings", value: "Up to 40%" },
-      { label: "Buildings Managed", value: "100+" },
-      { label: "Integration", value: "BACnet / Modbus / KNX" },
-      { label: "Uptime SLA", value: "99.9%" },
+      { label: "Energy Savings",   value: "Up to 40%" },
+      { label: "Buildings Managed",value: "100+" },
+      { label: "Integration",      value: "BACnet / Modbus / KNX" },
+      { label: "Uptime SLA",       value: "99.9%" },
     ],
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop",
   },
@@ -96,9 +139,9 @@ const automationCategories: AutomationCategory[] = [
     ],
     specs: [
       { label: "Plants Automated", value: "50+" },
-      { label: "I/O Points", value: "Up to 100K" },
-      { label: "Protocols", value: "Modbus / Profinet / EtherCAT" },
-      { label: "Safety", value: "SIL 2/3 rated" },
+      { label: "I/O Points",       value: "Up to 100K" },
+      { label: "Protocols",        value: "Modbus / Profinet / EtherCAT" },
+      { label: "Safety",           value: "SIL 2/3 rated" },
     ],
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop",
   },
@@ -181,36 +224,106 @@ const techStack = [
   "Alexa", "Google Home", "Apple HomeKit", "SmartThings",
 ];
 
+/* ════════════════════════════════════
+   PAGE EXPORT
+════════════════════════════════════ */
 export default function Automation() {
+  const [contextMode, setContextMode] = useState<ContextMode>("enterprise");
+
+  // ── DYNAMIC CONTENT DICTIONARIES ──
+  const heroContent = {
+    enterprise: {
+      description: "Intelligent HVAC routing, conference room AV orchestration, and biometric access syncing. Turn your facility into an energy-efficient, frictionless asset.",
+      trustLine:   "Saving commercial spaces up to 30% in operational energy costs.",
+    },
+    residential: {
+      description: "Lighting, climate, security, and entertainment—unified into a single, elegant interface. The ultimate smart home experience.",
+      trustLine:   "Custom integrations for luxury estates and smart apartments.",
+    },
+  };
+
+  const dynamicCapabilities: Record<ContextMode, BentoItem[]> = {
+    enterprise: [
+      { icon: Building2,       title: "Facility Orchestration", description: "Centralized control of industrial HVAC, lighting, and access control.",                                    span: "wide" },
+      { icon: Presentation,    title: "Boardroom Automation",   description: "One-touch meeting modes that lower blinds, dim lights, and prep screens.",                               span: "normal" },
+      { icon: BatteryCharging, title: "Energy Analytics",       description: "Automated power-down protocols for unused zones during off-hours.",                                       span: "normal" },
+      { icon: LayoutDashboard, title: "Admin Dashboards",       description: "Granular control and permissions for facility managers across all systems.",                              span: "wide" },
+    ],
+    residential: [
+      { icon: Home,            title: "Scene Control",          description: "Custom 'Morning', 'Movie', or 'Away' scenes that trigger multiple devices at once.",                      span: "wide" },
+      { icon: Sun,             title: "Circadian Lighting",     description: "Smart LED systems that match the natural color temperature of the sun.",                                  span: "normal" },
+      { icon: Music,           title: "Multi-Room Audio",       description: "Synchronized high-fidelity audio zones throughout your property.",                                        span: "normal" },
+      { icon: Smartphone,      title: "Unified Interface",      description: "Control everything from Apple HomeKit, Control4, or a custom tablet.",                                   span: "wide" },
+    ],
+  };
+
+  const dynamicTrustMarkers: Record<ContextMode, TrustMarker[]> = {
+    enterprise: [
+      { icon: Zap,        label: "Energy Optimization" },
+      { icon: Users,      label: "Role-Based Access"   },
+      { icon: LinkIcon,   label: "API Integrations"    },
+      { icon: Shield,     label: "Encrypted Control"   },
+    ],
+    residential: [
+      { icon: Smartphone, label: "iOS/Android Native"  },
+      { icon: Mic,        label: "Voice Control"       },
+      { icon: Settings,   label: "Invisible Tech"      },
+      { icon: Heart,      label: "Family Friendly"     },
+    ],
+  };
+
   return (
     <>
+      <SEO
+        title={`Smart Automation | Spirecrest ${contextMode === "enterprise" ? "Commercial" : "Residential"}`}
+        description={heroContent[contextMode].description}
+      />
+
+      {/* ── 1. Hero ── */}
       <ServiceHero
         badge="AUTOMATION & CONTROL SYSTEMS"
-        title="The Intelligent"
-        highlight="Environment."
-        description="Using smart technology to connect building systems into one dashboard: save energy, increase comfort, and improve efficiency at every scale. Inefficient systems increase operational costs and reduce long-term scalability."
+        title={contextMode === "enterprise" ? "The Intelligent" : "The Elegant"}
+        highlight={contextMode === "enterprise" ? "Facility." : "Smart Home."}
+        description={heroContent[contextMode].description}
+        trustLine={heroContent[contextMode].trustLine}
         stats={[
-          { value: "500+", label: "Homes Automated" },
-          { value: "40%", label: "Avg. Energy Savings" },
-          { value: "100+", label: "Buildings Managed" },
+          { value: "500+", label: "Homes Automated"   },
+          { value: "40%",  label: "Avg. Energy Savings" },
+          { value: "100+", label: "Buildings Managed"  },
         ]}
         primaryCTA="Get Expert Advice"
         secondaryCTA="Talk to an Expert"
         showCallCTA={true}
       />
+
+      {/* ── Context Toggle ── */}
+      <ContextToggle mode={contextMode} onChange={setContextMode} />
+
+      {/* ── Dynamic Trust Strip ── */}
+      <TrustStrip markers={dynamicTrustMarkers[contextMode]} />
+
+      {/* ── Dynamic Capabilities Bento ── */}
       <BentoGrid
-        label="CAPABILITIES"
-        heading="Control Everything. Intelligently."
-        subheading="From smart homes to industrial SCADA systems: seamless automation that adapts to your environment. Every solution is engineered for performance, scalability, and long-term reliability."
-        items={benefits}
+        label={contextMode === "enterprise" ? "Enterprise Automation" : "Residential Automation"}
+        heading={contextMode === "enterprise" ? "Control Everything. Intelligently." : "Live Smarter. Effortlessly."}
+        subheading="From smart homes to industrial SCADA systems: seamless automation that adapts to your environment."
+        items={dynamicCapabilities[contextMode]}
       />
+
+      {/* ── Showcase Tabs (unchanged) ── */}
       <AutomationShowcase />
+
       <TechMarquee label="AUTOMATION PLATFORMS & PROTOCOLS" items={techStack} />
+
       <div className="section-container pb-2 text-sm text-muted-foreground">
         Need secure access and monitoring?{" "}
         <Link to="/services/surveillance" className="text-cyan-400 hover:underline">Explore our security systems.</Link>
       </div>
-      <CTASection heading="Tell us what you're trying to achieve. We'll tell you exactly what you need — no upselling, no guesswork." />
+
+      <CTASection
+        heading={contextMode === "enterprise" ? "Optimise your facility today" : "Tell us what you're trying to achieve."}
+        subtext="We'll tell you exactly what you need — no upselling, no guesswork."
+      />
     </>
   );
 }

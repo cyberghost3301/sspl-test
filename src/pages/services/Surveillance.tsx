@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { m as motion, useInView } from "framer-motion";
 import {
   MapPin, ShieldCheck, Settings, FileText,
@@ -14,38 +14,37 @@ import TechMarquee from "@/components/services/TechMarquee";
 import CTASection from "@/components/CTASection";
 import WhatsAppCTA from "@/components/WhatsAppCTA";
 import { Button } from "@/components/ui/button";
+import ContextToggle, { ContextMode } from "@/components/ContextToggle";
 
 /* ════════════════════════════════════
-   SECTION 2 — Trust Strip
+   SECTION 2 — Trust Strip (prop-driven)
 ════════════════════════════════════ */
-const trustMarkers = [
-  { icon: MapPin,      label: "Trusted across Lucknow & UP" },
-  { icon: ShieldCheck, label: "24/7 Zero-Downtime Support" },
-  { icon: Settings,    label: "100% Custom-Designed Setups" },
-  { icon: FileText,    label: "Transparent Pricing & Audits" },
-];
+type TrustMarker = { icon: React.ElementType; label: string };
 
-function TrustStrip() {
+function TrustStrip({ markers }: { markers: TrustMarker[] }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   return (
     <section ref={ref} className="relative w-full py-5 border-y border-border/50 bg-card/80 backdrop-blur-sm">
       <div className="section-container">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 lg:divide-x lg:divide-border/40">
-          {trustMarkers.map((m, i) => (
-            <motion.div
-              key={m.label}
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="flex items-center justify-center gap-2.5 py-3 px-4"
-            >
-              <m.icon className="w-4 h-4 text-accent/70 flex-shrink-0" />
-              <span className="text-xs sm:text-sm font-medium text-muted-foreground leading-tight">
-                {m.label}
-              </span>
-            </motion.div>
-          ))}
+          {markers.map((m, i) => {
+            const Icon = m.icon;
+            return (
+              <motion.div
+                key={m.label}
+                initial={{ opacity: 0, y: 10 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="flex items-center justify-center gap-2.5 py-3 px-4"
+              >
+                <Icon className="w-4 h-4 text-accent/70 flex-shrink-0" />
+                <span className="text-xs sm:text-sm font-medium text-muted-foreground leading-tight">
+                  {m.label}
+                </span>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -55,72 +54,51 @@ function TrustStrip() {
 /* ════════════════════════════════════
    SECTION 3 — Problem → Solution
 ════════════════════════════════════ */
-function ProblemSolution() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+function ProblemSolution({ mode }: { mode: ContextMode }) {
+  const content = {
+    enterprise: {
+      problemLabel: "The Enterprise Blind Spot",
+      problemTitle: "Fragmented systems create liabilities.",
+      problemDesc: "Relying on disparate CCTV, separate access control, and manual logs leaves facility managers reacting to breaches rather than preventing them. Security gaps cost millions in liabilities and operational downtime.",
+      solutionLabel: "The Spirecrest Standard",
+      solutionTitle: "Unified SOC Architecture.",
+      solutionDesc: "We deploy unified Video Management Systems (VMS) tied directly to biometric access. Every door swipe, perimeter breach, and loitering event is logged, AI-analyzed, and pushed to your admin dashboard in real-time."
+    },
+    residential: {
+      problemLabel: "The Residential Compromise",
+      problemTitle: "Consumer cameras are easily bypassed.",
+      problemDesc: "Off-the-shelf Wi-Fi cameras drop connection, get easily jammed, and share your private family footage with third-party cloud servers. They offer the illusion of security without the reality.",
+      solutionLabel: "The Spirecrest Standard",
+      solutionTitle: "Hardwired & Locally Secured.",
+      solutionDesc: "We deploy hardwired, 4K night-vision cameras with local NVR storage. Your property is protected by enterprise-grade hardware that never drops offline, while your family's data remains 100% private and under your physical control."
+    }
+  };
+
+  const data = content[mode];
 
   return (
-    <section className="py-20 lg:py-24 bg-background" ref={ref}>
-      <div className="section-container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14 max-w-3xl mx-auto"
-        >
-          <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">
-            The Real Problem
-          </p>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-            Security isn't about cameras. It's about{" "}
-            <span className="text-gradient">coverage, clarity, and control.</span>
-          </h2>
-        </motion.div>
+    <section className="py-24 bg-[#05070A] relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-8 md:gap-12">
+        {/* Problem Card */}
+        <div className="bg-[#0D1117]/80 backdrop-blur-2xl border border-white/5 p-8 md:p-12 rounded-3xl relative overflow-hidden group hover:border-red-500/20 transition-colors duration-500 shadow-2xl">
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-red-500/80 to-transparent" />
+          <span className="text-red-400 font-mono text-sm tracking-wider uppercase mb-5 flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-red-500/50 shadow-[0_0_10px_rgba(239,68,68,0.8)]" />
+            {data.problemLabel}
+          </span>
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-5 leading-snug">{data.problemTitle}</h3>
+          <p className="text-white/60 leading-relaxed text-base md:text-lg">{data.problemDesc}</p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {/* Problem column */}
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.55, delay: 0.15 }}
-            className="relative flex flex-col p-8 rounded-2xl border border-border bg-card overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-transparent to-transparent pointer-events-none" />
-            <div className="relative z-10">
-              <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
-                <AlertTriangle className="w-5 h-5 text-red-400" />
-              </div>
-              <p className="text-xs font-display uppercase tracking-widest text-red-400/80 mb-3">The Problem</p>
-              <p className="text-foreground font-display font-semibold text-lg mb-3 leading-snug">
-                Most CCTV setups fail the moment you actually need them.
-              </p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Blind spots, poor night footage, unstable recording, and zero real monitoring when something actually happens.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Solution column */}
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.55, delay: 0.25 }}
-            className="relative flex flex-col p-8 rounded-2xl border border-accent/20 bg-card overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent pointer-events-none" />
-            <div className="relative z-10">
-              <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
-                <CheckCircle2 className="w-5 h-5 text-accent" />
-              </div>
-              <p className="text-xs font-display uppercase tracking-widest text-accent mb-3">The Spirecrest Way</p>
-              <p className="text-foreground font-display font-semibold text-lg mb-3 leading-snug">
-                We design. Not just install.
-              </p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                We don't install cameras randomly. We design your entire system around your layout, risk areas, and real-world usage so nothing important is ever missed.
-              </p>
-            </div>
-          </motion.div>
+        {/* Solution Card */}
+        <div className="bg-[#0D1117]/80 backdrop-blur-2xl border border-white/5 p-8 md:p-12 rounded-3xl relative overflow-hidden group hover:border-sc-teal/30 transition-colors duration-500 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-sc-teal/80 to-transparent" />
+          <span className="text-sc-teal font-mono text-sm tracking-wider uppercase mb-5 flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-sc-teal/50 shadow-[0_0_10px_rgba(0,212,200,0.8)]" />
+            {data.solutionLabel}
+          </span>
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-5 leading-snug">{data.solutionTitle}</h3>
+          <p className="text-white/60 leading-relaxed text-base md:text-lg">{data.solutionDesc}</p>
         </div>
       </div>
     </section>
@@ -128,32 +106,9 @@ function ProblemSolution() {
 }
 
 /* ════════════════════════════════════
-   SECTION 4 — Capabilities (4 cards)
+   SECTION 4 — Capabilities
+   (dynamic — defined inside component)
 ════════════════════════════════════ */
-const capabilities: BentoItem[] = [
-  {
-    icon: Smartphone,
-    title: "Remote Monitoring",
-    description: "Access live and recorded footage anytime, anywhere from your phone or system.",
-    span: "wide",
-  },
-  {
-    icon: KeySquare,
-    title: "Smart Access Control",
-    description: "Secure entry with biometric, RFID, and controlled access systems for homes and offices.",
-  },
-  {
-    icon: Bell,
-    title: "Instant Active Alerts",
-    description: "Get notified instantly when something unusual happens, not hours later.",
-  },
-  {
-    icon: Monitor,
-    title: "Centralized Command",
-    description: "Monitor multiple cameras, locations, and systems from a single interface.",
-    span: "wide",
-  },
-];
 
 /* ════════════════════════════════════
    SECTION 5 — Process
@@ -432,43 +387,98 @@ const techStack = [
    PAGE EXPORT
 ════════════════════════════════════ */
 export default function Surveillance() {
+  const [contextMode, setContextMode] = useState<ContextMode>("enterprise");
+
+  // ── DYNAMIC CONTENT DICTIONARIES ──
+  const heroContent = {
+    enterprise: {
+      description: "Military-grade active monitoring, biometric access control, and AI-driven threat detection for operations that cannot afford physical blind spots.",
+      trustLine: "Deployed across commercial facilities, server rooms, and corporate headquarters. SLA-backed uptime.",
+    },
+    residential: {
+      description: "Discreet, high-fidelity perimeter defense and smart-home integration. Protect your family and property with zero privacy compromises.",
+      trustLine: "Clean, wire-free installations for high-end residential properties. Total control from your phone.",
+    },
+  };
+
+  const dynamicCapabilities: Record<ContextMode, BentoItem[]> = {
+    enterprise: [
+      { icon: Monitor,     title: "Active SOC Monitoring",   description: "Integration with local authorities and 24/7 active threat response centers.", span: "wide" },
+      { icon: ShieldCheck, title: "Biometric Access Control", description: "Multi-factor physical authentication for restricted server and executive areas." },
+      { icon: SearchCheck, title: "AI Behavior Analytics",   description: "Automated alerts for loitering, unauthorized vehicles, and perimeter breaches." },
+      { icon: LayoutGrid,  title: "Multi-Site Topologies",   description: "Centralized VMS (Video Management System) to monitor branches nationwide.", span: "wide" },
+    ],
+    residential: [
+      { icon: Smartphone, title: "Unified Mobile Control",      description: "View live feeds, unlock doors, and arm perimeters instantly from your iOS or Android device.", span: "wide" },
+      { icon: KeySquare,  title: "Smart Lock Integration",      description: "Keyless entry for family and temporary digital passes for staff/guests." },
+      { icon: Bell,       title: "Nanny & Pet Monitoring",      description: "Crystal clear two-way audio and indoor coverage with privacy shutter controls." },
+      { icon: Home,       title: "Perimeter Defense Matrix",    description: "Night-vision enabled boundary cameras with floodlight and siren deterrents.", span: "wide" },
+    ],
+  };
+
+  const dynamicTrustMarkers: Record<ContextMode, { icon: React.ElementType; label: string }[]> = {
+    enterprise: [
+      { icon: MapPin,      label: "Commercial Coverage" },
+      { icon: ShieldCheck, label: "24/7 Active Response" },
+      { icon: Settings,    label: "VLAN Network Isolation" },
+      { icon: FileText,    label: "Compliance Audits" },
+    ],
+    residential: [
+      { icon: Home,        label: "High-End Residential" },
+      { icon: Smartphone,  label: "App-First Control" },
+      { icon: ShieldCheck, label: "Strict Data Privacy" },
+      { icon: Wrench,      label: "Clean Installation" },
+    ],
+  };
+
   return (
     <>
       <SEO
-        title="CCTV & Security Systems in Lucknow | Spirecrest Solutions"
-        description="Custom-engineered CCTV, surveillance, and access control systems for homes, offices, and factories across Lucknow and U.P. Zero-blind-spot coverage, 24/7 support, transparent pricing."
+        title={`Advanced Surveillance | Spirecrest ${
+          contextMode === "enterprise" ? "Commercial" : "Home"
+        }`}
+        description={heroContent[contextMode].description}
         path="/services/surveillance"
       />
 
       {/* ── 1. Hero ── */}
       <ServiceHero
         badge="Security & Surveillance"
-        title="CCTV & Security Systems That Actually"
-        highlight="Protect What Matters"
-        description="Custom-designed surveillance and access control systems built for your exact space, ensuring complete coverage, reliable recording, and peace of mind when it matters most."
+        title={contextMode === "enterprise"
+          ? "Enterprise Security That"
+          : "Home Security That"}
+        highlight={contextMode === "enterprise"
+          ? "Eliminates Blind Spots"
+          : "Protects What Matters"}
+        description={heroContent[contextMode].description}
         stats={[
           { value: "3000+", label: "Cameras Deployed" },
-          { value: "24/7", label: "Live Monitoring" },
-          { value: "100%", label: "Custom Designed" },
+          { value: "24/7",  label: "Live Monitoring" },
+          { value: "100%",  label: "Custom Designed" },
         ]}
         primaryCTA="Get Expert Advice"
         secondaryCTA="Talk to an Expert"
-        trustLine="Installed across homes, offices, and commercial spaces in Lucknow with reliable, long-term support. Reliable even during power and network fluctuations. Serving Lucknow & surrounding areas."
+        trustLine={heroContent[contextMode].trustLine}
         showCallCTA={true}
       />
 
-      {/* ── 2. Trust Strip ── */}
-      <TrustStrip />
+      {/* ── Context Toggle ── */}
+      <ContextToggle mode={contextMode} onChange={setContextMode} />
+
+      {/* ── 2. Dynamic Trust Strip ── */}
+      <TrustStrip markers={dynamicTrustMarkers[contextMode]} />
 
       {/* ── 3. Problem → Solution ── */}
-      <ProblemSolution />
+      <ProblemSolution mode={contextMode} />
 
-      {/* ── 4. Capabilities ── */}
+      {/* ── 4. Dynamic Capabilities Bento ── */}
       <BentoGrid
-        label="What You Get"
-        heading="Built around outcomes, not spec sheets"
+        label={contextMode === "enterprise" ? "Enterprise Architecture" : "Residential Deployment"}
+        heading={contextMode === "enterprise"
+          ? "Built for compliance and threat mitigation"
+          : "Built for peace of mind and convenience"}
         subheading="Everything we deploy is designed to work seamlessly in your environment, not just look good on paper."
-        items={capabilities}
+        items={dynamicCapabilities[contextMode]}
       />
 
       {/* ── 5. Process ── */}
@@ -488,8 +498,10 @@ export default function Surveillance() {
 
       {/* ── 9. Final CTA ── */}
       <CTASection
-        heading="Tell us what you're trying to protect"
-        subtext="We'll tell you exactly what you need. No upselling. Just what actually works."
+        heading={contextMode === "enterprise"
+          ? "Secure your operations"
+          : "Protect your home"}
+        subtext="Talk to our engineers about your exact security requirements. No upselling."
       />
     </>
   );

@@ -2,20 +2,45 @@ import React from "react";
 import { m as motion } from "framer-motion";
 import { Phone, Sparkles, CheckCircle } from "lucide-react";
 import { useScopingEngine } from "@/hooks/useScopingEngine";
+import MobiusVersion1 from './hero/MobiusVersion1';
+import MobiusVersion2 from './hero/MobiusVersion2';
+import MobiusVersion3 from './hero/MobiusVersion3';
+import MobiusVersion4 from './hero/MobiusVersion4';
 
 export default function HeroSection() {
   const { triggerScopingEngine } = useScopingEngine();
 
   return (
     <div className="relative w-full overflow-hidden">
-      <video 
-        autoPlay 
-        muted 
-        loop 
-        playsInline 
+      
+      {/* ========================================================================
+        BACKGROUND SWITCHBOARD
+        Instructions: Uncomment exactly ONE of the options below to set the Hero background.
+        ======================================================================== 
+      */}
+
+      {/* OPTION A: Original Cinematic Video */}
+      {/* <video 
+        autoPlay muted loop playsInline 
         className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none z-0" 
         src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260308_114720_3dabeb9e-2c39-4907-b747-bc3544e2d5b7.mp4"
-      ></video>
+      /> 
+      */}
+
+      {/* OPTION B: 3D Mobius V1 (Thick, Dark, Cyan Wireframe, Tumbling) */}
+      {/* <MobiusVersion1 /> */}
+
+      {/* OPTION C: 3D Mobius V2 (Thin, Transparent Edge, Flowing Loop) */}
+      {/* <MobiusVersion2 /> */}
+
+      {/* OPTION D: 3D Mobius V3 (Dense Glowing Energy Ribbon, Flowing Loop) */}
+      {/* <MobiusVersion3 /> */}
+
+      {/* OPTION E: 3D Mobius V4 (Wide Infinity Treadmill) */}
+      <MobiusVersion4 />
+
+      {/* ======================================================================== */}
+
       <section className="relative z-10 min-h-[100dvh] flex flex-col justify-center pt-8 md:pt-28 lg:pt-32 pb-16 overflow-hidden bg-transparent">
         {/* 4rem grid overlay — structural depth */}
         <div
@@ -76,7 +101,7 @@ export default function HeroSection() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed text-center"
             >
-              We design and deploy infrastructure that supports real operations, scales with your business, and doesn't fail when it matters.
+              We engineer zero-trust IT networks, deploy physical smart-space automation, and build custom software ecosystems for operations that cannot afford downtime. From enterprise scaling to high-end residential integration.
             </motion.p>
 
             <motion.div
